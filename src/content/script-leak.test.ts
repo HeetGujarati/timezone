@@ -60,6 +60,9 @@ const ALLOWED_LATIN = new Set(
     'meridiem', 'prefers', 'reduced', 'motion', 'aria', 'live', 'polite', 'Apollo',
     'Unix', 'CUT', 'TUC', 'EST', 'EDT', 'CET', 'CEST', 'IST', 'JST', 'KST', 'AEDT',
     'AKDT', 'PST', 'PDT', 'BST', 'UTC-5', 'UTC-4', 'UTC+0', 'UTC+3',
+    // Product, project and standard names the guides cite by name.
+    'Reddit', 'Mozilla', 'Linux', 'Cloudflare', 'DNS', 'GPS', 'TAI', 'UT1', 'BIPM',
+    'Greenwich', 'Newfoundland', 'Kiritimati', 'Olson', 'British', 'Summer', 'Time',
   ].map((term) => term.toLowerCase()),
 );
 
@@ -100,14 +103,24 @@ function localeOf(path: string): LocaleCode | undefined {
   );
 }
 
-/** Strip code spans, fenced blocks, links and frontmatter keys before checking. */
+/**
+ * Quotation marks of every style these locales use. Text inside them is a
+ * deliberate quotation — the UTC guide has to print the English "coordinated
+ * universal time" and the French "temps universel coordonné" to explain where
+ * CUT and TUC came from, and that is content, not leakage.
+ */
+const QUOTED =
+  /[«„“”"‘’'「『][^«„“”"‘’'」』]{0,120}[»„“”"‘’'」』]/gu;
+
+/** Strip code spans, fenced blocks, links, quotations and frontmatter keys. */
 function prose(markdown: string): string {
   return markdown
     .replace(/^---\n[\s\S]*?\n---\n/u, '')
     .replace(/```[\s\S]*?```/gu, '')
     .replace(/`[^`]*`/gu, '')
     .replace(/\]\([^)]*\)/gu, ']')
-    .replace(/^\s*(publishedAt|updatedAt|order|keywords|related):.*$/gmu, '');
+    .replace(/^\s*(publishedAt|updatedAt|order|keywords|related):.*$/gmu, '')
+    .replace(QUOTED, ' ');
 }
 
 describe('markdown content', () => {
