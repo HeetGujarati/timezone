@@ -148,8 +148,9 @@ const [overlapMiddle = '', overlapTail = ''] = overlapRest.split('{range}');
     class="mt-5 rounded-[var(--radius-md)] bg-[var(--color-surface-sunken)] p-4 text-[length:var(--text-sm)]"
   >
     <p data-summary="window" hidden={overlap.length === 0}>
-      {overlapLead}<span data-summary-hours class="tabular font-semibold">{overlap.length}</span
-      >{overlapMiddle}<span data-summary-range class="tabular font-semibold"></span>{overlapTail}
+      {overlapLead}<span data-summary-hours class="tabular font-semibold">{overlap.length}</span>{
+        overlapMiddle
+      }<span data-summary-range class="tabular font-semibold"></span>{overlapTail}
     </p>
     <p data-summary="none" hidden={overlap.length > 0}>{t('planner.noOverlap')}</p>
   </div>
@@ -157,7 +158,9 @@ const [overlapMiddle = '', overlapTail = ''] = overlapRest.split('{range}');
   <figure class="mt-5">
     <div class="overflow-x-auto">
       <table class="w-full min-w-[52rem] border-collapse">
-        <caption class="mb-2 text-start text-[length:var(--text-sm)] text-[var(--color-text-muted)]">
+        <caption
+          class="mb-2 text-start text-[length:var(--text-sm)] text-[var(--color-text-muted)]"
+        >
           {t('planner.bandCaption')}
         </caption>
         <tbody data-role="grid">
@@ -176,7 +179,11 @@ const [overlapMiddle = '', overlapTail = ''] = overlapRest.split('{range}');
                 {row.cells.map((cell) => (
                   <td
                     class={`tabular border-s border-[var(--color-rule)] px-1 py-1 text-center text-[length:var(--text-2xs)] ${cellClass(cell.state)}`}
-                    title={cell.dayDelta === 0 ? undefined : `${cell.dayDelta > 0 ? '+' : ''}${cell.dayDelta} day`}
+                    title={
+                      cell.dayDelta === 0
+                        ? undefined
+                        : `${cell.dayDelta > 0 ? '+' : ''}${cell.dayDelta} day`
+                    }
                   >
                     {hourFormatter.format(new Date(Date.UTC(2026, 0, 1, cell.hour, cell.minute)))}
                   </td>

@@ -1,0 +1,140 @@
+---
+import ToolPage from '~/templates/ToolPage.astro';
+import LiveClock from '~/components/LiveClock.astro';
+import { CITIES } from '~/data/cities.ts';
+import { BUILD_INSTANT } from '~/config/build.ts';
+import { formatOffsetShort, getOffsetMinutes } from '~/lib/time/offset.ts';
+import { localePath } from '~/config/locales.ts';
+
+const locale = 'en' as const;
+
+const reference = [
+  'london',
+  'new-york',
+  'delhi',
+  'tokyo',
+  'sydney',
+  'los-angeles',
+  'sao-paulo',
+  'dubai',
+]
+  .map((slug) => CITIES.find((city) => city.slug === slug))
+  .filter((city): city is NonNullable<typeof city> => city !== undefined)
+  .map((city) => ({
+    ...city,
+    offset: getOffsetMinutes(city.timeZone, BUILD_INSTANT),
+  }));
+
+const faqs = [
+  {
+    question: 'What is UTC?',
+    answer:
+      'Coordinated Universal Time is the reference every other time zone is defined against. It is not a time zone anyone lives in — it is the baseline. Every offset you see, from UTC-12 to UTC+14, is a distance from this clock.',
+  },
+  {
+    question: 'Is UTC the same as GMT?',
+    answer:
+      'For everyday purposes they show the same reading, but they are different things. GMT is a time zone, defined by the position of the sun at the Greenwich meridian, and Britain leaves it every summer. UTC is a time standard, kept by around 450 atomic clocks and never adjusted for daylight saving. If you mean "the reference", say UTC.',
+  },
+  {
+    question: 'Why is it abbreviated UTC and not CUT?',
+    answer:
+      'Because neither the English nor the French acronym won. English speakers wanted CUT for "coordinated universal time", French speakers wanted TUC for "temps universel coordonné", and the International Telecommunication Union settled on UTC — which matches neither language and therefore offends both equally.',
+  },
+  {
+    question: 'Does UTC observe daylight saving time?',
+    answer:
+      'Never. That is the entire point of it. UTC does not shift, which is why servers, aviation, shipping and every distributed system that needs two machines to agree on when something happened use it rather than a local zone.',
+  },
+  {
+    question: 'What about leap seconds?',
+    answer:
+      'UTC has occasionally had a leap second inserted to keep it within 0.9 seconds of the earth’s actual rotation — 27 of them since 1972, the most recent at the end of 2016. In 2022 the General Conference on Weights and Measures voted to stop adding them by 2035. Your browser does not expose leap seconds, so neither does this page.',
+  },
+];
+---
+
+<ToolPage
+  locale={locale}
+  path="/utc-time/"
+  title="UTC time"
+  metaTitle="UTC time now — current Coordinated Universal Time"
+  description="The current UTC time, ticking live, plus what UTC actually is, how it differs from GMT, and what every other zone's offset is measured against."
+  keywords={['utc time', 'current utc', 'utc now', 'coordinated universal time', 'gmt vs utc']}
+  summary="UTC is the reference clock every other time zone is defined against — it never shifts for daylight saving, and the reading below is your device's clock expressed in it."
+  faqs={faqs}
+  featureList={[
+    'Live UTC clock with seconds',
+    'Offsets of major cities from UTC',
+    'Plain explanation of UTC versus GMT',
+  ]}
+>
+  <div
+    slot="tool"
+    class="rounded-[var(--radius-lg)] border border-[var(--color-rule)] bg-[var(--color-surface-raised)] p-6"
+  >
+    <p class="text-[length:var(--text-xs)] tracking-wide text-[var(--color-text-muted)] uppercase">
+      Coordinated Universal Time
+    </p>
+    <LiveClock locale={locale} timeZone="UTC" showSeconds showDate size="xl" class="mt-2" />
+  </div>
+
+  <section class="mt-12">
+    <h2 class="text-[length:var(--text-2xl)]">What UTC looks like from elsewhere</h2>
+    <p class="prose mt-2 text-[var(--color-text-muted)]">
+      Each city's offset from UTC, as it stands at the time of the last rebuild. Cities that observe
+      daylight saving move by an hour twice a year — their city page has the exact dates.
+    </p>
+    <div class="mt-4 overflow-x-auto">
+      <table class="w-full min-w-[28rem] text-[length:var(--text-sm)]">
+        <thead>
+          <tr class="border-b border-[var(--color-rule)] text-left text-[var(--color-text-muted)]">
+            <th scope="col" class="py-2 pr-4 font-medium">City</th>
+            <th scope="col" class="py-2 pr-4 font-medium">Offset from UTC</th>
+            <th scope="col" class="py-2 font-medium">Local time now</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            reference.map((city) => (
+              <tr class="border-b border-[var(--color-rule)]">
+                <th scope="row" class="py-2 pr-4 text-left font-normal">
+                  <a
+                    href={localePath(locale, `/time-in/${city.slug}/`)}
+                    class="no-underline hover:underline"
+                  >
+                    {city.name}
+                  </a>
+                </th>
+                <td class="tabular py-2 pr-4">{formatOffsetShort(city.offset)}</td>
+                <td class="py-2">
+                  <LiveClock locale={locale} timeZone={city.timeZone} />
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="prose mt-12">
+    <h2 class="text-[length:var(--text-2xl)]">Why everything is measured from here</h2>
+    <p class="mt-3 text-[var(--color-text-muted)]">
+      Before 1884 every town kept its own clock, set by its own noon. That worked until the
+      railways, at which point two towns forty miles apart disagreeing by twelve minutes stopped
+      being a curiosity and started being a collision risk. The International Meridian Conference
+      picked Greenwich as the prime meridian, and the modern system of offsets follows from it.
+    </p>
+    <p class="mt-4 text-[var(--color-text-muted)]">
+      UTC replaced Greenwich Mean Time as the technical standard in 1972. The difference matters
+      more than it sounds: GMT is defined by the earth, which wobbles, while UTC is defined by
+      caesium atoms, which do not. The two are kept within a second of each other by hand.
+    </p>
+    <p class="mt-4 text-[var(--color-text-muted)]">
+      If you are storing a timestamp in a database, logging an event, or scheduling anything that
+      two machines must agree on, store it in UTC and convert on display. Storing local time is how
+      systems end up with an hour that happens twice a year and a support ticket to match.
+    </p>
+  </section>
+</ToolPage>

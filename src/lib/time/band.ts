@@ -37,7 +37,10 @@ const HOUR_MS = 3_600_000;
 const DAY_MS = 86_400_000;
 
 function stateFor(hour: number, startHour: number, endHour: number): BandState {
-  const inside = startHour <= endHour ? hour >= startHour && hour < endHour : hour >= startHour || hour < endHour;
+  const inside =
+    startHour <= endHour
+      ? hour >= startHour && hour < endHour
+      : hour >= startHour || hour < endHour;
   if (inside) return 'working';
 
   // The hour either side of the working day: reachable, but you are asking a favour.

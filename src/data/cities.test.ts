@@ -1,5 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { CITIES, TIER_A, TIER_B, TOP_HUBS, cityBySlug, citiesByContinent, cityZones } from './cities.ts';
+import {
+  CITIES,
+  TIER_A,
+  TIER_B,
+  TOP_HUBS,
+  cityBySlug,
+  citiesByContinent,
+  cityZones,
+} from './cities.ts';
 import { isValidTimeZone, getOffsetMinutes } from '~/lib/time/offset.ts';
 import { canonicalZoneId } from './zones.ts';
 
@@ -71,7 +79,14 @@ describe('the city dataset', () => {
   });
 
   it('includes the six cities the brief names explicitly', () => {
-    for (const slug of ['kathmandu', 'kolkata', 'tehran', 'adelaide', 'chatham-islands', 'st-johns']) {
+    for (const slug of [
+      'kathmandu',
+      'kolkata',
+      'tehran',
+      'adelaide',
+      'chatham-islands',
+      'st-johns',
+    ]) {
       expect(cityBySlug(slug), slug).toBeDefined();
     }
   });

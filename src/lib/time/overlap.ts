@@ -42,8 +42,12 @@ function isWithinWorkingHours(zoned: ZonedDateTime, startHour: number, endHour: 
  *
  * Returns an empty list rather than a nearest-fit guess when there is no overlap:
  * Los Angeles and Mumbai genuinely share no minute of 09:00–18:00, and the page
- * says so instead of inventing a compromise. (New York and Sydney, by contrast,
- * do share exactly one hour — which is why this is computed, not assumed.)
+ * says so instead of inventing a compromise.
+ *
+ * New York and Sydney show why this is computed per instant rather than stored per
+ * pair: they share exactly one hour in the northern winter, when the gap is 16
+ * hours, and nothing at all in the northern summer, when it is 14. Same two cities,
+ * different answer, depending only on the date.
  */
 export function getWorkingHoursOverlap(
   zones: readonly ZoneWorkingHours[],

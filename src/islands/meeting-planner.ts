@@ -2,7 +2,14 @@ import { buildBand, overlapColumns, type BandRow } from '~/lib/time/band.ts';
 import { formatOffsetShort } from '~/lib/time/offset.ts';
 import { isKnownZone, toDisplayZone } from '~/data/zones.ts';
 import { readFormatContext, formatTime } from './lib/format.ts';
-import { parseDateParam, parseIntParam, readParam, readStoredJson, syncUrl, writeStoredJson } from './lib/params.ts';
+import {
+  parseDateParam,
+  parseIntParam,
+  readParam,
+  readStoredJson,
+  syncUrl,
+  writeStoredJson,
+} from './lib/params.ts';
 
 /**
  * The meeting planner.
@@ -25,7 +32,9 @@ function labelFor(timeZone: string): string {
 
 function validateStoredZones(value: unknown): string[] | null {
   if (!Array.isArray(value)) return null;
-  const zones = value.filter((entry): entry is string => typeof entry === 'string' && isKnownZone(entry));
+  const zones = value.filter(
+    (entry): entry is string => typeof entry === 'string' && isKnownZone(entry),
+  );
   return zones.length >= MIN_ZONES ? zones.slice(0, MAX_ZONES) : null;
 }
 
@@ -38,7 +47,6 @@ class MeetingPlanner extends HTMLElement {
   #grid!: HTMLElement;
   #summary!: HTMLElement;
   #zoneList!: HTMLElement;
-  #adder!: HTMLSelectElement;
   #dateInput!: HTMLInputElement;
 
   connectedCallback(): void {
@@ -61,7 +69,6 @@ class MeetingPlanner extends HTMLElement {
     this.#grid = grid;
     this.#summary = summary;
     this.#zoneList = zoneList;
-    this.#adder = adder;
     this.#dateInput = dateInput;
 
     this.#zones = this.#initialZones();
@@ -85,7 +92,9 @@ class MeetingPlanner extends HTMLElement {
       this.#render();
     });
 
-    for (const control of this.querySelectorAll('[data-role="work-start"], [data-role="work-end"]')) {
+    for (const control of this.querySelectorAll(
+      '[data-role="work-start"], [data-role="work-end"]',
+    )) {
       control.addEventListener('change', () => {
         this.#readWorkingHours();
         this.#persist();
@@ -157,7 +166,9 @@ class MeetingPlanner extends HTMLElement {
       this.#workEnd,
     );
 
-    this.#grid.replaceChildren(...rows.map((row) => this.#renderRow(row, context.locale, context.hourCycle)));
+    this.#grid.replaceChildren(
+      ...rows.map((row) => this.#renderRow(row, context.locale, context.hourCycle)),
+    );
     this.#renderZoneList();
     this.#renderSummary(rows, context);
   }
@@ -168,7 +179,8 @@ class MeetingPlanner extends HTMLElement {
 
     const header = document.createElement('th');
     header.scope = 'row';
-    header.className = 'sticky start-0 z-10 bg-[var(--color-surface-raised)] py-1 pe-3 text-start font-normal whitespace-nowrap';
+    header.className =
+      'sticky start-0 z-10 bg-[var(--color-surface-raised)] py-1 pe-3 text-start font-normal whitespace-nowrap';
 
     const name = document.createElement('span');
     name.className = 'block text-[length:var(--text-sm)]';

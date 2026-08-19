@@ -96,12 +96,7 @@ const howToSteps = [
   title="Time zone converter"
   metaTitle="Time zone converter — convert any zone, any date"
   description="Convert any time zone to any other for any date. DST-aware, accurate to the IANA database, and it handles half-hour and 45-minute offsets exactly."
-  keywords={[
-    'time zone converter',
-    'convert time zones',
-    'time zone calculator',
-    'time converter',
-  ]}
+  keywords={['time zone converter', 'convert time zones', 'time zone calculator', 'time converter']}
   summary="Pick two zones and a date, and this converts between them exactly — including on the two days a year when daylight saving makes a local time either impossible or ambiguous."
   faqs={faqs}
   howToSteps={howToSteps}
@@ -124,9 +119,9 @@ const howToSteps = [
   <section class="mt-12">
     <h2 class="text-[length:var(--text-2xl)]">Where the clocks change next</h2>
     <p class="prose mt-2 text-[var(--color-text-muted)]">
-      Standard offsets and the next scheduled transition for eight widely-used zones. These
-      dates come from the IANA database and are true until that database changes — they are
-      not a live reading.
+      Standard offsets and the next scheduled transition for eight widely-used zones. These dates
+      come from the IANA database and are true until that database changes — they are not a live
+      reading.
     </p>
 
     <div class="mt-4 overflow-x-auto">
@@ -150,9 +145,7 @@ const howToSteps = [
                 <td class="tabular py-2 pr-4">{fact.offset}</td>
                 <td class="py-2">
                   {fact.nextChange === null ? (
-                    <span class="text-[var(--color-text-muted)]">
-                      {t('dst.doesNotObserve')}
-                    </span>
+                    <span class="text-[var(--color-text-muted)]">{t('dst.doesNotObserve')}</span>
                   ) : (
                     <span>
                       <span class="tabular">{fact.nextChange.date}</span>{' '}
@@ -175,35 +168,34 @@ const howToSteps = [
   <section class="prose mt-12">
     <h2 class="text-[length:var(--text-2xl)]">What makes time zone conversion go wrong</h2>
     <p class="mt-3 text-[var(--color-text-muted)]">
-      Almost every scheduling mistake comes from one of four places, and all four are handled
-      here rather than rounded away.
+      Almost every scheduling mistake comes from one of four places, and all four are handled here
+      rather than rounded away.
     </p>
     <h3 class="mt-6 text-[length:var(--text-lg)]">The offset is not a constant</h3>
     <p class="mt-2 text-[var(--color-text-muted)]">
-      "New York is five hours behind London" is true for about ten months of the year. For
-      roughly three weeks each spring and one each autumn it is four hours, because the two
-      regions change their clocks on different dates. A converter that stores a fixed offset
-      per city is wrong on those days, and those are exactly the days people book the meeting
-      they later regret.
+      "New York is five hours behind London" is true for about ten months of the year. For roughly
+      three weeks each spring and one each autumn it is four hours, because the two regions change
+      their clocks on different dates. A converter that stores a fixed offset per city is wrong on
+      those days, and those are exactly the days people book the meeting they later regret.
     </p>
     <h3 class="mt-6 text-[length:var(--text-lg)]">Not every offset is a whole number of hours</h3>
     <p class="mt-2 text-[var(--color-text-muted)]">
       India is 5 hours 30 minutes ahead of UTC. Nepal is 5 hours 45 minutes ahead. The Chatham
-      Islands are 12 hours 45 minutes ahead, and Lord Howe Island shifts by only 30 minutes
-      when its daylight saving starts. Roughly a fifth of the world's population lives on a
-      non-whole-hour offset.
+      Islands are 12 hours 45 minutes ahead, and Lord Howe Island shifts by only 30 minutes when its
+      daylight saving starts. Roughly a fifth of the world's population lives on a non-whole-hour
+      offset.
     </p>
     <h3 class="mt-6 text-[length:var(--text-lg)]">Some local times do not exist</h3>
     <p class="mt-2 text-[var(--color-text-muted)]">
-      When clocks spring forward, an hour is deleted. In New York on the changeover date,
-      01:59:59 is followed immediately by 03:00:00 — so 02:30 never happens. Ask most tools to
-      convert 02:30 and they will answer confidently anyway. This one tells you what it did.
+      When clocks spring forward, an hour is deleted. In New York on the changeover date, 01:59:59
+      is followed immediately by 03:00:00 — so 02:30 never happens. Ask most tools to convert 02:30
+      and they will answer confidently anyway. This one tells you what it did.
     </p>
     <h3 class="mt-6 text-[length:var(--text-lg)]">Some local times happen twice</h3>
     <p class="mt-2 text-[var(--color-text-muted)]">
-      When clocks fall back, an hour repeats. 01:30 occurs once on daylight time and again an
-      hour later on standard time. This converter takes the first occurrence and says so, and
-      shows you the second.
+      When clocks fall back, an hour repeats. 01:30 occurs once on daylight time and again an hour
+      later on standard time. This converter takes the first occurrence and says so, and shows you
+      the second.
     </p>
   </section>
 </ToolPage>

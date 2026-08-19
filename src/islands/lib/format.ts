@@ -29,13 +29,15 @@ function formatter(key: string, factory: () => Intl.DateTimeFormat): Intl.DateTi
 }
 
 export function formatTime(instant: number, timeZone: string, context: FormatContext): string {
-  return formatter(`t|${timeZone}|${context.locale}|${context.hourCycle}`, () =>
-    new Intl.DateTimeFormat(context.locale, {
-      timeZone,
-      hour: '2-digit',
-      minute: '2-digit',
-      hourCycle: context.hourCycle,
-    }),
+  return formatter(
+    `t|${timeZone}|${context.locale}|${context.hourCycle}`,
+    () =>
+      new Intl.DateTimeFormat(context.locale, {
+        timeZone,
+        hour: '2-digit',
+        minute: '2-digit',
+        hourCycle: context.hourCycle,
+      }),
   ).format(new Date(instant));
 }
 
@@ -44,26 +46,30 @@ export function formatTimeWithSeconds(
   timeZone: string,
   context: FormatContext,
 ): string {
-  return formatter(`ts|${timeZone}|${context.locale}|${context.hourCycle}`, () =>
-    new Intl.DateTimeFormat(context.locale, {
-      timeZone,
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      hourCycle: context.hourCycle,
-    }),
+  return formatter(
+    `ts|${timeZone}|${context.locale}|${context.hourCycle}`,
+    () =>
+      new Intl.DateTimeFormat(context.locale, {
+        timeZone,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hourCycle: context.hourCycle,
+      }),
   ).format(new Date(instant));
 }
 
 export function formatDate(instant: number, timeZone: string, context: FormatContext): string {
-  return formatter(`d|${timeZone}|${context.locale}`, () =>
-    new Intl.DateTimeFormat(context.locale, {
-      timeZone,
-      weekday: 'short',
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric',
-    }),
+  return formatter(
+    `d|${timeZone}|${context.locale}`,
+    () =>
+      new Intl.DateTimeFormat(context.locale, {
+        timeZone,
+        weekday: 'short',
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+      }),
   ).format(new Date(instant));
 }
 

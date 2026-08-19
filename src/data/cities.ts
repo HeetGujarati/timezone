@@ -47,7 +47,10 @@ const citySchema = z.object({
     .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'slug must be lowercase ASCII words joined by hyphens'),
   name: z.string().min(1).max(60),
   country: z.string().min(1).max(60),
-  countryCode: z.string().length(2).regex(/^[A-Z]{2}$/),
+  countryCode: z
+    .string()
+    .length(2)
+    .regex(/^[A-Z]{2}$/),
   timeZone: z.string().refine(isValidTimeZone, 'not an IANA time zone this runtime knows'),
   tier: z.enum(['A', 'B']),
   population: z.number().int().positive(),
@@ -407,7 +410,7 @@ const RAW_CITIES: City[] = [
   },
   {
     slug: 'st-johns',
-    name: 'St John\'s',
+    name: "St John's",
     country: 'Canada',
     countryCode: 'CA',
     timeZone: 'America/St_Johns',
@@ -415,7 +418,7 @@ const RAW_CITIES: City[] = [
     population: 110525,
     lat: 47.5615,
     lon: -52.7126,
-    aliases: ['Saint John\'s', 'St. John\'s'],
+    aliases: ["Saint John's", "St. John's"],
   },
   {
     slug: 'mexico-city',

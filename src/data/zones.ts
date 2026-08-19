@@ -133,9 +133,13 @@ export function zoneGroups(): ZoneGroup[] {
     else list.push(zone);
   }
 
-  const groups: ZoneGroup[] = [{ region: 'UTC', zones: [{ id: 'UTC', label: 'UTC', region: 'UTC' }] }];
+  const groups: ZoneGroup[] = [
+    { region: 'UTC', zones: [{ id: 'UTC', label: 'UTC', region: 'UTC' }] },
+  ];
 
-  for (const [region, zones] of [...byRegion.entries()].sort((a, b) => a[0].localeCompare(b[0], 'en'))) {
+  for (const [region, zones] of [...byRegion.entries()].sort((a, b) =>
+    a[0].localeCompare(b[0], 'en'),
+  )) {
     groups.push({
       region: REGION_LABELS[region] ?? region,
       zones: zones.sort((a, b) => a.label.localeCompare(b.label, 'en')),
@@ -165,4 +169,3 @@ export function isKnownZone(value: unknown): value is string {
   if (typeof value !== 'string' || value.length === 0 || value.length > 64) return false;
   return toDisplayZone(value) !== null;
 }
-

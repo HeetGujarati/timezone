@@ -1,0 +1,59 @@
+---
+import { getLocale, type LocaleCode } from '~/config/locales.ts';
+
+/**
+ * Renders an em dash until the island upgrades. A prerendered page may never
+ * present a stale reading as the current time, so there is nothing to show yet.
+ */
+type Props = {
+  locale: LocaleCode;
+  timeZone: string;
+  showSeconds?: boolean;
+  showDate?: boolean;
+  size?: 'sm' | 'lg' | 'xl';
+  class?: string;
+};
+
+const {
+  locale,
+  timeZone,
+  showSeconds = false,
+  showDate = false,
+  size = 'sm',
+  class: className = '',
+} = Astro.props;
+const { hourCycle } = getLocale(locale);
+
+const sizeClass =
+  size === 'xl'
+    ? 'text-[length:var(--text-4xl)]'
+    : size === 'lg'
+      ? 'text-[length:var(--text-2xl)]'
+      : 'text-[length:var(--text-lg)]';
+---
+
+<live-clock
+  class={`block ${className}`}
+  data-zone={timeZone}
+  data-locale={locale}
+  data-hour-cycle={hourCycle}
+  data-seconds={String(showSeconds)}
+  data-date={String(showDate)}
+>
+  <span data-clock="time" class={`tabular block leading-none font-semibold ${sizeClass}`}>—</span>
+  {
+    showDate && (
+      <span data-clock="date" class="tabular mt-1 block text-[length:var(--text-sm)]">
+        —
+      </span>
+    )
+  }
+  <span
+    data-clock="zone"
+    class="tabular mt-1 block text-[length:var(--text-xs)] text-[var(--color-text-muted)]">—</span
+  >
+</live-clock>
+
+<script>
+  import '~/islands/live-clock.ts';
+</script>
