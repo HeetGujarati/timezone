@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+import GuidePage from '~/templates/GuidePage.astro';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (async () => {
+  const all = await getCollection('guides');
+  return all
+    .filter((entry) => entry.id.startsWith('en/'))
+    .map((guide) => {
+      const slug = guide.id.replace(/^en\//, '');
+      return { params: { guide: slug }, props: { guide, slug, all } };
+    });
+}) satisfies GetStaticPaths;
+
+const { guide, slug, all } = Astro.props;
+---
+
+<GuidePage guide={guide} locale="en" slug={slug} all={all} />

@@ -1,0 +1,20 @@
+---
+import CityPage from '~/templates/CityPage.astro';
+import { CITIES } from '~/data/cities.ts';
+import { PREFIXED_LOCALES, getLocale } from '~/config/locales.ts';
+import { localesForPath } from '~/config/rollout.ts';
+import type { GetStaticPaths } from 'astro';
+
+/** Every city page ships in every locale — 80 x 13. */
+export const getStaticPaths = (() =>
+  PREFIXED_LOCALES.flatMap((code) =>
+    CITIES.map((city) => ({
+      params: { locale: getLocale(code).segment, city: city.slug },
+      props: { city, locale: code },
+    })),
+  )) satisfies GetStaticPaths;
+
+const { city, locale } = Astro.props;
+---
+
+<CityPage city={city} locale={locale} availableLocales={localesForPath(`/time-in/${city.slug}/`)} />

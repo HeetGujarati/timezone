@@ -1,0 +1,15 @@
+---
+import ConverterPage from '~/templates/tools/ConverterPage.astro';
+import { PREFIXED_LOCALES, getLocale } from '~/config/locales.ts';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (() =>
+  PREFIXED_LOCALES.map((code) => ({
+    params: { locale: getLocale(code).segment },
+    props: { locale: code },
+  }))) satisfies GetStaticPaths;
+
+const { locale } = Astro.props;
+---
+
+<ConverterPage locale={locale} />

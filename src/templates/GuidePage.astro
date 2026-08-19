@@ -1,0 +1,181 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { useTranslations } from '~/lib/i18n/index.ts';
+import { buildArticleMetadata } from '~/lib/seo/metadata.ts';
+import {
+  articleSchema,
+  breadcrumbListSchema,
+  organizationSchema,
+} from '~/lib/seo/structured-data.ts';
+import type { LocaleCode } from '~/config/locales.ts';
+import { hrefFor } from '~/lib/i18n/routes.ts';
+import { localesForPath } from '~/config/rollout.ts';
+
+type Props = {
+  guide: CollectionEntry<'guides'>;
+  locale: LocaleCode;
+  slug: string;
+  all: CollectionEntry<'guides'>[];
+};
+
+const { guide, locale, slug, all } = Astro.props;
+const t = useTranslations(locale);
+const path = `/guides/${slug}/`;
+const { Content } = await render(guide);
+
+const metadata = buildArticleMetadata({
+  title: guide.data.title,
+  description: guide.data.description,
+  keywords: guide.data.keywords,
+  path,
+  locale,
+  availableLocales: localesForPath(path),
+  ogImage: `/og/guides/${slug}.png`,
+});
+
+const breadcrumbs = [
+  { name: t('breadcrumb.home'), path: '/' },
+  { name: t('nav.guides'), path: '/guides/' },
+  { name: guide.data.title },
+];
+
+const wordCount = guide.body === undefined ? 0 : guide.body.split(/\s+/).length;
+
+const schemas = [
+  organizationSchema(),
+  articleSchema({
+    headline: guide.data.title,
+    description: guide.data.description,
+    path,
+    locale,
+    datePublished: `${guide.data.publishedAt}T00:00:00Z`,
+    dateModified: `${guide.data.updatedAt}T00:00:00Z`,
+    ogImage: `/og/guides/${slug}.png`,
+    wordCount,
+  }),
+  breadcrumbListSchema(breadcrumbs, locale),
+];
+
+// Related guides resolve within the reader's locale where a translation exists.
+const related = guide.data.related
+  .map((relatedSlug) => ({
+    slug: relatedSlug,
+    entry:
+      all.find((entry) => entry.id === `${locale}/${relatedSlug}`) ??
+      all.find((entry) => entry.id === `en/${relatedSlug}`),
+  }))
+  .filter(
+    (item): item is { slug: string; entry: CollectionEntry<'guides'> } => item.entry !== undefined,
+  );
+
+const readingMinutes = Math.max(1, Math.round(wordCount / 220));
+---
+
+<BaseLayout metadata={metadata} locale={locale} schemas={schemas} breadcrumbs={breadcrumbs}>
+  <article>
+    <h1 class="text-[length:var(--text-3xl)]">{guide.data.title}</h1>
+    <p class="mt-2 text-[length:var(--text-sm)] text-[var(--color-text-muted)]">
+      <time datetime={guide.data.updatedAt}>{guide.data.updatedAt}</time>
+      <span> · {readingMinutes} min read</span>
+    </p>
+    <p class="prose mt-4 text-[length:var(--text-lg)] text-[var(--color-text-muted)]">
+      {guide.data.summary}
+    </p>
+
+    <div class="prose guide-body mt-8">
+      <Content />
+    </div>
+  </article>
+
+  {
+    related.length > 0 && (
+      <nav class="mt-12" aria-label={t('related.heading')}>
+        <h2 class="text-[length:var(--text-2xl)]">{t('related.heading')}</h2>
+        <ul class="mt-4 space-y-2 text-[length:var(--text-sm)]">
+          {related.map((item) => (
+            <li>
+              <a
+                href={hrefFor(locale, `/guides/${item.slug}/`)}
+                class="no-underline hover:underline"
+              >
+                {item.entry.data.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )
+  }
+</BaseLayout>
+
+<style is:global>
+  /* Markdown output needs its own rhythm; the .prose utility only sets measure. */
+  .guide-body h2 {
+    font-size: var(--text-2xl);
+    margin-block: var(--space-10) var(--space-3);
+  }
+  .guide-body h3 {
+    font-size: var(--text-lg);
+    margin-block: var(--space-6) var(--space-2);
+  }
+  .guide-body p {
+    margin-block-end: var(--space-4);
+    color: var(--color-text-muted);
+  }
+  .guide-body ul,
+  .guide-body ol {
+    margin-block-end: var(--space-4);
+    padding-inline-start: var(--space-6);
+    color: var(--color-text-muted);
+  }
+  .guide-body ul {
+    list-style: disc;
+  }
+  .guide-body ol {
+    list-style: decimal;
+  }
+  .guide-body li {
+    margin-block-end: var(--space-2);
+  }
+  .guide-body strong {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+  .guide-body table {
+    width: 100%;
+    margin-block-end: var(--space-6);
+    font-size: var(--text-sm);
+  }
+  .guide-body th,
+  .guide-body td {
+    border-block-end: 1px solid var(--color-rule);
+    padding-block: var(--space-2);
+    padding-inline-end: var(--space-4);
+    text-align: start;
+  }
+  .guide-body th {
+    color: var(--color-text-muted);
+    font-weight: 500;
+  }
+  .guide-body td {
+    color: var(--color-text-muted);
+  }
+  .guide-body pre {
+    overflow-x: auto;
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-sunken);
+    margin-block-end: var(--space-6);
+    font-size: var(--text-sm);
+  }
+  .guide-body code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+  }
+  .guide-body :not(pre) > code {
+    background: var(--color-surface-sunken);
+    padding: 0.1em 0.35em;
+    border-radius: var(--radius-sm);
+  }
+</style>

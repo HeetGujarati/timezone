@@ -1,0 +1,50 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { useTranslations } from '~/lib/i18n/index.ts';
+import { buildInfoMetadata } from '~/lib/seo/metadata.ts';
+import { breadcrumbListSchema, organizationSchema } from '~/lib/seo/structured-data.ts';
+import { localesForPath } from '~/config/rollout.ts';
+import type { LocaleCode } from '~/config/locales.ts';
+
+/**
+ * Support and legal pages, rendered from the content collection. Same SEO contract
+ * as everything else — these are low priority in the sitemap, not second-class in
+ * their markup.
+ */
+type Props = {
+  entry: CollectionEntry<'pages'>;
+  locale: LocaleCode;
+  slug: string;
+};
+
+const { entry, locale, slug } = Astro.props;
+const t = useTranslations(locale);
+const { Content } = await render(entry);
+
+const path = `/${slug}/`;
+
+const metadata = buildInfoMetadata({
+  title: entry.data.title,
+  description: entry.data.description,
+  path,
+  locale,
+  availableLocales: localesForPath(path),
+  noIndex: entry.data.noIndex,
+});
+
+const breadcrumbs = [{ name: t('breadcrumb.home'), path: '/' }, { name: entry.data.title }];
+const schemas = [organizationSchema(), breadcrumbListSchema(breadcrumbs, locale)];
+---
+
+<BaseLayout metadata={metadata} locale={locale} schemas={schemas} breadcrumbs={breadcrumbs}>
+  <article class="prose">
+    <h1 class="text-[length:var(--text-3xl)]">{entry.data.title}</h1>
+    <p class="mt-2 text-[length:var(--text-sm)] text-[var(--color-text-muted)]">
+      <time datetime={entry.data.updatedAt}>{entry.data.updatedAt}</time>
+    </p>
+    <div class="guide-body mt-6">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

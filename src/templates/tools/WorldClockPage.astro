@@ -1,0 +1,106 @@
+---
+import ToolTemplate from '~/templates/ToolTemplate.astro';
+import LiveClock from '~/components/LiveClock.astro';
+import { CITIES } from '~/data/cities.ts';
+import { BUILD_INSTANT } from '~/config/build.ts';
+import { useTranslations } from '~/lib/i18n/index.ts';
+import type { LocaleCode } from '~/config/locales.ts';
+import { hrefFor } from '~/lib/i18n/routes.ts';
+import { formatOffsetShort, getOffsetMinutes } from '~/lib/time/offset.ts';
+
+type Props = { locale: LocaleCode };
+const { locale } = Astro.props;
+
+const t = useTranslations(locale);
+
+// Ordered east to west by current offset, so the grid reads like a map.
+const cities = [...CITIES].sort((a, b) => {
+  const diff =
+    getOffsetMinutes(b.timeZone, BUILD_INSTANT) - getOffsetMinutes(a.timeZone, BUILD_INSTANT);
+  return diff !== 0 ? diff : a.name.localeCompare(b.name, 'en');
+});
+---
+
+<ToolTemplate
+  locale={locale}
+  toolKey="worldClock"
+  path="/world-clock/"
+  keywords={['world clock', 'current time', 'local time', 'time around the world']}
+  featureList={[
+    'Live clocks for 80 cities',
+    'Search by city, country or former name',
+    'Pinned cities persist locally',
+  ]}
+>
+  <world-clock
+    slot="tool"
+    class="block"
+    data-pin-label={t('worldclock.pin')}
+    data-unpin-label={t('worldclock.unpin')}
+  >
+    <div class="max-w-sm">
+      <label
+        for="world-search"
+        class="block text-[length:var(--text-sm)] font-medium text-[var(--color-text-muted)]"
+      >
+        {t('worldclock.search')}
+      </label>
+      <input
+        id="world-search"
+        data-role="search"
+        type="search"
+        autocomplete="off"
+        class="mt-1 w-full rounded-[var(--radius-md)] border border-[var(--color-rule)] bg-[var(--color-surface-raised)] px-3 py-2"
+      />
+    </div>
+
+    <p data-role="empty" hidden class="mt-4 text-[var(--color-text-muted)]">
+      {t('worldclock.noResults')}
+    </p>
+
+    <ul class="mt-6 flex flex-wrap gap-3">
+      {
+        cities.map((city) => (
+          <li
+            data-city={city.slug}
+            data-search={[city.name, city.country, ...city.aliases].join(' ')}
+            class="flex min-w-[9.5rem] flex-1 flex-col rounded-[var(--radius-md)] border border-[var(--color-rule)] bg-[var(--color-surface-raised)] p-3 data-[pinned=true]:border-[var(--color-accent)]"
+          >
+            <div class="flex items-start justify-between gap-2">
+              <a
+                href={hrefFor(locale, `/time-in/${city.slug}/`)}
+                class="text-[length:var(--text-sm)] font-medium text-[var(--color-text)] no-underline hover:underline"
+              >
+                {city.name}
+              </a>
+              <button
+                type="button"
+                data-role="pin"
+                hidden
+                aria-pressed="false"
+                class="text-[length:var(--text-sm)] text-[var(--color-text-muted)] hover:text-[var(--color-accent)]"
+              >
+                <span aria-hidden="true">\u25c6</span>
+              </button>
+            </div>
+            <LiveClock locale={locale} timeZone={city.timeZone} showDate size="lg" class="mt-2" />
+            <span class="mt-1 text-[length:var(--text-2xs)] text-[var(--color-text-muted)]">
+              {city.country} \u00b7{' '}
+              {formatOffsetShort(getOffsetMinutes(city.timeZone, BUILD_INSTANT))}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+
+    <noscript>
+      <p class="mt-4 text-[length:var(--text-sm)] text-[var(--color-text-muted)]">
+        {t('clock.needsJs')}
+      </p>
+    </noscript>
+  </world-clock>
+
+  <script>
+    import '~/islands/world-clock.ts';
+  </script>
+</ToolTemplate>

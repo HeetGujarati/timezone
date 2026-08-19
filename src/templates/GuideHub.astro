@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { useTranslations } from '~/lib/i18n/index.ts';
+import { getPageCopy } from '~/content/tools/index.ts';
+import { buildInfoMetadata } from '~/lib/seo/metadata.ts';
+import { breadcrumbListSchema, organizationSchema } from '~/lib/seo/structured-data.ts';
+import type { LocaleCode } from '~/config/locales.ts';
+import { hrefFor } from '~/lib/i18n/routes.ts';
+import { localesForPath } from '~/config/rollout.ts';
+
+type Props = { locale: LocaleCode };
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const copy = getPageCopy(locale).hubs.guides;
+
+// A locale's own guide where it exists, the English one where it does not.
+const all = await getCollection('guides');
+const guides = all
+  .filter((entry) => entry.id.startsWith('en/'))
+  .map((fallback) => {
+    const slug = fallback.id.replace(/^en\//, '');
+    return {
+      slug,
+      entry: all.find((candidate) => candidate.id === `${locale}/${slug}`) ?? fallback,
+    };
+  })
+  .sort((a, b) => a.entry.data.order - b.entry.data.order);
+
+const metadata = buildInfoMetadata({
+  title: copy.metaTitle,
+  description: copy.description,
+  keywords: ['time zone guides', 'time zone explained', 'utc guide', 'daylight saving guide'],
+  path: '/guides/',
+  locale,
+  availableLocales: localesForPath('/guides/'),
+});
+
+const breadcrumbs = [{ name: t('breadcrumb.home'), path: '/' }, { name: t('nav.guides') }];
+const schemas = [organizationSchema(), breadcrumbListSchema(breadcrumbs, locale)];
+---
+
+<BaseLayout metadata={metadata} locale={locale} schemas={schemas} breadcrumbs={breadcrumbs}>
+  <h1 class="text-[length:var(--text-3xl)]">{copy.title}</h1>
+  <p class="prose mt-3 text-[length:var(--text-lg)] text-[var(--color-text-muted)]">
+    {guides.length} — {copy.summary}
+  </p>
+
+  <ul class="mt-10 space-y-8">
+    {
+      guides.map(({ slug, entry: guide }) => (
+        <li class="border-b border-[var(--color-rule)] pb-8 last:border-0">
+          <h2 class="text-[length:var(--text-xl)]">
+            <a
+              href={hrefFor(locale, `/guides/${slug}/`)}
+              class="text-[var(--color-text)] no-underline hover:underline"
+            >
+              {guide.data.title}
+            </a>
+          </h2>
+          <p class="prose mt-2 text-[var(--color-text-muted)]">{guide.data.summary}</p>
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="mt-10 text-[length:var(--text-sm)] text-[var(--color-text-muted)]">
+    <a href="/guides/rss.xml">RSS feed</a>
+  </p>
+</BaseLayout>

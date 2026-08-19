@@ -1,7 +1,7 @@
 ---
 import AbbreviationPage from '~/templates/AbbreviationPage.astro';
 import { abbreviationPairs } from '~/data/abbreviations.ts';
-import { SITE } from '~/config/site.ts';
+import { localesForPath } from '~/config/rollout.ts';
 import type { GetStaticPaths } from 'astro';
 
 /**
@@ -17,4 +17,8 @@ export const getStaticPaths = (() =>
 const { pair } = Astro.props;
 ---
 
-<AbbreviationPage pair={pair} locale="en" availableLocales={SITE.locales} />
+<AbbreviationPage
+  pair={pair}
+  locale="en"
+  availableLocales={localesForPath(`/convert/${pair.slug}/`)}
+/>

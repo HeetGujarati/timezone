@@ -1,0 +1,30 @@
+---
+import PairPage from '~/templates/PairPage.astro';
+import { rankedPairs } from '~/data/pairs.ts';
+import { PREFIXED_LOCALES, getLocale } from '~/config/locales.ts';
+import { LOCALISED_PAIR_LIMIT } from '~/config/flags.ts';
+import { localesForPath } from '~/config/rollout.ts';
+import type { GetStaticPaths } from 'astro';
+
+/**
+ * Non-English locales ship only the highest-value pairs at launch, to protect
+ * crawl budget on a new domain. SEO.md documents how to widen this.
+ */
+export const getStaticPaths = (() => {
+  const pairs = rankedPairs().slice(0, LOCALISED_PAIR_LIMIT);
+  return PREFIXED_LOCALES.flatMap((code) =>
+    pairs.map((pair, rank) => ({
+      params: { locale: getLocale(code).segment, pair: pair.slug },
+      props: { pair, locale: code, rank },
+    })),
+  );
+}) satisfies GetStaticPaths;
+
+const { pair, locale, rank } = Astro.props;
+---
+
+<PairPage
+  pair={pair}
+  locale={locale}
+  availableLocales={localesForPath(`/convert/${pair.slug}/`, { pairRank: rank })}
+/>

@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+import ContentPage from '~/templates/ContentPage.astro';
+import type { GetStaticPaths } from 'astro';
+
+/**
+ * English support pages. The catch-all sits at the site root, so it must come
+ * after every more specific route — Astro resolves static routes first, so
+ * /about/ hits this and /world-clock/ does not.
+ */
+export const getStaticPaths = (async () => {
+  const pages = await getCollection('pages', (entry) => entry.id.startsWith('en/'));
+  return pages.map((entry) => ({
+    params: { page: entry.id.replace(/^en\//, '') },
+    props: { entry, slug: entry.id.replace(/^en\//, '') },
+  }));
+}) satisfies GetStaticPaths;
+
+const { entry, slug } = Astro.props;
+---
+
+<ContentPage entry={entry} locale="en" slug={slug} />

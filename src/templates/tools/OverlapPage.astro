@@ -1,0 +1,207 @@
+---
+import ToolTemplate from '~/templates/ToolTemplate.astro';
+import ZoneSelect from '~/components/ZoneSelect.astro';
+import { useTranslations } from '~/lib/i18n/index.ts';
+import type { LocaleCode } from '~/config/locales.ts';
+import { BUILD_INSTANT } from '~/config/build.ts';
+import { getWorkingHoursOverlap } from '~/lib/time/overlap.ts';
+import { toZonedDateTime } from '~/lib/time/offset.ts';
+
+type Props = { locale: LocaleCode };
+const { locale } = Astro.props;
+
+const t = useTranslations(locale);
+
+const DEFAULT_ZONES = [
+  { timeZone: 'America/New_York', label: 'New York' },
+  { timeZone: 'Europe/London', label: 'London' },
+  { timeZone: 'Asia/Kolkata', label: 'Bengaluru' },
+];
+
+/**
+ * Worked examples computed at build time. These are structural facts about the
+ * pairs — they only change when a country changes its rules — so they belong in
+ * the prerendered page rather than waiting on JavaScript.
+ */
+const dayStart = Date.UTC(
+  new Date(BUILD_INSTANT).getUTCFullYear(),
+  new Date(BUILD_INSTANT).getUTCMonth(),
+  new Date(BUILD_INSTANT).getUTCDate(),
+);
+
+const EXAMPLES = [
+  { label: 'London and New York', zones: ['Europe/London', 'America/New_York'] },
+  { label: 'Berlin and Bengaluru', zones: ['Europe/Berlin', 'Asia/Kolkata'] },
+  { label: 'New York and Sydney', zones: ['America/New_York', 'Australia/Sydney'] },
+  { label: 'Los Angeles and Mumbai', zones: ['America/Los_Angeles', 'Asia/Kolkata'] },
+  {
+    label: 'San Francisco, London and Bengaluru',
+    zones: ['America/Los_Angeles', 'Europe/London', 'Asia/Kolkata'],
+  },
+].map((example) => {
+  const result = getWorkingHoursOverlap(
+    example.zones.map((timeZone) => ({ timeZone, startHour: 9, endHour: 18 })),
+    dayStart,
+  );
+  const window = result.windows[0];
+  return {
+    label: example.label,
+    minutes: result.totalMinutes,
+    none: result.none,
+    local:
+      window === undefined
+        ? []
+        : example.zones.map((timeZone) => {
+            const from = toZonedDateTime(window.start, timeZone);
+            const to = toZonedDateTime(window.end, timeZone);
+            return {
+              zone: timeZone.split('/')[1]?.replaceAll('_', ' ') ?? timeZone,
+              range: `${String(from.hour).padStart(2, '0')}:${String(from.minute).padStart(2, '0')}–${String(to.hour).padStart(2, '0')}:${String(to.minute).padStart(2, '0')}`,
+            };
+          }),
+  };
+});
+---
+
+<ToolTemplate
+  locale={locale}
+  toolKey="workingHoursOverlap"
+  path="/working-hours-overlap/"
+  keywords={[
+    'working hours overlap',
+    'overlap calculator',
+    'distributed team hours',
+    'remote team time zones',
+  ]}
+  featureList={[
+    'Two to eight zones',
+    'Windows shown on every local clock',
+    'Nearest workable windows when nothing overlaps',
+  ]}
+>
+  <overlap-finder
+    slot="tool"
+    class="block rounded-[var(--radius-lg)] border border-[var(--color-rule)] bg-[var(--color-surface-raised)] p-4 md:p-6"
+    data-locale={locale}
+    data-remove-label={t('common.remove')}
+    data-none-label="No hour of the day works for everyone."
+    data-minutes-label="minutes shared"
+  >
+    <div class="flex flex-wrap items-end gap-4">
+      <div class="flex flex-col gap-1">
+        <label
+          for="overlap-start"
+          class="text-[length:var(--text-sm)] font-medium text-[var(--color-text-muted)]"
+        >
+          {t('planner.workStart')}
+        </label>
+        <select
+          id="overlap-start"
+          data-role="start-hour"
+          class="rounded-[var(--radius-md)] border border-[var(--color-rule)] bg-[var(--color-surface)] px-3 py-2"
+        >
+          {
+            Array.from({ length: 24 }, (_, hour) => (
+              <option value={hour} selected={hour === 9}>
+                {String(hour).padStart(2, '0')}:00
+              </option>
+            ))
+          }
+        </select>
+      </div>
+      <div class="flex flex-col gap-1">
+        <label
+          for="overlap-end"
+          class="text-[length:var(--text-sm)] font-medium text-[var(--color-text-muted)]"
+        >
+          {t('planner.workEnd')}
+        </label>
+        <select
+          id="overlap-end"
+          data-role="end-hour"
+          class="rounded-[var(--radius-md)] border border-[var(--color-rule)] bg-[var(--color-surface)] px-3 py-2"
+        >
+          {
+            Array.from({ length: 24 }, (_, hour) => (
+              <option value={hour + 1} selected={hour + 1 === 18}>
+                {String(hour + 1).padStart(2, '0')}:00
+              </option>
+            ))
+          }
+        </select>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <h2 class="text-[length:var(--text-sm)] font-medium text-[var(--color-text-muted)]">
+        {t('planner.zones')}
+      </h2>
+      <ul data-role="zone-list" class="mt-2 flex flex-wrap gap-2">
+        {
+          DEFAULT_ZONES.map((zone) => (
+            <li
+              data-zone={zone.timeZone}
+              class="flex items-center gap-2 rounded-[var(--radius-md)] border border-[var(--color-rule)] px-2 py-1 text-[length:var(--text-sm)]"
+            >
+              <span>{zone.label}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="mt-3 max-w-sm">
+        <ZoneSelect id="overlap-add" name="add-zone" label={t('overlap.addZone')} value="UTC" />
+      </div>
+    </div>
+
+    <div
+      data-role="results"
+      aria-live="polite"
+      class="mt-5 rounded-[var(--radius-md)] bg-[var(--color-surface-sunken)] p-4"
+    >
+    </div>
+  </overlap-finder>
+
+  <section class="mt-12">
+    <h2 class="text-[length:var(--text-2xl)]">Common team shapes</h2>
+    <p class="prose mt-2 text-[var(--color-text-muted)]">
+      Computed for a 09:00–18:00 day at the last rebuild. These are structural — they change only
+      when a country changes its rules.
+    </p>
+    <div class="mt-4 overflow-x-auto">
+      <table class="w-full min-w-[36rem] text-[length:var(--text-sm)]">
+        <thead>
+          <tr class="border-b border-[var(--color-rule)] text-left text-[var(--color-text-muted)]">
+            <th scope="col" class="py-2 pr-4 font-medium">Team</th>
+            <th scope="col" class="py-2 pr-4 font-medium">Shared</th>
+            <th scope="col" class="py-2 font-medium">On each clock</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            EXAMPLES.map((example) => (
+              <tr class="border-b border-[var(--color-rule)]">
+                <th scope="row" class="py-2 pr-4 text-left font-normal">
+                  {example.label}
+                </th>
+                <td class="tabular py-2 pr-4">
+                  {example.none ? (
+                    <span class="text-[var(--color-signal)]">None</span>
+                  ) : (
+                    `${Math.floor(example.minutes / 60)}h ${example.minutes % 60}m`
+                  )}
+                </td>
+                <td class="py-2 text-[var(--color-text-muted)]">
+                  {example.local.map((entry) => `${entry.zone} ${entry.range}`).join(' · ')}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <script>
+    import '~/islands/overlap.ts';
+  </script>
+</ToolTemplate>

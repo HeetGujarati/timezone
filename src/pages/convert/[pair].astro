@@ -1,7 +1,7 @@
 ---
 import PairPage from '~/templates/PairPage.astro';
-import { PAIRS } from '~/data/pairs.ts';
-import { SITE } from '~/config/site.ts';
+import { rankedPairs } from '~/data/pairs.ts';
+import { localesForPath } from '~/config/rollout.ts';
 import type { GetStaticPaths } from 'astro';
 
 /**
@@ -10,12 +10,14 @@ import type { GetStaticPaths } from 'astro';
  * parameter to validate at runtime because there is no runtime.
  */
 export const getStaticPaths = (() =>
-  PAIRS.map((pair) => ({
+  rankedPairs().map((pair, rank) => ({
     params: { pair: pair.slug },
-    props: { pair },
+    // The rank decides whether this pair is in the localised launch subset.
+    props: { pair, rank },
   }))) satisfies GetStaticPaths;
 
-const { pair } = Astro.props;
+const { pair, rank } = Astro.props;
+const availableLocales = localesForPath(`/convert/${pair.slug}/`, { pairRank: rank });
 ---
 
-<PairPage pair={pair} locale="en" availableLocales={SITE.locales} />
+<PairPage pair={pair} locale="en" availableLocales={availableLocales} />

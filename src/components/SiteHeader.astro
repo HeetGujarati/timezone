@@ -1,6 +1,7 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
-import { localePath, type LocaleCode } from '~/config/locales.ts';
+import type { LocaleCode } from '~/config/locales.ts';
+import { hrefFor } from '~/lib/i18n/routes.ts';
 import { useTranslations } from '~/lib/i18n/index.ts';
 import { SITE } from '~/config/site.ts';
 
@@ -23,7 +24,7 @@ const currentPath = Astro.url.pathname;
 <header class="border-b border-[var(--color-rule)] bg-[var(--color-surface-raised)]">
   <div class="shell flex h-14 items-center justify-between gap-4">
     <a
-      href={localePath(locale, '/')}
+      href={hrefFor(locale, '/')}
       class="font-[family-name:var(--font-display)] text-[length:var(--text-lg)] font-semibold tracking-tight text-[var(--color-text)] no-underline"
     >
       {SITE.name}
@@ -33,7 +34,7 @@ const currentPath = Astro.url.pathname;
       <ul class="flex items-center gap-5 text-[length:var(--text-sm)]">
         {
           primaryLinks.map((link) => {
-            const href = localePath(locale, link.href);
+            const href = hrefFor(locale, link.href);
             const isCurrent = currentPath === href;
             return (
               <li>
@@ -62,7 +63,7 @@ const currentPath = Astro.url.pathname;
         primaryLinks.map((link) => (
           <li>
             <a
-              href={localePath(locale, link.href)}
+              href={hrefFor(locale, link.href)}
               class="text-[var(--color-text-muted)] no-underline"
             >
               {link.label}

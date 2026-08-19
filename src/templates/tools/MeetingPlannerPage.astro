@@ -1,0 +1,57 @@
+---
+import ToolTemplate from '~/templates/ToolTemplate.astro';
+import MeetingBand from '~/components/MeetingBand.astro';
+import { BUILD_INSTANT } from '~/config/build.ts';
+import type { LocaleCode } from '~/config/locales.ts';
+
+type Props = { locale: LocaleCode };
+const { locale } = Astro.props;
+
+const defaultZones = [
+  { timeZone: 'America/Los_Angeles', label: 'Los Angeles' },
+  { timeZone: 'America/New_York', label: 'New York' },
+  { timeZone: 'Europe/London', label: 'London' },
+  { timeZone: 'Asia/Kolkata', label: 'Mumbai' },
+  { timeZone: 'Asia/Tokyo', label: 'Tokyo' },
+];
+---
+
+<ToolTemplate
+  locale={locale}
+  toolKey="meetingPlanner"
+  path="/meeting-planner/"
+  keywords={[
+    'meeting planner',
+    'time zone meeting planner',
+    'schedule across time zones',
+    'best time to meet',
+  ]}
+  howToSteps={[
+    {
+      name: 'Add your zones',
+      text: 'Add between two and ten zones. The planner remembers them for next time.',
+      anchor: 'planner-add',
+    },
+    {
+      name: 'Set the working day',
+      text: 'Adjust the start and end hours to match how your team actually works.',
+      anchor: 'planner-work-start',
+    },
+    {
+      name: 'Read the band',
+      text: 'Shaded columns are working hours. Where every row is shaded, everyone is available.',
+      anchor: 'planner-band',
+    },
+  ]}
+  howToMinutes={2}
+  featureList={[
+    'Two to ten zones on one 24-hour band',
+    'Adjustable working hours with fringe-hour shading',
+    'Shareable via the URL',
+    'Exact half-hour and 45-minute offsets',
+  ]}
+>
+  <div slot="tool" id="planner-band">
+    <MeetingBand locale={locale} zones={defaultZones} seedInstant={BUILD_INSTANT} />
+  </div>
+</ToolTemplate>

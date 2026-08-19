@@ -1,0 +1,131 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { useTranslations } from '~/lib/i18n/index.ts';
+import { buildToolMetadata } from '~/lib/seo/metadata.ts';
+import {
+  breadcrumbListSchema,
+  faqPageSchema,
+  howToSchema,
+  organizationSchema,
+  softwareApplicationSchema,
+  type HowToStepInput,
+} from '~/lib/seo/structured-data.ts';
+import { getPageCopy, type ToolKey } from '~/content/tools/index.ts';
+import { localesForPath } from '~/config/rollout.ts';
+import { SITE } from '~/config/site.ts';
+import type { LocaleCode } from '~/config/locales.ts';
+
+/**
+ * The shell every core tool page renders inside. Copy comes from the locale's
+ * page-copy module; the interactive part arrives through the `tool` slot. No page
+ * can ship without breadcrumbs, a WebApplication entity or a canonical, because
+ * there is no code path that omits them.
+ */
+type Props = {
+  locale: LocaleCode;
+  toolKey: ToolKey;
+  path: string;
+  keywords?: readonly string[];
+  howToSteps?: readonly HowToStepInput[];
+  howToMinutes?: number;
+  featureList?: string[];
+  /** Interpolated into the summary, for pages whose opening sentence carries a count. */
+  summaryPrefix?: string;
+};
+
+const {
+  locale,
+  toolKey,
+  path,
+  keywords = [],
+  howToSteps = [],
+  howToMinutes = 1,
+  featureList = [],
+  summaryPrefix,
+} = Astro.props;
+
+const t = useTranslations(locale);
+const copy = getPageCopy(locale).tools[toolKey];
+
+const metadata = buildToolMetadata({
+  title: copy.metaTitle,
+  description: copy.description,
+  keywords,
+  path,
+  locale,
+  availableLocales: localesForPath(path),
+  ogImage: `/og${path}index.png`,
+});
+
+const breadcrumbs = [{ name: t('breadcrumb.home'), path: '/' }, { name: copy.title }];
+
+const schemas: Record<string, unknown>[] = [
+  organizationSchema(),
+  softwareApplicationSchema({
+    name: `${copy.title} — ${SITE.name}`,
+    description: metadata.description,
+    path,
+    locale,
+    subCategory: copy.title,
+    ...(featureList.length > 0 ? { featureList } : {}),
+  }),
+  breadcrumbListSchema(breadcrumbs, locale),
+];
+
+if (howToSteps.length > 0) {
+  schemas.push(
+    howToSchema({
+      name: copy.title,
+      description: metadata.description,
+      path,
+      locale,
+      totalTime: `PT${howToMinutes}M`,
+      steps: howToSteps,
+    }),
+  );
+}
+
+if (copy.faqs.length > 0) schemas.push(faqPageSchema(copy.faqs, locale));
+
+const summary = summaryPrefix === undefined ? copy.summary : `${summaryPrefix} ${copy.summary}`;
+---
+
+<BaseLayout metadata={metadata} locale={locale} schemas={schemas} breadcrumbs={breadcrumbs}>
+  <h1 class="text-[length:var(--text-3xl)]">{copy.title}</h1>
+  <p class="prose mt-3 text-[length:var(--text-lg)] text-[var(--color-text-muted)]">{summary}</p>
+
+  <div class="mt-6">
+    <slot name="tool" />
+  </div>
+
+  <slot />
+
+  {
+    copy.sections.map((section) => (
+      <section class="prose mt-12">
+        <h2 class="text-[length:var(--text-2xl)]">{section.heading}</h2>
+        {section.paragraphs.map((paragraph) => (
+          <p class="mt-4 text-[var(--color-text-muted)]">{paragraph}</p>
+        ))}
+      </section>
+    ))
+  }
+
+  {
+    copy.faqs.length > 0 && (
+      <section class="mt-12">
+        <h2 class="text-[length:var(--text-2xl)]">{t('faq.heading')}</h2>
+        <dl class="prose mt-4 space-y-5">
+          {copy.faqs.map((faq) => (
+            <div>
+              <dt class="font-semibold">{faq.question}</dt>
+              <dd class="mt-1 text-[var(--color-text-muted)]">{faq.answer}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    )
+  }
+
+  <slot name="after-faq" />
+</BaseLayout>

@@ -9,7 +9,8 @@ import {
   organizationSchema,
   softwareApplicationSchema,
 } from '~/lib/seo/structured-data.ts';
-import { localePath, type LocaleCode } from '~/config/locales.ts';
+import type { LocaleCode } from '~/config/locales.ts';
+import { hrefFor } from '~/lib/i18n/routes.ts';
 import type { AbbreviationPair } from '~/data/abbreviations.ts';
 import { CURRENT_YEAR } from '~/config/build.ts';
 import { formatOffsetShort } from '~/lib/time/offset.ts';
@@ -304,7 +305,7 @@ function pad(value: number): string {
     <ul class="mt-4 grid gap-2 text-[length:var(--text-sm)] sm:grid-cols-2">
       <li>
         <a
-          href={localePath(locale, `/convert/${to.slug}-to-${from.slug}/`)}
+          href={hrefFor(locale, `/convert/${to.slug}-to-${from.slug}/`)}
           class="no-underline hover:underline"
         >
           Convert {to.code} to {from.code}
@@ -312,19 +313,19 @@ function pad(value: number): string {
       </li>
       <li>
         <a
-          href={localePath(locale, '/guides/why-est-is-ambiguous/')}
+          href={hrefFor(locale, '/guides/why-est-is-ambiguous/')}
           class="no-underline hover:underline"
         >
           Why time zone abbreviations are ambiguous
         </a>
       </li>
       <li>
-        <a href={localePath(locale, '/utc-time/')} class="no-underline hover:underline">
+        <a href={hrefFor(locale, '/utc-time/')} class="no-underline hover:underline">
           {t('nav.utcTime')}
         </a>
       </li>
       <li>
-        <a href={localePath(locale, '/convert/')} class="no-underline hover:underline">
+        <a href={hrefFor(locale, '/convert/')} class="no-underline hover:underline">
           {t('nav.conversions')}
         </a>
       </li>

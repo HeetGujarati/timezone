@@ -1,0 +1,129 @@
+---
+import ToolTemplate from '~/templates/ToolTemplate.astro';
+import Converter from '~/components/Converter.astro';
+import { BUILD_INSTANT } from '~/config/build.ts';
+import { useTranslations } from '~/lib/i18n/index.ts';
+import type { LocaleCode } from '~/config/locales.ts';
+import { hrefFor } from '~/lib/i18n/routes.ts';
+import { getOffsetMinutes, formatOffsetShort } from '~/lib/time/offset.ts';
+import { findNextTransition } from '~/lib/time/dst.ts';
+import { getPageCopy } from '~/content/tools/index.ts';
+
+type Props = { locale: LocaleCode };
+const { locale } = Astro.props;
+
+const t = useTranslations(locale);
+const copy = getPageCopy(locale);
+
+/** Durable facts: standard offsets and scheduled transitions, not current times. */
+const POPULAR = [
+  'America/New_York',
+  'America/Los_Angeles',
+  'Europe/London',
+  'Europe/Berlin',
+  'Asia/Kolkata',
+  'Asia/Tokyo',
+  'Asia/Singapore',
+  'Australia/Sydney',
+] as const;
+
+const zoneFacts = POPULAR.map((zone) => {
+  const next = findNextTransition(zone, BUILD_INSTANT);
+  return {
+    label: zone.split('/')[1]?.replaceAll('_', ' ') ?? zone,
+    offset: formatOffsetShort(getOffsetMinutes(zone, BUILD_INSTANT)),
+    nextChange:
+      next === null
+        ? null
+        : {
+            date: `${next.localAfter.year}-${String(next.localAfter.month).padStart(2, '0')}-${String(next.localAfter.day).padStart(2, '0')}`,
+            direction: next.direction,
+            minutes: Math.abs(next.deltaMinutes),
+          },
+  };
+});
+---
+
+<ToolTemplate
+  locale={locale}
+  toolKey="converter"
+  path="/"
+  keywords={['time zone converter', 'convert time zones', 'time zone calculator', 'time converter']}
+  howToSteps={[
+    {
+      name: 'Pick the zone you are converting from',
+      text: 'Choose the city or zone where the time you already know is measured.',
+      anchor: 'convert-from',
+    },
+    {
+      name: 'Pick the zone you are converting to',
+      text: 'Choose the place you want the time expressed in.',
+      anchor: 'convert-to',
+    },
+    {
+      name: 'Set the date and time',
+      text: 'The date matters: it decides whether daylight saving time applies to either zone.',
+      anchor: 'convert-date',
+    },
+  ]}
+  featureList={[
+    'Converts between every zone in the IANA time zone database',
+    'Handles half-hour and 45-minute offsets exactly',
+    'Flags local times that do not exist or happen twice',
+    'Shareable via the URL',
+  ]}
+>
+  <Converter
+    slot="tool"
+    locale={locale}
+    fromZone="America/New_York"
+    toZone="Europe/London"
+    seedInstant={BUILD_INSTANT}
+    headingLevel="h2"
+  />
+
+  <section class="mt-12">
+    <h2 class="text-[length:var(--text-2xl)]">{t('dst.nextChange')}</h2>
+    <p class="prose mt-2 text-[var(--color-text-muted)]">{copy.generated.exampleNote}</p>
+
+    <div class="mt-4 overflow-x-auto">
+      <table class="w-full min-w-[34rem] text-[length:var(--text-sm)]">
+        <thead>
+          <tr class="border-b border-[var(--color-rule)] text-left text-[var(--color-text-muted)]">
+            <th scope="col" class="py-2 pr-4 font-medium">{t('common.from')}</th>
+            <th scope="col" class="py-2 pr-4 font-medium">UTC</th>
+            <th scope="col" class="py-2 font-medium">{t('dst.nextChange')}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            zoneFacts.map((fact) => (
+              <tr class="border-b border-[var(--color-rule)]">
+                <th scope="row" class="py-2 pr-4 text-left font-normal">
+                  <a href={hrefFor(locale, '/time-in/')} class="no-underline hover:underline">
+                    {fact.label}
+                  </a>
+                </th>
+                <td class="tabular py-2 pr-4">{fact.offset}</td>
+                <td class="py-2">
+                  {fact.nextChange === null ? (
+                    <span class="text-[var(--color-text-muted)]">{t('dst.doesNotObserve')}</span>
+                  ) : (
+                    <span>
+                      <span class="tabular">{fact.nextChange.date}</span>{' '}
+                      <span class="text-[var(--color-text-muted)]">
+                        {fact.nextChange.direction === 'forward'
+                          ? t('dst.clocksForward', { minutes: fact.nextChange.minutes })
+                          : t('dst.clocksBack', { minutes: fact.nextChange.minutes })}
+                      </span>
+                    </span>
+                  )}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+</ToolTemplate>

@@ -4,7 +4,7 @@ import { useTranslations } from '~/lib/i18n/index.ts';
 import { buildInfoMetadata } from '~/lib/seo/metadata.ts';
 import { breadcrumbListSchema, organizationSchema } from '~/lib/seo/structured-data.ts';
 import { localePath } from '~/config/locales.ts';
-import { SITE } from '~/config/site.ts';
+import { localesForPath } from '~/config/rollout.ts';
 import { rankedPairs } from '~/data/pairs.ts';
 import { PAIRS_PER_PAGE } from '~/config/pagination.ts';
 import type { GetStaticPaths } from 'astro';
@@ -39,7 +39,7 @@ const metadata = buildInfoMetadata({
   description: `City-pair conversions ${(page - 1) * PAIRS_PER_PAGE + 1} to ${(page - 1) * PAIRS_PER_PAGE + entries.length} of ${rankedPairs().length}, each with an hour-by-hour table and daylight saving dates.`,
   path: `/convert/page/${page}/`,
   locale,
-  availableLocales: SITE.locales,
+  availableLocales: localesForPath(`/convert/page/${page}/`),
 });
 
 const breadcrumbs = [

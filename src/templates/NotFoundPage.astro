@@ -1,0 +1,45 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { useTranslations } from '~/lib/i18n/index.ts';
+import { buildInfoMetadata } from '~/lib/seo/metadata.ts';
+import { organizationSchema } from '~/lib/seo/structured-data.ts';
+import type { LocaleCode } from '~/config/locales.ts';
+import { hrefFor } from '~/lib/i18n/routes.ts';
+
+type Props = { locale: LocaleCode };
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+/**
+ * noIndex, and excluded from the sitemap. A 404 that gets indexed is a 404 that
+ * shows up in search results, which is worse than not existing.
+ */
+const metadata = buildInfoMetadata({
+  title: t('page.notFound.title'),
+  description: 'That page does not exist.',
+  path: '/404/',
+  locale,
+  availableLocales: ['en'],
+  noIndex: true,
+});
+---
+
+<BaseLayout metadata={metadata} locale={locale} schemas={[organizationSchema()]}>
+  <h1 class="text-[length:var(--text-3xl)]">{t('page.notFound.title')}</h1>
+  <p class="prose mt-4 text-[var(--color-text-muted)]">{t('page.notFound.body')}</p>
+
+  <ul class="mt-8 space-y-2">
+    <li>
+      <a href={hrefFor(locale, '/')}>{t('page.notFound.cta')}</a>
+    </li>
+    <li>
+      <a href={hrefFor(locale, '/time-in/')}>{t('nav.cities')}</a>
+    </li>
+    <li>
+      <a href={hrefFor(locale, '/convert/')}>{t('nav.conversions')}</a>
+    </li>
+    <li>
+      <a href={hrefFor(locale, '/guides/')}>{t('nav.guides')}</a>
+    </li>
+  </ul>
+</BaseLayout>

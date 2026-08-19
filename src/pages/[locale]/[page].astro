@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import ContentPage from '~/templates/ContentPage.astro';
+import { PREFIXED_LOCALES, getLocale, type LocaleCode } from '~/config/locales.ts';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (async () => {
+  const all = await getCollection('pages');
+  const english = all.filter((entry) => entry.id.startsWith('en/'));
+
+  return PREFIXED_LOCALES.flatMap((code: LocaleCode) =>
+    english.map((fallback) => {
+      const slug = fallback.id.replace(/^en\//, '');
+      const localised = all.find((entry) => entry.id === `${code}/${slug}`);
+      return {
+        params: { locale: getLocale(code).segment, page: slug },
+        props: { entry: localised ?? fallback, locale: code, slug },
+      };
+    }),
+  );
+}) satisfies GetStaticPaths;
+
+const { entry, locale, slug } = Astro.props;
+---
+
+<ContentPage entry={entry} locale={locale} slug={slug} />

@@ -1,5 +1,6 @@
 ---
-import { localePath, type LocaleCode } from '~/config/locales.ts';
+import type { LocaleCode } from '~/config/locales.ts';
+import { hrefFor } from '~/lib/i18n/routes.ts';
 import { useTranslations } from '~/lib/i18n/index.ts';
 import { SITE } from '~/config/site.ts';
 
@@ -64,7 +65,7 @@ const columns = [
               {column.links.map((link) => (
                 <li>
                   <a
-                    href={localePath(locale, link.href)}
+                    href={hrefFor(locale, link.href)}
                     class="text-[var(--color-text-muted)] no-underline hover:text-[var(--color-text)]"
                   >
                     {link.label}

@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+import GuidePage from '~/templates/GuidePage.astro';
+import { PREFIXED_LOCALES, getLocale, type LocaleCode } from '~/config/locales.ts';
+import type { GetStaticPaths } from 'astro';
+
+/**
+ * A locale gets its own guide file where one exists and the English one where it
+ * does not, so the URL always resolves and the hreflang cluster stays honest.
+ */
+export const getStaticPaths = (async () => {
+  const all = await getCollection('guides');
+  const english = all.filter((entry) => entry.id.startsWith('en/'));
+
+  return PREFIXED_LOCALES.flatMap((code: LocaleCode) =>
+    english.map((fallback) => {
+      const slug = fallback.id.replace(/^en\//, '');
+      const localised = all.find((entry) => entry.id === `${code}/${slug}`);
+      return {
+        params: { locale: getLocale(code).segment, guide: slug },
+        props: { guide: localised ?? fallback, locale: code, slug, all },
+      };
+    }),
+  );
+}) satisfies GetStaticPaths;
+
+const { guide, locale, slug, all } = Astro.props;
+---
+
+<GuidePage guide={guide} locale={locale} slug={slug} all={all} />

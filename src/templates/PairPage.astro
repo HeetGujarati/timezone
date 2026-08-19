@@ -9,7 +9,8 @@ import {
   organizationSchema,
   softwareApplicationSchema,
 } from '~/lib/seo/structured-data.ts';
-import { localePath, type LocaleCode } from '~/config/locales.ts';
+import type { LocaleCode } from '~/config/locales.ts';
+import { hrefFor } from '~/lib/i18n/routes.ts';
 import { buildPairFacts } from '~/lib/content/pair-facts.ts';
 import {
   callWindowSentence,
@@ -300,7 +301,7 @@ function pad(value: number): string {
         reverse !== undefined && (
           <li>
             <a
-              href={localePath(locale, `/convert/${reverse.slug}/`)}
+              href={hrefFor(locale, `/convert/${reverse.slug}/`)}
               class="no-underline hover:underline"
             >
               {to.name} to {from.name}
@@ -312,7 +313,7 @@ function pad(value: number): string {
         related.map((candidate) => (
           <li>
             <a
-              href={localePath(locale, `/convert/${candidate.slug}/`)}
+              href={hrefFor(locale, `/convert/${candidate.slug}/`)}
               class="no-underline hover:underline"
             >
               {candidate.from.name} to {candidate.to.name}
@@ -321,17 +322,17 @@ function pad(value: number): string {
         ))
       }
       <li>
-        <a href={localePath(locale, `/time-in/${from.slug}/`)} class="no-underline hover:underline">
+        <a href={hrefFor(locale, `/time-in/${from.slug}/`)} class="no-underline hover:underline">
           Current time in {from.name}
         </a>
       </li>
       <li>
-        <a href={localePath(locale, `/time-in/${to.slug}/`)} class="no-underline hover:underline">
+        <a href={hrefFor(locale, `/time-in/${to.slug}/`)} class="no-underline hover:underline">
           Current time in {to.name}
         </a>
       </li>
       <li>
-        <a href={localePath(locale, '/meeting-planner/')} class="no-underline hover:underline">
+        <a href={hrefFor(locale, '/meeting-planner/')} class="no-underline hover:underline">
           {t('nav.meetingPlanner')}
         </a>
       </li>

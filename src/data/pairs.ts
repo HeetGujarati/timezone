@@ -1,4 +1,5 @@
 import { CITIES, TIER_A, TIER_B, TOP_HUBS, type City } from './cities.ts';
+import { cityDemand } from './demand.ts';
 
 /**
  * The city-pair page set.
@@ -27,14 +28,18 @@ function pairSlug(from: City, to: City): string {
 }
 
 /**
- * A cheap proxy for search demand: both cities' populations, with a strong bonus
- * for Tier A on both ends. Used only to decide ordering and which 100 pairs each
- * non-English locale ships — never presented to a reader as a fact.
+ * Ordering weight: the two cities' search demand multiplied, with population as a
+ * tiebreak only.
+ *
+ * The first version of this used population alone and produced a visibly wrong
+ * ranking — Shanghai–Delhi first, New York–London 117th. Search demand and city
+ * size are not the same thing, and for a site whose whole job is conversions, the
+ * demand signal is the one that matters. Never presented to a reader as a fact.
  */
 function weightFor(from: City, to: City): number {
-  const base = Math.log10(from.population + 1) * Math.log10(to.population + 1);
-  const tierBonus = (from.tier === 'A' ? 1.4 : 1) * (to.tier === 'A' ? 1.4 : 1);
-  return Number((base * tierBonus).toFixed(4));
+  const demand = cityDemand(from.slug) * cityDemand(to.slug);
+  const tiebreak = (Math.log10(from.population + 1) * Math.log10(to.population + 1)) / 1000;
+  return Number((demand + tiebreak).toFixed(4));
 }
 
 function buildPairs(): CityPair[] {
@@ -83,6 +88,17 @@ export function rankedPairs(): CityPair[] {
   return [...PAIRS].sort((a, b) =>
     b.weight === a.weight ? a.slug.localeCompare(b.slug) : b.weight - a.weight,
   );
+}
+
+const RANK_BY_SLUG = new Map(rankedPairs().map((pair, rank) => [pair.slug, rank]));
+
+/**
+ * Where a pair sits in the search-value ranking. Decides which locales it ships
+ * in, and therefore whether a link to it from a localised page can stay in that
+ * locale or has to fall back to English.
+ */
+export function pairRank(slug: string): number | undefined {
+  return RANK_BY_SLUG.get(slug);
 }
 
 /** Other pairs sharing either city, for the internal-link block. */

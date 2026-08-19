@@ -9,7 +9,8 @@ import {
   organizationSchema,
   softwareApplicationSchema,
 } from '~/lib/seo/structured-data.ts';
-import { localePath, type LocaleCode } from '~/config/locales.ts';
+import type { LocaleCode } from '~/config/locales.ts';
+import { hrefFor } from '~/lib/i18n/routes.ts';
 import { type City, TOP_HUBS } from '~/data/cities.ts';
 import { pairsFromCity } from '~/data/pairs.ts';
 import { BUILD_INSTANT, CURRENT_YEAR } from '~/config/build.ts';
@@ -305,7 +306,7 @@ const schemas = [
               <tr class="border-b border-[var(--color-rule)]">
                 <th scope="row" class="py-2 pr-4 text-left font-normal">
                   <a
-                    href={localePath(locale, `/time-in/${entry.hub.slug}/`)}
+                    href={hrefFor(locale, `/time-in/${entry.hub.slug}/`)}
                     class="no-underline hover:underline"
                   >
                     {entry.hub.name}
@@ -341,7 +342,7 @@ const schemas = [
         outboundPairs.map((pair) => (
           <li>
             <a
-              href={localePath(locale, `/convert/${pair.slug}/`)}
+              href={hrefFor(locale, `/convert/${pair.slug}/`)}
               class="no-underline hover:underline"
             >
               {pair.from.name} to {pair.to.name}

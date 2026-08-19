@@ -1,0 +1,61 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { useTranslations } from '~/lib/i18n/index.ts';
+import { getPageCopy } from '~/content/tools/index.ts';
+import { buildInfoMetadata } from '~/lib/seo/metadata.ts';
+import { breadcrumbListSchema, organizationSchema } from '~/lib/seo/structured-data.ts';
+import type { LocaleCode } from '~/config/locales.ts';
+import { hrefFor } from '~/lib/i18n/routes.ts';
+import { localesForPath } from '~/config/rollout.ts';
+import { CITIES, citiesByContinent } from '~/data/cities.ts';
+import { formatOffsetShort, getOffsetMinutes } from '~/lib/time/offset.ts';
+import { BUILD_INSTANT } from '~/config/build.ts';
+
+type Props = { locale: LocaleCode };
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const copy = getPageCopy(locale).hubs.cities;
+const groups = citiesByContinent();
+
+const metadata = buildInfoMetadata({
+  title: copy.metaTitle,
+  description: copy.description,
+  keywords: ['current time by city', 'world time', 'local time cities'],
+  path: '/time-in/',
+  locale,
+  availableLocales: localesForPath('/time-in/'),
+});
+
+const breadcrumbs = [{ name: t('breadcrumb.home'), path: '/' }, { name: t('nav.cities') }];
+const schemas = [organizationSchema(), breadcrumbListSchema(breadcrumbs, locale)];
+---
+
+<BaseLayout metadata={metadata} locale={locale} schemas={schemas} breadcrumbs={breadcrumbs}>
+  <h1 class="text-[length:var(--text-3xl)]">{copy.title}</h1>
+  <p class="prose mt-3 text-[length:var(--text-lg)] text-[var(--color-text-muted)]">
+    {CITIES.length} — {copy.summary}
+  </p>
+
+  {
+    groups.map((group) => (
+      <section class="mt-10">
+        <h2 class="text-[length:var(--text-2xl)]">{group.continent}</h2>
+        <ul class="mt-4 grid gap-2 text-[length:var(--text-sm)] sm:grid-cols-2 lg:grid-cols-3">
+          {group.cities.map((city) => (
+            <li class="flex justify-between gap-3 border-b border-[var(--color-rule)] py-1.5">
+              <a
+                href={hrefFor(locale, `/time-in/${city.slug}/`)}
+                class="no-underline hover:underline"
+              >
+                {city.name}
+              </a>
+              <span class="tabular text-[var(--color-text-muted)]">
+                {formatOffsetShort(getOffsetMinutes(city.timeZone, BUILD_INSTANT))}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</BaseLayout>

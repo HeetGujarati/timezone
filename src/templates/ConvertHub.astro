@@ -1,0 +1,113 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { useTranslations } from '~/lib/i18n/index.ts';
+import { getPageCopy } from '~/content/tools/index.ts';
+import { buildInfoMetadata } from '~/lib/seo/metadata.ts';
+import { breadcrumbListSchema, organizationSchema } from '~/lib/seo/structured-data.ts';
+import type { LocaleCode } from '~/config/locales.ts';
+import { hrefFor } from '~/lib/i18n/routes.ts';
+import { localesForPath } from '~/config/rollout.ts';
+import { rankedPairs } from '~/data/pairs.ts';
+import { ABBREVIATIONS, abbreviationPairs } from '~/data/abbreviations.ts';
+import { PAIRS_PER_PAGE } from '~/config/pagination.ts';
+
+type Props = { locale: LocaleCode };
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const copy = getPageCopy(locale).hubs.convert;
+
+const pairs = rankedPairs();
+const abbrPairs = abbreviationPairs();
+const pageCount = Math.ceil(pairs.length / PAIRS_PER_PAGE);
+
+const metadata = buildInfoMetadata({
+  title: copy.metaTitle,
+  description: copy.description,
+  keywords: ['time zone conversions', 'convert time zones', 'time zone pairs'],
+  path: '/convert/',
+  locale,
+  availableLocales: localesForPath('/convert/'),
+});
+
+const breadcrumbs = [{ name: t('breadcrumb.home'), path: '/' }, { name: t('nav.conversions') }];
+const schemas = [organizationSchema(), breadcrumbListSchema(breadcrumbs, locale)];
+
+const featured = pairs.slice(0, PAIRS_PER_PAGE);
+---
+
+<BaseLayout metadata={metadata} locale={locale} schemas={schemas} breadcrumbs={breadcrumbs}>
+  <h1 class="text-[length:var(--text-3xl)]">{copy.title}</h1>
+  <p class="prose mt-3 text-[length:var(--text-lg)] text-[var(--color-text-muted)]">
+    {pairs.length} + {abbrPairs.length} — {copy.summary}
+  </p>
+
+  <section class="mt-10">
+    <h2 class="text-[length:var(--text-2xl)]">Most-searched city pairs</h2>
+    <ul class="mt-4 grid gap-2 text-[length:var(--text-sm)] sm:grid-cols-2 lg:grid-cols-3">
+      {
+        featured.map((pair) => (
+          <li>
+            <a
+              href={hrefFor(locale, `/convert/${pair.slug}/`)}
+              class="no-underline hover:underline"
+            >
+              {pair.from.name} to {pair.to.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <nav class="mt-6" aria-label="Pagination">
+      <ul class="flex flex-wrap gap-2 text-[length:var(--text-sm)]">
+        {
+          Array.from({ length: pageCount }, (_, index) => index + 1).map((page) => (
+            <li>
+              <a
+                href={
+                  page === 1
+                    ? hrefFor(locale, '/convert/')
+                    : hrefFor(locale, `/convert/page/${page}/`)
+                }
+                class="rounded-[var(--radius-sm)] border border-[var(--color-rule)] px-2 py-1 no-underline hover:border-[var(--color-accent)]"
+                aria-current={page === 1 ? 'page' : undefined}
+              >
+                {page}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-[length:var(--text-2xl)]">Abbreviations</h2>
+    <p class="prose mt-2 text-[var(--color-text-muted)]">
+      Sixteen abbreviations, every direction between them. Each page names the IANA zone it computes
+      with, and flags the letters that mean more than one thing.
+    </p>
+    <ul class="mt-4 flex flex-wrap gap-2 text-[length:var(--text-sm)]">
+      {
+        ABBREVIATIONS.map((entry) => (
+          <li>
+            <a
+              href={hrefFor(
+                locale,
+                // UTC cannot link to itself: self-pairs are not generated.
+                entry.slug === 'utc' ? '/convert/utc-to-est/' : `/convert/${entry.slug}-to-utc/`,
+              )}
+              class="rounded-[var(--radius-sm)] border border-[var(--color-rule)] px-2 py-1 no-underline hover:border-[var(--color-accent)]"
+            >
+              {entry.code}
+              {entry.alsoMeans.length > 0 && (
+                <span class="ms-1 text-[var(--color-signal)]" title="Means more than one thing">
+                  ◆
+                </span>
+              )}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>
