@@ -47,6 +47,10 @@ Where the site links elsewhere, that is for convenience and is not an endorsemen
 
 These terms are governed by the laws of [JURISDICTION], and the courts of [JURISDICTION] have exclusive jurisdiction over any dispute — save that if you are a consumer resident elsewhere, you retain the protection of the mandatory law of your own country.
 
+## Language
+
+These terms are published in several languages. The translations are provided so that they can be read in your own language; where a translation and the English version differ, the English version governs.
+
 ## Changes
 
 These terms may be updated. The date at the top reflects the current version, and the full history is in the repository.
