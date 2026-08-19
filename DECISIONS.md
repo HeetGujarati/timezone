@@ -153,3 +153,68 @@ case-insensitively de-duplicated so page and global keyword sets cannot double u
 JSON-LD breakout where a value containing `</script>` terminates the block early. A test asserts
 the escape holds against `</script><img src=x onerror=alert(1)>`, and
 `scripts/audit-set-html.mjs` fails the build if `set:html` appears anywhere else in `src/`.
+
+---
+
+## Phase 2 — the time engine
+
+### D15. Offsets are measured, not parsed from a formatted string
+
+`getOffsetSeconds` reads the wall clock in a zone with `formatToParts` and measures how
+far it sits from UTC, rather than parsing the `timeZoneName: 'longOffset'` string. Both
+approaches appear in the brief. Measuring wins on three counts: it is exact for the
+sub-minute local-mean-time offsets in pre-1900 data, it does not depend on ICU's
+formatting of the offset string, and the wall parts are needed anyway — so it is one
+`Intl` call instead of two.
+
+`hourCycle: 'h23'` is set explicitly because some ICU versions report midnight as hour 24
+under `en-US`, which silently shifts the date by a day.
+
+### D16. Ambiguous and non-existent local times: shift forward, take the earlier
+
+Two days a year a wall-clock reading has no single correct answer.
+
+- **Spring forward** deletes an hour. 02:30 on the US change-over date never happens.
+  Policy: shift forward by the size of the gap, so 02:30 becomes 03:30. The alternative —
+  clamping to the transition instant — collapses every vanished minute onto the same
+  answer, which loses the user's intent entirely.
+- **Fall back** repeats an hour. 01:30 happens twice. Policy: the first, earlier
+  occurrence, still on daylight time. This matches ECMAScript's own `Temporal`
+  `disambiguation: 'compatible'` default, so the site agrees with the platform.
+
+Neither is applied silently. `parseLocalTimeInZone` returns a `resolution` of `exact`,
+`gap-shifted` or `ambiguous-earlier` alongside the instant, and for the ambiguous case it
+also returns the second occurrence — so a page can say what it did and offer the other one.
+
+The gap size is read from the transition rather than assumed to be an hour, because Lord
+Howe Island moves 30 minutes. A test asserts exactly that.
+
+### D17. Daylight saving is detected by comparing against the year's minimum offset
+
+There is no `Intl` API that answers "is DST active". The abbreviation is not reliable —
+most zones have none, and ICU returns `GMT+5:45` for Kathmandu. So `isDstActive` compares
+the offset at the instant against the smallest offset the zone uses that year: daylight
+saving always moves clocks forward, so the minimum is standard time. This is correct in
+the southern hemisphere, where that minimum falls mid-year, and it is correct for Lord
+Howe, where the gap is half an hour rather than a whole one.
+
+### D18. Transitions are found by a six-hour scan, then bisected to the second
+
+A coarse probe every six hours across the year cannot step over a transition — no zone in
+the IANA database has ever changed offset twice within six hours — and each hit is then
+halved down to a one-second interval, which is the finest granularity the database
+expresses. Roughly 12ms per zone-year, memoised per `(zone, year)`, so the 80-city build
+pays it once.
+
+Verified against the real 2026 calendar: US 8 March and 1 November; EU 29 March and
+25 October at 01:00 UTC in every member zone simultaneously; Sydney and Auckland inverted;
+Lord Howe ±30 minutes; Tehran, Mexico City and São Paulo with zero transitions.
+
+### D19. Sunrise and sunset are computed, not fetched
+
+The NOAA solar position algorithm in `src/lib/time/sun.ts` is about 120 lines of
+arithmetic and needs no API, which keeps the "zero third-party calls" constraint intact
+and means city pages cannot be broken by someone else's rate limit. Verified against
+published values: London 04:43/21:21 on the summer solstice and 08:04/15:53 on the winter
+one, both exact to the minute. Polar day and polar night are returned as explicit states
+rather than as a null that a template might render as "--".
