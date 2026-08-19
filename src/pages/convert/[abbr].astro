@@ -1,0 +1,20 @@
+---
+import AbbreviationPage from '~/templates/AbbreviationPage.astro';
+import { abbreviationPairs } from '~/data/abbreviations.ts';
+import { SITE } from '~/config/site.ts';
+import type { GetStaticPaths } from 'astro';
+
+/**
+ * Abbreviation pages share the /convert/ namespace with city pairs. Their slugs
+ * cannot collide: a city slug is never a two-to-four-letter abbreviation.
+ */
+export const getStaticPaths = (() =>
+  abbreviationPairs().map((pair) => ({
+    params: { abbr: pair.slug },
+    props: { pair },
+  }))) satisfies GetStaticPaths;
+
+const { pair } = Astro.props;
+---
+
+<AbbreviationPage pair={pair} locale="en" availableLocales={SITE.locales} />

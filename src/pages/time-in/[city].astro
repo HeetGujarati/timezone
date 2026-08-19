@@ -1,0 +1,16 @@
+---
+import CityPage from '~/templates/CityPage.astro';
+import { CITIES } from '~/data/cities.ts';
+import { SITE } from '~/config/site.ts';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (() =>
+  CITIES.map((city) => ({
+    params: { city: city.slug },
+    props: { city },
+  }))) satisfies GetStaticPaths;
+
+const { city } = Astro.props;
+---
+
+<CityPage city={city} locale="en" availableLocales={SITE.locales} />

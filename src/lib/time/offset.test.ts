@@ -124,15 +124,35 @@ describe('formatting', () => {
 });
 
 describe('getZoneAbbreviation', () => {
-  it('returns the real abbreviation where one exists', () => {
+  it('returns the real abbreviation for American zones', () => {
     expect(getZoneAbbreviation('America/New_York', JANUARY)).toBe('EST');
     expect(getZoneAbbreviation('America/New_York', JULY)).toBe('EDT');
     expect(getZoneAbbreviation('America/Los_Angeles', JANUARY)).toBe('PST');
   });
 
+  it('reaches beyond en-US for zones it does not name', () => {
+    // en-US calls these "GMT+1" and "GMT+10"; the locale cascade finds the letters.
+    expect(getZoneAbbreviation('Europe/London', JULY)).toBe('BST');
+    expect(getZoneAbbreviation('Europe/Berlin', JULY)).toBe('CEST');
+    expect(getZoneAbbreviation('Australia/Sydney', JULY)).toBe('AEST');
+    expect(getZoneAbbreviation('Pacific/Auckland', JULY)).toBe('NZST');
+    expect(getZoneAbbreviation('Asia/Kolkata', JULY)).toBe('IST');
+  });
+
+  it('surfaces the IST collision rather than hiding it', () => {
+    // Ireland and India both abbreviate to IST, three and a half hours apart.
+    expect(getZoneAbbreviation('Europe/Dublin', JULY)).toBe('IST');
+    expect(getZoneAbbreviation('Asia/Kolkata', JULY)).toBe('IST');
+    expect(getOffsetMinutes('Europe/Dublin', JULY)).not.toBe(
+      getOffsetMinutes('Asia/Kolkata', JULY),
+    );
+  });
+
   it('falls back to an offset form rather than inventing an abbreviation', () => {
-    // ICU has no abbreviation for Kathmandu, and making one up would be worse.
-    expect(getZoneAbbreviation('Asia/Kathmandu', JANUARY)).toMatch(/^(GMT|UTC)\+5:45$/);
+    // No English locale has letters for these, and making some up would be worse.
+    expect(getZoneAbbreviation('Asia/Kathmandu', JANUARY)).toBe('UTC+5:45');
+    expect(getZoneAbbreviation('Asia/Tokyo', JANUARY)).toBe('UTC+9');
+    expect(getZoneAbbreviation('America/Sao_Paulo', JANUARY)).toBe('UTC-3');
   });
 });
 

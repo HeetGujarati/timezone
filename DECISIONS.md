@@ -218,3 +218,64 @@ and means city pages cannot be broken by someone else's rate limit. Verified aga
 published values: London 04:43/21:21 on the summer solstice and 08:04/15:53 on the winter
 one, both exact to the minute. Polar day and polar night are returned as explicit states
 rather than as a null that a template might render as "--".
+
+---
+
+## Phase 5 — the programmatic layer
+
+### D20. City zones are validated by construction, not by `supportedValuesOf`
+
+**Brief said:** verify each city's IANA identifier against `Intl.supportedValuesOf('timeZone')`.
+
+**What that would have done:** rejected `Asia/Kolkata`. This runtime's `supportedValuesOf` returns
+the _legacy_ primary identifier for eighteen zones — `Asia/Calcutta`, `Europe/Kiev`,
+`Asia/Katmandu`, `Asia/Saigon`, `America/Godthab` and others — because ECMA-402 leaves the choice
+of primary identifier to the implementation. `Asia/Kolkata` is not in the list, yet it is the
+correct modern name and the one every developer expects.
+
+**Decision:** validate by constructing an `Intl.DateTimeFormat`, which accepts both the modern name
+and the legacy alias. Zone _identity_ comparisons go through `canonicalZoneId()` rather than string
+equality, so `Asia/Kolkata` and `Asia/Calcutta` compare equal. The picker maps the eighteen legacy
+identifiers to their modern names, and tests assert each modern name still resolves to the same
+zone as its legacy form — if a future ICU breaks that, the build fails rather than the site quietly
+offering "Calcutta" to a reader in 2026.
+
+### D21. Zone abbreviations come from a locale cascade
+
+`en-US` knows EDT and PDT but calls London "GMT+1". `en-GB` knows BST and CEST but calls New York
+"GMT-4". No single English locale covers the world, so `getZoneAbbreviation` tries `en-US`,
+`en-GB`, `en-AU`, `en-IN`, `en-IE`, `en-NZ` in order and takes the first that returns letters.
+
+Where none does — Tokyo, Shanghai, São Paulo — it returns the offset form. Inventing "JST" because
+it looks plausible would break the one promise this site makes about its data.
+
+A useful side effect: the cascade surfaces the IST collision. Europe/Dublin and Asia/Kolkata both
+abbreviate to IST, four and a half hours apart, which is exactly the ambiguity the abbreviation
+pages exist to warn about. A test asserts the collision is real rather than folklore.
+
+### D22. Page counts are exactly as planned, not as large as possible
+
+1,448 city pairs (552 Tier A cartesian + 896 Tier B against the eight busiest hubs, both
+directions), 80 city pages, 240 abbreviation pairs. The full 80 × 79 city product would be 6,320
+pages; the extra 4,872 would be pages nobody searches for, competing for crawl budget with the ones
+people do. A test asserts the set stays under 2,000 so a future "why not add more" cannot pass
+review silently.
+
+### D23. Deterministic copy variants, and the hash bug that nearly broke them
+
+Every generated slot has at least four phrasings, selected by hashing `slug + slot`. FNV-1a alone
+has weak avalanche in its low bits, and `hash % 4` reads only those two bits — the first
+implementation collapsed to a single variant, which would have shipped 1,448 pages sharing one
+sentence. Adding MurmurHash3's finalizer before the modulo fixed it, and a distribution test now
+fails if any variant is chosen fewer than 60 or more than 140 times in 400 draws.
+
+Two grammar bugs surfaced the same way and are now covered by tests: "Singapore ahead of." (the word
+"ahead" needs "of" before a city name and nothing after it at the end of a clause) and "a 5 hours
+shift". Verified output: 1,448 unique titles and 1,448 unique opening sentences.
+
+### D24. Abbreviation pages compute at a date the abbreviation actually exists
+
+EST does not exist in July. A page converting EST to CEST computed "today" would produce an offset
+that is wrong for half the year, every year. Each abbreviation page picks a representative instant —
+January or July, depending on hemisphere and whether the abbreviation is a daylight or standard
+form — and says so on the page.

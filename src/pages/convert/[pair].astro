@@ -1,0 +1,21 @@
+---
+import PairPage from '~/templates/PairPage.astro';
+import { PAIRS } from '~/data/pairs.ts';
+import { SITE } from '~/config/site.ts';
+import type { GetStaticPaths } from 'astro';
+
+/**
+ * English city-pair pages. Every path comes from the generated pair set, so a URL
+ * outside that allowlist simply does not exist and 404s — there is no dynamic
+ * parameter to validate at runtime because there is no runtime.
+ */
+export const getStaticPaths = (() =>
+  PAIRS.map((pair) => ({
+    params: { pair: pair.slug },
+    props: { pair },
+  }))) satisfies GetStaticPaths;
+
+const { pair } = Astro.props;
+---
+
+<PairPage pair={pair} locale="en" availableLocales={SITE.locales} />

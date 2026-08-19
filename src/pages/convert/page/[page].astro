@@ -1,0 +1,96 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { useTranslations } from '~/lib/i18n/index.ts';
+import { buildInfoMetadata } from '~/lib/seo/metadata.ts';
+import { breadcrumbListSchema, organizationSchema } from '~/lib/seo/structured-data.ts';
+import { localePath } from '~/config/locales.ts';
+import { SITE } from '~/config/site.ts';
+import { rankedPairs } from '~/data/pairs.ts';
+import { PAIRS_PER_PAGE } from '~/config/pagination.ts';
+import type { GetStaticPaths } from 'astro';
+
+/**
+ * Pages 2..n of the conversion index. Page 1 is /convert/ itself, so there is no
+ * duplicate-content pair of URLs showing the same first hundred links.
+ */
+export const getStaticPaths = (() => {
+  const pairs = rankedPairs();
+  const pageCount = Math.ceil(pairs.length / PAIRS_PER_PAGE);
+
+  return Array.from({ length: pageCount - 1 }, (_, index) => {
+    const page = index + 2;
+    return {
+      params: { page: String(page) },
+      props: {
+        page,
+        pageCount,
+        entries: pairs.slice((page - 1) * PAIRS_PER_PAGE, page * PAIRS_PER_PAGE),
+      },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+const { page, pageCount, entries } = Astro.props;
+const locale = 'en' as const;
+const t = useTranslations(locale);
+
+const metadata = buildInfoMetadata({
+  title: `Time zone conversions, page ${page}`,
+  description: `City-pair conversions ${(page - 1) * PAIRS_PER_PAGE + 1} to ${(page - 1) * PAIRS_PER_PAGE + entries.length} of ${rankedPairs().length}, each with an hour-by-hour table and daylight saving dates.`,
+  path: `/convert/page/${page}/`,
+  locale,
+  availableLocales: SITE.locales,
+});
+
+const breadcrumbs = [
+  { name: t('breadcrumb.home'), path: '/' },
+  { name: t('nav.conversions'), path: '/convert/' },
+  { name: `Page ${page}` },
+];
+const schemas = [organizationSchema(), breadcrumbListSchema(breadcrumbs, locale)];
+---
+
+<BaseLayout metadata={metadata} locale={locale} schemas={schemas} breadcrumbs={breadcrumbs}>
+  <h1 class="text-[length:var(--text-3xl)]">Time zone conversions, page {page}</h1>
+  <p class="prose mt-3 text-[var(--color-text-muted)]">
+    Pairs {(page - 1) * PAIRS_PER_PAGE + 1}–{(page - 1) * PAIRS_PER_PAGE + entries.length}, ordered
+    by how often people search for them.
+  </p>
+
+  <ul class="mt-8 grid gap-2 text-[length:var(--text-sm)] sm:grid-cols-2 lg:grid-cols-3">
+    {
+      entries.map((pair) => (
+        <li>
+          <a
+            href={localePath(locale, `/convert/${pair.slug}/`)}
+            class="no-underline hover:underline"
+          >
+            {pair.from.name} to {pair.to.name}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <nav class="mt-8" aria-label="Pagination">
+    <ul class="flex flex-wrap gap-2 text-[length:var(--text-sm)]">
+      {
+        Array.from({ length: pageCount }, (_, index) => index + 1).map((candidate) => (
+          <li>
+            <a
+              href={
+                candidate === 1
+                  ? localePath(locale, '/convert/')
+                  : localePath(locale, `/convert/page/${candidate}/`)
+              }
+              class="rounded-[var(--radius-sm)] border border-[var(--color-rule)] px-2 py-1 no-underline hover:border-[var(--color-accent)]"
+              aria-current={candidate === page ? 'page' : undefined}
+            >
+              {candidate}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</BaseLayout>

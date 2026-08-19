@@ -1,0 +1,59 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { useTranslations } from '~/lib/i18n/index.ts';
+import { buildInfoMetadata } from '~/lib/seo/metadata.ts';
+import { breadcrumbListSchema, organizationSchema } from '~/lib/seo/structured-data.ts';
+import { localePath } from '~/config/locales.ts';
+import { SITE } from '~/config/site.ts';
+import { CITIES, citiesByContinent } from '~/data/cities.ts';
+import { formatOffsetShort, getOffsetMinutes } from '~/lib/time/offset.ts';
+import { BUILD_INSTANT } from '~/config/build.ts';
+
+const locale = 'en' as const;
+const t = useTranslations(locale);
+const groups = citiesByContinent();
+
+const metadata = buildInfoMetadata({
+  title: 'Current time by city',
+  description: `Local time, UTC offset and daylight saving dates for ${CITIES.length} cities across every inhabited continent.`,
+  keywords: ['current time by city', 'world time', 'local time cities'],
+  path: '/time-in/',
+  locale,
+  availableLocales: SITE.locales,
+});
+
+const breadcrumbs = [{ name: t('breadcrumb.home'), path: '/' }, { name: t('nav.cities') }];
+const schemas = [organizationSchema(), breadcrumbListSchema(breadcrumbs, locale)];
+---
+
+<BaseLayout metadata={metadata} locale={locale} schemas={schemas} breadcrumbs={breadcrumbs}>
+  <h1 class="text-[length:var(--text-3xl)]">Current time by city</h1>
+  <p class="prose mt-3 text-[length:var(--text-lg)] text-[var(--color-text-muted)]">
+    {CITIES.length} cities, grouped by continent. Each page carries a live clock, the exact daylight saving
+    dates for that zone, sunrise and sunset computed from the city's coordinates, and conversions to the
+    major hubs.
+  </p>
+
+  {
+    groups.map((group) => (
+      <section class="mt-10">
+        <h2 class="text-[length:var(--text-2xl)]">{group.continent}</h2>
+        <ul class="mt-4 grid gap-2 text-[length:var(--text-sm)] sm:grid-cols-2 lg:grid-cols-3">
+          {group.cities.map((city) => (
+            <li class="flex justify-between gap-3 border-b border-[var(--color-rule)] py-1.5">
+              <a
+                href={localePath(locale, `/time-in/${city.slug}/`)}
+                class="no-underline hover:underline"
+              >
+                {city.name}
+              </a>
+              <span class="tabular text-[var(--color-text-muted)]">
+                {formatOffsetShort(getOffsetMinutes(city.timeZone, BUILD_INSTANT))}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</BaseLayout>

@@ -166,23 +166,50 @@ export function formatOffsetShort(offsetMinutes: number): string {
 }
 
 /**
- * The abbreviation a zone is using at an instant: "EST", "PDT", "JST", "IST".
+ * English locales, in cascade order, for resolving a zone abbreviation.
  *
- * Many zones have no abbreviation in the IANA data and ICU returns an offset form
- * such as "GMT+5:45" instead. That is returned as-is rather than invented — an
- * abbreviation this engine made up would be worse than an honest offset.
+ * ICU only carries letter abbreviations for zones its locale's own region cares
+ * about: `en-US` knows EDT and PDT but calls London "GMT+1", while `en-GB` knows
+ * BST and CEST but calls New York "GMT-4". No single locale covers the world, so
+ * each is tried until one returns letters.
+ *
+ * The order matters only where two locales both name a zone, and they agree in
+ * every such case. It also surfaces a genuine collision worth knowing about:
+ * Europe/Dublin and Asia/Kolkata both abbreviate to IST, three and a half hours
+ * apart.
+ */
+const ABBREVIATION_LOCALES = ['en-US', 'en-GB', 'en-AU', 'en-IN', 'en-IE', 'en-NZ'] as const;
+
+/** A real abbreviation is letters; "GMT+5:45" is ICU saying it has none. */
+const LETTER_ABBREVIATION = /^[A-Z]{2,6}$/;
+
+function abbreviationFrom(locale: string, timeZone: string, instant: Instant): string | null {
+  const key = `${locale}|${timeZone}`;
+  let formatter = abbreviationFormatterCache.get(key);
+  if (formatter === undefined) {
+    formatter = new Intl.DateTimeFormat(locale, { timeZone, timeZoneName: 'short' });
+    abbreviationFormatterCache.set(key, formatter);
+  }
+  const value = formatter
+    .formatToParts(new Date(instant))
+    .find((part) => part.type === 'timeZoneName')?.value;
+  return value !== undefined && LETTER_ABBREVIATION.test(value) ? value : null;
+}
+
+/**
+ * The abbreviation a zone is using at an instant: "EST", "PDT", "BST", "AEDT".
+ *
+ * Where no English locale has letters — Tokyo, Shanghai and São Paulo among them —
+ * the offset form is returned instead. Inventing "JST" because it looks plausible
+ * would be worse than an honest "UTC+9": the point of this site is that its data
+ * comes from the tzdata rather than from guesswork.
  */
 export function getZoneAbbreviation(timeZone: string, instant: Instant): string {
-  let formatter = abbreviationFormatterCache.get(timeZone);
-  if (formatter === undefined) {
-    formatter = new Intl.DateTimeFormat('en-US', { timeZone, timeZoneName: 'short' });
-    abbreviationFormatterCache.set(timeZone, formatter);
+  for (const locale of ABBREVIATION_LOCALES) {
+    const abbreviation = abbreviationFrom(locale, timeZone, instant);
+    if (abbreviation !== null) return abbreviation;
   }
-  const parts = formatter.formatToParts(new Date(instant));
-  return (
-    parts.find((part) => part.type === 'timeZoneName')?.value ??
-    formatOffsetShort(getOffsetMinutes(timeZone, instant))
-  );
+  return formatOffsetShort(getOffsetMinutes(timeZone, instant));
 }
 
 /** Full wall-clock reading plus the offset that produced it. */

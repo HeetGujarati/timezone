@@ -1,0 +1,340 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Converter from '~/components/Converter.astro';
+import { useTranslations } from '~/lib/i18n/index.ts';
+import { buildToolMetadata } from '~/lib/seo/metadata.ts';
+import {
+  breadcrumbListSchema,
+  faqPageSchema,
+  organizationSchema,
+  softwareApplicationSchema,
+} from '~/lib/seo/structured-data.ts';
+import { localePath, type LocaleCode } from '~/config/locales.ts';
+import { buildPairFacts } from '~/lib/content/pair-facts.ts';
+import {
+  callWindowSentence,
+  dstIntro,
+  factsIntro,
+  pairFaqs,
+  summarySentence,
+  tableIntro,
+} from '~/lib/content/pair-copy.ts';
+import { relatedPairs, reversePair, type CityPair } from '~/data/pairs.ts';
+import { BUILD_INSTANT } from '~/config/build.ts';
+
+type Props = {
+  pair: CityPair;
+  locale: LocaleCode;
+  availableLocales: readonly LocaleCode[];
+};
+
+const { pair, locale, availableLocales } = Astro.props;
+const { from, to, slug } = pair;
+const t = useTranslations(locale);
+
+const facts = buildPairFacts(from, to, BUILD_INSTANT);
+const copyInput = { from, to, slug, facts };
+
+const path = `/convert/${slug}/`;
+const title = `Convert ${from.name} time to ${to.name} time`;
+
+const metadata = buildToolMetadata({
+  title,
+  description: facts.sameZone
+    ? `${from.name} and ${to.name} share a time zone, so there is no difference between them. Hour-by-hour table, daylight saving dates and the zone identifiers.`
+    : `${to.name} is ${facts.differenceLabel} ${from.name}. Hour-by-hour conversion table, daylight saving dates for both cities, and the hours you can actually call.`,
+  keywords: [
+    `${from.name.toLowerCase()} to ${to.name.toLowerCase()}`,
+    `${from.name.toLowerCase()} ${to.name.toLowerCase()} time difference`,
+    `time in ${to.name.toLowerCase()}`,
+  ],
+  path,
+  locale,
+  availableLocales,
+  ogImage: `/og/convert/${slug}.png`,
+});
+
+const faqs = pairFaqs(copyInput);
+const reverse = reversePair(pair);
+const related = relatedPairs(pair, 6);
+
+const breadcrumbs = [
+  { name: t('breadcrumb.home'), path: '/' },
+  { name: t('nav.conversions'), path: '/convert/' },
+  { name: `${from.name} → ${to.name}` },
+];
+
+const schemas = [
+  organizationSchema(),
+  softwareApplicationSchema({
+    name: title,
+    description: metadata.description,
+    path,
+    locale,
+    subCategory: 'Time zone converter',
+  }),
+  breadcrumbListSchema(breadcrumbs, locale),
+  faqPageSchema(faqs, locale),
+];
+
+function pad(value: number): string {
+  return String(value).padStart(2, '0');
+}
+---
+
+<BaseLayout metadata={metadata} locale={locale} schemas={schemas} breadcrumbs={breadcrumbs}>
+  <h1 class="text-[length:var(--text-3xl)]">{title}</h1>
+  <p class="prose mt-3 text-[length:var(--text-lg)] text-[var(--color-text-muted)]">
+    {summarySentence(copyInput)}
+  </p>
+
+  <div class="mt-6">
+    <Converter
+      locale={locale}
+      fromZone={from.timeZone}
+      toZone={to.timeZone}
+      seedInstant={BUILD_INSTANT}
+      headingLevel="h2"
+    />
+  </div>
+
+  <section class="mt-12">
+    <h2 class="text-[length:var(--text-2xl)]">Hour by hour</h2>
+    <p class="prose mt-2 text-[var(--color-text-muted)]">{tableIntro(copyInput)}</p>
+    <div class="mt-4 overflow-x-auto">
+      <table class="w-full min-w-[22rem] max-w-lg text-[length:var(--text-sm)]">
+        <thead>
+          <tr class="border-b border-[var(--color-rule)] text-left text-[var(--color-text-muted)]">
+            <th scope="col" class="py-2 pr-4 font-medium">{from.name}</th>
+            <th scope="col" class="py-2 font-medium">{to.name}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            facts.hourTable.map((row) => (
+              <tr class="border-b border-[var(--color-rule)]">
+                <td class="tabular py-1.5 pr-4">
+                  {pad(row.fromHour)}:{pad(row.fromMinute)}
+                </td>
+                <td class="tabular py-1.5">
+                  {pad(row.toHour)}:{pad(row.toMinute)}
+                  {row.dayDelta !== 0 && (
+                    <span class="ms-2 text-[length:var(--text-xs)] text-[var(--color-signal)]">
+                      {row.dayDelta > 0 ? 'next day' : 'previous day'}
+                    </span>
+                  )}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-[length:var(--text-2xl)]">Daylight saving time</h2>
+    <p class="prose mt-2 text-[var(--color-text-muted)]">{dstIntro(copyInput)}</p>
+
+    <div class="mt-4 grid gap-4 md:grid-cols-2">
+      {
+        [
+          { city: from, zone: facts.from },
+          { city: to, zone: facts.to },
+        ].map((entry) => (
+          <div class="rounded-[var(--radius-md)] border border-[var(--color-rule)] p-4">
+            <h3 class="text-[length:var(--text-lg)]">{entry.city.name}</h3>
+            <p class="mt-1 text-[length:var(--text-sm)] text-[var(--color-text-muted)]">
+              {entry.zone.observesDst ? t('dst.observes') : t('dst.doesNotObserve')}
+            </p>
+            <dl class="mt-3 space-y-1 text-[length:var(--text-sm)]">
+              <div class="flex justify-between gap-3">
+                <dt class="text-[var(--color-text-muted)]">Standard</dt>
+                <dd class="tabular">{entry.zone.standardOffsetLabel}</dd>
+              </div>
+              {entry.zone.daylightOffsetLabel !== null && (
+                <div class="flex justify-between gap-3">
+                  <dt class="text-[var(--color-text-muted)]">Daylight</dt>
+                  <dd class="tabular">{entry.zone.daylightOffsetLabel}</dd>
+                </div>
+              )}
+              {entry.zone.nextChange !== null && (
+                <div class="flex justify-between gap-3">
+                  <dt class="text-[var(--color-text-muted)]">{t('dst.nextChange')}</dt>
+                  <dd class="tabular">
+                    {entry.zone.nextChange.isoDate}{' '}
+                    <span class="text-[var(--color-text-muted)]">
+                      {entry.zone.nextChange.direction === 'forward' ? '+' : '−'}
+                      {entry.zone.nextChange.deltaMinutes}m
+                    </span>
+                  </dd>
+                </div>
+              )}
+            </dl>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-[length:var(--text-2xl)]">When you can actually talk</h2>
+    <p class="prose mt-2 text-[var(--color-text-muted)]">{callWindowSentence(copyInput)}</p>
+
+    {
+      facts.callWindows.length > 0 && (
+        <ul class="mt-4 space-y-2 text-[length:var(--text-sm)]">
+          {facts.callWindows.map((window) => (
+            <li class="flex flex-wrap justify-between gap-3 border-b border-[var(--color-rule)] py-2">
+              <span class="tabular">
+                {from.name} {window.fromRange}
+              </span>
+              <span class="tabular text-[var(--color-text-muted)]">
+                {to.name} {window.toRange}
+              </span>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+
+    {
+      facts.nearestWorkable.length > 0 && (
+        <ul class="mt-4 space-y-2 text-[length:var(--text-sm)]">
+          {facts.nearestWorkable.map((window) => (
+            <li class="flex flex-wrap justify-between gap-3 border-b border-[var(--color-rule)] py-2">
+              <span class="tabular">
+                {from.name} {window.fromRange}
+              </span>
+              <span class="tabular text-[var(--color-text-muted)]">
+                {to.name} {window.toRange}
+              </span>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-[length:var(--text-2xl)]">Reference</h2>
+    <p class="prose mt-2 text-[var(--color-text-muted)]">{factsIntro(copyInput)}</p>
+    <div class="mt-4 overflow-x-auto">
+      <table class="w-full min-w-[30rem] text-[length:var(--text-sm)]">
+        <thead>
+          <tr class="border-b border-[var(--color-rule)] text-left text-[var(--color-text-muted)]">
+            <th scope="col" class="py-2 pr-4 font-medium">&nbsp;</th>
+            <th scope="col" class="py-2 pr-4 font-medium">{from.name}</th>
+            <th scope="col" class="py-2 font-medium">{to.name}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-[var(--color-rule)]">
+            <th scope="row" class="py-2 pr-4 text-left font-normal text-[var(--color-text-muted)]"
+              >IANA zone</th
+            >
+            <td class="tabular py-2 pr-4">{facts.from.timeZone}</td>
+            <td class="tabular py-2">{facts.to.timeZone}</td>
+          </tr>
+          <tr class="border-b border-[var(--color-rule)]">
+            <th scope="row" class="py-2 pr-4 text-left font-normal text-[var(--color-text-muted)]"
+              >Abbreviation</th
+            >
+            <td class="tabular py-2 pr-4">{facts.from.abbreviation}</td>
+            <td class="tabular py-2">{facts.to.abbreviation}</td>
+          </tr>
+          <tr class="border-b border-[var(--color-rule)]">
+            <th scope="row" class="py-2 pr-4 text-left font-normal text-[var(--color-text-muted)]"
+              >Standard offset</th
+            >
+            <td class="tabular py-2 pr-4">{facts.from.standardOffsetLabel}</td>
+            <td class="tabular py-2">{facts.to.standardOffsetLabel}</td>
+          </tr>
+          <tr class="border-b border-[var(--color-rule)]">
+            <th scope="row" class="py-2 pr-4 text-left font-normal text-[var(--color-text-muted)]"
+              >Daylight offset</th
+            >
+            <td class="tabular py-2 pr-4">{facts.from.daylightOffsetLabel ?? '—'}</td>
+            <td class="tabular py-2">{facts.to.daylightOffsetLabel ?? '—'}</td>
+          </tr>
+          <tr class="border-b border-[var(--color-rule)]">
+            <th scope="row" class="py-2 pr-4 text-left font-normal text-[var(--color-text-muted)]"
+              >Clock changes this year</th
+            >
+            <td class="tabular py-2 pr-4">{facts.from.changesThisYear}</td>
+            <td class="tabular py-2">{facts.to.changesThisYear}</td>
+          </tr>
+          <tr class="border-b border-[var(--color-rule)]">
+            <th scope="row" class="py-2 pr-4 text-left font-normal text-[var(--color-text-muted)]"
+              >Country</th
+            >
+            <td class="py-2 pr-4">{from.country}</td>
+            <td class="py-2">{to.country}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-3 text-[length:var(--text-xs)] text-[var(--color-text-muted)]">
+      {t('note.exampleTimestamp')}
+    </p>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-[length:var(--text-2xl)]">{t('faq.heading')}</h2>
+    <dl class="prose mt-4 space-y-5">
+      {
+        faqs.map((faq) => (
+          <div>
+            <dt class="font-semibold">{faq.question}</dt>
+            <dd class="mt-1 text-[var(--color-text-muted)]">{faq.answer}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+
+  <nav class="mt-12" aria-label={t('related.heading')}>
+    <h2 class="text-[length:var(--text-2xl)]">{t('related.heading')}</h2>
+    <ul class="mt-4 grid gap-2 text-[length:var(--text-sm)] sm:grid-cols-2">
+      {
+        reverse !== undefined && (
+          <li>
+            <a
+              href={localePath(locale, `/convert/${reverse.slug}/`)}
+              class="no-underline hover:underline"
+            >
+              {to.name} to {from.name}
+            </a>
+          </li>
+        )
+      }
+      {
+        related.map((candidate) => (
+          <li>
+            <a
+              href={localePath(locale, `/convert/${candidate.slug}/`)}
+              class="no-underline hover:underline"
+            >
+              {candidate.from.name} to {candidate.to.name}
+            </a>
+          </li>
+        ))
+      }
+      <li>
+        <a href={localePath(locale, `/time-in/${from.slug}/`)} class="no-underline hover:underline">
+          Current time in {from.name}
+        </a>
+      </li>
+      <li>
+        <a href={localePath(locale, `/time-in/${to.slug}/`)} class="no-underline hover:underline">
+          Current time in {to.name}
+        </a>
+      </li>
+      <li>
+        <a href={localePath(locale, '/meeting-planner/')} class="no-underline hover:underline">
+          {t('nav.meetingPlanner')}
+        </a>
+      </li>
+    </ul>
+  </nav>
+</BaseLayout>

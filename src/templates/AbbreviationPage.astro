@@ -1,0 +1,333 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Converter from '~/components/Converter.astro';
+import { useTranslations } from '~/lib/i18n/index.ts';
+import { buildToolMetadata } from '~/lib/seo/metadata.ts';
+import {
+  breadcrumbListSchema,
+  faqPageSchema,
+  organizationSchema,
+  softwareApplicationSchema,
+} from '~/lib/seo/structured-data.ts';
+import { localePath, type LocaleCode } from '~/config/locales.ts';
+import type { AbbreviationPair } from '~/data/abbreviations.ts';
+import { CURRENT_YEAR } from '~/config/build.ts';
+import { formatOffsetShort } from '~/lib/time/offset.ts';
+import { buildHourTable } from '~/lib/time/convert.ts';
+import { findDstTransitions } from '~/lib/time/dst.ts';
+import { pickVariant } from '~/lib/seo/slug-hash.ts';
+
+type Props = {
+  pair: AbbreviationPair;
+  locale: LocaleCode;
+  availableLocales: readonly LocaleCode[];
+};
+
+const { pair, locale, availableLocales } = Astro.props;
+const { from, to, slug } = pair;
+const t = useTranslations(locale);
+
+const path = `/convert/${slug}/`;
+const title = `Convert ${from.code} to ${to.code}`;
+
+/**
+ * Abbreviation pages compute against the *representative zone* for each
+ * abbreviation, at a date when that abbreviation is actually in force. Using
+ * "today" would be wrong half the year: EST does not exist in July.
+ */
+function representativeInstant(daylight: boolean, timeZone: string): number {
+  const northern =
+    timeZone.startsWith('America') ||
+    timeZone.startsWith('Europe') ||
+    timeZone === 'Etc/GMT' ||
+    timeZone === 'UTC';
+  const january = Date.UTC(CURRENT_YEAR, 0, 15, 12);
+  const july = Date.UTC(CURRENT_YEAR, 6, 15, 12);
+  if (!daylight) return northern ? january : july;
+  return northern ? july : january;
+}
+
+const fromInstant = representativeInstant(from.daylight, from.timeZone);
+const differenceMinutes = to.offsetMinutes - from.offsetMinutes;
+const hours = Math.floor(Math.abs(differenceMinutes) / 60);
+const minutes = Math.abs(differenceMinutes) % 60;
+const gapLabel =
+  differenceMinutes === 0
+    ? 'the same time'
+    : `${hours > 0 ? `${hours} hour${hours === 1 ? '' : 's'}` : ''}${minutes > 0 ? `${hours > 0 ? ' ' : ''}${minutes} minutes` : ''} ${differenceMinutes > 0 ? 'ahead' : 'behind'}`;
+
+const hourTable = buildHourTable(from.timeZone, to.timeZone, fromInstant);
+
+const ambiguous = from.alsoMeans.length > 0 || to.alsoMeans.length > 0;
+
+const summary = pickVariant(
+  [
+    `${to.code} is ${gapLabel} of ${from.code}: ${from.code} is ${formatOffsetShort(from.offsetMinutes)} and ${to.code} is ${formatOffsetShort(to.offsetMinutes)}.`,
+    `Converting ${from.code} to ${to.code} means moving from ${formatOffsetShort(from.offsetMinutes)} to ${formatOffsetShort(to.offsetMinutes)} — a shift of ${gapLabel}.`,
+    `${from.code} sits at ${formatOffsetShort(from.offsetMinutes)}; ${to.code} sits at ${formatOffsetShort(to.offsetMinutes)}. That puts ${to.code} ${gapLabel} of ${from.code}.`,
+    `The gap between ${from.code} and ${to.code} is ${gapLabel} — ${formatOffsetShort(from.offsetMinutes)} against ${formatOffsetShort(to.offsetMinutes)}.`,
+  ],
+  slug,
+  'abbrSummary',
+);
+
+const metadata = buildToolMetadata({
+  title,
+  description: `${to.code} is ${gapLabel} of ${from.code}. Hour-by-hour conversion table, the IANA zones each abbreviation maps to, and what else those letters can mean.`,
+  keywords: [
+    `${from.code.toLowerCase()} to ${to.code.toLowerCase()}`,
+    `convert ${from.code.toLowerCase()} to ${to.code.toLowerCase()}`,
+    `${from.code.toLowerCase()} ${to.code.toLowerCase()} difference`,
+  ],
+  path,
+  locale,
+  availableLocales,
+  ogImage: `/og/convert/${slug}.png`,
+});
+
+const faqs = [
+  {
+    question: `What is the difference between ${from.code} and ${to.code}?`,
+    answer: `${to.code} is ${gapLabel} of ${from.code}. ${from.code} means ${from.name} at ${formatOffsetShort(from.offsetMinutes)}, and ${to.code} means ${to.name} at ${formatOffsetShort(to.offsetMinutes)}.`,
+  },
+  {
+    question: `Which time zone does this page use for ${from.code}?`,
+    answer: `${from.timeZone}. An abbreviation is not a time zone — it is a label a zone wears for part of the year — so every calculation here uses a named IANA zone and says which one. If you are writing code, use ${from.timeZone} rather than the string "${from.code}".`,
+  },
+  ...(from.alsoMeans.length > 0
+    ? [
+        {
+          question: `Does ${from.code} mean anything else?`,
+          answer: `Yes: ${from.alsoMeans.map((other) => `${other.name} at ${other.offsetLabel}`).join(', and ')}. ${from.alsoMeans[0]?.note ?? ''}`,
+        },
+      ]
+    : []),
+  ...(to.alsoMeans.length > 0
+    ? [
+        {
+          question: `Does ${to.code} mean anything else?`,
+          answer: `Yes: ${to.alsoMeans.map((other) => `${other.name} at ${other.offsetLabel}`).join(', and ')}. ${to.alsoMeans[0]?.note ?? ''}`,
+        },
+      ]
+    : []),
+  {
+    question: `Is ${from.code} a daylight saving abbreviation?`,
+    answer: from.daylight
+      ? `Yes. ${from.code} only exists during the daylight saving part of the year; outside it, the same zone is on a different abbreviation and a different offset.`
+      : `No. ${from.code} is the standard-time abbreviation. When daylight saving is in force, the same zone uses a different one.`,
+  },
+];
+
+const breadcrumbs = [
+  { name: t('breadcrumb.home'), path: '/' },
+  { name: t('nav.conversions'), path: '/convert/' },
+  { name: `${from.code} → ${to.code}` },
+];
+
+const schemas = [
+  organizationSchema(),
+  softwareApplicationSchema({
+    name: title,
+    description: metadata.description,
+    path,
+    locale,
+    subCategory: 'Time zone converter',
+  }),
+  breadcrumbListSchema(breadcrumbs, locale),
+  faqPageSchema(faqs, locale),
+];
+
+const fromTransitions = findDstTransitions(from.timeZone, CURRENT_YEAR).length;
+const toTransitions = findDstTransitions(to.timeZone, CURRENT_YEAR).length;
+
+function pad(value: number): string {
+  return String(value).padStart(2, '0');
+}
+---
+
+<BaseLayout metadata={metadata} locale={locale} schemas={schemas} breadcrumbs={breadcrumbs}>
+  <h1 class="text-[length:var(--text-3xl)]">{title}</h1>
+  <p class="prose mt-3 text-[length:var(--text-lg)] text-[var(--color-text-muted)]">{summary}</p>
+
+  {
+    ambiguous && (
+      <aside class="mt-6 rounded-[var(--radius-md)] border-2 border-[var(--color-signal)] p-4">
+        <h2 class="text-[length:var(--text-lg)]">These letters mean more than one thing</h2>
+        <p class="prose mt-2 text-[length:var(--text-sm)] text-[var(--color-text-muted)]">
+          This page assumes {from.code} means {from.name} and {to.code} means {to.name}. If you
+          meant one of the others, the offset below is wrong for you — and this is exactly how
+          meetings get booked at the wrong hour.
+        </p>
+        <ul class="mt-3 space-y-2 text-[length:var(--text-sm)]">
+          {[...from.alsoMeans, ...to.alsoMeans].map((other) => (
+            <li class="border-b border-[var(--color-rule)] pb-2">
+              <span class="font-medium">{other.name}</span>{' '}
+              <span class="tabular text-[var(--color-text-muted)]">
+                {other.offsetLabel} · {other.timeZone}
+              </span>
+              <p class="mt-1 text-[var(--color-text-muted)]">{other.note}</p>
+            </li>
+          ))}
+        </ul>
+      </aside>
+    )
+  }
+
+  <div class="mt-6">
+    <Converter
+      locale={locale}
+      fromZone={from.timeZone}
+      toZone={to.timeZone}
+      seedInstant={fromInstant}
+      headingLevel="h2"
+    />
+  </div>
+
+  <section class="mt-12">
+    <h2 class="text-[length:var(--text-2xl)]">Hour by hour</h2>
+    <p class="prose mt-2 text-[var(--color-text-muted)]">
+      Computed on a date when {from.code} is genuinely in force — using today would be wrong for half
+      the year, because a standard-time abbreviation does not exist in summer.
+    </p>
+    <div class="mt-4 overflow-x-auto">
+      <table class="w-full min-w-[20rem] max-w-md text-[length:var(--text-sm)]">
+        <thead>
+          <tr class="border-b border-[var(--color-rule)] text-left text-[var(--color-text-muted)]">
+            <th scope="col" class="py-2 pr-4 font-medium">{from.code}</th>
+            <th scope="col" class="py-2 font-medium">{to.code}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            hourTable.map((row) => (
+              <tr class="border-b border-[var(--color-rule)]">
+                <td class="tabular py-1.5 pr-4">
+                  {pad(row.fromHour)}:{pad(row.fromMinute)}
+                </td>
+                <td class="tabular py-1.5">
+                  {pad(row.toHour)}:{pad(row.toMinute)}
+                  {row.dayDelta !== 0 && (
+                    <span class="ms-2 text-[length:var(--text-xs)] text-[var(--color-signal)]">
+                      {row.dayDelta > 0 ? 'next day' : 'previous day'}
+                    </span>
+                  )}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-[length:var(--text-2xl)]">What these abbreviations actually are</h2>
+    <div class="mt-4 overflow-x-auto">
+      <table class="w-full min-w-[30rem] text-[length:var(--text-sm)]">
+        <thead>
+          <tr class="border-b border-[var(--color-rule)] text-left text-[var(--color-text-muted)]">
+            <th scope="col" class="py-2 pr-4 font-medium">&nbsp;</th>
+            <th scope="col" class="py-2 pr-4 font-medium">{from.code}</th>
+            <th scope="col" class="py-2 font-medium">{to.code}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-[var(--color-rule)]">
+            <th scope="row" class="py-2 pr-4 text-left font-normal text-[var(--color-text-muted)]"
+              >Full name</th
+            >
+            <td class="py-2 pr-4">{from.name}</td>
+            <td class="py-2">{to.name}</td>
+          </tr>
+          <tr class="border-b border-[var(--color-rule)]">
+            <th scope="row" class="py-2 pr-4 text-left font-normal text-[var(--color-text-muted)]"
+              >Representative zone</th
+            >
+            <td class="tabular py-2 pr-4">{from.timeZone}</td>
+            <td class="tabular py-2">{to.timeZone}</td>
+          </tr>
+          <tr class="border-b border-[var(--color-rule)]">
+            <th scope="row" class="py-2 pr-4 text-left font-normal text-[var(--color-text-muted)]"
+              >Offset</th
+            >
+            <td class="tabular py-2 pr-4">{formatOffsetShort(from.offsetMinutes)}</td>
+            <td class="tabular py-2">{formatOffsetShort(to.offsetMinutes)}</td>
+          </tr>
+          <tr class="border-b border-[var(--color-rule)]">
+            <th scope="row" class="py-2 pr-4 text-left font-normal text-[var(--color-text-muted)]"
+              >Seasonal</th
+            >
+            <td class="py-2 pr-4">{from.daylight ? 'Daylight saving only' : 'Standard time'}</td>
+            <td class="py-2">{to.daylight ? 'Daylight saving only' : 'Standard time'}</td>
+          </tr>
+          <tr class="border-b border-[var(--color-rule)]">
+            <th scope="row" class="py-2 pr-4 text-left font-normal text-[var(--color-text-muted)]">
+              Zone changes in {CURRENT_YEAR}
+            </th>
+            <td class="tabular py-2 pr-4">{fromTransitions}</td>
+            <td class="tabular py-2">{toTransitions}</td>
+          </tr>
+          <tr class="border-b border-[var(--color-rule)]">
+            <th scope="row" class="py-2 pr-4 text-left font-normal text-[var(--color-text-muted)]"
+              >Other meanings</th
+            >
+            <td class="py-2 pr-4"
+              >{
+                from.alsoMeans.length === 0 ? 'None in common use' : String(from.alsoMeans.length)
+              }</td
+            >
+            <td class="py-2"
+              >{to.alsoMeans.length === 0 ? 'None in common use' : String(to.alsoMeans.length)}</td
+            >
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <h2 class="text-[length:var(--text-2xl)]">{t('faq.heading')}</h2>
+    <dl class="prose mt-4 space-y-5">
+      {
+        faqs.map((faq) => (
+          <div>
+            <dt class="font-semibold">{faq.question}</dt>
+            <dd class="mt-1 text-[var(--color-text-muted)]">{faq.answer}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+
+  <nav class="mt-12" aria-label={t('related.heading')}>
+    <h2 class="text-[length:var(--text-2xl)]">{t('related.heading')}</h2>
+    <ul class="mt-4 grid gap-2 text-[length:var(--text-sm)] sm:grid-cols-2">
+      <li>
+        <a
+          href={localePath(locale, `/convert/${to.slug}-to-${from.slug}/`)}
+          class="no-underline hover:underline"
+        >
+          Convert {to.code} to {from.code}
+        </a>
+      </li>
+      <li>
+        <a
+          href={localePath(locale, '/guides/why-est-is-ambiguous/')}
+          class="no-underline hover:underline"
+        >
+          Why time zone abbreviations are ambiguous
+        </a>
+      </li>
+      <li>
+        <a href={localePath(locale, '/utc-time/')} class="no-underline hover:underline">
+          {t('nav.utcTime')}
+        </a>
+      </li>
+      <li>
+        <a href={localePath(locale, '/convert/')} class="no-underline hover:underline">
+          {t('nav.conversions')}
+        </a>
+      </li>
+    </ul>
+  </nav>
+</BaseLayout>
