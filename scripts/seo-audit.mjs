@@ -6,6 +6,17 @@
  * site to be classified as thin, and an hreflang pointing at a 404 actively
  * damages the cluster it belongs to. Both are cheap to check and catastrophic to
  * miss, so the build fails on either.
+ *
+ * Uniqueness is scoped per locale, not sitewide. Spanish and Brazilian
+ * Portuguese both write "Política de cookies"; English and French both write
+ * "Contact". Those pages are different pages for different readers, joined by a
+ * complete hreflang cluster, and treating them as duplicates would force the
+ * copy to be contorted to satisfy the checker.
+ *
+ * What a sitewide check was really catching is a separate fault with a separate
+ * name: a localised page still carrying its English title because no
+ * translation exists for it. `untranslated` tests that directly, by comparing
+ * each localised page against its own English counterpart.
  */
 import { decodeEntities, firstMatch, pass, readPages } from './lib/dist.mjs';
 
@@ -15,14 +26,40 @@ const MAX_DESCRIPTION = 155;
 const pages = await readPages();
 const built = new Set(pages.map((page) => page.url));
 
+/** Per-locale maps: locale -> (text -> first URL seen). */
 const titles = new Map();
 const descriptions = new Map();
+/** English title and description by route, to detect untranslated pages. */
+const englishByRoute = new Map();
+/** Localised pages, resolved against English after every page has been read. */
+const localisedByRoute = new Map();
+
+const LOCALE_SEGMENTS = new Set([
+  'es', 'pt-br', 'fr', 'de', 'it', 'ru', 'tr', 'ar', 'hi', 'id', 'ja', 'ko', 'zh-hans',
+]);
+
+/** '/de/guides/x/' -> { locale: 'de', route: '/guides/x/' }. English has no prefix. */
+function splitLocale(url) {
+  const first = url.split('/')[1] ?? '';
+  if (!LOCALE_SEGMENTS.has(first)) return { locale: 'en', route: url };
+  return { locale: first, route: url.slice(first.length + 1) };
+}
+
+function seenIn(map, locale) {
+  let inner = map.get(locale);
+  if (inner === undefined) {
+    inner = new Map();
+    map.set(locale, inner);
+  }
+  return inner;
+}
 const problems = {
   missingTitle: [],
   missingDescription: [],
   missingCanonical: [],
   duplicateTitle: [],
   duplicateDescription: [],
+  untranslated: [],
   longTitle: [],
   longDescription: [],
   brokenHreflang: [],
@@ -33,7 +70,13 @@ const problems = {
   relativeCanonical: [],
 };
 
-for (const page of pages) {
+// English first, so a localised page always has its counterpart to compare against.
+const ordered = [...pages].sort(
+  (a, b) => Number(splitLocale(a.url).locale !== 'en') - Number(splitLocale(b.url).locale !== 'en'),
+);
+
+for (const page of ordered) {
+  const { locale, route } = splitLocale(page.url);
   const isNoIndex = /<meta name="robots" content="noindex/.test(page.html);
 
   const title = firstMatch(page.html, /<title>([^<]*)<\/title>/);
@@ -52,9 +95,17 @@ for (const page of pages) {
     if (clean.length > MAX_TITLE) problems.longTitle.push(`${page.url} (${clean.length})`);
     // noindex pages are excluded from uniqueness: a 404 does not compete.
     if (!isNoIndex) {
-      const seen = titles.get(clean);
-      if (seen !== undefined) problems.duplicateTitle.push(`"${clean}" — ${seen} and ${page.url}`);
-      else titles.set(clean, page.url);
+      const seen = seenIn(titles, locale);
+      const previous = seen.get(clean);
+      if (previous !== undefined) {
+        problems.duplicateTitle.push(`"${clean}" — ${previous} and ${page.url}`);
+      } else seen.set(clean, page.url);
+
+      if (locale === 'en') {
+        englishByRoute.set(route, { ...englishByRoute.get(route), title: clean });
+      } else {
+        localisedByRoute.set(page.url, { route, title: clean });
+      }
     }
   }
 
@@ -64,10 +115,20 @@ for (const page of pages) {
       problems.longDescription.push(`${page.url} (${clean.length})`);
     }
     if (!isNoIndex) {
-      const seen = descriptions.get(clean);
-      if (seen !== undefined) {
-        problems.duplicateDescription.push(`"${clean.slice(0, 60)}..." — ${seen} and ${page.url}`);
-      } else descriptions.set(clean, page.url);
+      const seen = seenIn(descriptions, locale);
+      const previous = seen.get(clean);
+      if (previous !== undefined) {
+        problems.duplicateDescription.push(
+          `"${clean.slice(0, 60)}..." — ${previous} and ${page.url}`,
+        );
+      } else seen.set(clean, page.url);
+
+      if (locale === 'en') {
+        englishByRoute.set(route, { ...englishByRoute.get(route), description: clean });
+      } else {
+        const entry = localisedByRoute.get(page.url);
+        if (entry !== undefined) entry.description = clean;
+      }
     }
   }
 
@@ -93,6 +154,19 @@ for (const page of pages) {
 
     if (!hasSelf) problems.missingSelfHreflang.push(page.url);
     if (!hasXDefault) problems.missingXDefault.push(page.url);
+  }
+}
+
+// A page is untranslated when BOTH its title and description still match the
+// English original. Requiring both matters: French for "Contact" is "Contact",
+// and Spanish and Portuguese share "Política de cookies" — a title-only test
+// calls those untranslated when they are correct translations that happen to
+// coincide. The descriptions underneath them differ, and that is the tell.
+for (const [url, entry] of localisedByRoute) {
+  const english = englishByRoute.get(entry.route);
+  if (english === undefined) continue;
+  if (english.title === entry.title && english.description === entry.description) {
+    problems.untranslated.push(`${url} is still the English page`);
   }
 }
 
