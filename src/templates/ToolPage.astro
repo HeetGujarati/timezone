@@ -1,0 +1,125 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { useTranslations } from '~/lib/i18n/index.ts';
+import { buildToolMetadata } from '~/lib/seo/metadata.ts';
+import {
+  breadcrumbListSchema,
+  faqPageSchema,
+  howToSchema,
+  organizationSchema,
+  softwareApplicationSchema,
+  type FaqItem,
+  type HowToStepInput,
+} from '~/lib/seo/structured-data.ts';
+import { SITE } from '~/config/site.ts';
+import type { LocaleCode } from '~/config/locales.ts';
+
+/**
+ * Every tool page goes through here, so none can ship without breadcrumbs,
+ * a WebApplication entity, or a canonical. Sections are slots because the tools
+ * differ in shape; the SEO contract does not.
+ */
+type Props = {
+  locale: LocaleCode;
+  path: string;
+  title: string;
+  metaTitle: string;
+  description: string;
+  keywords?: readonly string[];
+  /** The answer-first opening sentence. Rendered as the first paragraph. */
+  summary: string;
+  availableLocales?: readonly LocaleCode[];
+  faqs?: readonly FaqItem[];
+  howToSteps?: readonly HowToStepInput[];
+  howToMinutes?: number;
+  featureList?: string[];
+};
+
+const {
+  locale,
+  path,
+  title,
+  metaTitle,
+  description,
+  keywords = [],
+  summary,
+  availableLocales = SITE.locales,
+  faqs = [],
+  howToSteps = [],
+  howToMinutes = 1,
+  featureList = [],
+} = Astro.props;
+
+const t = useTranslations(locale);
+
+const metadata = buildToolMetadata({
+  title: metaTitle,
+  description,
+  keywords,
+  path,
+  locale,
+  availableLocales,
+  ogImage: `/og${path}default.png`,
+});
+
+const breadcrumbs = [{ name: t('breadcrumb.home'), path: '/' }, { name: title }];
+
+const schemas: Record<string, unknown>[] = [
+  organizationSchema(),
+  softwareApplicationSchema({
+    name: `${title} — ${SITE.name}`,
+    description: metadata.description,
+    path,
+    locale,
+    subCategory: title,
+    ...(featureList.length > 0 ? { featureList } : {}),
+  }),
+  breadcrumbListSchema(breadcrumbs, locale),
+];
+
+if (howToSteps.length > 0) {
+  schemas.push(
+    howToSchema({
+      name: title,
+      description: metadata.description,
+      path,
+      locale,
+      totalTime: `PT${howToMinutes}M`,
+      steps: howToSteps,
+    }),
+  );
+}
+
+if (faqs.length > 0) {
+  schemas.push(faqPageSchema(faqs, locale));
+}
+---
+
+<BaseLayout metadata={metadata} locale={locale} schemas={schemas} breadcrumbs={breadcrumbs}>
+  <h1 class="text-[length:var(--text-3xl)]">{title}</h1>
+  <p class="prose mt-3 text-[length:var(--text-lg)] text-[var(--color-text-muted)]">{summary}</p>
+
+  <div class="mt-6">
+    <slot name="tool" />
+  </div>
+
+  <slot />
+
+  {
+    faqs.length > 0 && (
+      <section class="mt-12">
+        <h2 class="text-[length:var(--text-2xl)]">{t('faq.heading')}</h2>
+        <dl class="prose mt-4 space-y-5">
+          {faqs.map((faq) => (
+            <div>
+              <dt class="font-semibold">{faq.question}</dt>
+              <dd class="mt-1 text-[var(--color-text-muted)]">{faq.answer}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    )
+  }
+
+  <slot name="after-faq" />
+</BaseLayout>

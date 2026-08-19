@@ -1,0 +1,119 @@
+---
+import ToolPage from '~/templates/ToolPage.astro';
+import MeetingBand from '~/components/MeetingBand.astro';
+import { BUILD_INSTANT } from '~/config/build.ts';
+
+const locale = 'en' as const;
+
+const defaultZones = [
+  { timeZone: 'America/Los_Angeles', label: 'Los Angeles' },
+  { timeZone: 'America/New_York', label: 'New York' },
+  { timeZone: 'Europe/London', label: 'London' },
+  { timeZone: 'Asia/Kolkata', label: 'Mumbai' },
+  { timeZone: 'Asia/Tokyo', label: 'Tokyo' },
+];
+
+const faqs = [
+  {
+    question: 'How many time zones can I add?',
+    answer:
+      'Between two and ten. Past ten the band stops being readable at a glance, which is the entire reason to use a band rather than a list of numbers — so the limit is a design decision rather than a technical one.',
+  },
+  {
+    question: 'What counts as working hours?',
+    answer:
+      'Whatever you set. The default is 09:00 to 18:00 local time in every zone, and both ends are adjustable. The hour either side of the working day is shaded more lightly: it is reachable, but you are asking someone a favour.',
+  },
+  {
+    question: 'Why do some rows show times ending in :30 or :45?',
+    answer:
+      'Because those zones are genuinely offset by half or three-quarters of an hour. India is UTC+05:30, Nepal is UTC+05:45, the Chatham Islands are UTC+12:45. Each column in the band is the same instant, so those rows show the real local reading rather than a rounded one.',
+  },
+  {
+    question: 'What if there is no overlap at all?',
+    answer:
+      'The planner says so plainly instead of suggesting a compromise nobody agreed to. Los Angeles and Mumbai share no minute of a 09:00–18:00 day, and no amount of grid shading changes that — someone has to move. Widening the working day or splitting into two calls are the honest options.',
+  },
+  {
+    question: 'Does the plan survive a page reload?',
+    answer:
+      'Yes. Your zones, date and working hours are written into the URL, so you can bookmark a plan or send it to someone and they see exactly what you see. The zone list is also kept in your browser so the planner remembers your team next time.',
+  },
+  {
+    question: 'Does it account for daylight saving?',
+    answer:
+      'Yes, on the date you choose. Pick a date in March or October and you will see rows shift relative to each other, because that is what actually happens — the zones change their clocks on different days.',
+  },
+];
+---
+
+<ToolPage
+  locale={locale}
+  path="/meeting-planner/"
+  title="Meeting planner"
+  metaTitle="Meeting planner across time zones"
+  description="Add two to ten time zones and see a 24-hour band with working hours shaded. Find the hours everyone shares, or find out there are none."
+  keywords={[
+    'meeting planner',
+    'time zone meeting planner',
+    'schedule across time zones',
+    'best time to meet',
+  ]}
+  summary="Add the zones your team works in and the band below shows every hour of the day at once, with working hours shaded — so the overlap is a shape you see rather than a sum you do."
+  faqs={faqs}
+  howToSteps={[
+    {
+      name: 'Add your zones',
+      text: 'Add between two and ten zones. The planner remembers them for next time.',
+      anchor: 'planner-add',
+    },
+    {
+      name: 'Set the working day',
+      text: 'Adjust the start and end hours to match how your team actually works.',
+      anchor: 'planner-work-start',
+    },
+    {
+      name: 'Read the band',
+      text: 'Shaded columns are working hours. Where every row is shaded, everyone is available.',
+      anchor: 'planner-band',
+    },
+  ]}
+  howToMinutes={2}
+  featureList={[
+    'Two to ten zones on one 24-hour band',
+    'Adjustable working hours with fringe-hour shading',
+    'Shareable via the URL',
+    'Exact half-hour and 45-minute offsets',
+  ]}
+>
+  <div slot="tool" id="planner-band">
+    <MeetingBand locale={locale} zones={defaultZones} seedInstant={BUILD_INSTANT} />
+  </div>
+
+  <section class="prose mt-12">
+    <h2 class="text-[length:var(--text-2xl)]">How to read the band</h2>
+    <p class="mt-3 text-[var(--color-text-muted)]">
+      Every column is one instant. Read down a column and you see what the clock says in each
+      place at that same moment — which is the thing a list of offsets makes you compute in your
+      head, and the thing people get wrong.
+    </p>
+    <p class="mt-4 text-[var(--color-text-muted)]">
+      Three shades: working hours carry a coloured top border, the hour either side is lighter,
+      and the rest is flat. The border matters as much as the fill — the distinction never rests
+      on colour alone, so it still reads if you cannot separate those two blues.
+    </p>
+
+    <h2 class="mt-10 text-[length:var(--text-2xl)]">When there is no overlap</h2>
+    <p class="mt-3 text-[var(--color-text-muted)]">
+      Some teams genuinely have none. A 09:00–18:00 day in Los Angeles and the same in Mumbai
+      share nothing at all — Mumbai's working day ends before Los Angeles wakes up. New York and
+      Sydney share exactly one hour: 17:00 in New York is 09:00 the next morning in Sydney.
+    </p>
+    <p class="mt-4 text-[var(--color-text-muted)]">
+      When that happens the planner says so rather than shading something in and hoping. The
+      realistic choices are to widen the working day for one side, to alternate which side takes
+      the awkward call, or to stop meeting synchronously. Pretending a 22:00 slot is fine is how
+      people quietly burn out.
+    </p>
+  </section>
+</ToolPage>

@@ -1,0 +1,150 @@
+---
+import ZoneSelect from './ZoneSelect.astro';
+import { getLocale, type LocaleCode } from '~/config/locales.ts';
+import { useTranslations } from '~/lib/i18n/index.ts';
+import { toZonedDateTime } from '~/lib/time/offset.ts';
+import { toDateInputValue, toTimeInputValue } from '~/islands/lib/format.ts';
+
+/**
+ * The converter's markup. Rendered complete and meaningful; the island only adds
+ * behaviour. Both daylight-saving notes are rendered here in the reader's language
+ * and revealed by the island, so no translated string is ever shipped in JavaScript.
+ */
+type Props = {
+  locale: LocaleCode;
+  fromZone: string;
+  toZone: string;
+  /** An instant used only to prefill the date and time inputs. Never presented as "now". */
+  seedInstant: number;
+  headingLevel?: 'h1' | 'h2';
+};
+
+const { locale, fromZone, toZone, seedInstant, headingLevel = 'h2' } = Astro.props;
+const t = useTranslations(locale);
+const { hourCycle } = getLocale(locale);
+
+const seed = toZonedDateTime(seedInstant, fromZone);
+const seedDate = toDateInputValue(seed);
+const seedTime = toTimeInputValue(seed);
+
+const Heading = headingLevel;
+
+// Split around the placeholder so the number can be filled in by the island while
+// the sentence around it stays in the reader's language and word order.
+const [gapBefore, gapAfter] = t('note.gapShifted').split('{minutes}');
+---
+
+<time-converter
+  class="block rounded-[var(--radius-lg)] border border-[var(--color-rule)] bg-[var(--color-surface-raised)] p-4 md:p-6"
+  data-locale={locale}
+  data-hour-cycle={hourCycle}
+>
+  <Heading class="text-[length:var(--text-xl)]">{t('converter.heading')}</Heading>
+
+  <div class="mt-4 grid gap-4 md:grid-cols-2">
+    <ZoneSelect id="convert-from" name="from" label={t('common.from')} value={fromZone} />
+    <ZoneSelect id="convert-to" name="to" label={t('common.to')} value={toZone} />
+  </div>
+
+  <div class="mt-4 grid gap-4 sm:grid-cols-2">
+    <div class="flex flex-col gap-1">
+      <label
+        for="convert-date"
+        class="text-[length:var(--text-sm)] font-medium text-[var(--color-text-muted)]"
+      >
+        {t('common.date')}
+      </label>
+      <input
+        id="convert-date"
+        data-role="date"
+        type="date"
+        value={seedDate}
+        class="w-full rounded-[var(--radius-md)] border border-[var(--color-rule)] bg-[var(--color-surface)] px-3 py-2 font-[family-name:var(--font-mono)]"
+      />
+    </div>
+    <div class="flex flex-col gap-1">
+      <label
+        for="convert-time"
+        class="text-[length:var(--text-sm)] font-medium text-[var(--color-text-muted)]"
+      >
+        {t('common.time')}
+      </label>
+      <input
+        id="convert-time"
+        data-role="time"
+        type="time"
+        value={seedTime}
+        class="w-full rounded-[var(--radius-md)] border border-[var(--color-rule)] bg-[var(--color-surface)] px-3 py-2 font-[family-name:var(--font-mono)]"
+      />
+    </div>
+  </div>
+
+  <div class="mt-3 flex flex-wrap gap-2">
+    <button
+      type="button"
+      data-role="swap"
+      hidden
+      class="rounded-[var(--radius-md)] border border-[var(--color-rule)] px-3 py-1.5 text-[length:var(--text-sm)] text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
+    >
+      {t('converter.swap')}
+    </button>
+    <button
+      type="button"
+      data-role="now"
+      hidden
+      class="rounded-[var(--radius-md)] border border-[var(--color-rule)] px-3 py-1.5 text-[length:var(--text-sm)] text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
+    >
+      {t('converter.useNow')}
+    </button>
+  </div>
+
+  <p
+    data-role="error"
+    hidden
+    role="alert"
+    class="mt-3 text-[length:var(--text-sm)] text-[var(--color-signal)]"
+  >
+  </p>
+
+  <div
+    data-role="output"
+    aria-live="polite"
+    class="mt-5 rounded-[var(--radius-md)] bg-[var(--color-surface-sunken)] p-4"
+  >
+    <p class="text-[length:var(--text-xs)] tracking-wide text-[var(--color-text-muted)] uppercase">
+      {t('converter.resultLabel')}
+    </p>
+    <p
+      data-out="time"
+      class="tabular mt-1 text-[length:var(--text-3xl)] leading-none font-semibold"
+    >
+      —
+    </p>
+    <p data-out="date" class="tabular mt-2 text-[length:var(--text-sm)]">—</p>
+    <p data-out="zone" class="tabular mt-1 text-[length:var(--text-sm)] text-[var(--color-text-muted)]">
+      —
+    </p>
+    <p data-out="difference" class="mt-3 text-[length:var(--text-sm)]">—</p>
+  </div>
+
+  <div
+    data-role="note"
+    hidden
+    class="mt-3 rounded-[var(--radius-md)] border border-[var(--color-signal)] px-3 py-2 text-[length:var(--text-sm)]"
+  >
+    <p data-note="gap" hidden>
+      {gapBefore}<span data-note-minutes class="tabular">60</span>{gapAfter}
+    </p>
+    <p data-note="ambiguous" hidden>{t('note.ambiguous')}</p>
+  </div>
+
+  <noscript>
+    <p class="mt-3 text-[length:var(--text-sm)] text-[var(--color-text-muted)]">
+      {t('converter.noJs')}
+    </p>
+  </noscript>
+</time-converter>
+
+<script>
+  import '~/islands/converter.ts';
+</script>
