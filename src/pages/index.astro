@@ -1,0 +1,15 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { SITE } from '~/config/site.ts';
+---
+
+<BaseLayout
+  locale="en"
+  title={`${SITE.name} — time zone converter, meeting planner and world clock`}
+  description="Convert any time zone to any other, plan meetings across continents and read a live world clock. Free, fast and accurate to the IANA time zone database."
+>
+  <main>
+    <h1>{SITE.name}</h1>
+    <p>{SITE.tagline}</p>
+  </main>
+</BaseLayout>

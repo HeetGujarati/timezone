@@ -1,0 +1,94 @@
+import js from '@eslint/js';
+import { defineConfig, globalIgnores } from 'eslint/config';
+import tseslint from 'typescript-eslint';
+import astro from 'eslint-plugin-astro';
+import globals from 'globals';
+
+/**
+ * The `no-restricted-*` blocks below are a hard security gate, not style advice:
+ * this site's CSP carries no 'unsafe-inline' and no 'unsafe-eval', so any of
+ * these APIs reaching production would either break the page or open the exact
+ * XSS hole the CSP exists to close. CI fails on violation. See SECURITY.md.
+ */
+const BANNED_GLOBALS = [
+  {
+    name: 'eval',
+    message: 'Banned: the CSP forbids unsafe-eval. Rewrite without dynamic evaluation.',
+  },
+];
+
+const BANNED_PROPERTIES = [
+  {
+    property: 'innerHTML',
+    message: 'Banned: assign textContent, or build nodes with createElement.',
+  },
+  {
+    property: 'outerHTML',
+    message: 'Banned: assign textContent, or build nodes with createElement.',
+  },
+  {
+    property: 'insertAdjacentHTML',
+    message: 'Banned: use insertAdjacentElement with a built node.',
+  },
+  { property: 'execScript', message: 'Banned: dynamic script execution is forbidden by the CSP.' },
+];
+
+const BANNED_SYNTAX = [
+  {
+    selector: "NewExpression[callee.name='Function']",
+    message: 'Banned: new Function() is dynamic evaluation and the CSP forbids unsafe-eval.',
+  },
+  {
+    selector: 'CallExpression[callee.name=/^(setTimeout|setInterval)$/] > Literal:first-child',
+    message: 'Banned: string-bodied setTimeout/setInterval is eval in disguise. Pass a function.',
+  },
+  {
+    selector: "MemberExpression[property.name='innerHTML']",
+    message: 'Banned: assign textContent, or build nodes with createElement.',
+  },
+  {
+    selector: "MemberExpression[property.name='outerHTML']",
+    message: 'Banned: assign textContent, or build nodes with createElement.',
+  },
+];
+
+export default defineConfig([
+  globalIgnores([
+    'dist/**',
+    '.astro/**',
+    'node_modules/**',
+    'coverage/**',
+    'playwright-report/**',
+    'test-results/**',
+    '.lighthouseci/**',
+  ]),
+  js.configs.recommended,
+  ...tseslint.configs.strict,
+  ...astro.configs.recommended,
+  ...astro.configs['jsx-a11y-strict'],
+  {
+    languageOptions: {
+      globals: { ...globals.browser, ...globals.node },
+    },
+    rules: {
+      'no-restricted-globals': ['error', ...BANNED_GLOBALS],
+      'no-restricted-properties': ['error', ...BANNED_PROPERTIES],
+      'no-restricted-syntax': ['error', ...BANNED_SYNTAX],
+      'no-implied-eval': 'error',
+      'no-script-url': 'error',
+      '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/consistent-type-imports': 'error',
+      eqeqeq: ['error', 'always'],
+      'prefer-const': 'error',
+    },
+  },
+  {
+    files: ['scripts/**/*.mjs', 'astro.config.ts', '*.config.ts', '*.config.js'],
+    languageOptions: { globals: globals.node },
+    rules: { 'no-console': 'off' },
+  },
+  {
+    files: ['**/*.test.ts', 'tests/**/*.ts'],
+    rules: { '@typescript-eslint/no-non-null-assertion': 'off' },
+  },
+]);

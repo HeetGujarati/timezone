@@ -1,0 +1,29 @@
+---
+import '~/styles/global.css';
+import { SITE } from '~/config/site.ts';
+import { getLocale, type LocaleCode } from '~/config/locales.ts';
+
+type Props = {
+  title: string;
+  description: string;
+  locale: LocaleCode;
+};
+
+const { title, description, locale } = Astro.props;
+const { bcp47, dir } = getLocale(locale);
+const canonical = new URL(Astro.url.pathname, SITE.origin).href;
+---
+
+<!doctype html>
+<html lang={bcp47} dir={dir}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
