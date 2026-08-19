@@ -141,7 +141,13 @@ export function buildMetadata(input: MetadataInput): ResolvedMetadata {
   const resolvedTitle = formatTitle(title);
   const resolvedDescription = truncateDescription(description ?? SITE.defaultDescription);
   const canonical = absoluteUrl(localePath(locale, path));
-  const alternates = buildAlternates(path, availableLocales);
+  // A noindex page is not part of an hreflang cluster. Search engines ignore
+  // hreflang that points at pages they will not index, and the 404 pages were
+  // emitting thirteen localised annotations that could never be honoured — plus
+  // an x-default aimed at English from every one of them, with no self-reference.
+  const alternates: AlternateLinks = noIndex
+    ? { languages: {} }
+    : buildAlternates(path, availableLocales);
 
   const alternateLocales = availableLocales
     .filter((code) => code !== locale)

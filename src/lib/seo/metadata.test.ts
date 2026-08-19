@@ -166,3 +166,49 @@ describe('buildMetadata', () => {
     expect(buildMetadata(base).title.length).toBeLessThanOrEqual(60);
   });
 });
+
+describe('noindex pages and hreflang', () => {
+  it('emits no language alternates when the page is noindex', () => {
+    // Google ignores hreflang pointing at pages it will not index, so a
+    // noindex page annotating thirteen localised siblings is markup that can
+    // never be honoured — and every one of those siblings was missing its own
+    // self-reference, which is what the SEO audit caught.
+    const metadata = buildMetadata({
+      title: 'Page not found',
+      description: 'That page does not exist.',
+      path: '/404/',
+      locale: 'ar',
+      availableLocales: ['en', 'ar', 'de'],
+      noIndex: true,
+    });
+
+    expect(metadata.alternates.languages).toEqual({});
+    expect(metadata.robots.index).toBe(false);
+  });
+
+  it('still gives a noindex page its own canonical', () => {
+    const metadata = buildMetadata({
+      title: 'Page not found',
+      description: 'That page does not exist.',
+      path: '/404/',
+      locale: 'ar',
+      availableLocales: ['en', 'ar'],
+      noIndex: true,
+    });
+
+    expect(metadata.canonical).toContain('/ar/404/');
+  });
+
+  it('emits alternates as usual for an indexable page', () => {
+    const metadata = buildMetadata({
+      title: 'Time zone converter',
+      description: 'Convert any zone.',
+      path: '/',
+      locale: 'ar',
+      availableLocales: ['en', 'ar', 'de'],
+    });
+
+    expect(Object.keys(metadata.alternates.languages)).toContain('x-default');
+    expect(Object.keys(metadata.alternates.languages).length).toBeGreaterThan(1);
+  });
+});
