@@ -54,7 +54,7 @@ RFC 3339 adalah profil yang diperketat untuk protokol internet. Ia mensyaratkan 
 
 Lebih jarang dipakai, dan baik diketahui saat Anda menjumpainya.
 
-**Durasi** diawali `P` dari period, dan `T` memisahkan bagian tanggal dari bagian waktu:
+**Durasi** diawali `P` dari «period», dan `T` memisahkan bagian tanggal dari bagian waktu:
 
 - `P3Y6M4D` — tiga tahun, enam bulan, empat hari
 - `PT1H30M` — satu jam tiga puluh menit

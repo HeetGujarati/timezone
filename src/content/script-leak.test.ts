@@ -70,6 +70,9 @@ const ALLOWED_LATIN = new Set(
     // Product, project and standard names the guides cite by name.
     'Reddit', 'Mozilla', 'Linux', 'Cloudflare', 'DNS', 'GPS', 'TAI', 'UT1', 'BIPM',
     'Greenwich', 'Newfoundland', 'Kiritimati', 'Olson', 'British', 'Summer', 'Time',
+    'AOLserver', 'PostgreSQL', 'MySQL', 'SQL', 'Server', 'Java', 'Python', 'Go',
+    'NTP', 'NTPv', 'pandas', 'schema', 'org', 'BIGINT', 'TIMESTAMP', 'TIMESTAMPTZ',
+    'DATETIME', 'time_t', 'Instant', 'int', 'long',
   ].map((term) => term.toLowerCase()),
 );
 
