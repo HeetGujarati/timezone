@@ -60,6 +60,13 @@ const ALLOWED_LATIN = new Set(
     'meridiem', 'prefers', 'reduced', 'motion', 'aria', 'live', 'polite', 'Apollo',
     'Unix', 'CUT', 'TUC', 'EST', 'EDT', 'CET', 'CEST', 'IST', 'JST', 'KST', 'AEDT',
     'AKDT', 'PST', 'PDT', 'BST', 'UTC-5', 'UTC-4', 'UTC+0', 'UTC+3',
+    // The official English names the abbreviations stand for. The guide on
+    // ambiguous abbreviations is *about* these strings, so they stay in English
+    // in every locale — translating "Indian Standard Time" would destroy the
+    // point, which is that three different standards share the letters IST.
+    'Indian', 'Irish', 'Israel', 'Central', 'China', 'Cuba', 'Pacific',
+    'Philippine', 'Bangladesh', 'Eastern', 'Australian', 'European', 'Standard',
+    'CST', 'AEST', 'NZDT', 'NZST', 'ICU',
     // Product, project and standard names the guides cite by name.
     'Reddit', 'Mozilla', 'Linux', 'Cloudflare', 'DNS', 'GPS', 'TAI', 'UT1', 'BIPM',
     'Greenwich', 'Newfoundland', 'Kiritimati', 'Olson', 'British', 'Summer', 'Time',
