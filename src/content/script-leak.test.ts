@@ -72,7 +72,7 @@ const ALLOWED_LATIN = new Set(
     'Greenwich', 'Newfoundland', 'Kiritimati', 'Olson', 'British', 'Summer', 'Time',
     'AOLserver', 'PostgreSQL', 'MySQL', 'SQL', 'Server', 'Java', 'Python', 'Go',
     'NTP', 'NTPv', 'pandas', 'schema', 'org', 'BIGINT', 'TIMESTAMP', 'TIMESTAMPTZ',
-    'DATETIME', 'time_t', 'Instant', 'int', 'long',
+    'DATETIME', 'time_t', 'Instant', 'int', 'long', 'Postgres', 'DynamoDB', 'schema',
   ].map((term) => term.toLowerCase()),
 );
 
