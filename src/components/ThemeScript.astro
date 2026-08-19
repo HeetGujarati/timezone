@@ -1,0 +1,25 @@
+---
+/**
+ * The one inline script on the site.
+ *
+ * It must be inline and it must run before first paint, or a reader who chose dark
+ * gets a white flash on every navigation. Because it is inline, it cannot be
+ * covered by `script-src 'self'` — so integrations/csp-hashes.ts computes its
+ * SHA-256 at build time and writes that hash into the CSP in dist/_headers.
+ * The CSP still carries no 'unsafe-inline'. See SECURITY.md.
+ *
+ * Kept deliberately tiny: read one key, set one attribute, swallow any error a
+ * locked-down browser throws for touching localStorage.
+ */
+---
+
+<script is:inline>
+  try {
+    const stored = localStorage.getItem('meridiem-theme');
+    if (stored === 'dark' || stored === 'light') {
+      document.documentElement.setAttribute('data-theme', stored);
+    }
+  } catch {
+    /* Storage denied — fall back to the prefers-color-scheme media query. */
+  }
+</script>

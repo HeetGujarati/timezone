@@ -39,8 +39,6 @@ const schemas = [
 ---
 
 <BaseLayout metadata={metadata} locale={locale} schemas={schemas}>
-  <main>
-    <h1>{SITE.name}</h1>
-    <p>{SITE.tagline}</p>
-  </main>
+  <h1 class="text-[length:var(--text-3xl)]">Convert time zones</h1>
+  <p class="prose mt-3 text-[var(--color-text-muted)]">{SITE.tagline}</p>
 </BaseLayout>

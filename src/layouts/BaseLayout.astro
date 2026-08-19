@@ -1,18 +1,26 @@
 ---
 import '~/styles/global.css';
 import SeoHead from '~/components/SeoHead.astro';
+import SiteHeader from '~/components/SiteHeader.astro';
+import SiteFooter from '~/components/SiteFooter.astro';
+import ThemeScript from '~/components/ThemeScript.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
 import { documentAttributes } from '~/lib/seo/metadata.ts';
+import { useTranslations } from '~/lib/i18n/index.ts';
 import type { ResolvedMetadata } from '~/lib/seo/types.ts';
+import type { BreadcrumbItem } from '~/lib/seo/structured-data.ts';
 import type { LocaleCode } from '~/config/locales.ts';
 
 type Props = {
   metadata: ResolvedMetadata;
   locale: LocaleCode;
   schemas?: Record<string, unknown>[];
+  breadcrumbs?: readonly BreadcrumbItem[];
 };
 
-const { metadata, locale, schemas = [] } = Astro.props;
+const { metadata, locale, schemas = [], breadcrumbs = [] } = Astro.props;
 const { lang, dir } = documentAttributes(locale);
+const t = useTranslations(locale);
 ---
 
 <!doctype html>
@@ -20,9 +28,24 @@ const { lang, dir } = documentAttributes(locale);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <ThemeScript />
     <SeoHead metadata={metadata} schemas={schemas} />
   </head>
-  <body>
-    <slot />
+  <body class="flex min-h-screen flex-col">
+    <a href="#main" class="skip-link">{t('site.skipToContent')}</a>
+    <SiteHeader locale={locale} />
+
+    <main id="main" class="shell flex-1 py-8" tabindex="-1">
+      {
+        breadcrumbs.length > 0 && (
+          <div class="mb-6">
+            <Breadcrumbs items={breadcrumbs} locale={locale} label={t('breadcrumb.label')} />
+          </div>
+        )
+      }
+      <slot />
+    </main>
+
+    <SiteFooter locale={locale} />
   </body>
 </html>

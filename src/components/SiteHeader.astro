@@ -1,0 +1,75 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+import { localePath, type LocaleCode } from '~/config/locales.ts';
+import { useTranslations } from '~/lib/i18n/index.ts';
+import { SITE } from '~/config/site.ts';
+
+type Props = { locale: LocaleCode };
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+const primaryLinks = [
+  { href: '/meeting-planner/', label: t('nav.meetingPlanner') },
+  { href: '/world-clock/', label: t('nav.worldClock') },
+  { href: '/time-difference/', label: t('nav.timeDifference') },
+  { href: '/dst-changes/', label: t('nav.dstChanges') },
+  { href: '/guides/', label: t('nav.guides') },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="border-b border-[var(--color-rule)] bg-[var(--color-surface-raised)]">
+  <div class="shell flex h-14 items-center justify-between gap-4">
+    <a
+      href={localePath(locale, '/')}
+      class="font-[family-name:var(--font-display)] text-[length:var(--text-lg)] font-semibold tracking-tight text-[var(--color-text)] no-underline"
+    >
+      {SITE.name}
+    </a>
+
+    <nav aria-label={t('nav.label')} class="hidden md:block">
+      <ul class="flex items-center gap-5 text-[length:var(--text-sm)]">
+        {
+          primaryLinks.map((link) => {
+            const href = localePath(locale, link.href);
+            const isCurrent = currentPath === href;
+            return (
+              <li>
+                <a
+                  href={href}
+                  class="text-[var(--color-text-muted)] no-underline hover:text-[var(--color-text)] aria-[current=page]:text-[var(--color-text)]"
+                  aria-current={isCurrent ? 'page' : undefined}
+                >
+                  {link.label}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+
+    <ThemeToggle />
+  </div>
+
+  <nav aria-label={t('nav.tools')} class="border-t border-[var(--color-rule)] md:hidden">
+    <ul
+      class="shell flex items-center gap-4 overflow-x-auto py-2 text-[length:var(--text-sm)] whitespace-nowrap"
+    >
+      {
+        primaryLinks.map((link) => (
+          <li>
+            <a
+              href={localePath(locale, link.href)}
+              class="text-[var(--color-text-muted)] no-underline"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>

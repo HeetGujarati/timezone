@@ -1,0 +1,41 @@
+---
+import { localePath, type LocaleCode } from '~/config/locales.ts';
+import type { BreadcrumbItem } from '~/lib/seo/structured-data.ts';
+
+/**
+ * Rendered visually as well as in structured data — Google's guidance is that the
+ * markup should describe something a reader can actually see and use.
+ */
+type Props = {
+  items: readonly BreadcrumbItem[];
+  locale: LocaleCode;
+  label: string;
+};
+
+const { items, locale, label } = Astro.props;
+---
+
+<nav aria-label={label} class="text-[length:var(--text-sm)] text-[var(--color-text-muted)]">
+  <ol class="flex flex-wrap items-center gap-x-2 gap-y-1">
+    {
+      items.map((item, index) => (
+        <li class="flex items-center gap-x-2">
+          {index > 0 && (
+            <span aria-hidden="true" class="text-[var(--color-rule)]">
+              /
+            </span>
+          )}
+          {item.path === undefined ? (
+            <span aria-current="page" class="text-[var(--color-text)]">
+              {item.name}
+            </span>
+          ) : (
+            <a href={localePath(locale, item.path)} class="no-underline hover:underline">
+              {item.name}
+            </a>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>

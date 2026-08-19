@@ -1,0 +1,89 @@
+---
+import { localePath, type LocaleCode } from '~/config/locales.ts';
+import { useTranslations } from '~/lib/i18n/index.ts';
+import { SITE } from '~/config/site.ts';
+
+type Props = { locale: LocaleCode };
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+const columns = [
+  {
+    heading: t('footer.tools'),
+    links: [
+      { href: '/', label: t('nav.converter') },
+      { href: '/meeting-planner/', label: t('nav.meetingPlanner') },
+      { href: '/world-clock/', label: t('nav.worldClock') },
+      { href: '/time-difference/', label: t('nav.timeDifference') },
+      { href: '/working-hours-overlap/', label: t('nav.workingHoursOverlap') },
+    ],
+  },
+  {
+    heading: t('footer.explore'),
+    links: [
+      { href: '/unix-timestamp-converter/', label: t('nav.unixTimestamp') },
+      { href: '/duration-calculator/', label: t('nav.durationCalculator') },
+      { href: '/countdown/', label: t('nav.countdown') },
+      { href: '/utc-time/', label: t('nav.utcTime') },
+      { href: '/dst-changes/', label: t('nav.dstChanges') },
+    ],
+  },
+  {
+    heading: t('footer.about'),
+    links: [
+      { href: '/time-in/', label: t('nav.cities') },
+      { href: '/convert/', label: t('nav.conversions') },
+      { href: '/guides/', label: t('nav.guides') },
+      { href: '/about/', label: t('page.about.title') },
+      { href: '/contact/', label: t('page.contact.title') },
+    ],
+  },
+  {
+    heading: t('footer.legal'),
+    links: [
+      { href: '/privacy/', label: t('page.privacy.title') },
+      { href: '/terms/', label: t('page.terms.title') },
+      { href: '/cookies/', label: t('page.cookies.title') },
+      { href: '/accessibility/', label: t('page.accessibility.title') },
+    ],
+  },
+];
+---
+
+<footer class="mt-16 border-t border-[var(--color-rule)] bg-[var(--color-surface-raised)]">
+  <div class="shell py-10">
+    <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+      {
+        columns.map((column) => (
+          <div>
+            <h2 class="font-[family-name:var(--font-body)] text-[length:var(--text-xs)] font-semibold tracking-wide text-[var(--color-text-muted)] uppercase">
+              {column.heading}
+            </h2>
+            <ul class="mt-3 space-y-2 text-[length:var(--text-sm)]">
+              {column.links.map((link) => (
+                <li>
+                  <a
+                    href={localePath(locale, link.href)}
+                    class="text-[var(--color-text-muted)] no-underline hover:text-[var(--color-text)]"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <p
+      class="prose mt-10 border-t border-[var(--color-rule)] pt-6 text-[length:var(--text-sm)] text-[var(--color-text-muted)]"
+    >
+      {t('footer.builtWith')}
+    </p>
+    <p class="mt-2 text-[length:var(--text-sm)] text-[var(--color-text-muted)]">
+      {SITE.name} — {t('footer.rights')}
+    </p>
+  </div>
+</footer>
