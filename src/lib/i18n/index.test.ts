@@ -17,8 +17,19 @@ describe('useTranslations', () => {
     expect(t('dst.clocksForward')).toContain('{minutes}');
   });
 
-  it('falls back to English for a locale with no dictionary yet', () => {
-    const t = useTranslations('ja');
+  it('loads each locale its own dictionary rather than English', () => {
+    // Every locale now has one. When this suite was written none did, and the
+    // test asserted the fallback — which quietly became a test that Japanese
+    // was untranslated.
+    expect(useTranslations('ja')('common.convert')).toBe('変換');
+    expect(useTranslations('de')('common.convert')).toBe('Umrechnen');
+    expect(useTranslations('ar')('common.convert')).toBe('حوِّل');
+  });
+
+  it('still falls back to English for a locale with no dictionary', () => {
+    // The fallback path is what keeps a new locale from rendering blank while
+    // its dictionary is being written.
+    const t = useTranslations('xx' as never);
     expect(t('common.convert')).toBe('Convert');
   });
 
