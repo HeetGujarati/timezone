@@ -1,4 +1,6 @@
 ---
+import { countryName } from '~/lib/content/country.ts';
+import { getMetaTemplates } from '~/content/meta/templates.ts';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import LiveClock from '~/components/LiveClock.astro';
 import { useTranslations } from '~/lib/i18n/index.ts';
@@ -39,9 +41,16 @@ const { city, locale, availableLocales } = Astro.props;
 const t = useTranslations(locale);
 
 const path = `/time-in/${city.slug}/`;
-const title = `Time in ${city.name}`;
 
 const transitions = findDstTransitions(city.timeZone, CURRENT_YEAR);
+
+const meta = getMetaTemplates(locale);
+const cityMetaInput = {
+  city: city.name,
+  country: countryName(locale, city.countryCode, city.country),
+  hasTransitions: transitions.length > 0,
+};
+const title = meta.cityTitle(cityMetaInput);
 const nextTransitions = [...transitions, ...findDstTransitions(city.timeZone, CURRENT_YEAR + 1)]
   .filter((transition) => transition.instant > BUILD_INSTANT)
   .slice(0, 2);
@@ -98,7 +107,7 @@ const summary = pickVariant(
 
 const metadata = buildToolMetadata({
   title,
-  description: `Current local time in ${city.name}, ${city.country} — live clock, UTC offset, daylight saving dates${transitions.length === 0 ? '' : ' for this year and next'}, sunrise and sunset, and conversions to major cities.`,
+  description: meta.cityDescription(cityMetaInput),
   keywords: [
     `time in ${city.name.toLowerCase()}`,
     `${city.name.toLowerCase()} time`,

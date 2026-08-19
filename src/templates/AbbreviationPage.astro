@@ -1,4 +1,6 @@
 ---
+import { formatDuration } from '~/lib/content/duration.ts';
+import { getMetaTemplates } from '~/content/meta/templates.ts';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import Converter from '~/components/Converter.astro';
 import { useTranslations } from '~/lib/i18n/index.ts';
@@ -29,7 +31,7 @@ const { from, to, slug } = pair;
 const t = useTranslations(locale);
 
 const path = `/convert/${slug}/`;
-const title = `Convert ${from.code} to ${to.code}`;
+
 
 /**
  * Abbreviation pages compute against the *representative zone* for each
@@ -57,6 +59,15 @@ const gapLabel =
     ? 'the same time'
     : `${hours > 0 ? `${hours} hour${hours === 1 ? '' : 's'}` : ''}${minutes > 0 ? `${hours > 0 ? ' ' : ''}${minutes} minutes` : ''} ${differenceMinutes > 0 ? 'ahead' : 'behind'}`;
 
+const abbrMetaInput = {
+  from: from.code,
+  to: to.code,
+  difference: formatDuration(locale, differenceMinutes),
+  targetAhead: differenceMinutes > 0,
+  sameTime: differenceMinutes === 0,
+};
+const title = getMetaTemplates(locale).abbreviationTitle(abbrMetaInput);
+
 const hourTable = buildHourTable(from.timeZone, to.timeZone, fromInstant);
 
 const ambiguous = from.alsoMeans.length > 0 || to.alsoMeans.length > 0;
@@ -74,7 +85,7 @@ const summary = pickVariant(
 
 const metadata = buildToolMetadata({
   title,
-  description: `${to.code} is ${gapLabel} of ${from.code}. Hour-by-hour conversion table, the IANA zones each abbreviation maps to, and what else those letters can mean.`,
+  description: getMetaTemplates(locale).abbreviationDescription(abbrMetaInput),
   keywords: [
     `${from.code.toLowerCase()} to ${to.code.toLowerCase()}`,
     `convert ${from.code.toLowerCase()} to ${to.code.toLowerCase()}`,

@@ -325,7 +325,7 @@ export const copy: PageCopy = {
 
     utcTime: {
       title: 'Waktu UTC',
-      metaTitle: 'Waktu UTC sekarang — waktu universal terkoordinasi',
+      metaTitle: 'Waktu UTC sekarang — waktu universal',
       description:
         'Waktu UTC saat ini yang berdetak langsung, plus apa sebenarnya UTC itu, bedanya dengan GMT, dan terhadap apa selisih setiap zona diukur.',
       summary:

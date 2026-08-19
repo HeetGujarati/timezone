@@ -11,6 +11,8 @@ import {
 } from '~/lib/seo/structured-data.ts';
 import type { LocaleCode } from '~/config/locales.ts';
 import { hrefFor } from '~/lib/i18n/routes.ts';
+import { formatDuration } from '~/lib/content/duration.ts';
+import { getMetaTemplates } from '~/content/meta/templates.ts';
 import { buildPairFacts } from '~/lib/content/pair-facts.ts';
 import {
   callWindowSentence,
@@ -37,13 +39,21 @@ const facts = buildPairFacts(from, to, BUILD_INSTANT);
 const copyInput = { from, to, slug, facts };
 
 const path = `/convert/${slug}/`;
-const title = `Convert ${from.name} time to ${to.name} time`;
+
+const meta = getMetaTemplates(locale);
+const metaInput = {
+  from: from.name,
+  to: to.name,
+  difference: formatDuration(locale, facts.differenceMinutes),
+  targetAhead: facts.targetAhead,
+  sameZone: facts.sameZone,
+  sameTime: facts.sameTime,
+};
+const title = meta.pairTitle(metaInput);
 
 const metadata = buildToolMetadata({
   title,
-  description: facts.sameZone
-    ? `${from.name} and ${to.name} share a time zone, so there is no difference between them. Hour-by-hour table, daylight saving dates and the zone identifiers.`
-    : `${to.name} is ${facts.differenceLabel} ${from.name}. Hour-by-hour conversion table, daylight saving dates for both cities, and the hours you can actually call.`,
+  description: meta.pairDescription(metaInput),
   keywords: [
     `${from.name.toLowerCase()} to ${to.name.toLowerCase()}`,
     `${from.name.toLowerCase()} ${to.name.toLowerCase()} time difference`,
