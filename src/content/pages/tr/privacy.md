@@ -1,6 +1,6 @@
 ---
-title: Gizlilik politikası
-description: Bu site hiçbir şey toplamaz, çerez koymaz ve üçüncü taraf betiği yüklemez. Bunun tam olarak ne demek olduğu burada.
+title: "Gizlilik politikası"
+description: "Bu site hiçbir şey toplamaz, çerez koymaz ve üçüncü taraf betiği yüklemez. Bunun tam olarak ne demek olduğu burada."
 order: 3
 updatedAt: '2026-01-15'
 ---

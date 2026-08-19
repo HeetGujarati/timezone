@@ -1,6 +1,6 @@
 ---
-title: Kontak
-description: Cara melaporkan kekeliruan, mengajukan pertanyaan, atau menyampaikan masalah keamanan.
+title: "Kontak"
+description: "Cara melaporkan kekeliruan, mengajukan pertanyaan, atau menyampaikan masalah keamanan."
 order: 2
 updatedAt: '2026-01-15'
 ---

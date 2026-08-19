@@ -1,6 +1,6 @@
 ---
-title: Barrierefreiheit
-description: Was diese Seite anstrebt, was automatisch geprüft wird und was zu tun ist, wenn etwas für Sie nicht funktioniert.
+title: "Barrierefreiheit"
+description: "Was diese Seite anstrebt, was automatisch geprüft wird und was zu tun ist, wenn etwas für Sie nicht funktioniert."
 order: 6
 updatedAt: '2026-01-15'
 ---

@@ -1,6 +1,6 @@
 ---
-title: 关于 Meridiem
-description: 这个网站为什么存在，它如何计算所展示的内容，以及它刻意不做的事。
+title: "关于 Meridiem"
+description: "这个网站为什么存在，它如何计算所展示的内容，以及它刻意不做的事。"
 order: 1
 updatedAt: '2026-01-15'
 ---

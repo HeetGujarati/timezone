@@ -1,6 +1,6 @@
 ---
-title: Meridiem について
-description: このサイトが存在する理由、表示する内容をどう計算しているか、そして意図的にやらないこと。
+title: "Meridiem について"
+description: "このサイトが存在する理由、表示する内容をどう計算しているか、そして意図的にやらないこと。"
 order: 1
 updatedAt: '2026-01-15'
 ---

@@ -1,6 +1,6 @@
 ---
-title: Accesibilidad
-description: Qué se propone este sitio, qué se comprueba automáticamente y qué hacer si algo no te funciona.
+title: "Accesibilidad"
+description: "Qué se propone este sitio, qué se comprueba automáticamente y qué hacer si algo no te funciona."
 order: 6
 updatedAt: '2026-01-15'
 ---

@@ -1,6 +1,6 @@
 ---
-title: Cookie 政策
-description: 本站完全不设置 Cookie。这里说明它在本地保存了什么，以及一旦启用广告会有什么变化。
+title: "Cookie 政策"
+description: "本站完全不设置 Cookie。这里说明它在本地保存了什么，以及一旦启用广告会有什么变化。"
 order: 5
 updatedAt: '2026-01-15'
 ---

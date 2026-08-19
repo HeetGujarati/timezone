@@ -1,6 +1,6 @@
 ---
-title: Política de cookies
-description: Este sitio no pone ninguna cookie. Aquí está lo que sí guarda en local y qué cambiaría si se activara la publicidad.
+title: "Política de cookies"
+description: "Este sitio no pone ninguna cookie. Aquí está lo que sí guarda en local y qué cambiaría si se activara la publicidad."
 order: 5
 updatedAt: '2026-01-15'
 ---

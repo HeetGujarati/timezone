@@ -1,6 +1,6 @@
 ---
-title: İletişim
-description: Bir hatayı nasıl bildirirsiniz, nasıl soru sorarsınız ya da bir güvenlik sorununu nasıl iletirsiniz.
+title: "İletişim"
+description: "Bir hatayı nasıl bildirirsiniz, nasıl soru sorarsınız ya da bir güvenlik sorununu nasıl iletirsiniz."
 order: 2
 updatedAt: '2026-01-15'
 ---

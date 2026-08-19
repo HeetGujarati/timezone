@@ -1,6 +1,6 @@
 ---
-title: Accessibilità
-description: Che cosa si prefigge questo sito, che cosa viene verificato in automatico e cosa fare se qualcosa non funziona per te.
+title: "Accessibilità"
+description: "Che cosa si prefigge questo sito, che cosa viene verificato in automatico e cosa fare se qualcosa non funziona per te."
 order: 6
 updatedAt: '2026-01-15'
 ---

@@ -1,6 +1,6 @@
 ---
-title: Meridiem 소개
-description: 이 사이트가 존재하는 이유, 보여 주는 것을 어떻게 계산하는지, 그리고 일부러 하지 않는 일.
+title: "Meridiem 소개"
+description: "이 사이트가 존재하는 이유, 보여 주는 것을 어떻게 계산하는지, 그리고 일부러 하지 않는 일."
 order: 1
 updatedAt: '2026-01-15'
 ---

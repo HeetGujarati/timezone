@@ -1,6 +1,6 @@
 ---
-title: Über Meridiem
-description: Warum es diese Seite gibt, wie sie berechnet, was sie zeigt, und was sie bewusst unterlässt.
+title: "Über Meridiem"
+description: "Warum es diese Seite gibt, wie sie berechnet, was sie zeigt, und was sie bewusst unterlässt."
 order: 1
 updatedAt: '2026-01-15'
 ---

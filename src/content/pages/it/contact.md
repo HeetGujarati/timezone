@@ -1,6 +1,6 @@
 ---
-title: Contatti
-description: Come segnalare un errore, fare una domanda o sollevare un problema di sicurezza.
+title: "Contatti"
+description: "Come segnalare un errore, fare una domanda o sollevare un problema di sicurezza."
 order: 2
 updatedAt: '2026-01-15'
 ---

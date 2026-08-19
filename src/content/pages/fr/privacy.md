@@ -1,6 +1,6 @@
 ---
-title: Politique de confidentialité
-description: Ce site ne collecte rien, ne dépose aucun cookie et ne charge aucun script tiers. Voici exactement ce que cela signifie.
+title: "Politique de confidentialité"
+description: "Ce site ne collecte rien, ne dépose aucun cookie et ne charge aucun script tiers. Voici exactement ce que cela signifie."
 order: 3
 updatedAt: '2026-01-15'
 ---

@@ -1,6 +1,6 @@
 ---
-title: Política de cookies
-description: Este site não define nenhum cookie. Veja o que ele guarda localmente e o que mudaria se a publicidade fosse ativada.
+title: "Política de cookies"
+description: "Este site não define nenhum cookie. Veja o que ele guarda localmente e o que mudaria se a publicidade fosse ativada."
 order: 5
 updatedAt: '2026-01-15'
 ---

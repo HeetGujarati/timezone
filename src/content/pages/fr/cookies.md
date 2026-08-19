@@ -1,6 +1,6 @@
 ---
-title: Politique relative aux cookies
-description: Ce site ne dépose aucun cookie. Voici ce qu’il conserve en local et ce qui changerait si la publicité était activée.
+title: "Politique relative aux cookies"
+description: "Ce site ne dépose aucun cookie. Voici ce qu’il conserve en local et ce qui changerait si la publicité était activée."
 order: 5
 updatedAt: '2026-01-15'
 ---

@@ -1,6 +1,6 @@
 ---
-title: Çerez politikası
-description: Bu site hiçbir çerez koymuyor. İşte yerel olarak neleri sakladığı ve reklam açılırsa neyin değişeceği.
+title: "Çerez politikası"
+description: "Bu site hiçbir çerez koymuyor. İşte yerel olarak neleri sakladığı ve reklam açılırsa neyin değişeceği."
 order: 5
 updatedAt: '2026-01-15'
 ---

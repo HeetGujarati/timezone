@@ -1,6 +1,6 @@
 ---
-title: Accessibilité
-description: Ce que ce site vise, ce qui est vérifié automatiquement, et quoi faire si quelque chose ne fonctionne pas pour vous.
+title: "Accessibilité"
+description: "Ce que ce site vise, ce qui est vérifié automatiquement, et quoi faire si quelque chose ne fonctionne pas pour vous."
 order: 6
 updatedAt: '2026-01-15'
 ---

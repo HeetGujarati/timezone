@@ -1,6 +1,6 @@
 ---
-title: Conditions d’utilisation
-description: Les conditions auxquelles ce site est fourni, dont l’avertissement d’exactitude qui compte le plus ici.
+title: "Conditions d’utilisation"
+description: "Les conditions auxquelles ce site est fourni, dont l’avertissement d’exactitude qui compte le plus ici."
 order: 4
 updatedAt: '2026-01-15'
 ---

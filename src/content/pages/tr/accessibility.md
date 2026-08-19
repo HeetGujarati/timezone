@@ -1,6 +1,6 @@
 ---
-title: Erişilebilirlik
-description: Bu sitenin hedefi nedir, neler otomatik denetleniyor ve bir şey sizde çalışmıyorsa ne yapmalısınız.
+title: "Erişilebilirlik"
+description: "Bu sitenin hedefi nedir, neler otomatik denetleniyor ve bir şey sizde çalışmıyorsa ne yapmalısınız."
 order: 6
 updatedAt: '2026-01-15'
 ---

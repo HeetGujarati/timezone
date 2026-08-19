@@ -1,6 +1,6 @@
 ---
-title: Kullanım koşulları
-description: Bu sitenin hangi koşullarla sunulduğu ve burada en çok önem taşıyan doğruluk uyarısı.
+title: "Kullanım koşulları"
+description: "Bu sitenin hangi koşullarla sunulduğu ve burada en çok önem taşıyan doğruluk uyarısı."
 order: 4
 updatedAt: '2026-01-15'
 ---

@@ -1,6 +1,6 @@
 ---
-title: Kontakt
-description: Wie Sie einen Fehler melden, eine Frage stellen oder ein Sicherheitsproblem anzeigen können.
+title: "Kontakt"
+description: "Wie Sie einen Fehler melden, eine Frage stellen oder ein Sicherheitsproblem anzeigen können."
 order: 2
 updatedAt: '2026-01-15'
 ---

@@ -1,6 +1,6 @@
 ---
-title: Nutzungsbedingungen
-description: Zu welchen Bedingungen diese Seite bereitgestellt wird, samt des Genauigkeitshinweises, auf den es hier am meisten ankommt.
+title: "Nutzungsbedingungen"
+description: "Zu welchen Bedingungen diese Seite bereitgestellt wird, samt des Genauigkeitshinweises, auf den es hier am meisten ankommt."
 order: 4
 updatedAt: '2026-01-15'
 ---

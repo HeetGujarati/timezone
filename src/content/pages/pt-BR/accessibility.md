@@ -1,6 +1,6 @@
 ---
-title: Acessibilidade
-description: O que este site busca atingir, o que é verificado automaticamente e o que fazer se algo não funcionar para você.
+title: "Acessibilidade"
+description: "O que este site busca atingir, o que é verificado automaticamente e o que fazer se algo não funcionar para você."
 order: 6
 updatedAt: '2026-01-15'
 ---

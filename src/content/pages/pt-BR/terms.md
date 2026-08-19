@@ -1,6 +1,6 @@
 ---
-title: Termos de uso
-description: Os termos sob os quais este site é oferecido, incluindo o aviso sobre exatidão que mais importa aqui.
+title: "Termos de uso"
+description: "Os termos sob os quais este site é oferecido, incluindo o aviso sobre exatidão que mais importa aqui."
 order: 4
 updatedAt: '2026-01-15'
 ---

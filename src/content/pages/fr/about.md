@@ -1,6 +1,6 @@
 ---
-title: À propos de Meridiem
-description: Pourquoi ce site existe, comment il calcule ce qu’il affiche, et ce qu’il s’interdit délibérément de faire.
+title: "À propos de Meridiem"
+description: "Pourquoi ce site existe, comment il calcule ce qu’il affiche, et ce qu’il s’interdit délibérément de faire."
 order: 1
 updatedAt: '2026-01-15'
 ---

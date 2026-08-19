@@ -1,6 +1,6 @@
 ---
-title: Informativa sulla privacy
-description: Questo sito non raccoglie nulla, non imposta cookie e non carica script di terze parti. Ecco esattamente che cosa significa.
+title: "Informativa sulla privacy"
+description: "Questo sito non raccoglie nulla, non imposta cookie e non carica script di terze parti. Ecco esattamente che cosa significa."
 order: 3
 updatedAt: '2026-01-15'
 ---

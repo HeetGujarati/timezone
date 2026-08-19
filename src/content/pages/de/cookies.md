@@ -1,6 +1,6 @@
 ---
-title: Cookie-Richtlinie
-description: Diese Seite setzt überhaupt keine Cookies. Hier steht, was lokal gespeichert wird und was sich mit Werbung ändern würde.
+title: "Cookie-Richtlinie"
+description: "Diese Seite setzt überhaupt keine Cookies. Hier steht, was lokal gespeichert wird und was sich mit Werbung ändern würde."
 order: 5
 updatedAt: '2026-01-15'
 ---

@@ -1,6 +1,6 @@
 ---
-title: Contacto
-description: Cómo informar de un error, hacer una pregunta o comunicar un problema de seguridad.
+title: "Contacto"
+description: "Cómo informar de un error, hacer una pregunta o comunicar un problema de seguridad."
 order: 2
 updatedAt: '2026-01-15'
 ---

@@ -1,6 +1,6 @@
 ---
-title: Kebijakan privasi
-description: Situs ini tidak mengumpulkan apa pun, tidak memasang kuki, dan tidak memuat skrip pihak ketiga. Inilah artinya secara persis.
+title: "Kebijakan privasi"
+description: "Situs ini tidak mengumpulkan apa pun, tidak memasang kuki, dan tidak memuat skrip pihak ketiga. Inilah artinya secara persis."
 order: 3
 updatedAt: '2026-01-15'
 ---

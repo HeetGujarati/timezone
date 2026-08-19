@@ -1,6 +1,6 @@
 ---
-title: 隐私政策
-description: 本站什么都不收集、不设置 Cookie、不加载第三方脚本。这里说明这句话的确切含义。
+title: "隐私政策"
+description: "本站什么都不收集、不设置 Cookie、不加载第三方脚本。这里说明这句话的确切含义。"
 order: 3
 updatedAt: '2026-01-15'
 ---

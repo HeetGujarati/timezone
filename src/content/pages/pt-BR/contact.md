@@ -1,6 +1,6 @@
 ---
-title: Contato
-description: Como relatar um erro, fazer uma pergunta ou comunicar um problema de segurança.
+title: "Contato"
+description: "Como relatar um erro, fazer uma pergunta ou comunicar um problema de segurança."
 order: 2
 updatedAt: '2026-01-15'
 ---
