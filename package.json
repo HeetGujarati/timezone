@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Meridiem — time zone conversion, meeting planning and world clock tools. Static, zero backend.",
+  "description": "Meridiem \u2014 time zone conversion, meeting planning and world clock tools. Static, zero backend.",
   "engines": {
     "node": ">=22.0.0"
   },
@@ -25,7 +25,8 @@
     "audit:i18n": "node scripts/i18n-parity.mjs",
     "audit:js": "node scripts/js-budget.mjs",
     "audit:html": "node scripts/html-validate.mjs",
-    "gate": "npm run check && npm run lint && npm run format:check && npm run test:coverage && npm run build && npm run audit:i18n && npm run audit:links && npm run audit:seo && npm run audit:js"
+    "gate": "npm run check && npm run lint && npm run format:check && npm run audit:sethtml && npm run test:coverage && npm run build && npm run audit:i18n && npm run audit:links && npm run audit:seo && npm run audit:js",
+    "audit:sethtml": "node scripts/audit-set-html.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "4.0.19",

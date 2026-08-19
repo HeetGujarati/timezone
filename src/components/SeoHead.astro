@@ -1,0 +1,78 @@
+---
+import JsonLd from './JsonLd.astro';
+import type { ResolvedMetadata } from '~/lib/seo/types.ts';
+
+/**
+ * Every `<head>` on the site is rendered here. Page templates hand over a
+ * ResolvedMetadata built by src/lib/seo/metadata.ts, so no template can ship
+ * without a canonical, an hreflang cluster or a robots policy.
+ */
+type Props = {
+  metadata: ResolvedMetadata;
+  /** JSON-LD entities for this page. Emitted as one script tag each. */
+  schemas?: Record<string, unknown>[];
+};
+
+const { metadata, schemas = [] } = Astro.props;
+const { openGraph, twitter, robots, alternates } = metadata;
+
+const googleBotDirectives = [
+  robots.googleBot.index ? 'index' : 'noindex',
+  robots.googleBot.follow ? 'follow' : 'nofollow',
+  `max-snippet:${robots.googleBot['max-snippet']}`,
+  `max-image-preview:${robots.googleBot['max-image-preview']}`,
+  `max-video-preview:${robots.googleBot['max-video-preview']}`,
+].join(', ');
+
+const robotsDirectives = [
+  robots.index ? 'index' : 'noindex',
+  robots.follow ? 'follow' : 'nofollow',
+].join(', ');
+
+const ogImage = openGraph.images[0];
+---
+
+<title>{metadata.title}</title>
+<meta name="description" content={metadata.description} />
+{metadata.keywords.length > 0 && <meta name="keywords" content={metadata.keywords.join(', ')} />}
+
+<link rel="canonical" href={metadata.canonical} />
+
+<meta name="robots" content={robotsDirectives} />
+<meta name="googlebot" content={googleBotDirectives} />
+
+{
+  Object.entries(alternates.languages).map(([hreflang, href]) => (
+    <link rel="alternate" hreflang={hreflang} href={href} />
+  ))
+}
+
+<meta property="og:type" content={openGraph.type} />
+<meta property="og:site_name" content={openGraph.siteName} />
+<meta property="og:url" content={openGraph.url} />
+<meta property="og:title" content={openGraph.title} />
+<meta property="og:description" content={openGraph.description} />
+<meta property="og:locale" content={openGraph.locale} />
+{
+  openGraph.alternateLocales.map((locale) => (
+    <meta property="og:locale:alternate" content={locale} />
+  ))
+}
+{
+  ogImage && (
+    <>
+      <meta property="og:image" content={ogImage.url} />
+      <meta property="og:image:width" content={String(ogImage.width)} />
+      <meta property="og:image:height" content={String(ogImage.height)} />
+      <meta property="og:image:alt" content={ogImage.alt} />
+    </>
+  )
+}
+
+<meta name="twitter:card" content={twitter.card} />
+<meta name="twitter:title" content={twitter.title} />
+<meta name="twitter:description" content={twitter.description} />
+<meta name="twitter:creator" content={twitter.creator} />
+{twitter.images.map((image) => <meta name="twitter:image" content={image} />)}
+
+{schemas.map((schema) => <JsonLd schema={schema} />)}

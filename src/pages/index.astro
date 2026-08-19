@@ -1,13 +1,44 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { SITE } from '~/config/site.ts';
+import { buildToolMetadata } from '~/lib/seo/metadata.ts';
+import {
+  organizationSchema,
+  softwareApplicationSchema,
+  webSiteSchema,
+} from '~/lib/seo/structured-data.ts';
+
+const locale = 'en' as const;
+
+const metadata = buildToolMetadata({
+  title: 'Time zone converter — any zone, any date',
+  description:
+    'Convert any time zone to any other for any date. Accurate to the IANA database, DST-aware, and it works without JavaScript.',
+  keywords: ['time zone converter', 'convert time zones', 'time zone calculator'],
+  path: '/',
+  locale,
+  availableLocales: SITE.locales,
+});
+
+const schemas = [
+  organizationSchema(),
+  webSiteSchema(locale),
+  softwareApplicationSchema({
+    name: `${SITE.name} time zone converter`,
+    description: metadata.description,
+    path: '/',
+    locale,
+    subCategory: 'Time zone converter',
+    featureList: [
+      'Convert between any two IANA time zones',
+      'Daylight saving time transitions for the current and next year',
+      'Works with JavaScript disabled for all reference data',
+    ],
+  }),
+];
 ---
 
-<BaseLayout
-  locale="en"
-  title={`${SITE.name} — time zone converter, meeting planner and world clock`}
-  description="Convert any time zone to any other, plan meetings across continents and read a live world clock. Free, fast and accurate to the IANA time zone database."
->
+<BaseLayout metadata={metadata} locale={locale} schemas={schemas}>
   <main>
     <h1>{SITE.name}</h1>
     <p>{SITE.tagline}</p>

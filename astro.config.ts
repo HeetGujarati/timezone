@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { LOCALES, DEFAULT_LOCALE } from './src/config/locales.ts';
+import { sitemapEntryFor } from './src/lib/seo/sitemap-policy.ts';
 
 const site = process.env['PUBLIC_SITE_URL'] ?? 'https://meridiem.app';
 
@@ -12,6 +13,9 @@ const site = process.env['PUBLIC_SITE_URL'] ?? 'https://meridiem.app';
  * two representations cannot drift.
  */
 const i18nLocales: string[] = LOCALES.map((l) => (l.segment === '' ? l.code : l.segment));
+
+/** URL segments only (no root locale), used to detect a locale prefix in a path. */
+const localeSegments: string[] = LOCALES.map((l) => l.segment).filter((s) => s !== '');
 
 export default defineConfig({
   site,
@@ -34,9 +38,30 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      // Section/locale-aware splitting is handled by scripts/build-sitemaps; this
-      // keeps every child sitemap far below the 45,000-URL ceiling regardless.
+      // Keeps every child sitemap far below the 45,000-URL ceiling.
       entryLimit: 20000,
+      // 404 is the only route that must never appear in a sitemap.
+      filter: (page) => !page.includes('/404'),
+      i18n: {
+        defaultLocale: DEFAULT_LOCALE,
+        locales: Object.fromEntries(
+          LOCALES.map((l) => [l.segment === '' ? l.code : l.segment, l.hreflang]),
+        ),
+      },
+      serialize(item) {
+        const { pathname } = new URL(item.url);
+        const firstSegment = /^\/([^/]+)\//.exec(pathname)?.[1];
+        const isDefaultLocale =
+          firstSegment === undefined || !localeSegments.includes(firstSegment);
+        const { priority, changefreq } = sitemapEntryFor(pathname, localeSegments, isDefaultLocale);
+        // `sitemap` types changefreq as a string enum whose members are exactly these
+        // literals, so the cast is a naming formality, not a widening.
+        return {
+          ...item,
+          priority,
+          changefreq: changefreq as unknown as NonNullable<typeof item.changefreq>,
+        };
+      },
     }),
   ],
   vite: {

@@ -46,6 +46,9 @@ jobs:
       - name: Format check
         run: npm run format:check
 
+      - name: set:html audit
+        run: npm run audit:sethtml
+
       - name: Unit tests with coverage
         run: npm run test:coverage
 

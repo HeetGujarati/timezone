@@ -1,27 +1,26 @@
 ---
 import '~/styles/global.css';
-import { SITE } from '~/config/site.ts';
-import { getLocale, type LocaleCode } from '~/config/locales.ts';
+import SeoHead from '~/components/SeoHead.astro';
+import { documentAttributes } from '~/lib/seo/metadata.ts';
+import type { ResolvedMetadata } from '~/lib/seo/types.ts';
+import type { LocaleCode } from '~/config/locales.ts';
 
 type Props = {
-  title: string;
-  description: string;
+  metadata: ResolvedMetadata;
   locale: LocaleCode;
+  schemas?: Record<string, unknown>[];
 };
 
-const { title, description, locale } = Astro.props;
-const { bcp47, dir } = getLocale(locale);
-const canonical = new URL(Astro.url.pathname, SITE.origin).href;
+const { metadata, locale, schemas = [] } = Astro.props;
+const { lang, dir } = documentAttributes(locale);
 ---
 
 <!doctype html>
-<html lang={bcp47} dir={dir}>
+<html lang={lang} dir={dir}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+    <SeoHead metadata={metadata} schemas={schemas} />
   </head>
   <body>
     <slot />

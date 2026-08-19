@@ -1,0 +1,23 @@
+---
+/**
+ * The only place in this codebase allowed to use `set:html`.
+ *
+ * The payload is always JSON.stringify output — never concatenated strings — and
+ * `<` is escaped to `<` so a value containing `</script>` cannot terminate the
+ * block early. That is the classic JSON-LD XSS, and it is closed here rather than
+ * trusted to every caller. scripts/audit-set-html.mjs fails the build if `set:html`
+ * appears anywhere else in src/.
+ */
+type Props = {
+  schema: Record<string, unknown> | Record<string, unknown>[];
+};
+
+const { schema } = Astro.props;
+
+const json = JSON.stringify(schema)
+  .replace(/</g, '\\u003c')
+  .replace(/>/g, '\\u003e')
+  .replace(/&/g, '\\u0026');
+---
+
+<script type="application/ld+json" is:inline set:html={json} />

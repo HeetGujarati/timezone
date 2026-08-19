@@ -93,3 +93,63 @@ duplication.
 Spot-checked the hardest case first: `Asia/Kathmandu` formats as GMT+05:30 at the Unix epoch and
 GMT+05:45 today, which is correct — Nepal moved to +05:45 in 1986. The `Intl`-only time engine the
 brief requires is viable on this runtime.
+
+---
+
+## SEO architecture (brought forward from Phase 8 at the owner's request)
+
+The owner supplied a second brief — a Next.js App Router SEO architecture from a previous
+project — and asked for the same strategy here. It is implemented in full, ported to Astro.
+
+### D9. The Next.js `Metadata` convention becomes an explicit engine
+
+Next resolves metadata through an exported `Metadata` object per route. Astro has no such
+convention, so the same guarantees are enforced structurally instead: `src/lib/seo/types.ts`
+defines `ResolvedMetadata` with **every field required and already absolute**, and
+`src/components/SeoHead.astro` is the only `<head>` renderer on the site. A page template
+physically cannot ship without a canonical, an hreflang cluster, a robots policy or an OG image —
+there is no code path that omits them.
+
+`sitemap.ts` and `robots.ts` route handlers become: `@astrojs/sitemap` driven by a pure,
+unit-tested policy module (`src/lib/seo/sitemap-policy.ts`), and `src/pages/robots.txt.ts`, a
+prerendered endpoint so the sitemap URL follows `PUBLIC_SITE_URL`.
+
+### D10. No fabricated `AggregateRating` — this is the one part of the spec not followed literally
+
+The spec asked for `AggregateRating` with "e.g. 4.8 rating from 1000+ reviews". Emitting a rating
+for reviews that do not exist is a direct violation of Google's structured-data policy, and on a
+brand-new domain with no ranking history a manual action would be terminal — you would lose the
+rich result _and_ the trust that the rest of this SEO work is built to earn. The master brief also
+says plainly: never invent data.
+
+`softwareApplicationSchema()` takes an optional `aggregateRating` and validates it: the field is
+emitted only when `reviewCount > 0` and the value is inside 1–5. At launch nothing is passed, so
+the property is absent from the JSON-LD entirely rather than present-and-false. When a genuine
+review source exists, one argument turns it on. Tests assert all three behaviours.
+
+### D11. `HowTo` schema is generated, with expectations set
+
+Google removed HowTo rich results from Search in 2023, so this will not produce a visual rich
+result today. It remains valid schema.org, it is read by other consumers, and the generator costs
+nothing to keep — so it is built as asked, with steps deep-linked to page anchors. Just do not
+expect a SERP change from it.
+
+### D12. Description ceiling is 155, not 157
+
+The spec said truncate at 157; the master brief asserts ≤ 155 across every built page. 155 satisfies
+both, and the ellipsis counts _toward_ the limit rather than pushing past it. Truncation breaks at a
+word boundary unless doing so would discard more than 40% of the snippet.
+
+### D13. `keywords` meta is emitted, with no illusions
+
+Google has ignored the keywords meta tag since 2009. It is emitted because the spec asked for it,
+it is genuinely read by some smaller engines, and it costs a few bytes. The merge is
+case-insensitively de-duplicated so page and global keyword sets cannot double up.
+
+### D14. `set:html` is confined to one component and enforced by a script
+
+`src/components/JsonLd.astro` is the only file allowed to use `set:html`. It serialises with
+`JSON.stringify` and then escapes `<`, `>` and `&` to their `\u00xx` forms, closing the classic
+JSON-LD breakout where a value containing `</script>` terminates the block early. A test asserts
+the escape holds against `</script><img src=x onerror=alert(1)>`, and
+`scripts/audit-set-html.mjs` fails the build if `set:html` appears anywhere else in `src/`.
