@@ -1,4 +1,4 @@
-import { readStoredJson, writeStoredJson } from './lib/params.ts';
+import { readParam, readStoredJson, writeStoredJson } from './lib/params.ts';
 
 /**
  * World clock search and pinning.
@@ -47,20 +47,35 @@ class WorldClock extends HTMLElement {
     }
 
     if (search instanceof HTMLInputElement) {
-      search.addEventListener('input', () => {
-        const query = fold(search.value.trim());
-        let visible = 0;
-        for (const row of this.#rows) {
-          const haystack = fold(row.dataset['search'] ?? '');
-          const matches = query === '' || haystack.includes(query);
-          row.hidden = !matches;
-          if (matches) visible += 1;
-        }
-        if (empty instanceof HTMLElement) empty.hidden = visible > 0;
-      });
+      const run = (): void => this.#filter(search.value, empty);
+      search.addEventListener('input', run);
+
+      // ?q= arrives from the WebSite SearchAction in the home page's structured
+      // data, and from anyone who bookmarks a filtered view. The field is filled
+      // rather than the rows merely hidden, so what the reader sees explains
+      // itself and can be edited.
+      const query = readParam(new URLSearchParams(window.location.search), 'q');
+      if (query !== null) {
+        search.value = query;
+        run();
+      }
     }
 
     this.#applyPins();
+  }
+
+  /** Hide every row that does not match, and reveal the empty note if none do. */
+  #filter(raw: string, empty: Element | null): void {
+    const query = fold(raw.trim());
+    let visible = 0;
+
+    for (const row of this.#rows) {
+      const matches = query === '' || fold(row.dataset['search'] ?? '').includes(query);
+      row.hidden = !matches;
+      if (matches) visible += 1;
+    }
+
+    if (empty instanceof HTMLElement) empty.hidden = visible > 0;
   }
 
   #togglePin(slug: string): void {

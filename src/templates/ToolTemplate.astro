@@ -8,6 +8,7 @@ import {
   howToSchema,
   organizationSchema,
   softwareApplicationSchema,
+  webSiteSchema,
   type HowToStepInput,
 } from '~/lib/seo/structured-data.ts';
 import { getPageCopy, type ToolKey } from '~/content/tools/index.ts';
@@ -61,6 +62,9 @@ const breadcrumbs = [{ name: t('breadcrumb.home'), path: '/' }, { name: copy.tit
 
 const schemas: Record<string, unknown>[] = [
   organizationSchema(),
+  // The site entity belongs on one page, not 4,570 of them. The home page is the
+  // converter, so this is where it goes.
+  ...(path === '/' ? [webSiteSchema(locale) as unknown as Record<string, unknown>] : []),
   softwareApplicationSchema({
     name: `${copy.title} — ${SITE.name}`,
     description: metadata.description,

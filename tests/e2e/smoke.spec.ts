@@ -129,6 +129,17 @@ test.describe('every tool', () => {
     await expect(page.locator('[data-role="empty"]').first()).toBeVisible();
   });
 
+  test('/world-clock/ honours the ?q= the home page advertises to search engines', async ({
+    page,
+  }) => {
+    // The home page's WebSite schema names this URL as its SearchAction target.
+    // If the parameter did nothing, that structured data would be a claim about a
+    // capability the site does not have.
+    await page.goto('/world-clock/?q=tokyo');
+    await expect(page.locator('[data-search]:not([hidden])')).toHaveCount(1, { timeout: 15_000 });
+    await expect(page.locator('[data-role="search"]')).toHaveValue('tokyo');
+  });
+
   test('/dst-changes/ filters its table', async ({ page }) => {
     await page.goto('/dst-changes/');
     const rows = page.locator('[data-search]:not([hidden])');
