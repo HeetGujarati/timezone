@@ -95,19 +95,23 @@ Defects found and closed during the build, each of which had shipped silently:
 
 From a real build, not a target:
 
-| Check                   | Result                                                |
-| ----------------------- | ----------------------------------------------------- |
-| Pages                   | 4,570 across 14 locales                               |
-| Unit tests              | 605 across 36 files                                   |
-| Smoke tests             | 40, desktop and mobile                                |
-| Lighthouse              | 100 / 100 / 100 / 100 on 6 URLs, 3 runs each          |
-| JavaScript              | 16.0 KB gzipped sitewide; 2.7 KB on the heaviest page |
-| Internal links          | 267,366 checked, 0 broken                             |
-| Titles and descriptions | 4,556 unique of 4,556 indexable pages                 |
-| `hreflang`              | 41,356 alternates, 0 broken                           |
-| Untranslated copy       | 97,982 segments checked, 0 English found              |
-| Dictionary parity       | 262 keys × 14 locales, 0 missing, 0 extra             |
-| `npm audit`             | 0 vulnerabilities                                     |
+| Check                       | Result                                                                                             |
+| --------------------------- | -------------------------------------------------------------------------------------------------- |
+| Pages                       | 4,570 across 14 locales                                                                            |
+| Unit tests                  | 605 across 36 files                                                                                |
+| Coverage on `src/lib/time/` | 97.13% statements, 97.8% lines                                                                     |
+| Smoke tests                 | 40, desktop and mobile                                                                             |
+| Lighthouse                  | 100 / 100 / 100 / 100 on 6 URLs, 3 runs each                                                       |
+| JavaScript                  | 16.0 KB gzipped sitewide; 2.7 KB on the heaviest page                                              |
+| Internal links              | 267,366 checked, 0 broken                                                                          |
+| Titles and descriptions     | 4,556 unique of 4,556 indexable pages                                                              |
+| `hreflang`                  | 41,356 alternates, 0 broken                                                                        |
+| Untranslated copy           | 97,982 segments checked, 0 English found                                                           |
+| Dictionary parity           | 262 keys × 14 locales, 0 missing, 0 extra                                                          |
+| Accessibility               | 18,650 ids unique per page, 260,738 controls named, 61,188 headings with no skipped level          |
+| Islands                     | 9 islands, every control they look for present on all 4,570 pages                                  |
+| Security headers            | 8 present, CSP with 1 inline hash and no unsafe directive, identical across all three host configs |
+| `npm audit`                 | 0 vulnerabilities                                                                                  |
 
 ### Known and deliberate
 

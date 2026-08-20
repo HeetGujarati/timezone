@@ -78,6 +78,18 @@ Latin, Latin Extended, Cyrillic and Greek in the core faces, plus matching Arabi
 Devanagari cuts for `ar` and `hi`. A site that switches to a completely different typeface
 in Arabic looks like a translation bolted on afterwards.
 
+**One caveat, stated because it is visible.** The condensed cut has no Cyrillic block, so
+Russian headings are set in the variable family instead — the same typeface, uncondensed.
+The alternative was a system font in the middle of the brand, which is worse.
+
+**How the faces are scoped.** A browser fetches a face the moment its family is reached
+while searching for a glyph, even when it finds nothing usable there. So the default stacks
+name only the faces that draw Latin, and `:lang(ar)`, `:lang(hi)` and `:lang(ru)` in
+`src/styles/tokens.css` add the script family on the pages that need it. Measured per
+locale: 122KB of fonts on `/de/`, 111KB on `/ru/`, 209KB on `/ar/`, 275KB on `/hi/` — and no
+page loading a face it cannot draw with. `DECISIONS.md` D34 records how that went wrong
+first.
+
 Japanese, Korean and Simplified Chinese use the system stack rather than a self-hosted CJK
 face. A full CJK webfont is 4–8 MB; even subset it dwarfs the entire rest of the page, and
 every one of those platforms ships an excellent default. Bandwidth budget beats typographic
@@ -87,6 +99,22 @@ uniformity here, and it is not close.
 1.75 · 2.125 · 2.75rem`. Tight enough that a 24-row reference table stays dense and
 scannable, wide enough that an `h1` still lands. Line heights: 1.15 for headings, 1.35 for
 dense UI, 1.6 for prose. Measure capped at 68 characters.
+
+---
+
+## The mark
+
+A meridian: a circle divided down the middle, one half filled and one half hollow, for the
+_ante_ and the _post_ of _ante meridiem_. Two shapes and one colour, because it has to
+survive being drawn sixteen pixels wide in a browser tab, and because a site whose subject
+is precision should not have a logo that needs explaining.
+
+`public/favicon.svg` is the source. `npm run icons` rasterises it into `favicon.ico` (16, 32
+and 48), `apple-touch-icon.png` (180) and the two sizes the web manifest names, so the mark
+exists once and every derivative follows from it.
+
+The `favicon.ico` is not optional decoration: a browser requests `/favicon.ico` whether or
+not the page declares an icon, and without the file every visit logs a 404.
 
 ---
 

@@ -21,7 +21,6 @@ blob-report/
 
 # caches
 .cache/
-.og-cache/
 *.tsbuildinfo
 
 # os
