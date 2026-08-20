@@ -4,6 +4,8 @@ import tailwindcss from '@tailwindcss/vite';
 import { LOCALES, DEFAULT_LOCALE } from './src/config/locales.ts';
 import { sitemapEntryFor } from './src/lib/seo/sitemap-policy.ts';
 import { cspHashes } from './src/integrations/csp-hashes.ts';
+import { ogImages } from './src/integrations/og-images.ts';
+import { SITE } from './src/config/site.ts';
 
 const site = process.env['PUBLIC_SITE_URL'] ?? 'https://meridiem.app';
 
@@ -39,6 +41,7 @@ export default defineConfig({
   },
   integrations: [
     cspHashes(),
+    ogImages({ siteName: SITE.name, origin: site }),
     sitemap({
       // Keeps every child sitemap far below the 45,000-URL ceiling.
       entryLimit: 20000,

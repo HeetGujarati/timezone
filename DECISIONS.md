@@ -299,3 +299,20 @@ searched for and keep the word the search result already shows under the URL. So
 dropped whenever appending it would exceed sixty characters, and `src/content/title-length.test.ts`
 fails if any raw title exceeds sixty on its own. One Turkish guide title was shortened to comply;
 no other content changed.
+
+### D27. Open Graph cards are per entity and carry English wording
+
+Generating one card per URL means 4,570 renders; generating one per entity means 1,791, because all
+fourteen locales of `/convert/tokyo-to-berlin/` reference the same `/og/convert/tokyo-to-berlin.png`.
+The build takes 79 seconds for the entity set and would take over three minutes for the URL set,
+for a picture most readers never see at full size.
+
+The consequence is that a shared card can only be in one language, and it is English: the integration
+takes the wording from the page whose path has no locale prefix. A Japanese reader who shares a
+Japanese page gets a Japanese title in the link text and an English card beneath it. That is a real
+cost, accepted deliberately. Should it become worth paying for, the fix is one line — key the card
+map on the page path rather than the image path — plus a locale segment in the `ogImage` templates
+and a Devanagari/Arabic/CJK font in the Satori font stack, which is the part that actually costs.
+
+Cards are enumerated from the built HTML rather than from a route list, so an image is generated
+exactly when a page asks for one. `scripts/seo-audit.mjs` fails if any referenced card is missing.

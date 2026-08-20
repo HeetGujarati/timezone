@@ -18,7 +18,9 @@
  * translation exists for it. `untranslated` tests that directly, by comparing
  * each localised page against its own English counterpart.
  */
-import { decodeEntities, firstMatch, pass, readPages } from './lib/dist.mjs';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+import { DIST, decodeEntities, firstMatch, pass, readPages } from './lib/dist.mjs';
 
 const MAX_TITLE = 60;
 const MAX_DESCRIPTION = 155;
@@ -68,7 +70,11 @@ const problems = {
   multipleH1: [],
   missingH1: [],
   relativeCanonical: [],
+  missingOgImage: [],
 };
+
+/** Every og:image is generated at build; a reference with no file is a broken card. */
+const checkedImages = new Map();
 
 // English first, so a localised page always has its counterpart to compare against.
 const ordered = [...pages].sort(
@@ -132,6 +138,18 @@ for (const page of ordered) {
     }
   }
 
+  // A card that 404s is worse than no card: the platform shows a broken preview.
+  const ogImage = firstMatch(page.html, /<meta property="og:image" content="([^"]+)"/);
+  if (ogImage !== undefined) {
+    const imagePath = new URL(decodeEntities(ogImage)).pathname;
+    let exists = checkedImages.get(imagePath);
+    if (exists === undefined) {
+      exists = existsSync(join(DIST, imagePath.replace(/^\//, '')));
+      checkedImages.set(imagePath, exists);
+    }
+    if (!exists) problems.missingOgImage.push(`${page.url} -> ${imagePath}`);
+  }
+
   const h1Count = (page.html.match(/<h1[\s>]/g) ?? []).length;
   if (h1Count === 0) problems.missingH1.push(page.url);
   if (h1Count > 1) problems.multipleH1.push(`${page.url} (${h1Count})`);
@@ -188,5 +206,5 @@ const countStrings = (byLocale) =>
   [...byLocale.values()].reduce((total, seen) => total + seen.size, 0);
 
 pass(
-  `SEO audit: ${pages.length} pages across ${titles.size} locales — ${countStrings(titles)} unique titles, ${countStrings(descriptions)} unique descriptions, 0 duplicates within a locale, 0 untranslated pages, 0 broken hreflang, every page has one h1 and an absolute canonical`,
+  `SEO audit: ${pages.length} pages across ${titles.size} locales — ${countStrings(titles)} unique titles, ${countStrings(descriptions)} unique descriptions, ${checkedImages.size} Open Graph images all present, 0 duplicates within a locale, 0 untranslated pages, 0 broken hreflang, every page has one h1 and an absolute canonical`,
 );
