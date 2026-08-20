@@ -1,11 +1,17 @@
 ---
-title: "Garis penanggalan internasional dan mengapa ia berbelok"
-description: "Garis penanggalan bukan garis bujur. Ia berkelok mengelilingi negara yang tak ingin terbelah dua, dan letaknya pernah bergeser."
-summary: "Garis penanggalan internasional hanya mengikuti bujur 180° secara longgar — ia memutari Kiribati, Rusia, dan Kepulauan Aleut, dan beberapa negara memindahkan diri ke seberangnya demi alasan dagang."
+title: 'Garis penanggalan internasional dan mengapa ia berbelok'
+description: 'Garis penanggalan bukan garis bujur. Ia berkelok mengelilingi negara yang tak ingin terbelah dua, dan letaknya pernah bergeser.'
+summary: 'Garis penanggalan internasional hanya mengikuti bujur 180° secara longgar — ia memutari Kiribati, Rusia, dan Kepulauan Aleut, dan beberapa negara memindahkan diri ke seberangnya demi alasan dagang.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 11
-keywords: ['garis penanggalan internasional', 'garis tanggal dijelaskan', 'zona waktu kiribati', 'sehari sebelum sehari sesudah']
+keywords:
+  [
+    'garis penanggalan internasional',
+    'garis tanggal dijelaskan',
+    'zona waktu kiribati',
+    'sehari sebelum sehari sesudah',
+  ]
 related: ['how-time-zones-work', 'offsets-that-are-not-whole-hours', 'what-utc-really-is']
 ---
 

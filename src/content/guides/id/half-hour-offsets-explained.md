@@ -1,11 +1,17 @@
 ---
-title: "Mengapa India berjalan setengah jam dari UTC"
-description: "Selisih setengah jam dan 45 menit bukan kebetulan geografis: itu kompromi, pernyataan kemerdekaan, dan satu lelucon birokrasi."
-summary: "India berada di UTC+05:30 karena membelah selisih antara dua zona yang diusulkan. Nepal berada di UTC+05:45 sebagian agar tidak menjadi India. Setiap selisih yang tak lazim punya kisah, dan hampir semuanya politis."
+title: 'Mengapa India berjalan setengah jam dari UTC'
+description: 'Selisih setengah jam dan 45 menit bukan kebetulan geografis: itu kompromi, pernyataan kemerdekaan, dan satu lelucon birokrasi.'
+summary: 'India berada di UTC+05:30 karena membelah selisih antara dua zona yang diusulkan. Nepal berada di UTC+05:45 sebagian agar tidak menjadi India. Setiap selisih yang tak lazim punya kisah, dan hampir semuanya politis.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 12
-keywords: ['mengapa india setengah jam', 'nepal 45 menit', 'zona waktu setengah jam', 'sejarah waktu standar india']
+keywords:
+  [
+    'mengapa india setengah jam',
+    'nepal 45 menit',
+    'zona waktu setengah jam',
+    'sejarah waktu standar india',
+  ]
 related: ['offsets-that-are-not-whole-hours', 'how-time-zones-work', 'the-international-date-line']
 ---
 

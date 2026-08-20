@@ -1,7 +1,7 @@
 ---
-title: "Le problème de 2038, expliqué correctement"
-description: "À 03:14:07 UTC le 19 janvier 2038, le temps Unix signé sur 32 bits déborde. Voici ce qui casse réellement, et ce qui est déjà corrigé."
-summary: "Les systèmes qui stockent le temps comme un compte de secondes signé sur 32 bits arrivent à court de place en janvier 2038 et repartent en décembre 1901. La plupart des plateformes modernes ont corrigé cela depuis des années ; l’exposition se trouve aujourd’hui dans l’embarqué, le patrimonial et les données sérialisées."
+title: 'Le problème de 2038, expliqué correctement'
+description: 'À 03:14:07 UTC le 19 janvier 2038, le temps Unix signé sur 32 bits déborde. Voici ce qui casse réellement, et ce qui est déjà corrigé.'
+summary: 'Les systèmes qui stockent le temps comme un compte de secondes signé sur 32 bits arrivent à court de place en janvier 2038 et repartent en décembre 1901. La plupart des plateformes modernes ont corrigé cela depuis des années ; l’exposition se trouve aujourd’hui dans l’embarqué, le patrimonial et les données sérialisées.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 6

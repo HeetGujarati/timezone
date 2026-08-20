@@ -1,6 +1,6 @@
 ---
-title: "Informativa sui cookie"
-description: "Questo sito non imposta alcun cookie. Ecco cosa conserva in locale e cosa cambierebbe se venisse attivata la pubblicità."
+title: 'Informativa sui cookie'
+description: 'Questo sito non imposta alcun cookie. Ecco cosa conserva in locale e cosa cambierebbe se venisse attivata la pubblicità.'
 order: 5
 updatedAt: '2026-01-15'
 ---

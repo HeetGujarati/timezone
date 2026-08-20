@@ -1,11 +1,17 @@
 ---
-title: "I fusi orari nel codice, una guida pratica"
+title: 'I fusi orari nel codice, una guida pratica'
 description: "Memorizzate UTC, conservate l'identificatore del fuso, convertite alla visualizzazione, non costruite mai una tabella di scarti. Le regole e il perché."
-summary: "Quasi ogni difetto legato ai fusi orari risale a uno di quattro errori. Ecco che cosa fare invece, in JavaScript, Python, Java, Go e SQL, con il ragionamento e non solo la regola."
+summary: 'Quasi ogni difetto legato ai fusi orari risale a uno di quattro errori. Ecco che cosa fare invece, in JavaScript, Python, Java, Go e SQL, con il ragionamento e non solo la regola.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 9
-keywords: ['fusi orari nel codice', 'buone pratiche data e ora', 'memorizzare marche temporali', 'utc nel database']
+keywords:
+  [
+    'fusi orari nel codice',
+    'buone pratiche data e ora',
+    'memorizzare marche temporali',
+    'utc nel database',
+  ]
 related: ['what-utc-really-is', 'iso-8601-explained', 'the-2038-problem']
 ---
 

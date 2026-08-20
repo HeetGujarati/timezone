@@ -1,6 +1,6 @@
 ---
-title: "Condiciones de uso"
-description: "Las condiciones bajo las que se ofrece este sitio, incluida la advertencia sobre exactitud que más importa aquí."
+title: 'Condiciones de uso'
+description: 'Las condiciones bajo las que se ofrece este sitio, incluida la advertencia sobre exactitud que más importa aquí.'
 order: 4
 updatedAt: '2026-01-15'
 ---

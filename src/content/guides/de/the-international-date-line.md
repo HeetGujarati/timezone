@@ -1,11 +1,17 @@
 ---
-title: "Die Datumsgrenze und warum sie Haken schlägt"
-description: "Die Datumsgrenze ist kein Längengrad. Sie schlängelt sich um Länder, die sich lieber nicht zerteilen lassen, und sie ist schon verschoben worden."
-summary: "Die Datumsgrenze folgt dem 180. Längengrad nur ungefähr — sie umgeht Kiribati, Russland und die Aleuten, und Staaten haben sich aus Handelsgründen selbst über sie hinweg verschoben."
+title: 'Die Datumsgrenze und warum sie Haken schlägt'
+description: 'Die Datumsgrenze ist kein Längengrad. Sie schlängelt sich um Länder, die sich lieber nicht zerteilen lassen, und sie ist schon verschoben worden.'
+summary: 'Die Datumsgrenze folgt dem 180. Längengrad nur ungefähr — sie umgeht Kiribati, Russland und die Aleuten, und Staaten haben sich aus Handelsgründen selbst über sie hinweg verschoben.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 11
-keywords: ['internationale datumsgrenze', 'datumsgrenze erklärt', 'kiribati zeitzone', 'tag davor tag danach']
+keywords:
+  [
+    'internationale datumsgrenze',
+    'datumsgrenze erklärt',
+    'kiribati zeitzone',
+    'tag davor tag danach',
+  ]
 related: ['how-time-zones-work', 'offsets-that-are-not-whole-hours', 'what-utc-really-is']
 ---
 

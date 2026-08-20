@@ -1,11 +1,17 @@
 ---
-title: "On iki saatlik boşluğun iki yanında toplantı kurmak"
-description: "İki ekibin hiç ortak çalışma saati yoksa çözüm daha akıllı bir takvim değil, yapısal bir değişikliktir. İşte gerçekten işe yarayan."
-summary: "On iki saatlik bir boşluğun iyi bir toplantı saati yoktur ve ızgarayı gölgelemek bunu değiştirmez. Bunu iyi yöneten ekipler saat aramayı bırakıp çalışma biçimlerini değiştirir."
+title: 'On iki saatlik boşluğun iki yanında toplantı kurmak'
+description: 'İki ekibin hiç ortak çalışma saati yoksa çözüm daha akıllı bir takvim değil, yapısal bir değişikliktir. İşte gerçekten işe yarayan.'
+summary: 'On iki saatlik bir boşluğun iyi bir toplantı saati yoktur ve ızgarayı gölgelemek bunu değiştirmez. Bunu iyi yöneten ekipler saat aramayı bırakıp çalışma biçimlerini değiştirir.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 4
-keywords: ['saat dilimleri arası toplantı kurmak', 'uzaktan ekip saat dilimleri', 'on iki saat fark', 'eşzamansız çalışma']
+keywords:
+  [
+    'saat dilimleri arası toplantı kurmak',
+    'uzaktan ekip saat dilimleri',
+    'on iki saat fark',
+    'eşzamansız çalışma',
+  ]
 related: ['how-to-run-a-global-standup', 'why-daylight-saving-exists', 'how-time-zones-work']
 ---
 

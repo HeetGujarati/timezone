@@ -1,11 +1,17 @@
 ---
-title: "Termine über zwölf Stunden Abstand hinweg"
-description: "Wenn zwei Teams gar keine gemeinsamen Arbeitsstunden haben, hilft eine Änderung der Struktur und kein cleverer Kalender. Das funktioniert wirklich."
-summary: "Eine Lücke von zwölf Stunden hat keine gute Besprechungszeit, und keine Rasterschattierung ändert daran etwas. Teams, die gut damit umgehen, hören auf zu suchen und ändern stattdessen ihre Arbeitsweise."
+title: 'Termine über zwölf Stunden Abstand hinweg'
+description: 'Wenn zwei Teams gar keine gemeinsamen Arbeitsstunden haben, hilft eine Änderung der Struktur und kein cleverer Kalender. Das funktioniert wirklich.'
+summary: 'Eine Lücke von zwölf Stunden hat keine gute Besprechungszeit, und keine Rasterschattierung ändert daran etwas. Teams, die gut damit umgehen, hören auf zu suchen und ändern stattdessen ihre Arbeitsweise.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 4
-keywords: ['termine über zeitzonen', 'verteiltes team zeitzonen', 'zwölf stunden zeitunterschied', 'asynchrone arbeit']
+keywords:
+  [
+    'termine über zeitzonen',
+    'verteiltes team zeitzonen',
+    'zwölf stunden zeitunterschied',
+    'asynchrone arbeit',
+  ]
 related: ['how-to-run-a-global-standup', 'why-daylight-saving-exists', 'how-time-zones-work']
 ---
 

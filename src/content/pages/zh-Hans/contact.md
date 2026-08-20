@@ -1,6 +1,6 @@
 ---
-title: "联系我们"
-description: "如何报告错误、提出问题，或反映安全问题。"
+title: '联系我们'
+description: '如何报告错误、提出问题，或反映安全问题。'
 order: 2
 updatedAt: '2026-01-15'
 ---

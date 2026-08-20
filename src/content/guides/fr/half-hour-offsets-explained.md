@@ -5,7 +5,13 @@ summary: "L'Inde vit à UTC+05:30 parce qu'elle a coupé la poire en deux entre 
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 12
-keywords: ['pourquoi inde demi-heure', 'népal 45 minutes', 'fuseau horaire demi-heure', 'histoire de l heure normale de l inde']
+keywords:
+  [
+    'pourquoi inde demi-heure',
+    'népal 45 minutes',
+    'fuseau horaire demi-heure',
+    'histoire de l heure normale de l inde',
+  ]
 related: ['offsets-that-are-not-whole-hours', 'how-time-zones-work', 'the-international-date-line']
 ---
 

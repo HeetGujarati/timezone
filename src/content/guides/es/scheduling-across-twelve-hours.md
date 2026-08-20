@@ -1,11 +1,17 @@
 ---
-title: "Organizar reuniones con doce horas de diferencia"
-description: "Cuando dos equipos no comparten ninguna hora de trabajo, el arreglo es estructural y no un calendario más ingenioso. Esto es lo que de verdad funciona."
-summary: "Una diferencia de doce horas no tiene una buena hora de reunión, y ningún sombreado de rejilla lo cambia. Los equipos que lo llevan bien dejan de buscarla y cambian su forma de trabajar."
+title: 'Organizar reuniones con doce horas de diferencia'
+description: 'Cuando dos equipos no comparten ninguna hora de trabajo, el arreglo es estructural y no un calendario más ingenioso. Esto es lo que de verdad funciona.'
+summary: 'Una diferencia de doce horas no tiene una buena hora de reunión, y ningún sombreado de rejilla lo cambia. Los equipos que lo llevan bien dejan de buscarla y cambian su forma de trabajar.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 4
-keywords: ['organizar reuniones entre husos horarios', 'equipo remoto husos horarios', 'diferencia de doce horas', 'trabajo asíncrono']
+keywords:
+  [
+    'organizar reuniones entre husos horarios',
+    'equipo remoto husos horarios',
+    'diferencia de doce horas',
+    'trabajo asíncrono',
+  ]
 related: ['how-to-run-a-global-standup', 'why-daylight-saving-exists', 'how-time-zones-work']
 ---
 

@@ -1,7 +1,7 @@
 ---
-title: "UTC gerçekte nedir ve GMT’den farkı nerede"
-description: "UTC, atom saatlerinin tuttuğu bir zaman standardıdır. GMT, Dünya’nın tuttuğu bir saat dilimidir. Genelde uyuşurlar, fark yine de önemlidir."
-summary: "UTC bir saat dilimi değildir. Her saat diliminin kendisine göre tanımlandığı referans standarttır; yaklaşık 450 atom saatiyle sürdürülür ve yaz saati için asla kaymaz — sistemlerin onu kullanmasının sebebi tam olarak budur."
+title: 'UTC gerçekte nedir ve GMT’den farkı nerede'
+description: 'UTC, atom saatlerinin tuttuğu bir zaman standardıdır. GMT, Dünya’nın tuttuğu bir saat dilimidir. Genelde uyuşurlar, fark yine de önemlidir.'
+summary: 'UTC bir saat dilimi değildir. Her saat diliminin kendisine göre tanımlandığı referans standarttır; yaklaşık 450 atom saatiyle sürdürülür ve yaz saati için asla kaymaz — sistemlerin onu kullanmasının sebebi tam olarak budur.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 2

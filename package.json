@@ -25,7 +25,7 @@
     "audit:i18n": "node scripts/i18n-parity.mjs",
     "audit:js": "node scripts/js-budget.mjs",
     "audit:html": "node scripts/html-validate.mjs",
-    "gate": "npm run check && npm run lint && npm run format:check && npm run audit:sethtml && npm run test:coverage && npm run build && npm run audit:i18n && npm run audit:links && npm run audit:seo && npm run audit:headers && npm run audit:js",
+    "gate": "npm run check && npm run lint && npm run format:check && npm run audit:sethtml && npm run test:coverage && npm run build && npm run audit:i18n && npm run audit:links && npm run audit:seo && npm run audit:html && npm run audit:headers && npm run audit:js",
     "audit:sethtml": "node scripts/audit-set-html.mjs",
     "audit:headers": "node scripts/audit-headers.mjs"
   },

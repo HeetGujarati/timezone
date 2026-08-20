@@ -1,6 +1,6 @@
 ---
-title: "문의"
-description: "오류를 알리거나 질문을 하거나 보안 문제를 제보하는 방법."
+title: '문의'
+description: '오류를 알리거나 질문을 하거나 보안 문제를 제보하는 방법.'
 order: 2
 updatedAt: '2026-01-15'
 ---

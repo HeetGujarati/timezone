@@ -1,11 +1,17 @@
 ---
-title: "Tenir un point quotidien à travers de nombreux fuseaux"
-description: "Le point quotidien synchrone ne survit pas à quatre fuseaux horaires. Ce qui le remplace, et comment faire fonctionner ce remplacement."
+title: 'Tenir un point quotidien à travers de nombreux fuseaux'
+description: 'Le point quotidien synchrone ne survit pas à quatre fuseaux horaires. Ce qui le remplace, et comment faire fonctionner ce remplacement.'
 summary: "Un point quotidien marche parce que tout le monde est éveillé en même temps. Passé un écart d'environ six heures ce n'est plus vrai, et la solution honnête est de changer le format plutôt que de déplacer l'heure."
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 8
-keywords: ['point quotidien mondial', 'point quotidien asynchrone', 'réunions équipe répartie', 'point quotidien à distance fuseaux']
+keywords:
+  [
+    'point quotidien mondial',
+    'point quotidien asynchrone',
+    'réunions équipe répartie',
+    'point quotidien à distance fuseaux',
+  ]
 related: ['scheduling-across-twelve-hours', 'how-time-zones-work', 'why-daylight-saving-exists']
 ---
 
@@ -19,12 +25,12 @@ Prenez le fuseau le plus avancé et le plus retardé de l'équipe et calculez l'
 
 Cherchez ensuite la fenêtre commune entre 9 h et 18 h. Ce nombre décide du format :
 
-| Fenêtre commune | Ce qui marche                                                                    |
-| --------------- | -------------------------------------------------------------------------------- |
-| 4 h et plus     | Un point quotidien synchrone, si vous y tenez                                    |
-| 2 à 4 h         | Synchrone, mais réservez cette fenêtre aux seules décisions                       |
-| Moins de 2 h    | Point écrit, avec un appel synchrone hebdomadaire                                 |
-| Aucune          | Tout à l'écrit, plus un recouvrement voulu pour le peu qui demande une voix       |
+| Fenêtre commune | Ce qui marche                                                               |
+| --------------- | --------------------------------------------------------------------------- |
+| 4 h et plus     | Un point quotidien synchrone, si vous y tenez                               |
+| 2 à 4 h         | Synchrone, mais réservez cette fenêtre aux seules décisions                 |
+| Moins de 2 h    | Point écrit, avec un appel synchrone hebdomadaire                           |
+| Aucune          | Tout à l'écrit, plus un recouvrement voulu pour le peu qui demande une voix |
 
 ## Le point quotidien écrit
 

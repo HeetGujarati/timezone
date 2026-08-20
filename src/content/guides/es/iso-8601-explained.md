@@ -1,7 +1,7 @@
 ---
-title: "ISO 8601, o cómo escribir una fecha sin ambigüedad"
-description: "03/04/2026 significa dos fechas distintas según quién lo lea. ISO 8601 lo resuelve, y vale la pena conocer sus reglas con exactitud."
-summary: "ISO 8601 existe porque 03/04/2026 es marzo en Estados Unidos y abril en el resto del mundo. Escribir 2026-04-03 elimina la ambigüedad, ordena bien como texto y es lo que toda interfaz debería aceptar."
+title: 'ISO 8601, o cómo escribir una fecha sin ambigüedad'
+description: '03/04/2026 significa dos fechas distintas según quién lo lea. ISO 8601 lo resuelve, y vale la pena conocer sus reglas con exactitud.'
+summary: 'ISO 8601 existe porque 03/04/2026 es marzo en Estados Unidos y abril en el resto del mundo. Escribir 2026-04-03 elimina la ambigüedad, ordena bien como texto y es lo que toda interfaz debería aceptar.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 7
@@ -32,11 +32,11 @@ El orden es lo esencial. Como los componentes van de lo más significativo a lo 
 
 Tres formas son válidas, y significan cosas distintas:
 
-| Forma                       | Significado                                                            |
-| --------------------------- | ---------------------------------------------------------------------- |
-| `2026-04-03T14:30:00Z`      | 14:30 UTC. Sin ambigüedad                                               |
+| Forma                       | Significado                                                                |
+| --------------------------- | -------------------------------------------------------------------------- |
+| `2026-04-03T14:30:00Z`      | 14:30 UTC. Sin ambigüedad                                                  |
 | `2026-04-03T14:30:00+05:45` | 14:30 hora local en una zona 5 h 45 min por delante de UTC. Sin ambigüedad |
-| `2026-04-03T14:30:00`       | 14:30 en una zona no especificada. **No es una marca temporal**          |
+| `2026-04-03T14:30:00`       | 14:30 en una zona no especificada. **No es una marca temporal**            |
 
 La tercera forma es la que da problemas. Es una _fecha y hora locales_: una lectura de reloj sin manera de situarla en una línea temporal. Pasarla a través de una frontera de sistema esperando que el otro lado suponga la misma zona que tú es un fallo esperando a un despliegue en otra región.
 

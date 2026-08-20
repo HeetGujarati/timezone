@@ -1,6 +1,6 @@
 ---
-title: "Sobre o Meridiem"
-description: "Por que este site existe, como ele calcula o que mostra e o que decide deliberadamente não fazer."
+title: 'Sobre o Meridiem'
+description: 'Por que este site existe, como ele calcula o que mostra e o que decide deliberadamente não fazer.'
 order: 1
 updatedAt: '2026-01-15'
 ---

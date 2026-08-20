@@ -37,7 +37,19 @@ const englishByRoute = new Map();
 const localisedByRoute = new Map();
 
 const LOCALE_SEGMENTS = new Set([
-  'es', 'pt-br', 'fr', 'de', 'it', 'ru', 'tr', 'ar', 'hi', 'id', 'ja', 'ko', 'zh-hans',
+  'es',
+  'pt-br',
+  'fr',
+  'de',
+  'it',
+  'ru',
+  'tr',
+  'ar',
+  'hi',
+  'id',
+  'ja',
+  'ko',
+  'zh-hans',
 ]);
 
 /** '/de/guides/x/' -> { locale: 'de', route: '/guides/x/' }. English has no prefix. */

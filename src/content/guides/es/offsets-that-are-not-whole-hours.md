@@ -1,11 +1,17 @@
 ---
-title: "Los desfases de UTC que no son horas enteras"
-description: "La India, Nepal, Terranova y las islas Chatham van en medias horas y en cuartos. Aquí está la lista completa y lo que se rompe en el software por su causa."
-summary: "Cerca de una quinta parte del mundo vive en un desfase que no es un número entero de horas respecto de UTC. El software que supone lo contrario no se equivoca un poco con esa gente: se equivoca en 30 o 45 minutos, que es peor."
+title: 'Los desfases de UTC que no son horas enteras'
+description: 'La India, Nepal, Terranova y las islas Chatham van en medias horas y en cuartos. Aquí está la lista completa y lo que se rompe en el software por su causa.'
+summary: 'Cerca de una quinta parte del mundo vive en un desfase que no es un número entero de horas respecto de UTC. El software que supone lo contrario no se equivoca un poco con esa gente: se equivoca en 30 o 45 minutos, que es peor.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 5
-keywords: ['husos horarios de media hora', 'desfase utc 45 minutos', 'desfase huso horario india', 'huso horario de nepal']
+keywords:
+  [
+    'husos horarios de media hora',
+    'desfase utc 45 minutos',
+    'desfase huso horario india',
+    'huso horario de nepal',
+  ]
 related: ['half-hour-offsets-explained', 'time-zones-in-code', 'how-time-zones-work']
 ---
 
@@ -15,24 +21,24 @@ El modelo mental de veinticuatro husos de una hora es erróneo de una manera car
 
 **Desfases en :30**
 
-| Desfase   | Dónde                                                        |
-| --------- | ------------------------------------------------------------ |
-| UTC-09:30 | Islas Marquesas                                               |
-| UTC-03:30 | Terranova y Labrador                                          |
-| UTC+03:30 | Irán                                                          |
-| UTC+04:30 | Afganistán                                                    |
-| UTC+05:30 | India, Sri Lanka                                              |
-| UTC+06:30 | Myanmar, islas Cocos                                          |
+| Desfase   | Dónde                                                          |
+| --------- | -------------------------------------------------------------- |
+| UTC-09:30 | Islas Marquesas                                                |
+| UTC-03:30 | Terranova y Labrador                                           |
+| UTC+03:30 | Irán                                                           |
+| UTC+04:30 | Afganistán                                                     |
+| UTC+05:30 | India, Sri Lanka                                               |
+| UTC+06:30 | Myanmar, islas Cocos                                           |
 | UTC+09:30 | Australia central — Territorio del Norte, Australia Meridional |
-| UTC+10:30 | Isla Lord Howe (hora estándar)                                |
+| UTC+10:30 | Isla Lord Howe (hora estándar)                                 |
 
 **Desfases en :45**
 
-| Desfase   | Dónde                                                       |
-| --------- | ----------------------------------------------------------- |
-| UTC+05:45 | Nepal                                                       |
+| Desfase   | Dónde                                                        |
+| --------- | ------------------------------------------------------------ |
+| UTC+05:45 | Nepal                                                        |
 | UTC+08:45 | Sudeste de Australia Occidental (Eucla, de forma no oficial) |
-| UTC+12:45 | Islas Chatham (hora estándar)                               |
+| UTC+12:45 | Islas Chatham (hora estándar)                                |
 
 Solo la India son 1.400 millones de personas. Añada Irán, Afganistán, Myanmar, Sri Lanka y Nepal y ya pasa de la quinta parte del planeta, antes de contar Australia o Canadá.
 

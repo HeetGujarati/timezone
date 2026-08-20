@@ -55,8 +55,11 @@ const BANNED_SYNTAX = [
 export default defineConfig([
   globalIgnores([
     'dist/**',
-    '.astro/**',
-    'node_modules/**',
+    // Astro's generated types land at the project root and, when a tool is run
+    // with a content directory as its cwd, inside that directory too. Both are
+    // generated and gitignored, so neither is ours to lint.
+    '**/.astro/**',
+    '**/node_modules/**',
     'coverage/**',
     'playwright-report/**',
     'test-results/**',

@@ -1,6 +1,6 @@
 ---
-title: "Contact"
-description: "Comment signaler une erreur, poser une question ou remonter un problème de sécurité."
+title: 'Contact'
+description: 'Comment signaler une erreur, poser une question ou remonter un problème de sécurité.'
 order: 2
 updatedAt: '2026-01-15'
 ---

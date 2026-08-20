@@ -1,11 +1,17 @@
 ---
-title: "Cara menjalankan rapat harian melintasi banyak zona waktu"
-description: "Rapat harian serentak tak bertahan melewati empat zona waktu. Apa penggantinya, dan bagaimana membuat pengganti itu benar-benar berjalan."
-summary: "Rapat harian berhasil karena semua orang terjaga pada saat yang sama. Melewati rentang sekitar enam jam hal itu tak lagi benar, dan jalan keluar yang jujur adalah mengubah bentuknya, bukan terus menggeser waktunya."
+title: 'Cara menjalankan rapat harian melintasi banyak zona waktu'
+description: 'Rapat harian serentak tak bertahan melewati empat zona waktu. Apa penggantinya, dan bagaimana membuat pengganti itu benar-benar berjalan.'
+summary: 'Rapat harian berhasil karena semua orang terjaga pada saat yang sama. Melewati rentang sekitar enam jam hal itu tak lagi benar, dan jalan keluar yang jujur adalah mengubah bentuknya, bukan terus menggeser waktunya.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 8
-keywords: ['rapat harian global', 'rapat harian nirserentak', 'rapat tim tersebar', 'rapat harian jarak jauh zona waktu']
+keywords:
+  [
+    'rapat harian global',
+    'rapat harian nirserentak',
+    'rapat tim tersebar',
+    'rapat harian jarak jauh zona waktu',
+  ]
 related: ['scheduling-across-twelve-hours', 'how-time-zones-work', 'why-daylight-saving-exists']
 ---
 
@@ -19,12 +25,12 @@ Ambil zona paling awal dan paling akhir dalam tim, lalu hitung selisihnya pada t
 
 Lalu carilah jendela bersama 09:00–18:00. Angka itulah yang menentukan bentuknya:
 
-| Jendela bersama  | Yang berhasil                                                                |
-| ---------------- | ---------------------------------------------------------------------------- |
-| 4 jam atau lebih | Rapat harian serentak, kalau memang Anda menginginkannya                     |
-| 2–4 jam          | Serentak, tetapi jagalah jendela itu hanya untuk keputusan                   |
-| Kurang dari 2 jam| Rapat harian tertulis, dengan satu panggilan serentak sepekan                 |
-| Tak ada          | Sepenuhnya tertulis, ditambah tumpang tindih yang disengaja untuk hal yang menuntut suara |
+| Jendela bersama   | Yang berhasil                                                                             |
+| ----------------- | ----------------------------------------------------------------------------------------- |
+| 4 jam atau lebih  | Rapat harian serentak, kalau memang Anda menginginkannya                                  |
+| 2–4 jam           | Serentak, tetapi jagalah jendela itu hanya untuk keputusan                                |
+| Kurang dari 2 jam | Rapat harian tertulis, dengan satu panggilan serentak sepekan                             |
+| Tak ada           | Sepenuhnya tertulis, ditambah tumpang tindih yang disengaja untuk hal yang menuntut suara |
 
 ## Rapat harian tertulis
 

@@ -1,11 +1,17 @@
 ---
-title: "Husos horarios en el código, una guía práctica"
-description: "Guarde UTC, conserve el identificador del huso, convierta al mostrar, no construya nunca una tabla de desfases. Las reglas y el razonamiento de cada una."
-summary: "Casi todo error de husos horarios se remonta a uno de cuatro fallos. Esto es lo que hay que hacer en su lugar, en JavaScript, Python, Java, Go y SQL, con el razonamiento y no solo la regla."
+title: 'Husos horarios en el código, una guía práctica'
+description: 'Guarde UTC, conserve el identificador del huso, convierta al mostrar, no construya nunca una tabla de desfases. Las reglas y el razonamiento de cada una.'
+summary: 'Casi todo error de husos horarios se remonta a uno de cuatro fallos. Esto es lo que hay que hacer en su lugar, en JavaScript, Python, Java, Go y SQL, con el razonamiento y no solo la regla.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 9
-keywords: ['husos horarios en el código', 'buenas prácticas de fecha y hora', 'almacenar marcas de tiempo', 'utc en la base de datos']
+keywords:
+  [
+    'husos horarios en el código',
+    'buenas prácticas de fecha y hora',
+    'almacenar marcas de tiempo',
+    'utc en la base de datos',
+  ]
 related: ['what-utc-really-is', 'iso-8601-explained', 'the-2038-problem']
 ---
 

@@ -19,8 +19,7 @@
  */
 
 /** Hiragana, katakana, Han (incl. extension A and compatibility), and Hangul syllables. */
-const CJK =
-  /[぀-ゟ゠-ヿ㐀-䶿一-鿿豈-﫿가-힯]/gu;
+const CJK = /[぀-ゟ゠-ヿ㐀-䶿一-鿿豈-﫿가-힯]/gu;
 
 /**
  * Chosen so that a natural CJK sentence clears the same floor a natural English

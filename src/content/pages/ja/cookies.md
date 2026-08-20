@@ -1,6 +1,6 @@
 ---
-title: "Cookie ポリシー"
-description: "このサイトは Cookie を一切使いません。端末に保存するものと、広告を有効にした場合に変わることを記します。"
+title: 'Cookie ポリシー'
+description: 'このサイトは Cookie を一切使いません。端末に保存するものと、広告を有効にした場合に変わることを記します。'
 order: 5
 updatedAt: '2026-01-15'
 ---

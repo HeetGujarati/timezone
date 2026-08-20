@@ -164,7 +164,10 @@ describe('generated page metadata templates', () => {
     });
 
     it('states the direction, not just the magnitude', () => {
-      const ahead = meta.pairDescription({ ...pairInput(code, 'Tokyo', 'Berlin'), targetAhead: true });
+      const ahead = meta.pairDescription({
+        ...pairInput(code, 'Tokyo', 'Berlin'),
+        targetAhead: true,
+      });
       const behind = meta.pairDescription({
         ...pairInput(code, 'Tokyo', 'Berlin'),
         targetAhead: false,
@@ -182,7 +185,9 @@ describe('generated page metadata templates', () => {
   });
 
   it('gives each locale a distinct pair title for the same two cities', () => {
-    const titles = CODES.map((code) => getMetaTemplates(code).pairTitle(pairInput(code, 'Tokyo', 'Berlin')));
+    const titles = CODES.map((code) =>
+      getMetaTemplates(code).pairTitle(pairInput(code, 'Tokyo', 'Berlin')),
+    );
     // Duplicate titles across locales are exactly what the SEO audit rejects.
     expect(new Set(titles).size).toBe(titles.length);
   });

@@ -1,11 +1,17 @@
 ---
-title: "Zeitzonen im Code, ein praktischer Leitfaden"
-description: "UTC speichern, den Zonenbezeichner behalten, bei der Anzeige umrechnen, nie eine Abweichungstabelle bauen. Die Regeln und die Begründung dahinter."
-summary: "Fast jeder Zeitzonenfehler geht auf einen von vier Fehlgriffen zurück. Hier steht, was stattdessen zu tun ist — in JavaScript, Python, Java, Go und SQL, mit Begründung statt bloßer Regel."
+title: 'Zeitzonen im Code, ein praktischer Leitfaden'
+description: 'UTC speichern, den Zonenbezeichner behalten, bei der Anzeige umrechnen, nie eine Abweichungstabelle bauen. Die Regeln und die Begründung dahinter.'
+summary: 'Fast jeder Zeitzonenfehler geht auf einen von vier Fehlgriffen zurück. Hier steht, was stattdessen zu tun ist — in JavaScript, Python, Java, Go und SQL, mit Begründung statt bloßer Regel.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 9
-keywords: ['zeitzonen im code', 'datum und zeit best practices', 'zeitstempel speichern', 'utc in der datenbank']
+keywords:
+  [
+    'zeitzonen im code',
+    'datum und zeit best practices',
+    'zeitstempel speichern',
+    'utc in der datenbank',
+  ]
 related: ['what-utc-really-is', 'iso-8601-explained', 'the-2038-problem']
 ---
 

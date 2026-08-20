@@ -1,12 +1,17 @@
 ---
-title: "Como os fusos horários funcionam de verdade"
-description: "Fusos horários são um artefato político sobreposto a um problema geográfico. Aqui está o mecanismo e por que o software erra."
-summary: "Um fuso horário não é uma fatia do globo: é um conjunto de regras com nome sobre o que um relógio em determinado lugar marcou, marca e está previsto marcar. Essa distinção é o assunto inteiro."
+title: 'Como os fusos horários funcionam de verdade'
+description: 'Fusos horários são um artefato político sobreposto a um problema geográfico. Aqui está o mecanismo e por que o software erra.'
+summary: 'Um fuso horário não é uma fatia do globo: é um conjunto de regras com nome sobre o que um relógio em determinado lugar marcou, marca e está previsto marcar. Essa distinção é o assunto inteiro.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 1
 keywords:
-  ['como funcionam os fusos horários', 'fusos horários explicados', 'o que é um fuso horário', 'banco de dados iana']
+  [
+    'como funcionam os fusos horários',
+    'fusos horários explicados',
+    'o que é um fuso horário',
+    'banco de dados iana',
+  ]
 related: ['what-utc-really-is', 'why-est-is-ambiguous', 'time-zones-in-code']
 ---
 

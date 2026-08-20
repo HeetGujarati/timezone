@@ -1,7 +1,7 @@
 ---
-title: "O que o UTC realmente é, e como difere do GMT"
-description: "UTC é um padrão de tempo mantido por relógios atômicos. GMT é um fuso mantido pela Terra. Costumam coincidir, e a diferença importa mesmo assim."
-summary: "UTC não é um fuso horário. É o padrão de referência contra o qual todo fuso é definido, mantido por cerca de 450 relógios atômicos, e ele nunca muda por causa do horário de verão — exatamente por isso os sistemas o usam."
+title: 'O que o UTC realmente é, e como difere do GMT'
+description: 'UTC é um padrão de tempo mantido por relógios atômicos. GMT é um fuso mantido pela Terra. Costumam coincidir, e a diferença importa mesmo assim.'
+summary: 'UTC não é um fuso horário. É o padrão de referência contra o qual todo fuso é definido, mantido por cerca de 450 relógios atômicos, e ele nunca muda por causa do horário de verão — exatamente por isso os sistemas o usam.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 2

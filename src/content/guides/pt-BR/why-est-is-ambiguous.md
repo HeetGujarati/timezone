@@ -1,7 +1,7 @@
 ---
-title: "Por que EST é ambíguo, e o que usar no lugar"
-description: "IST significa três coisas diferentes. CST, quatro. Siglas de fuso não são identificadores, e tratá-las como tal causa defeitos de verdade."
-summary: "Siglas de fuso horário são rótulos informais, sem órgão que as governe e sem garantia de unicidade. IST é Índia, Irlanda e Israel; CST é América, China e Cuba. Use identificadores IANA."
+title: 'Por que EST é ambíguo, e o que usar no lugar'
+description: 'IST significa três coisas diferentes. CST, quatro. Siglas de fuso não são identificadores, e tratá-las como tal causa defeitos de verdade.'
+summary: 'Siglas de fuso horário são rótulos informais, sem órgão que as governe e sem garantia de unicidade. IST é Índia, Irlanda e Israel; CST é América, China e Cuba. Use identificadores IANA.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 10
@@ -27,12 +27,12 @@ Siglas de fuso horário são informais. Nenhum órgão de normalização as atri
 
 **CST** — quatro significados:
 
-| Significado                            | Diferença | Fuso                 |
-| -------------------------------------- | --------- | -------------------- |
-| Central Standard Time (América do N.)  | UTC-06:00 | `America/Chicago`    |
-| China Standard Time                    | UTC+08:00 | `Asia/Shanghai`      |
-| Cuba Standard Time                     | UTC-05:00 | `America/Havana`     |
-| Central Standard Time (Austrália)      | UTC+09:30 | `Australia/Adelaide` |
+| Significado                           | Diferença | Fuso                 |
+| ------------------------------------- | --------- | -------------------- |
+| Central Standard Time (América do N.) | UTC-06:00 | `America/Chicago`    |
+| China Standard Time                   | UTC+08:00 | `Asia/Shanghai`      |
+| Cuba Standard Time                    | UTC-05:00 | `America/Havana`     |
+| Central Standard Time (Austrália)     | UTC+09:30 | `Australia/Adelaide` |
 
 Chicago e Xangai estão a catorze horas.
 

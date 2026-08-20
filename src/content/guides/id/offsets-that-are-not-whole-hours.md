@@ -1,11 +1,17 @@
 ---
-title: "Selisih UTC yang bukan jam bulat"
-description: "India, Nepal, Newfoundland, dan Kepulauan Chatham berjalan pada setengah dan seperempat jam. Inilah daftar lengkapnya dan apa yang rusak karenanya."
-summary: "Sekitar seperlima penduduk dunia hidup pada selisih yang bukan bilangan jam bulat dari UTC. Perangkat lunak yang menganggap sebaliknya tidak keliru sedikit bagi mereka — ia keliru 30 atau 45 menit, dan itu lebih buruk."
+title: 'Selisih UTC yang bukan jam bulat'
+description: 'India, Nepal, Newfoundland, dan Kepulauan Chatham berjalan pada setengah dan seperempat jam. Inilah daftar lengkapnya dan apa yang rusak karenanya.'
+summary: 'Sekitar seperlima penduduk dunia hidup pada selisih yang bukan bilangan jam bulat dari UTC. Perangkat lunak yang menganggap sebaliknya tidak keliru sedikit bagi mereka — ia keliru 30 atau 45 menit, dan itu lebih buruk.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 5
-keywords: ['zona waktu setengah jam', 'selisih utc 45 menit', 'selisih zona waktu india', 'zona waktu nepal']
+keywords:
+  [
+    'zona waktu setengah jam',
+    'selisih utc 45 menit',
+    'selisih zona waktu india',
+    'zona waktu nepal',
+  ]
 related: ['half-hour-offsets-explained', 'time-zones-in-code', 'how-time-zones-work']
 ---
 
@@ -15,24 +21,24 @@ Bayangan tentang dua puluh empat zona berjarak satu jam itu keliru dengan cara y
 
 **Selisih pada :30**
 
-| Selisih   | Di mana                                                        |
-| --------- | -------------------------------------------------------------- |
-| UTC-09:30 | Kepulauan Marquesas                                            |
-| UTC-03:30 | Newfoundland dan Labrador                                      |
-| UTC+03:30 | Iran                                                           |
-| UTC+04:30 | Afghanistan                                                    |
-| UTC+05:30 | India, Sri Lanka                                               |
-| UTC+06:30 | Myanmar, Kepulauan Cocos                                       |
-| UTC+09:30 | Australia tengah — Wilayah Utara, Australia Selatan            |
-| UTC+10:30 | Pulau Lord Howe (waktu baku)                                   |
+| Selisih   | Di mana                                             |
+| --------- | --------------------------------------------------- |
+| UTC-09:30 | Kepulauan Marquesas                                 |
+| UTC-03:30 | Newfoundland dan Labrador                           |
+| UTC+03:30 | Iran                                                |
+| UTC+04:30 | Afghanistan                                         |
+| UTC+05:30 | India, Sri Lanka                                    |
+| UTC+06:30 | Myanmar, Kepulauan Cocos                            |
+| UTC+09:30 | Australia tengah — Wilayah Utara, Australia Selatan |
+| UTC+10:30 | Pulau Lord Howe (waktu baku)                        |
 
 **Selisih pada :45**
 
-| Selisih   | Di mana                                                       |
-| --------- | ------------------------------------------------------------- |
-| UTC+05:45 | Nepal                                                         |
-| UTC+08:45 | Tenggara Australia Barat (Eucla, tidak resmi)                 |
-| UTC+12:45 | Kepulauan Chatham (waktu baku)                                |
+| Selisih   | Di mana                                       |
+| --------- | --------------------------------------------- |
+| UTC+05:45 | Nepal                                         |
+| UTC+08:45 | Tenggara Australia Barat (Eucla, tidak resmi) |
+| UTC+12:45 | Kepulauan Chatham (waktu baku)                |
 
 India sendiri berpenduduk 1,4 miliar jiwa. Tambahkan Iran, Afghanistan, Myanmar, Sri Lanka, dan Nepal, maka Anda sudah melewati seperlima penduduk bumi, bahkan sebelum menghitung Australia atau Kanada.
 

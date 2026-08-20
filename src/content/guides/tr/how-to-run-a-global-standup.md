@@ -1,11 +1,17 @@
 ---
-title: "Saat dilimlerine yayılmış günlük toplantı nasıl yürütülür"
-description: "Günlük eşzamanlı ayaküstü toplantı dört saat dilimini kaldırmaz. Yerine ne geçer ve o yerine geçen nasıl gerçekten işler."
-summary: "Günlük toplantı, herkes aynı anda uyanık olduğu için işler. Yaklaşık altı saatlik bir açıklığın ötesinde bu doğru olmaktan çıkar ve dürüst çözüm saati oynatmak değil biçimi değiştirmektir."
+title: 'Saat dilimlerine yayılmış günlük toplantı nasıl yürütülür'
+description: 'Günlük eşzamanlı ayaküstü toplantı dört saat dilimini kaldırmaz. Yerine ne geçer ve o yerine geçen nasıl gerçekten işler.'
+summary: 'Günlük toplantı, herkes aynı anda uyanık olduğu için işler. Yaklaşık altı saatlik bir açıklığın ötesinde bu doğru olmaktan çıkar ve dürüst çözüm saati oynatmak değil biçimi değiştirmektir.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 8
-keywords: ['küresel günlük toplantı', 'eşzamansız günlük toplantı', 'dağıtık ekip toplantıları', 'uzaktan günlük toplantı saat dilimleri']
+keywords:
+  [
+    'küresel günlük toplantı',
+    'eşzamansız günlük toplantı',
+    'dağıtık ekip toplantıları',
+    'uzaktan günlük toplantı saat dilimleri',
+  ]
 related: ['scheduling-across-twelve-hours', 'how-time-zones-work', 'why-daylight-saving-exists']
 ---
 
@@ -19,12 +25,12 @@ Ekipteki en ileri ve en geri dilimi alın, farkı _bugünün_ tarihinde hesaplay
 
 Sonra ortak 09:00–18:00 penceresini bulun. Biçime karar veren sayı budur:
 
-| Ortak pencere    | Ne işler                                                                       |
-| ---------------- | ------------------------------------------------------------------------------ |
-| 4 saat ve üzeri  | İsterseniz eşzamanlı bir günlük toplantı                                       |
-| 2–4 saat         | Eşzamanlı, ama o pencereyi yalnızca kararlara ayırın                           |
-| 2 saatin altı    | Yazılı günlük toplantı, haftada bir eşzamanlı görüşmeyle                       |
-| Hiç yok          | Bütünüyle yazılı, artı sesle yapılması gereken az sayıda şey için bilinçli çakışma |
+| Ortak pencere   | Ne işler                                                                           |
+| --------------- | ---------------------------------------------------------------------------------- |
+| 4 saat ve üzeri | İsterseniz eşzamanlı bir günlük toplantı                                           |
+| 2–4 saat        | Eşzamanlı, ama o pencereyi yalnızca kararlara ayırın                               |
+| 2 saatin altı   | Yazılı günlük toplantı, haftada bir eşzamanlı görüşmeyle                           |
+| Hiç yok         | Bütünüyle yazılı, artı sesle yapılması gereken az sayıda şey için bilinçli çakışma |
 
 ## Yazılı günlük toplantı
 

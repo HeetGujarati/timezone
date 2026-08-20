@@ -1,7 +1,7 @@
 ---
-title: "Warum EST mehrdeutig ist und was man stattdessen nimmt"
-description: "IST bedeutet drei verschiedene Dinge, CST vier. Zeitzonenkürzel sind keine Kennungen, und sie dafür zu halten erzeugt echte Fehler."
-summary: "Zeitzonenkürzel sind informelle Etiketten ohne zuständiges Gremium und ohne Garantie auf Eindeutigkeit. IST ist Indien, Irland und Israel; CST ist Amerika, China und Kuba. Nehmen Sie stattdessen IANA-Kennungen."
+title: 'Warum EST mehrdeutig ist und was man stattdessen nimmt'
+description: 'IST bedeutet drei verschiedene Dinge, CST vier. Zeitzonenkürzel sind keine Kennungen, und sie dafür zu halten erzeugt echte Fehler.'
+summary: 'Zeitzonenkürzel sind informelle Etiketten ohne zuständiges Gremium und ohne Garantie auf Eindeutigkeit. IST ist Indien, Irland und Israel; CST ist Amerika, China und Kuba. Nehmen Sie stattdessen IANA-Kennungen.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 10
@@ -17,22 +17,22 @@ Zeitzonenkürzel sind informell. Kein Normungsgremium vergibt sie, keines garant
 
 **IST** — drei Bedeutungen, alle in Gebrauch:
 
-| Bedeutung                     | Versatz   | Zone                          |
-| ----------------------------- | --------- | ----------------------------- |
-| Indian Standard Time          | UTC+05:30 | `Asia/Kolkata`                |
-| Irish Standard Time           | UTC+01:00 | `Europe/Dublin` (nur Sommer)  |
-| Israel Standard Time          | UTC+02:00 | `Asia/Jerusalem`              |
+| Bedeutung            | Versatz   | Zone                         |
+| -------------------- | --------- | ---------------------------- |
+| Indian Standard Time | UTC+05:30 | `Asia/Kolkata`               |
+| Irish Standard Time  | UTC+01:00 | `Europe/Dublin` (nur Sommer) |
+| Israel Standard Time | UTC+02:00 | `Asia/Jerusalem`             |
 
 Indien und Irland liegen viereinhalb Stunden auseinander. Eine im falschen IST gebuchte Besprechung ist nicht ein wenig zu früh, sondern den größten Teil eines Arbeitstags daneben.
 
 **CST** — vier Bedeutungen:
 
-| Bedeutung                             | Versatz   | Zone                 |
-| ------------------------------------- | --------- | -------------------- |
-| Central Standard Time (Nordamerika)   | UTC-06:00 | `America/Chicago`    |
-| China Standard Time                   | UTC+08:00 | `Asia/Shanghai`      |
-| Cuba Standard Time                    | UTC-05:00 | `America/Havana`     |
-| Central Standard Time (Australien)    | UTC+09:30 | `Australia/Adelaide` |
+| Bedeutung                           | Versatz   | Zone                 |
+| ----------------------------------- | --------- | -------------------- |
+| Central Standard Time (Nordamerika) | UTC-06:00 | `America/Chicago`    |
+| China Standard Time                 | UTC+08:00 | `Asia/Shanghai`      |
+| Cuba Standard Time                  | UTC-05:00 | `America/Havana`     |
+| Central Standard Time (Australien)  | UTC+09:30 | `Australia/Adelaide` |
 
 Chicago und Schanghai trennen vierzehn Stunden.
 

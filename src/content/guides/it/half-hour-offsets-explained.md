@@ -5,7 +5,13 @@ summary: "L'India sta su UTC+05:30 perché ha diviso a metà la differenza fra d
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 12
-keywords: ['perché india mezz ora', 'nepal 45 minuti', 'fuso orario di mezz ora', 'storia dell ora standard indiana']
+keywords:
+  [
+    'perché india mezz ora',
+    'nepal 45 minuti',
+    'fuso orario di mezz ora',
+    'storia dell ora standard indiana',
+  ]
 related: ['offsets-that-are-not-whole-hours', 'how-time-zones-work', 'the-international-date-line']
 ---
 

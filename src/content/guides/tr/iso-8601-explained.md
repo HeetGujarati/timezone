@@ -1,7 +1,7 @@
 ---
-title: "ISO 8601 ve bir tarihi çift anlama gelmeden yazmak"
-description: "03/04/2026 okuyana göre iki ayrı tarih demektir. ISO 8601 bunu çözer ve kurallarını tam olarak bilmeye değer."
-summary: "ISO 8601 var, çünkü 03/04/2026 Amerika’da mart, başka her yerde nisandır. 2026-04-03 yazmak belirsizliği kaldırır, metin olarak doğru sıralanır ve her arayüzün kabul etmesi gereken biçimdir."
+title: 'ISO 8601 ve bir tarihi çift anlama gelmeden yazmak'
+description: '03/04/2026 okuyana göre iki ayrı tarih demektir. ISO 8601 bunu çözer ve kurallarını tam olarak bilmeye değer.'
+summary: 'ISO 8601 var, çünkü 03/04/2026 Amerika’da mart, başka her yerde nisandır. 2026-04-03 yazmak belirsizliği kaldırır, metin olarak doğru sıralanır ve her arayüzün kabul etmesi gereken biçimdir.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 7
@@ -32,11 +32,11 @@ Mesele sıralamadır. Bileşenler en anlamlıdan en az anlamlıya doğru gittiğ
 
 Üç biçim geçerlidir ve farklı şeyler anlatır:
 
-| Biçim                       | Anlamı                                                                 |
-| --------------------------- | ---------------------------------------------------------------------- |
-| `2026-04-03T14:30:00Z`      | 14:30 UTC. Tek anlamlı                                                  |
-| `2026-04-03T14:30:00+05:45` | UTC’den 5 sa 45 dk ileri bir dilimde yerel saatle 14:30. Tek anlamlı    |
-| `2026-04-03T14:30:00`       | Belirtilmemiş bir dilimde 14:30. **Zaman damgası değildir**             |
+| Biçim                       | Anlamı                                                               |
+| --------------------------- | -------------------------------------------------------------------- |
+| `2026-04-03T14:30:00Z`      | 14:30 UTC. Tek anlamlı                                               |
+| `2026-04-03T14:30:00+05:45` | UTC’den 5 sa 45 dk ileri bir dilimde yerel saatle 14:30. Tek anlamlı |
+| `2026-04-03T14:30:00`       | Belirtilmemiş bir dilimde 14:30. **Zaman damgası değildir**          |
 
 Sorun çıkaran üçüncü biçimdir. O bir _yerel tarih-saattir_: bir zaman çizgisine yerleştirmenin hiçbir yolu olmayan bir duvar saati okuması. Onu bir sistem sınırından geçirip karşı tarafın sizinle aynı dilimi varsaydığını ummak, başka bir bölgeye yapılacak dağıtımı bekleyen bir hatadır.
 

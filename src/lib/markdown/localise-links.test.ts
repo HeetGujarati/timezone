@@ -4,7 +4,9 @@ import { isRewritable, localeFromPath, localiseHref } from './localise-links.ts'
 describe('localeFromPath', () => {
   it('reads the locale from the containing directory', () => {
     expect(localeFromPath('/repo/src/content/pages/de/about.md')).toBe('de');
-    expect(localeFromPath('/repo/src/content/guides/zh-Hans/what-utc-really-is.md')).toBe('zh-Hans');
+    expect(localeFromPath('/repo/src/content/guides/zh-Hans/what-utc-really-is.md')).toBe(
+      'zh-Hans',
+    );
   });
 
   it('returns undefined for English, which needs no prefix', () => {

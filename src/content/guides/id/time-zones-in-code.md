@@ -1,11 +1,17 @@
 ---
-title: "Zona waktu di dalam kode, panduan praktis"
-description: "Simpan UTC, pertahankan pengenal zona, konversikan saat ditampilkan, jangan pernah membuat tabel selisih. Kaidahnya dan alasan di balik tiap kaidah."
-summary: "Hampir semua kutu zona waktu berpangkal pada salah satu dari empat kekeliruan. Inilah yang seharusnya dilakukan, dalam JavaScript, Python, Java, Go, dan SQL, lengkap dengan alasannya."
+title: 'Zona waktu di dalam kode, panduan praktis'
+description: 'Simpan UTC, pertahankan pengenal zona, konversikan saat ditampilkan, jangan pernah membuat tabel selisih. Kaidahnya dan alasan di balik tiap kaidah.'
+summary: 'Hampir semua kutu zona waktu berpangkal pada salah satu dari empat kekeliruan. Inilah yang seharusnya dilakukan, dalam JavaScript, Python, Java, Go, dan SQL, lengkap dengan alasannya.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 9
-keywords: ['zona waktu di kode', 'praktik baik tanggal dan waktu', 'menyimpan stempel waktu', 'utc di basis data']
+keywords:
+  [
+    'zona waktu di kode',
+    'praktik baik tanggal dan waktu',
+    'menyimpan stempel waktu',
+    'utc di basis data',
+  ]
 related: ['what-utc-really-is', 'iso-8601-explained', 'the-2038-problem']
 ---
 

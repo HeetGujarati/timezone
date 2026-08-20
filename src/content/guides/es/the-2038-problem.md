@@ -1,7 +1,7 @@
 ---
-title: "El problema del 2038, explicado como corresponde"
-description: "A las 03:14:07 UTC del 19 de enero de 2038, el tiempo Unix de 32 bits con signo se desborda. Esto es lo que se rompe de verdad y lo que ya está arreglado."
-summary: "Los sistemas que guardan el tiempo como una cuenta de segundos de 32 bits con signo se quedan sin espacio en enero de 2038 y saltan a diciembre de 1901. Casi todas las plataformas modernas lo arreglaron hace años; la exposición está hoy en lo embebido, lo heredado y los datos serializados."
+title: 'El problema del 2038, explicado como corresponde'
+description: 'A las 03:14:07 UTC del 19 de enero de 2038, el tiempo Unix de 32 bits con signo se desborda. Esto es lo que se rompe de verdad y lo que ya está arreglado.'
+summary: 'Los sistemas que guardan el tiempo como una cuenta de segundos de 32 bits con signo se quedan sin espacio en enero de 2038 y saltan a diciembre de 1901. Casi todas las plataformas modernas lo arreglaron hace años; la exposición está hoy en lo embebido, lo heredado y los datos serializados.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 6

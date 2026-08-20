@@ -1,7 +1,7 @@
 ---
-title: "Das Jahr-2038-Problem, richtig erklärt"
-description: "Am 19. Januar 2038 um 03:14:07 UTC läuft die vorzeichenbehaftete 32-Bit-Unix-Zeit über. Hier steht, was wirklich bricht und was längst behoben ist."
-summary: "Systeme, die Zeit als vorzeichenbehaftete 32-Bit-Sekundenzahl speichern, gehen im Januar 2038 über und landen im Dezember 1901. Die meisten modernen Plattformen haben das vor Jahren behoben; gefährdet sind heute eingebettete, alte und serialisierte Daten."
+title: 'Das Jahr-2038-Problem, richtig erklärt'
+description: 'Am 19. Januar 2038 um 03:14:07 UTC läuft die vorzeichenbehaftete 32-Bit-Unix-Zeit über. Hier steht, was wirklich bricht und was längst behoben ist.'
+summary: 'Systeme, die Zeit als vorzeichenbehaftete 32-Bit-Sekundenzahl speichern, gehen im Januar 2038 über und landen im Dezember 1901. Die meisten modernen Plattformen haben das vor Jahren behoben; gefährdet sind heute eingebettete, alte und serialisierte Daten.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 6

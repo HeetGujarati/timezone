@@ -1,7 +1,7 @@
 ---
-title: "Pourquoi EST est ambigu, et quoi employer à la place"
-description: "IST signifie trois choses différentes. CST, quatre. Les sigles de fuseau ne sont pas des identifiants, et les traiter comme tels crée de vrais bogues."
-summary: "Les sigles de fuseau horaire sont des étiquettes informelles, sans organisme responsable et sans garantie d’unicité. IST, c’est l’Inde, l’Irlande et Israël ; CST, l’Amérique, la Chine et Cuba. Employez les identifiants IANA."
+title: 'Pourquoi EST est ambigu, et quoi employer à la place'
+description: 'IST signifie trois choses différentes. CST, quatre. Les sigles de fuseau ne sont pas des identifiants, et les traiter comme tels crée de vrais bogues.'
+summary: 'Les sigles de fuseau horaire sont des étiquettes informelles, sans organisme responsable et sans garantie d’unicité. IST, c’est l’Inde, l’Irlande et Israël ; CST, l’Amérique, la Chine et Cuba. Employez les identifiants IANA.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 10
@@ -17,11 +17,11 @@ Les sigles de fuseau sont informels. Aucun organisme de normalisation ne les att
 
 **IST** — trois sens, tous en usage :
 
-| Sens                       | Décalage  | Fuseau                        |
-| -------------------------- | --------- | ----------------------------- |
-| Indian Standard Time       | UTC+05:30 | `Asia/Kolkata`                |
-| Irish Standard Time        | UTC+01:00 | `Europe/Dublin` (été seul)    |
-| Israel Standard Time       | UTC+02:00 | `Asia/Jerusalem`              |
+| Sens                 | Décalage  | Fuseau                     |
+| -------------------- | --------- | -------------------------- |
+| Indian Standard Time | UTC+05:30 | `Asia/Kolkata`             |
+| Irish Standard Time  | UTC+01:00 | `Europe/Dublin` (été seul) |
+| Israel Standard Time | UTC+02:00 | `Asia/Jerusalem`           |
 
 L’Inde et l’Irlande sont séparées de quatre heures et demie. Une réunion posée dans le mauvais IST n’est pas légèrement en avance : elle rate presque une journée de travail.
 

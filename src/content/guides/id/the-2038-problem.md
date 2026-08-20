@@ -1,7 +1,7 @@
 ---
-title: "Masalah 2038, dijelaskan sebagaimana mestinya"
-description: "Pada 03:14:07 UTC, 19 Januari 2038, waktu Unix 32 bit bertanda meluap. Inilah yang benar-benar rusak dan apa yang sudah diperbaiki."
-summary: "Sistem yang menyimpan waktu sebagai hitungan detik 32 bit bertanda kehabisan ruang pada Januari 2038 dan melompat ke Desember 1901. Hampir semua platform modern sudah memperbaikinya bertahun-tahun lalu; paparan yang tersisa ada pada perangkat tertanam, sistem lama, dan data terserialisasi."
+title: 'Masalah 2038, dijelaskan sebagaimana mestinya'
+description: 'Pada 03:14:07 UTC, 19 Januari 2038, waktu Unix 32 bit bertanda meluap. Inilah yang benar-benar rusak dan apa yang sudah diperbaiki.'
+summary: 'Sistem yang menyimpan waktu sebagai hitungan detik 32 bit bertanda kehabisan ruang pada Januari 2038 dan melompat ke Desember 1901. Hampir semua platform modern sudah memperbaikinya bertahun-tahun lalu; paparan yang tersisa ada pada perangkat tertanam, sistem lama, dan data terserialisasi.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 6

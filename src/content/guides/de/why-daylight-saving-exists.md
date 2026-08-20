@@ -1,12 +1,17 @@
 ---
-title: "Warum es die Sommerzeit gibt und wer sie abgeschafft hat"
-description: "Für die Sommerzeit sprach im Krieg die Kohle, dagegen sprechen heute Gesundheitsdaten. Hier ist die Geschichte — und wer sie gestrichen hat."
-summary: "Die Sommerzeit wurde eingeführt, um im Ersten Weltkrieg Brennstoff zu sparen, aus wechselnden Gründen beibehalten und wird nun Land für Land aufgegeben, weil die Belege für sie dünner werden."
+title: 'Warum es die Sommerzeit gibt und wer sie abgeschafft hat'
+description: 'Für die Sommerzeit sprach im Krieg die Kohle, dagegen sprechen heute Gesundheitsdaten. Hier ist die Geschichte — und wer sie gestrichen hat.'
+summary: 'Die Sommerzeit wurde eingeführt, um im Ersten Weltkrieg Brennstoff zu sparen, aus wechselnden Gründen beibehalten und wird nun Land für Land aufgegeben, weil die Belege für sie dünner werden.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 3
 keywords:
-  ['warum sommerzeit', 'geschichte der sommerzeit', 'länder sommerzeit abgeschafft', 'zeitumstellung erklärt']
+  [
+    'warum sommerzeit',
+    'geschichte der sommerzeit',
+    'länder sommerzeit abgeschafft',
+    'zeitumstellung erklärt',
+  ]
 related: ['how-time-zones-work', 'why-est-is-ambiguous', 'the-2038-problem']
 ---
 

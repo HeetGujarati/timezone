@@ -1,11 +1,17 @@
 ---
-title: "Ein tägliches Kurzmeeting über viele Zeitzonen führen"
-description: "Das tägliche synchrone Kurzmeeting übersteht vier Zeitzonen nicht. Was an seine Stelle tritt und wie der Ersatz wirklich funktioniert."
-summary: "Ein tägliches Kurzmeeting funktioniert, weil alle gleichzeitig wach sind. Ab etwa sechs Stunden Spanne stimmt das nicht mehr, und die ehrliche Lösung ist, das Format zu ändern statt die Uhrzeit."
+title: 'Ein tägliches Kurzmeeting über viele Zeitzonen führen'
+description: 'Das tägliche synchrone Kurzmeeting übersteht vier Zeitzonen nicht. Was an seine Stelle tritt und wie der Ersatz wirklich funktioniert.'
+summary: 'Ein tägliches Kurzmeeting funktioniert, weil alle gleichzeitig wach sind. Ab etwa sechs Stunden Spanne stimmt das nicht mehr, und die ehrliche Lösung ist, das Format zu ändern statt die Uhrzeit.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 8
-keywords: ['globales kurzmeeting', 'asynchrones standup', 'besprechungen verteilter teams', 'remote standup zeitzonen']
+keywords:
+  [
+    'globales kurzmeeting',
+    'asynchrones standup',
+    'besprechungen verteilter teams',
+    'remote standup zeitzonen',
+  ]
 related: ['scheduling-across-twelve-hours', 'how-time-zones-work', 'why-daylight-saving-exists']
 ---
 
@@ -19,9 +25,9 @@ Nehmen Sie die früheste und die späteste Zone im Team und berechnen Sie den Un
 
 Suchen Sie dann das gemeinsame Fenster von 09:00 bis 18:00. Diese Zahl entscheidet über das Format:
 
-| Gemeinsames Fenster | Was funktioniert                                                            |
-| ------------------- | --------------------------------------------------------------------------- |
-| 4+ Stunden          | Ein synchrones Kurzmeeting, wenn Sie eines wollen                           |
+| Gemeinsames Fenster | Was funktioniert                                                             |
+| ------------------- | ---------------------------------------------------------------------------- |
+| 4+ Stunden          | Ein synchrones Kurzmeeting, wenn Sie eines wollen                            |
 | 2–4 Stunden         | Synchron, aber halten Sie dieses Fenster allein für Entscheidungen frei      |
 | Unter 2 Stunden     | Schriftliches Kurzmeeting mit einem wöchentlichen synchronen Termin          |
 | Keines              | Vollständig schriftlich, plus bewusste Überlappung für das Wenige mit Stimme |

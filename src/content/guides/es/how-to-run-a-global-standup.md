@@ -1,11 +1,17 @@
 ---
-title: "Cómo hacer una reunión diaria entre muchos husos horarios"
-description: "La reunión diaria síncrona no sobrevive a cuatro husos horarios. Qué la sustituye y cómo lograr que el sustituto funcione de verdad."
-summary: "Una reunión diaria funciona porque todo el mundo está despierto a la vez. Pasada una amplitud de unas seis horas eso deja de ser cierto, y el arreglo honesto es cambiar el formato en vez de seguir moviendo la hora."
+title: 'Cómo hacer una reunión diaria entre muchos husos horarios'
+description: 'La reunión diaria síncrona no sobrevive a cuatro husos horarios. Qué la sustituye y cómo lograr que el sustituto funcione de verdad.'
+summary: 'Una reunión diaria funciona porque todo el mundo está despierto a la vez. Pasada una amplitud de unas seis horas eso deja de ser cierto, y el arreglo honesto es cambiar el formato en vez de seguir moviendo la hora.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 8
-keywords: ['reunión diaria global', 'reunión diaria asíncrona', 'reuniones de equipos distribuidos', 'reunión diaria remota husos horarios']
+keywords:
+  [
+    'reunión diaria global',
+    'reunión diaria asíncrona',
+    'reuniones de equipos distribuidos',
+    'reunión diaria remota husos horarios',
+  ]
 related: ['scheduling-across-twelve-hours', 'how-time-zones-work', 'why-daylight-saving-exists']
 ---
 
@@ -19,12 +25,12 @@ Tome el huso más adelantado y el más atrasado del equipo y calcule la diferenc
 
 Después busque la ventana común de 09:00 a 18:00. Ese número decide el formato:
 
-| Ventana común    | Qué funciona                                                                     |
-| ---------------- | -------------------------------------------------------------------------------- |
-| 4 horas o más    | Una reunión diaria síncrona, si la quiere                                         |
-| 2–4 horas        | Síncrona, pero reserve esa ventana solo para decisiones                           |
-| Menos de 2 horas | Reunión escrita, con una llamada síncrona semanal                                 |
-| Ninguna          | Todo escrito, más un solapamiento deliberado para lo poco que necesita voz        |
+| Ventana común    | Qué funciona                                                               |
+| ---------------- | -------------------------------------------------------------------------- |
+| 4 horas o más    | Una reunión diaria síncrona, si la quiere                                  |
+| 2–4 horas        | Síncrona, pero reserve esa ventana solo para decisiones                    |
+| Menos de 2 horas | Reunión escrita, con una llamada síncrona semanal                          |
+| Ninguna          | Todo escrito, más un solapamiento deliberado para lo poco que necesita voz |
 
 ## La reunión diaria escrita
 

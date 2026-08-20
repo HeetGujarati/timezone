@@ -1,6 +1,6 @@
 ---
-title: "Política de privacidade"
-description: "Este site não coleta nada, não define cookies e não carrega scripts de terceiros. Veja exatamente o que isso significa."
+title: 'Política de privacidade'
+description: 'Este site não coleta nada, não define cookies e não carrega scripts de terceiros. Veja exatamente o que isso significa.'
 order: 3
 updatedAt: '2026-01-15'
 ---

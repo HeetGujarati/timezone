@@ -1,7 +1,7 @@
 ---
-title: "ISO 8601, dan cara menulis tanggal tanpa makna ganda"
-description: "03/04/2026 berarti dua tanggal berbeda tergantung siapa yang membacanya. ISO 8601 membereskannya, dan aturannya layak diketahui persis."
-summary: "ISO 8601 ada karena 03/04/2026 berarti Maret di Amerika dan April di tempat lain. Menulis 2026-04-03 menghapus makna gandanya, terurut benar sebagai teks, dan itulah yang seharusnya diterima setiap antarmuka."
+title: 'ISO 8601, dan cara menulis tanggal tanpa makna ganda'
+description: '03/04/2026 berarti dua tanggal berbeda tergantung siapa yang membacanya. ISO 8601 membereskannya, dan aturannya layak diketahui persis.'
+summary: 'ISO 8601 ada karena 03/04/2026 berarti Maret di Amerika dan April di tempat lain. Menulis 2026-04-03 menghapus makna gandanya, terurut benar sebagai teks, dan itulah yang seharusnya diterima setiap antarmuka.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 7
@@ -32,11 +32,11 @@ Urutannya itulah pokoknya. Karena komponennya berjalan dari yang paling berarti 
 
 Tiga bentuk sah, dan ketiganya berarti hal yang berbeda:
 
-| Bentuk                      | Arti                                                                   |
-| --------------------------- | ---------------------------------------------------------------------- |
-| `2026-04-03T14:30:00Z`      | 14.30 UTC. Tanpa makna ganda                                            |
+| Bentuk                      | Arti                                                                        |
+| --------------------------- | --------------------------------------------------------------------------- |
+| `2026-04-03T14:30:00Z`      | 14.30 UTC. Tanpa makna ganda                                                |
 | `2026-04-03T14:30:00+05:45` | 14.30 waktu setempat di zona 5 jam 45 menit di depan UTC. Tanpa makna ganda |
-| `2026-04-03T14:30:00`       | 14.30 di zona yang tidak disebut. **Bukan cap waktu**                   |
+| `2026-04-03T14:30:00`       | 14.30 di zona yang tidak disebut. **Bukan cap waktu**                       |
 
 Bentuk ketiga itulah yang menimbulkan masalah. Ia adalah _tanggal-waktu setempat_: bacaan jam dinding tanpa cara apa pun untuk menempatkannya pada sebuah garis waktu. Mengoperkannya melewati batas sistem sambil berharap pihak seberang menganggap zona yang sama dengan Anda adalah cacat yang sedang menunggu penggelaran di wilayah lain.
 

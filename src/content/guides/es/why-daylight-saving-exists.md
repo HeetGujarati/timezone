@@ -1,12 +1,17 @@
 ---
-title: "Por qué existe el horario de verano y quién lo ha abolido"
-description: "A favor del horario de verano estuvo el carbón de guerra; en contra están los datos de salud. Aquí la historia y qué países lo han dejado."
-summary: "El horario de verano se introdujo para ahorrar combustible en la Primera Guerra Mundial, se mantuvo por razones que han ido cambiando cada pocas décadas, y hoy se abandona país por país a medida que la evidencia a su favor adelgaza."
+title: 'Por qué existe el horario de verano y quién lo ha abolido'
+description: 'A favor del horario de verano estuvo el carbón de guerra; en contra están los datos de salud. Aquí la historia y qué países lo han dejado.'
+summary: 'El horario de verano se introdujo para ahorrar combustible en la Primera Guerra Mundial, se mantuvo por razones que han ido cambiando cada pocas décadas, y hoy se abandona país por país a medida que la evidencia a su favor adelgaza.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 3
 keywords:
-  ['por qué horario de verano', 'historia del horario de verano', 'países que abolieron el cambio de hora', 'cambio de hora explicado']
+  [
+    'por qué horario de verano',
+    'historia del horario de verano',
+    'países que abolieron el cambio de hora',
+    'cambio de hora explicado',
+  ]
 related: ['how-time-zones-work', 'why-est-is-ambiguous', 'the-2038-problem']
 ---
 

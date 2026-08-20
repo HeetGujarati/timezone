@@ -1,7 +1,7 @@
 ---
-title: "Il problema del 2038, spiegato come si deve"
-description: "Alle 03:14:07 UTC del 19 gennaio 2038 il tempo Unix a 32 bit con segno va in overflow. Ecco cosa si rompe davvero e cosa è già stato risolto."
-summary: "I sistemi che memorizzano il tempo come conteggio di secondi a 32 bit con segno esauriscono lo spazio nel gennaio 2038 e tornano al dicembre 1901. Quasi tutte le piattaforme moderne hanno risolto anni fa; l’esposizione residua riguarda l’embedded, il legacy e i dati serializzati."
+title: 'Il problema del 2038, spiegato come si deve'
+description: 'Alle 03:14:07 UTC del 19 gennaio 2038 il tempo Unix a 32 bit con segno va in overflow. Ecco cosa si rompe davvero e cosa è già stato risolto.'
+summary: 'I sistemi che memorizzano il tempo come conteggio di secondi a 32 bit con segno esauriscono lo spazio nel gennaio 2038 e tornano al dicembre 1901. Quasi tutte le piattaforme moderne hanno risolto anni fa; l’esposizione residua riguarda l’embedded, il legacy e i dati serializzati.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 6

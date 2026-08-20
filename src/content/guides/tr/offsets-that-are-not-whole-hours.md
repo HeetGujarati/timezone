@@ -1,11 +1,17 @@
 ---
-title: "Tam saat olmayan UTC farkları"
-description: "Hindistan, Nepal, Newfoundland ve Chatham Adaları yarım ve çeyrek saatlerle çalışır. İşte tam liste ve yazılımda bu yüzden bozulanlar."
-summary: "Dünyanın yaklaşık beşte biri, UTC’den tam saat olmayan bir farkta yaşar. Bunun tersini varsayan yazılım o insanlar için azıcık yanılmaz; 30 ya da 45 dakika yanılır ki bu daha kötüdür."
+title: 'Tam saat olmayan UTC farkları'
+description: 'Hindistan, Nepal, Newfoundland ve Chatham Adaları yarım ve çeyrek saatlerle çalışır. İşte tam liste ve yazılımda bu yüzden bozulanlar.'
+summary: 'Dünyanın yaklaşık beşte biri, UTC’den tam saat olmayan bir farkta yaşar. Bunun tersini varsayan yazılım o insanlar için azıcık yanılmaz; 30 ya da 45 dakika yanılır ki bu daha kötüdür.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 5
-keywords: ['yarım saatlik saat dilimleri', 'utc farkı 45 dakika', 'hindistan saat dilimi farkı', 'nepal saat dilimi']
+keywords:
+  [
+    'yarım saatlik saat dilimleri',
+    'utc farkı 45 dakika',
+    'hindistan saat dilimi farkı',
+    'nepal saat dilimi',
+  ]
 related: ['half-hour-offsets-explained', 'time-zones-in-code', 'how-time-zones-work']
 ---
 
@@ -15,24 +21,24 @@ Yirmi dört saatlik dilim modeli pahalı biçimde yanlıştır: bir milyarı ço
 
 **:30’daki farklar**
 
-| Fark      | Nerede                                                        |
-| --------- | ------------------------------------------------------------- |
-| UTC-09:30 | Markiz Adaları                                                |
-| UTC-03:30 | Newfoundland ve Labrador                                      |
-| UTC+03:30 | İran                                                          |
-| UTC+04:30 | Afganistan                                                    |
-| UTC+05:30 | Hindistan, Sri Lanka                                          |
-| UTC+06:30 | Myanmar, Cocos Adaları                                        |
-| UTC+09:30 | Orta Avustralya — Kuzey Toprakları, Güney Avustralya          |
-| UTC+10:30 | Lord Howe Adası (kış saati)                                   |
+| Fark      | Nerede                                               |
+| --------- | ---------------------------------------------------- |
+| UTC-09:30 | Markiz Adaları                                       |
+| UTC-03:30 | Newfoundland ve Labrador                             |
+| UTC+03:30 | İran                                                 |
+| UTC+04:30 | Afganistan                                           |
+| UTC+05:30 | Hindistan, Sri Lanka                                 |
+| UTC+06:30 | Myanmar, Cocos Adaları                               |
+| UTC+09:30 | Orta Avustralya — Kuzey Toprakları, Güney Avustralya |
+| UTC+10:30 | Lord Howe Adası (kış saati)                          |
 
 **:45’teki farklar**
 
-| Fark      | Nerede                                                       |
-| --------- | ------------------------------------------------------------ |
-| UTC+05:45 | Nepal                                                        |
-| UTC+08:45 | Batı Avustralya’nın güneydoğusu (Eucla, gayriresmî)          |
-| UTC+12:45 | Chatham Adaları (kış saati)                                  |
+| Fark      | Nerede                                              |
+| --------- | --------------------------------------------------- |
+| UTC+05:45 | Nepal                                               |
+| UTC+08:45 | Batı Avustralya’nın güneydoğusu (Eucla, gayriresmî) |
+| UTC+12:45 | Chatham Adaları (kış saati)                         |
 
 Yalnızca Hindistan 1,4 milyar kişidir. İran’ı, Afganistan’ı, Myanmar’ı, Sri Lanka’yı ve Nepal’i ekleyin; Avustralya ya da Kanada’yı saymadan gezegenin beşte birini aşarsınız.
 

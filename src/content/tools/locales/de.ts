@@ -19,7 +19,8 @@ export const copy: PageCopy = {
             'Ja, und auch die beiden heiklen Tage. Die Versätze stammen über den Browser aus der IANA-Zeitzonendatenbank, deshalb verwendet eine Umrechnung am Umstellungstag den Versatz, der in diesem Moment tatsächlich galt, nicht den von heute. Geben Sie eine Ortszeit ein, die es nie gab, oder eine, die es zweimal gab, sagt der Rechner das, statt stillschweigend eine auszuwählen.',
         },
         {
-          question: 'Warum ändert sich der Zeitunterschied zwischen zwei Städten im Lauf des Jahres?',
+          question:
+            'Warum ändert sich der Zeitunterschied zwischen zwei Städten im Lauf des Jahres?',
           answer:
             'Weil die beiden Orte ihre Uhren selten am selben Datum umstellen und manche gar nicht. New York liegt fast das ganze Jahr 5 Stunden hinter London, im März aber zwei Wochen lang nur 4, weil die Vereinigten Staaten ihre Uhren zwei bis drei Wochen früher umstellen als Europa. Rechnen Sie immer gegen ein konkretes Datum, nie gegen einen erinnerten Versatz.',
         },

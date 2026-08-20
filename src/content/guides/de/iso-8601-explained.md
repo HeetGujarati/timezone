@@ -1,7 +1,7 @@
 ---
-title: "ISO 8601 und wie man ein Datum eindeutig schreibt"
-description: "03/04/2026 bedeutet je nach Leserin zwei verschiedene Daten. ISO 8601 behebt das, und seine Regeln lohnen es, genau gekannt zu werden."
-summary: "ISO 8601 gibt es, weil 03/04/2026 in Amerika März und überall sonst April heißt. 2026-04-03 zu schreiben beseitigt die Doppeldeutigkeit, sortiert als Text korrekt und ist das, was jede Schnittstelle annehmen sollte."
+title: 'ISO 8601 und wie man ein Datum eindeutig schreibt'
+description: '03/04/2026 bedeutet je nach Leserin zwei verschiedene Daten. ISO 8601 behebt das, und seine Regeln lohnen es, genau gekannt zu werden.'
+summary: 'ISO 8601 gibt es, weil 03/04/2026 in Amerika März und überall sonst April heißt. 2026-04-03 zu schreiben beseitigt die Doppeldeutigkeit, sortiert als Text korrekt und ist das, was jede Schnittstelle annehmen sollte.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 7
@@ -32,11 +32,11 @@ Auf die Reihenfolge kommt es an. Weil die Bestandteile von der bedeutendsten zur
 
 Drei Formen sind gültig, und sie bedeuten Verschiedenes:
 
-| Form                        | Bedeutung                                                        |
-| --------------------------- | ---------------------------------------------------------------- |
-| `2026-04-03T14:30:00Z`      | 14:30 UTC. Eindeutig                                              |
-| `2026-04-03T14:30:00+05:45` | 14:30 Ortszeit in einer Zone 5 h 45 min vor UTC. Eindeutig        |
-| `2026-04-03T14:30:00`       | 14:30 in einer nicht genannten Zone. **Kein Zeitstempel**         |
+| Form                        | Bedeutung                                                  |
+| --------------------------- | ---------------------------------------------------------- |
+| `2026-04-03T14:30:00Z`      | 14:30 UTC. Eindeutig                                       |
+| `2026-04-03T14:30:00+05:45` | 14:30 Ortszeit in einer Zone 5 h 45 min vor UTC. Eindeutig |
+| `2026-04-03T14:30:00`       | 14:30 in einer nicht genannten Zone. **Kein Zeitstempel**  |
 
 Die dritte Form macht den Ärger. Sie ist ein _lokales Datum mit Uhrzeit_ — eine Uhranzeige ohne jede Möglichkeit, sie auf einer Zeitachse zu verorten. Sie über eine Systemgrenze zu reichen und zu hoffen, die Gegenseite nehme dieselbe Zone an wie Sie, ist ein Fehler, der auf ein Deployment in einer anderen Region wartet.
 

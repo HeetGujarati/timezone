@@ -1,12 +1,17 @@
 ---
-title: "Comment fonctionnent vraiment les fuseaux horaires"
-description: "Les fuseaux horaires sont un artefact politique posé sur un problème géographique. Voici le mécanisme, et pourquoi le logiciel se trompe."
-summary: "Un fuseau horaire n’est pas une tranche du globe : c’est un ensemble de règles nommé, portant sur ce qu’une horloge d’un lieu donné a affiché, affiche et doit afficher. Cette distinction est tout le sujet."
+title: 'Comment fonctionnent vraiment les fuseaux horaires'
+description: 'Les fuseaux horaires sont un artefact politique posé sur un problème géographique. Voici le mécanisme, et pourquoi le logiciel se trompe.'
+summary: 'Un fuseau horaire n’est pas une tranche du globe : c’est un ensemble de règles nommé, portant sur ce qu’une horloge d’un lieu donné a affiché, affiche et doit afficher. Cette distinction est tout le sujet.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 1
 keywords:
-  ['comment fonctionnent les fuseaux horaires', 'fuseaux horaires expliqués', 'qu’est-ce qu’un fuseau horaire', 'base de données iana']
+  [
+    'comment fonctionnent les fuseaux horaires',
+    'fuseaux horaires expliqués',
+    'qu’est-ce qu’un fuseau horaire',
+    'base de données iana',
+  ]
 related: ['what-utc-really-is', 'why-est-is-ambiguous', 'time-zones-in-code']
 ---
 

@@ -1,12 +1,17 @@
 ---
-title: "Por que existe o horário de verão e quem o aboliu"
-description: "A favor do horário de verão esteve o carvão de guerra; contra estão os dados de saúde. Aqui está a história e quais países já o largaram."
-summary: "O horário de verão foi criado para poupar combustível na Primeira Guerra Mundial, mantido por razões que mudam a cada poucas décadas, e hoje vem sendo abandonado país a país à medida que as evidências a seu favor rareiam."
+title: 'Por que existe o horário de verão e quem o aboliu'
+description: 'A favor do horário de verão esteve o carvão de guerra; contra estão os dados de saúde. Aqui está a história e quais países já o largaram.'
+summary: 'O horário de verão foi criado para poupar combustível na Primeira Guerra Mundial, mantido por razões que mudam a cada poucas décadas, e hoje vem sendo abandonado país a país à medida que as evidências a seu favor rareiam.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 3
 keywords:
-  ['por que horário de verão', 'história do horário de verão', 'países que aboliram o horário de verão', 'mudança de horário explicada']
+  [
+    'por que horário de verão',
+    'história do horário de verão',
+    'países que aboliram o horário de verão',
+    'mudança de horário explicada',
+  ]
 related: ['how-time-zones-work', 'why-est-is-ambiguous', 'the-2038-problem']
 ---
 

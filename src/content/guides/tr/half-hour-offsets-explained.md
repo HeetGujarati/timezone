@@ -1,11 +1,17 @@
 ---
-title: "Hindistan neden UTC’den yarım saat sapar"
-description: "Yarım saatlik ve 45 dakikalık farklar coğrafi kazalar değildir: uzlaşmalardır, bağımsızlık bildirimleridir, biri de bürokratik bir şakadır."
-summary: "Hindistan UTC+05:30’dadır, çünkü önerilen iki dilimin farkını ikiye bölmüştür. Nepal kısmen Hindistan olmamak için UTC+05:45’tedir. Her olağandışı farkın bir öyküsü vardır ve çoğu siyasidir."
+title: 'Hindistan neden UTC’den yarım saat sapar'
+description: 'Yarım saatlik ve 45 dakikalık farklar coğrafi kazalar değildir: uzlaşmalardır, bağımsızlık bildirimleridir, biri de bürokratik bir şakadır.'
+summary: 'Hindistan UTC+05:30’dadır, çünkü önerilen iki dilimin farkını ikiye bölmüştür. Nepal kısmen Hindistan olmamak için UTC+05:45’tedir. Her olağandışı farkın bir öyküsü vardır ve çoğu siyasidir.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 12
-keywords: ['hindistan neden yarım saat', 'nepal 45 dakika', 'yarım saatlik saat dilimi', 'hindistan standart saati tarihi']
+keywords:
+  [
+    'hindistan neden yarım saat',
+    'nepal 45 dakika',
+    'yarım saatlik saat dilimi',
+    'hindistan standart saati tarihi',
+  ]
 related: ['offsets-that-are-not-whole-hours', 'how-time-zones-work', 'the-international-date-line']
 ---
 

@@ -1,7 +1,7 @@
 ---
-title: "Apa itu UTC sebenarnya, dan bedanya dengan GMT"
-description: "UTC adalah standar waktu yang dijaga jam-jam atom. GMT adalah zona waktu yang dijaga Bumi. Keduanya biasanya sama, dan bedanya tetap penting."
-summary: "UTC bukan zona waktu. Ia standar rujukan yang menjadi dasar definisi setiap zona, dijaga sekitar 450 jam atom, dan tidak pernah bergeser karena waktu musim panas — persis itulah alasan sistem memakainya."
+title: 'Apa itu UTC sebenarnya, dan bedanya dengan GMT'
+description: 'UTC adalah standar waktu yang dijaga jam-jam atom. GMT adalah zona waktu yang dijaga Bumi. Keduanya biasanya sama, dan bedanya tetap penting.'
+summary: 'UTC bukan zona waktu. Ia standar rujukan yang menjadi dasar definisi setiap zona, dijaga sekitar 450 jam atom, dan tidak pernah bergeser karena waktu musim panas — persis itulah alasan sistem memakainya.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 2

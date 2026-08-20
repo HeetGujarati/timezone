@@ -419,8 +419,7 @@ export const copy: PageCopy = {
     cities: {
       title: '各城市当前时间',
       metaTitle: '各大洲城市的当前时间',
-      description:
-        '覆盖所有有人居住大洲的 80 座城市的当地时间、UTC 偏移量与夏令时日期。',
+      description: '覆盖所有有人居住大洲的 80 座城市的当地时间、UTC 偏移量与夏令时日期。',
       summary:
         '每一页都有一个实时时钟、该时区确切的夏令时日期、依城市坐标算出的日出与日落，以及通往各大枢纽的换算。',
     },
@@ -443,17 +442,13 @@ export const copy: PageCopy = {
     sunriseSunset: '日出与日落',
     againstHubs: '与各大枢纽对照',
     convertTo: '换算到',
-    exampleNote:
-      '偏移量与日期在构建时由 IANA 数据库算出。实时时间在你的浏览器中渲染。',
-    sunNote:
-      '依城市的纬度与经度，用 NOAA 太阳位置算法算出——不调用 API，也没有任何网络请求。',
-    noDstNote:
-      '这座城市不实行夏令时。它与 UTC 的偏移量在一年中的每一天都相同。',
+    exampleNote: '偏移量与日期在构建时由 IANA 数据库算出。实时时间在你的浏览器中渲染。',
+    sunNote: '依城市的纬度与经度，用 NOAA 太阳位置算法算出——不调用 API，也没有任何网络请求。',
+    noDstNote: '这座城市不实行夏令时。它与 UTC 的偏移量在一年中的每一天都相同。',
     ambiguousPanelHeading: '这几个字母不止一个意思',
     ambiguousPanelBody:
       '如果你指的是其中另一个，下面的偏移量对你就是错的——会议被约到错误的钟点，走的正是这条路。',
-    abbreviationTableNote:
-      '取一个该缩写确实生效的日期算出——用今天的日期，会有半年是错的。',
+    abbreviationTableNote: '取一个该缩写确实生效的日期算出——用今天的日期，会有半年是错的。',
   },
 };
 

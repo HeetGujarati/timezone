@@ -1,7 +1,7 @@
 ---
-title: "ISO 8601, e como escrever uma data sem ambiguidade"
-description: "03/04/2026 significa duas datas diferentes conforme quem lê. O ISO 8601 resolve isso, e vale conhecer suas regras com exatidão."
-summary: "O ISO 8601 existe porque 03/04/2026 é março nos Estados Unidos e abril no resto do mundo. Escrever 2026-04-03 elimina a ambiguidade, ordena certo como texto e é o que toda interface deveria aceitar."
+title: 'ISO 8601, e como escrever uma data sem ambiguidade'
+description: '03/04/2026 significa duas datas diferentes conforme quem lê. O ISO 8601 resolve isso, e vale conhecer suas regras com exatidão.'
+summary: 'O ISO 8601 existe porque 03/04/2026 é março nos Estados Unidos e abril no resto do mundo. Escrever 2026-04-03 elimina a ambiguidade, ordena certo como texto e é o que toda interface deveria aceitar.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 7
@@ -32,11 +32,11 @@ A ordem é o ponto. Como os componentes vão do mais significativo ao menos, **u
 
 Três formas são válidas, e significam coisas diferentes:
 
-| Forma                       | Significado                                                                 |
-| --------------------------- | --------------------------------------------------------------------------- |
-| `2026-04-03T14:30:00Z`      | 14:30 UTC. Sem ambiguidade                                                   |
-| `2026-04-03T14:30:00+05:45` | 14:30 no horário local de um fuso 5h45 à frente do UTC. Sem ambiguidade      |
-| `2026-04-03T14:30:00`       | 14:30 num fuso não especificado. **Não é marca de tempo**                    |
+| Forma                       | Significado                                                             |
+| --------------------------- | ----------------------------------------------------------------------- |
+| `2026-04-03T14:30:00Z`      | 14:30 UTC. Sem ambiguidade                                              |
+| `2026-04-03T14:30:00+05:45` | 14:30 no horário local de um fuso 5h45 à frente do UTC. Sem ambiguidade |
+| `2026-04-03T14:30:00`       | 14:30 num fuso não especificado. **Não é marca de tempo**               |
 
 A terceira forma é a que dá problema. Ela é uma _data-hora local_: uma leitura de relógio sem meio algum de posicioná-la numa linha do tempo. Passá-la por uma fronteira de sistema torcendo para que o outro lado suponha o mesmo fuso que você é um defeito esperando por uma implantação em outra região.
 

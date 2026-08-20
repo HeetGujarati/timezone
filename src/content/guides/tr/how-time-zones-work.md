@@ -1,12 +1,17 @@
 ---
-title: "Saat dilimleri gerçekte nasıl işler"
-description: "Saat dilimleri, coğrafi bir sorunun üstüne serilmiş siyasi bir yapıdır. İşte mekanizması ve yazılımın nerede yanıldığı."
-summary: "Saat dilimi kürenin bir dilimi değildir; belirli bir yerdeki saatin ne gösterdiğine, ne gösterdiğine ve ne göstereceğine dair adlandırılmış bir kurallar kümesidir. Bütün konu bu ayrımdır."
+title: 'Saat dilimleri gerçekte nasıl işler'
+description: 'Saat dilimleri, coğrafi bir sorunun üstüne serilmiş siyasi bir yapıdır. İşte mekanizması ve yazılımın nerede yanıldığı.'
+summary: 'Saat dilimi kürenin bir dilimi değildir; belirli bir yerdeki saatin ne gösterdiğine, ne gösterdiğine ve ne göstereceğine dair adlandırılmış bir kurallar kümesidir. Bütün konu bu ayrımdır.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 1
 keywords:
-  ['saat dilimleri nasıl çalışır', 'saat dilimi nedir', 'saat dilimleri açıklaması', 'iana saat dilimi veritabanı']
+  [
+    'saat dilimleri nasıl çalışır',
+    'saat dilimi nedir',
+    'saat dilimleri açıklaması',
+    'iana saat dilimi veritabanı',
+  ]
 related: ['what-utc-really-is', 'why-est-is-ambiguous', 'time-zones-in-code']
 ---
 

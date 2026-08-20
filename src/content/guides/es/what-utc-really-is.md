@@ -1,7 +1,7 @@
 ---
-title: "Qué es UTC en realidad y en qué se diferencia de GMT"
-description: "UTC es un estándar mantenido por relojes atómicos. GMT es una zona horaria que mantiene la Tierra. Casi siempre coinciden, y la diferencia importa."
-summary: "UTC no es una zona horaria. Es el estándar de referencia contra el que se define cada zona, mantenido por unos 450 relojes atómicos, y nunca cambia por el horario de verano: exactamente por eso lo usan los sistemas."
+title: 'Qué es UTC en realidad y en qué se diferencia de GMT'
+description: 'UTC es un estándar mantenido por relojes atómicos. GMT es una zona horaria que mantiene la Tierra. Casi siempre coinciden, y la diferencia importa.'
+summary: 'UTC no es una zona horaria. Es el estándar de referencia contra el que se define cada zona, mantenido por unos 450 relojes atómicos, y nunca cambia por el horario de verano: exactamente por eso lo usan los sistemas.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 2

@@ -1,12 +1,17 @@
 ---
-title: "Pourquoi l’heure d’été existe et qui l’a supprimée"
-description: "En faveur de l’heure d’été, il y eut le charbon de guerre. Contre elle, il y a les données de santé. Voici l’histoire, et les pays qui l’ont abandonnée."
-summary: "L’heure d’été fut instaurée pour économiser du combustible pendant la Première Guerre mondiale, conservée pour des raisons qui changent tous les vingt ans, et elle est aujourd’hui abandonnée pays après pays à mesure que les preuves en sa faveur s’amenuisent."
+title: 'Pourquoi l’heure d’été existe et qui l’a supprimée'
+description: 'En faveur de l’heure d’été, il y eut le charbon de guerre. Contre elle, il y a les données de santé. Voici l’histoire, et les pays qui l’ont abandonnée.'
+summary: 'L’heure d’été fut instaurée pour économiser du combustible pendant la Première Guerre mondiale, conservée pour des raisons qui changent tous les vingt ans, et elle est aujourd’hui abandonnée pays après pays à mesure que les preuves en sa faveur s’amenuisent.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 3
 keywords:
-  ['pourquoi heure d’été', 'histoire du changement d’heure', 'pays ayant supprimé l’heure d’été', 'changement d’heure expliqué']
+  [
+    'pourquoi heure d’été',
+    'histoire du changement d’heure',
+    'pays ayant supprimé l’heure d’été',
+    'changement d’heure expliqué',
+  ]
 related: ['how-time-zones-work', 'why-est-is-ambiguous', 'the-2038-problem']
 ---
 

@@ -1,7 +1,7 @@
 ---
-title: "EST 为什么有歧义，以及该用什么代替"
-description: "IST 有三个意思，CST 有四个。时区缩写不是标识符，把它们当标识符用会造出真正的缺陷。"
-summary: "时区缩写是非正式的标签，既没有主管机构，也不保证唯一。IST 既是印度也是爱尔兰也是以色列；CST 既是美洲也是中国也是古巴。请改用 IANA 标识符。"
+title: 'EST 为什么有歧义，以及该用什么代替'
+description: 'IST 有三个意思，CST 有四个。时区缩写不是标识符，把它们当标识符用会造出真正的缺陷。'
+summary: '时区缩写是非正式的标签，既没有主管机构，也不保证唯一。IST 既是印度也是爱尔兰也是以色列；CST 既是美洲也是中国也是古巴。请改用 IANA 标识符。'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 10
@@ -17,21 +17,21 @@ related: ['how-time-zones-work', 'time-zones-in-code', 'what-utc-really-is']
 
 **IST** —— 三个含义，全都在用：
 
-| 含义                 | 偏移量    | 时区                        |
-| -------------------- | --------- | --------------------------- |
-| Indian Standard Time | UTC+05:30 | `Asia/Kolkata`              |
-| Irish Standard Time  | UTC+01:00 | `Europe/Dublin`（仅夏季）   |
-| Israel Standard Time | UTC+02:00 | `Asia/Jerusalem`            |
+| 含义                 | 偏移量    | 时区                      |
+| -------------------- | --------- | ------------------------- |
+| Indian Standard Time | UTC+05:30 | `Asia/Kolkata`            |
+| Irish Standard Time  | UTC+01:00 | `Europe/Dublin`（仅夏季） |
+| Israel Standard Time | UTC+02:00 | `Asia/Jerusalem`          |
 
 印度和爱尔兰相差四个半小时。约在错误的 IST 上的会议不是稍微早了一点，而是差了大半个工作日。
 
 **CST** —— 四个含义：
 
-| 含义                            | 偏移量    | 时区                 |
-| ------------------------------- | --------- | -------------------- |
-| Central Standard Time（北美）   | UTC-06:00 | `America/Chicago`    |
-| China Standard Time             | UTC+08:00 | `Asia/Shanghai`      |
-| Cuba Standard Time              | UTC-05:00 | `America/Havana`     |
+| 含义                              | 偏移量    | 时区                 |
+| --------------------------------- | --------- | -------------------- |
+| Central Standard Time（北美）     | UTC-06:00 | `America/Chicago`    |
+| China Standard Time               | UTC+08:00 | `Asia/Shanghai`      |
+| Cuba Standard Time                | UTC-05:00 | `America/Havana`     |
 | Central Standard Time（澳大利亚） | UTC+09:30 | `Australia/Adelaide` |
 
 芝加哥和上海相差十四个小时。

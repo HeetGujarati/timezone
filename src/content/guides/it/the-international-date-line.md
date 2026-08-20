@@ -1,11 +1,17 @@
 ---
-title: "La linea del cambiamento di data e perché si piega"
-description: "La linea del cambiamento di data non è un meridiano. Zigzaga attorno ai paesi che preferiscono non essere tagliati in due, e si è già spostata."
-summary: "La linea internazionale del cambiamento di data segue il meridiano 180° solo alla larga: aggira Kiribati, la Russia e le Aleutine, e alcuni paesi si sono spostati da soli oltre di essa per ragioni commerciali."
+title: 'La linea del cambiamento di data e perché si piega'
+description: 'La linea del cambiamento di data non è un meridiano. Zigzaga attorno ai paesi che preferiscono non essere tagliati in due, e si è già spostata.'
+summary: 'La linea internazionale del cambiamento di data segue il meridiano 180° solo alla larga: aggira Kiribati, la Russia e le Aleutine, e alcuni paesi si sono spostati da soli oltre di essa per ragioni commerciali.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 11
-keywords: ['linea internazionale del cambiamento di data', 'linea del cambiamento di data spiegata', 'fuso orario kiribati', 'giorno prima giorno dopo']
+keywords:
+  [
+    'linea internazionale del cambiamento di data',
+    'linea del cambiamento di data spiegata',
+    'fuso orario kiribati',
+    'giorno prima giorno dopo',
+  ]
 related: ['how-time-zones-work', 'offsets-that-are-not-whole-hours', 'what-utc-really-is']
 ---
 

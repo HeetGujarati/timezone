@@ -1,7 +1,7 @@
 ---
-title: "代码里的时区：一份实用指南"
-description: "存 UTC，保留时区标识符，在展示时换算，永远不要自建偏移表。规则，以及每条规则背后的道理。"
-summary: "几乎所有时区缺陷都能追溯到四个错误之一。这里给出该怎么做，涵盖 JavaScript、Python、Java、Go 和 SQL，讲的是道理而不只是规则。"
+title: '代码里的时区：一份实用指南'
+description: '存 UTC，保留时区标识符，在展示时换算，永远不要自建偏移表。规则，以及每条规则背后的道理。'
+summary: '几乎所有时区缺陷都能追溯到四个错误之一。这里给出该怎么做，涵盖 JavaScript、Python、Java、Go 和 SQL，讲的是道理而不只是规则。'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 9

@@ -1,12 +1,17 @@
 ---
-title: "Perché esiste l’ora legale e chi l’ha abolita"
-description: "A favore dell’ora legale c’era il carbone di guerra; contro ci sono i dati sanitari. Ecco la storia e quali paesi l’hanno lasciata."
-summary: "L’ora legale fu introdotta per risparmiare combustibile durante la Prima guerra mondiale, mantenuta per ragioni che cambiano ogni pochi decenni, e oggi viene abbandonata paese per paese man mano che le prove a suo favore si assottigliano."
+title: 'Perché esiste l’ora legale e chi l’ha abolita'
+description: 'A favore dell’ora legale c’era il carbone di guerra; contro ci sono i dati sanitari. Ecco la storia e quali paesi l’hanno lasciata.'
+summary: 'L’ora legale fu introdotta per risparmiare combustibile durante la Prima guerra mondiale, mantenuta per ragioni che cambiano ogni pochi decenni, e oggi viene abbandonata paese per paese man mano che le prove a suo favore si assottigliano.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 3
 keywords:
-  ['perché l’ora legale', 'storia dell’ora legale', 'paesi che hanno abolito l’ora legale', 'cambio dell’ora spiegato']
+  [
+    'perché l’ora legale',
+    'storia dell’ora legale',
+    'paesi che hanno abolito l’ora legale',
+    'cambio dell’ora spiegato',
+  ]
 related: ['how-time-zones-work', 'why-est-is-ambiguous', 'the-2038-problem']
 ---
 

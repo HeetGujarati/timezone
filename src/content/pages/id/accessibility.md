@@ -1,6 +1,6 @@
 ---
-title: "Aksesibilitas"
-description: "Apa yang dituju situs ini, apa yang diuji secara otomatis, dan apa yang harus dilakukan bila sesuatu tidak bekerja untuk Anda."
+title: 'Aksesibilitas'
+description: 'Apa yang dituju situs ini, apa yang diuji secara otomatis, dan apa yang harus dilakukan bila sesuatu tidak bekerja untuk Anda.'
 order: 6
 updatedAt: '2026-01-15'
 ---

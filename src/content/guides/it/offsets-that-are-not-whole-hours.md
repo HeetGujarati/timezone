@@ -1,11 +1,17 @@
 ---
-title: "Gli scarti da UTC che non sono ore intere"
+title: 'Gli scarti da UTC che non sono ore intere'
 description: "India, Nepal, Terranova e le isole Chatham vanno a mezz'ore e a quarti d'ora. Ecco l'elenco completo e che cosa si rompe nel software a causa loro."
-summary: "Circa un quinto del mondo vive su uno scarto che non è un numero intero di ore da UTC. Il software che presume il contrario non sbaglia di poco per quelle persone: sbaglia di 30 o 45 minuti, il che è peggio."
+summary: 'Circa un quinto del mondo vive su uno scarto che non è un numero intero di ore da UTC. Il software che presume il contrario non sbaglia di poco per quelle persone: sbaglia di 30 o 45 minuti, il che è peggio.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 5
-keywords: ['fusi orari di mezz ora', 'scarto utc 45 minuti', 'scarto fuso orario india', 'fuso orario nepal']
+keywords:
+  [
+    'fusi orari di mezz ora',
+    'scarto utc 45 minuti',
+    'scarto fuso orario india',
+    'fuso orario nepal',
+  ]
 related: ['half-hour-offsets-explained', 'time-zones-in-code', 'how-time-zones-work']
 ---
 
@@ -15,24 +21,24 @@ Il modello mentale dei ventiquattro fusi da un'ora è sbagliato in modo costoso:
 
 **Scarti a :30**
 
-| Scarto    | Dove                                                             |
-| --------- | ---------------------------------------------------------------- |
-| UTC-09:30 | Isole Marchesi                                                    |
-| UTC-03:30 | Terranova e Labrador                                              |
-| UTC+03:30 | Iran                                                              |
-| UTC+04:30 | Afghanistan                                                       |
-| UTC+05:30 | India, Sri Lanka                                                  |
-| UTC+06:30 | Myanmar, isole Cocos                                              |
-| UTC+09:30 | Australia centrale — Territorio del Nord, Australia Meridionale   |
-| UTC+10:30 | Isola di Lord Howe (ora standard)                                 |
+| Scarto    | Dove                                                            |
+| --------- | --------------------------------------------------------------- |
+| UTC-09:30 | Isole Marchesi                                                  |
+| UTC-03:30 | Terranova e Labrador                                            |
+| UTC+03:30 | Iran                                                            |
+| UTC+04:30 | Afghanistan                                                     |
+| UTC+05:30 | India, Sri Lanka                                                |
+| UTC+06:30 | Myanmar, isole Cocos                                            |
+| UTC+09:30 | Australia centrale — Territorio del Nord, Australia Meridionale |
+| UTC+10:30 | Isola di Lord Howe (ora standard)                               |
 
 **Scarti a :45**
 
-| Scarto    | Dove                                                          |
-| --------- | ------------------------------------------------------------- |
-| UTC+05:45 | Nepal                                                         |
-| UTC+08:45 | Australia Occidentale sudorientale (Eucla, in via ufficiosa)  |
-| UTC+12:45 | Isole Chatham (ora standard)                                  |
+| Scarto    | Dove                                                         |
+| --------- | ------------------------------------------------------------ |
+| UTC+05:45 | Nepal                                                        |
+| UTC+08:45 | Australia Occidentale sudorientale (Eucla, in via ufficiosa) |
+| UTC+12:45 | Isole Chatham (ora standard)                                 |
 
 La sola India conta 1,4 miliardi di persone. Aggiungete Iran, Afghanistan, Myanmar, Sri Lanka e Nepal e superate un quinto del pianeta, prima ancora di contare Australia o Canada.
 

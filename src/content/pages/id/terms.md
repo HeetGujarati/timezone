@@ -1,6 +1,6 @@
 ---
-title: "Ketentuan penggunaan"
-description: "Ketentuan yang menyertai penyediaan situs ini, termasuk penafian ketepatan yang paling penting di sini."
+title: 'Ketentuan penggunaan'
+description: 'Ketentuan yang menyertai penyediaan situs ini, termasuk penafian ketepatan yang paling penting di sini.'
 order: 4
 updatedAt: '2026-01-15'
 ---

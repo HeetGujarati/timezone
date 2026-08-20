@@ -1,11 +1,17 @@
 ---
-title: "Por qué la India va media hora desfasada de UTC"
-description: "Los desfases de media hora y de 45 minutos no son accidentes geográficos: son compromisos, afirmaciones de independencia y una broma burocrática."
-summary: "La India va en UTC+05:30 porque partió la diferencia entre dos husos propuestos. Nepal va en UTC+05:45 en parte para no ser la India. Todo desfase inusual tiene una historia, y casi todas son políticas."
+title: 'Por qué la India va media hora desfasada de UTC'
+description: 'Los desfases de media hora y de 45 minutos no son accidentes geográficos: son compromisos, afirmaciones de independencia y una broma burocrática.'
+summary: 'La India va en UTC+05:30 porque partió la diferencia entre dos husos propuestos. Nepal va en UTC+05:45 en parte para no ser la India. Todo desfase inusual tiene una historia, y casi todas son políticas.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 12
-keywords: ['por qué india media hora', 'nepal 45 minutos', 'huso horario de media hora', 'historia de la hora estándar de india']
+keywords:
+  [
+    'por qué india media hora',
+    'nepal 45 minutos',
+    'huso horario de media hora',
+    'historia de la hora estándar de india',
+  ]
 related: ['offsets-that-are-not-whole-hours', 'how-time-zones-work', 'the-international-date-line']
 ---
 

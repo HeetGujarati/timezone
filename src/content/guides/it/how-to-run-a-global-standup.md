@@ -1,11 +1,17 @@
 ---
-title: "Come tenere una riunione quotidiana fra molti fusi orari"
-description: "La riunione quotidiana sincrona non sopravvive a quattro fusi orari. Che cosa la sostituisce e come far funzionare davvero il sostituto."
+title: 'Come tenere una riunione quotidiana fra molti fusi orari'
+description: 'La riunione quotidiana sincrona non sopravvive a quattro fusi orari. Che cosa la sostituisce e come far funzionare davvero il sostituto.'
 summary: "Una riunione quotidiana funziona perché tutti sono svegli nello stesso momento. Oltre un'ampiezza di circa sei ore ciò smette di essere vero, e la soluzione onesta è cambiare formato invece di spostare l'orario."
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 8
-keywords: ['riunione quotidiana globale', 'riunione quotidiana asincrona', 'riunioni di squadre distribuite', 'riunione quotidiana remota fusi orari']
+keywords:
+  [
+    'riunione quotidiana globale',
+    'riunione quotidiana asincrona',
+    'riunioni di squadre distribuite',
+    'riunione quotidiana remota fusi orari',
+  ]
 related: ['scheduling-across-twelve-hours', 'how-time-zones-work', 'why-daylight-saving-exists']
 ---
 
@@ -19,12 +25,12 @@ Prendete il fuso più avanti e quello più indietro nella squadra e calcolate la
 
 Poi cercate la finestra comune fra le 09:00 e le 18:00. Quel numero decide il formato:
 
-| Finestra comune  | Che cosa funziona                                                             |
-| ---------------- | ----------------------------------------------------------------------------- |
-| 4 ore o più      | Una riunione quotidiana sincrona, se ne volete una                            |
-| 2–4 ore          | Sincrona, ma riservate quella finestra alle sole decisioni                     |
-| Meno di 2 ore    | Riunione scritta, con una chiamata sincrona settimanale                        |
-| Nessuna          | Tutto scritto, più una sovrapposizione voluta per le poche cose che vogliono voce |
+| Finestra comune | Che cosa funziona                                                                 |
+| --------------- | --------------------------------------------------------------------------------- |
+| 4 ore o più     | Una riunione quotidiana sincrona, se ne volete una                                |
+| 2–4 ore         | Sincrona, ma riservate quella finestra alle sole decisioni                        |
+| Meno di 2 ore   | Riunione scritta, con una chiamata sincrona settimanale                           |
+| Nessuna         | Tutto scritto, più una sovrapposizione voluta per le poche cose che vogliono voce |
 
 ## La riunione quotidiana scritta
 

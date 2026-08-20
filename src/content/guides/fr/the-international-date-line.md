@@ -1,11 +1,17 @@
 ---
-title: "La ligne de changement de date et ses détours"
+title: 'La ligne de changement de date et ses détours'
 description: "La ligne de changement de date n'est pas un méridien. Elle zigzague autour des pays qui préfèrent ne pas être coupés en deux, et elle a bougé."
 summary: "La ligne internationale de changement de date ne suit le 180e méridien que de loin : elle contourne les Kiribati, la Russie et les Aléoutiennes, et des pays se sont eux-mêmes déplacés d'un côté à l'autre pour des raisons commerciales."
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 11
-keywords: ['ligne internationale de changement de date', 'ligne de changement de date expliquée', 'fuseau horaire kiribati', 'jour avant jour après']
+keywords:
+  [
+    'ligne internationale de changement de date',
+    'ligne de changement de date expliquée',
+    'fuseau horaire kiribati',
+    'jour avant jour après',
+  ]
 related: ['how-time-zones-work', 'offsets-that-are-not-whole-hours', 'what-utc-really-is']
 ---
 

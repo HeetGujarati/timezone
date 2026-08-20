@@ -1,11 +1,17 @@
 ---
-title: "Como conduzir uma reunião diária entre muitos fusos"
-description: "A reunião diária síncrona não sobrevive a quatro fusos horários. O que a substitui e como fazer o substituto funcionar de verdade."
-summary: "Uma reunião diária funciona porque todo mundo está acordado ao mesmo tempo. Passada uma amplitude de cerca de seis horas isso deixa de valer, e a solução honesta é mudar o formato em vez de ficar mudando o horário."
+title: 'Como conduzir uma reunião diária entre muitos fusos'
+description: 'A reunião diária síncrona não sobrevive a quatro fusos horários. O que a substitui e como fazer o substituto funcionar de verdade.'
+summary: 'Uma reunião diária funciona porque todo mundo está acordado ao mesmo tempo. Passada uma amplitude de cerca de seis horas isso deixa de valer, e a solução honesta é mudar o formato em vez de ficar mudando o horário.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 8
-keywords: ['reunião diária global', 'reunião diária assíncrona', 'reuniões de equipe distribuída', 'reunião diária remota fusos horários']
+keywords:
+  [
+    'reunião diária global',
+    'reunião diária assíncrona',
+    'reuniões de equipe distribuída',
+    'reunião diária remota fusos horários',
+  ]
 related: ['scheduling-across-twelve-hours', 'how-time-zones-work', 'why-daylight-saving-exists']
 ---
 
@@ -19,12 +25,12 @@ Pegue o fuso mais adiantado e o mais atrasado da equipe e calcule a diferença n
 
 Depois ache a janela comum entre 09:00 e 18:00. Esse número decide o formato:
 
-| Janela comum      | O que funciona                                                                |
-| ----------------- | ----------------------------------------------------------------------------- |
-| 4 horas ou mais   | Uma reunião diária síncrona, se você quiser uma                                |
-| 2–4 horas         | Síncrona, mas reserve essa janela só para decisões                            |
-| Menos de 2 horas  | Reunião escrita, com uma chamada síncrona semanal                             |
-| Nenhuma           | Tudo escrito, mais uma sobreposição deliberada para o pouco que pede voz      |
+| Janela comum     | O que funciona                                                           |
+| ---------------- | ------------------------------------------------------------------------ |
+| 4 horas ou mais  | Uma reunião diária síncrona, se você quiser uma                          |
+| 2–4 horas        | Síncrona, mas reserve essa janela só para decisões                       |
+| Menos de 2 horas | Reunião escrita, com uma chamada síncrona semanal                        |
+| Nenhuma          | Tudo escrito, mais uma sobreposição deliberada para o pouco que pede voz |
 
 ## A reunião diária escrita
 

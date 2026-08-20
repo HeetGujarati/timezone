@@ -216,7 +216,8 @@ export function ogImages(options: { siteName: string; origin: string }): AstroIn
           const existing = cards.get(imagePath);
           // First writer wins, except that the English page always outranks a
           // translation — the card is shared, so its text must be one language.
-          if (existing !== undefined && (existing.fromDefaultLocale || !fromDefaultLocale)) continue;
+          if (existing !== undefined && (existing.fromDefaultLocale || !fromDefaultLocale))
+            continue;
 
           cards.set(imagePath, {
             title: decodeEntities(OG_TITLE.exec(html)?.[1] ?? '').replace(
@@ -250,13 +251,12 @@ export function ogImages(options: { siteName: string; origin: string }): AstroIn
 
         let written = 0;
         for (const [imagePath, card] of cards) {
-          const svg = await satori(
-            cardTree(card, options.siteName, options.origin) as never,
-            { width: WIDTH, height: HEIGHT, fonts },
-          );
-          const png = new Resvg(svg, { fitTo: { mode: 'width', value: WIDTH } })
-            .render()
-            .asPng();
+          const svg = await satori(cardTree(card, options.siteName, options.origin) as never, {
+            width: WIDTH,
+            height: HEIGHT,
+            fonts,
+          });
+          const png = new Resvg(svg, { fitTo: { mode: 'width', value: WIDTH } }).render().asPng();
 
           const target = join(distPath, imagePath);
           await mkdir(dirname(target), { recursive: true });

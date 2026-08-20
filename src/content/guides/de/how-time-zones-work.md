@@ -1,12 +1,17 @@
 ---
-title: "Wie Zeitzonen wirklich funktionieren"
-description: "Zeitzonen sind ein politisches Gebilde über einem geografischen Problem. Hier steht der Mechanismus — und warum Software daran scheitert."
-summary: "Eine Zeitzone ist kein Streifen auf dem Globus, sondern ein benannter Satz von Regeln darüber, was eine Uhr an einem bestimmten Ort angezeigt hat, anzeigt und anzeigen soll. Dieser Unterschied ist das ganze Thema."
+title: 'Wie Zeitzonen wirklich funktionieren'
+description: 'Zeitzonen sind ein politisches Gebilde über einem geografischen Problem. Hier steht der Mechanismus — und warum Software daran scheitert.'
+summary: 'Eine Zeitzone ist kein Streifen auf dem Globus, sondern ein benannter Satz von Regeln darüber, was eine Uhr an einem bestimmten Ort angezeigt hat, anzeigt und anzeigen soll. Dieser Unterschied ist das ganze Thema.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 1
 keywords:
-  ['wie funktionieren zeitzonen', 'zeitzonen erklärt', 'was ist eine zeitzone', 'iana zeitzonendatenbank']
+  [
+    'wie funktionieren zeitzonen',
+    'zeitzonen erklärt',
+    'was ist eine zeitzone',
+    'iana zeitzonendatenbank',
+  ]
 related: ['what-utc-really-is', 'why-est-is-ambiguous', 'time-zones-in-code']
 ---
 

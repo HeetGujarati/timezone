@@ -1,12 +1,17 @@
 ---
-title: "Come funzionano davvero i fusi orari"
-description: "I fusi orari sono un manufatto politico steso su un problema geografico. Ecco il meccanismo e perché il software ci si perde."
-summary: "Un fuso orario non è una fetta del globo: è un insieme di regole con un nome, su ciò che un orologio in un dato luogo ha segnato, segna e dovrà segnare. Quella distinzione è tutto l’argomento."
+title: 'Come funzionano davvero i fusi orari'
+description: 'I fusi orari sono un manufatto politico steso su un problema geografico. Ecco il meccanismo e perché il software ci si perde.'
+summary: 'Un fuso orario non è una fetta del globo: è un insieme di regole con un nome, su ciò che un orologio in un dato luogo ha segnato, segna e dovrà segnare. Quella distinzione è tutto l’argomento.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 1
 keywords:
-  ['come funzionano i fusi orari', 'fusi orari spiegati', 'che cos’è un fuso orario', 'database iana fusi orari']
+  [
+    'come funzionano i fusi orari',
+    'fusi orari spiegati',
+    'che cos’è un fuso orario',
+    'database iana fusi orari',
+  ]
 related: ['what-utc-really-is', 'why-est-is-ambiguous', 'time-zones-in-code']
 ---
 

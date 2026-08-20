@@ -1,7 +1,7 @@
 ---
-title: "Por qué EST es ambiguo y qué usar en su lugar"
-description: "IST significa tres cosas distintas. CST, cuatro. Las abreviaturas de zona horaria no son identificadores, y tratarlas como tales provoca errores reales."
-summary: "Las abreviaturas de zona horaria son etiquetas informales sin organismo que las gobierne ni garantía de unicidad. IST es India, Irlanda e Israel; CST es América, China y Cuba. Usa identificadores IANA."
+title: 'Por qué EST es ambiguo y qué usar en su lugar'
+description: 'IST significa tres cosas distintas. CST, cuatro. Las abreviaturas de zona horaria no son identificadores, y tratarlas como tales provoca errores reales.'
+summary: 'Las abreviaturas de zona horaria son etiquetas informales sin organismo que las gobierne ni garantía de unicidad. IST es India, Irlanda e Israel; CST es América, China y Cuba. Usa identificadores IANA.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 10
@@ -17,22 +17,22 @@ Las abreviaturas de zona horaria son informales. Ningún organismo de normalizac
 
 **IST** — tres significados, los tres en uso:
 
-| Significado                | Desfase   | Zona                          |
-| -------------------------- | --------- | ----------------------------- |
-| Indian Standard Time       | UTC+05:30 | `Asia/Kolkata`                |
-| Irish Standard Time        | UTC+01:00 | `Europe/Dublin` (solo verano) |
-| Israel Standard Time       | UTC+02:00 | `Asia/Jerusalem`              |
+| Significado          | Desfase   | Zona                          |
+| -------------------- | --------- | ----------------------------- |
+| Indian Standard Time | UTC+05:30 | `Asia/Kolkata`                |
+| Irish Standard Time  | UTC+01:00 | `Europe/Dublin` (solo verano) |
+| Israel Standard Time | UTC+02:00 | `Asia/Jerusalem`              |
 
 India e Irlanda están a cuatro horas y media. Una reunión reservada en el IST equivocado no llega un poco pronto: se desvía casi una jornada laboral entera.
 
 **CST** — cuatro significados:
 
-| Significado                            | Desfase   | Zona                 |
-| -------------------------------------- | --------- | -------------------- |
-| Central Standard Time (Norteamérica)   | UTC-06:00 | `America/Chicago`    |
-| China Standard Time                    | UTC+08:00 | `Asia/Shanghai`      |
-| Cuba Standard Time                     | UTC-05:00 | `America/Havana`     |
-| Central Standard Time (Australia)      | UTC+09:30 | `Australia/Adelaide` |
+| Significado                          | Desfase   | Zona                 |
+| ------------------------------------ | --------- | -------------------- |
+| Central Standard Time (Norteamérica) | UTC-06:00 | `America/Chicago`    |
+| China Standard Time                  | UTC+08:00 | `Asia/Shanghai`      |
+| Cuba Standard Time                   | UTC-05:00 | `America/Havana`     |
+| Central Standard Time (Australia)    | UTC+09:30 | `Australia/Adelaide` |
 
 Chicago y Shanghái están a catorce horas.
 

@@ -1,7 +1,7 @@
 ---
-title: "EST が曖昧である理由と、代わりに使うべきもの"
-description: "IST は三つの意味を持ち、CST は四つ。タイムゾーンの略称は識別子ではなく、識別子のように扱うと本物の不具合が生まれます。"
-summary: "タイムゾーンの略称は、管理する団体も一意性の保証もない非公式なラベルです。IST はインドでありアイルランドでありイスラエル、CST はアメリカであり中国でありキューバ。代わりに IANA 識別子を使ってください。"
+title: 'EST が曖昧である理由と、代わりに使うべきもの'
+description: 'IST は三つの意味を持ち、CST は四つ。タイムゾーンの略称は識別子ではなく、識別子のように扱うと本物の不具合が生まれます。'
+summary: 'タイムゾーンの略称は、管理する団体も一意性の保証もない非公式なラベルです。IST はインドでありアイルランドでありイスラエル、CST はアメリカであり中国でありキューバ。代わりに IANA 識別子を使ってください。'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 10
@@ -17,21 +17,21 @@ related: ['how-time-zones-work', 'time-zones-in-code', 'what-utc-really-is']
 
 **IST** — 三つの意味があり、いずれも現役です。
 
-| 意味                 | オフセット | ゾーン                        |
-| -------------------- | ---------- | ----------------------------- |
-| Indian Standard Time | UTC+05:30  | `Asia/Kolkata`                |
-| Irish Standard Time  | UTC+01:00  | `Europe/Dublin`（夏季のみ）   |
-| Israel Standard Time | UTC+02:00  | `Asia/Jerusalem`              |
+| 意味                 | オフセット | ゾーン                      |
+| -------------------- | ---------- | --------------------------- |
+| Indian Standard Time | UTC+05:30  | `Asia/Kolkata`              |
+| Irish Standard Time  | UTC+01:00  | `Europe/Dublin`（夏季のみ） |
+| Israel Standard Time | UTC+02:00  | `Asia/Jerusalem`            |
 
 インドとアイルランドは四時間半離れています。誤った IST で押さえた会議は、少し早いどころか、勤務日のほとんどぶんずれます。
 
 **CST** — 四つの意味があります。
 
-| 意味                                | オフセット | ゾーン               |
-| ----------------------------------- | ---------- | -------------------- |
-| Central Standard Time（北米）       | UTC-06:00  | `America/Chicago`    |
-| China Standard Time                 | UTC+08:00  | `Asia/Shanghai`      |
-| Cuba Standard Time                  | UTC-05:00  | `America/Havana`     |
+| 意味                                    | オフセット | ゾーン               |
+| --------------------------------------- | ---------- | -------------------- |
+| Central Standard Time（北米）           | UTC-06:00  | `America/Chicago`    |
+| China Standard Time                     | UTC+08:00  | `Asia/Shanghai`      |
+| Cuba Standard Time                      | UTC-05:00  | `America/Havana`     |
 | Central Standard Time（オーストラリア） | UTC+09:30  | `Australia/Adelaide` |
 
 シカゴと上海は十四時間離れています。

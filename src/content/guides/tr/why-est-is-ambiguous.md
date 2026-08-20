@@ -1,7 +1,7 @@
 ---
-title: "EST neden çift anlamlı ve yerine ne kullanmalı"
-description: "IST üç ayrı şey demek, CST dört. Saat dilimi kısaltmaları birer tanımlayıcı değildir ve öyle sanmak gerçek hatalar doğurur."
-summary: "Saat dilimi kısaltmaları, sahibi bir kurum ve teklik güvencesi olmayan gayriresmî etiketlerdir. IST Hindistan, İrlanda ve İsrail demektir; CST Amerika, Çin ve Küba. Bunun yerine IANA tanımlayıcılarını kullanın."
+title: 'EST neden çift anlamlı ve yerine ne kullanmalı'
+description: 'IST üç ayrı şey demek, CST dört. Saat dilimi kısaltmaları birer tanımlayıcı değildir ve öyle sanmak gerçek hatalar doğurur.'
+summary: 'Saat dilimi kısaltmaları, sahibi bir kurum ve teklik güvencesi olmayan gayriresmî etiketlerdir. IST Hindistan, İrlanda ve İsrail demektir; CST Amerika, Çin ve Küba. Bunun yerine IANA tanımlayıcılarını kullanın.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 10
@@ -27,12 +27,12 @@ Hindistan ile İrlanda arasında dört buçuk saat var. Yanlış IST’ye kurulm
 
 **CST** — dört anlam:
 
-| Anlam                                  | Fark      | Dilim                |
-| -------------------------------------- | --------- | -------------------- |
-| Central Standard Time (Kuzey Amerika)  | UTC-06:00 | `America/Chicago`    |
-| China Standard Time                    | UTC+08:00 | `Asia/Shanghai`      |
-| Cuba Standard Time                     | UTC-05:00 | `America/Havana`     |
-| Central Standard Time (Avustralya)     | UTC+09:30 | `Australia/Adelaide` |
+| Anlam                                 | Fark      | Dilim                |
+| ------------------------------------- | --------- | -------------------- |
+| Central Standard Time (Kuzey Amerika) | UTC-06:00 | `America/Chicago`    |
+| China Standard Time                   | UTC+08:00 | `Asia/Shanghai`      |
+| Cuba Standard Time                    | UTC-05:00 | `America/Havana`     |
+| Central Standard Time (Avustralya)    | UTC+09:30 | `Australia/Adelaide` |
 
 Chicago ile Şanghay arasında on dört saat var.
 

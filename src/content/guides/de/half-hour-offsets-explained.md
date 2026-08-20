@@ -1,11 +1,17 @@
 ---
-title: "Warum Indien eine halbe Stunde neben UTC läuft"
-description: "Halbstunden- und 45-Minuten-Abweichungen sind keine geografischen Zufälle, sondern Kompromisse, Unabhängigkeitserklärungen und ein Verwaltungsscherz."
-summary: "Indien läuft auf UTC+05:30, weil es die Differenz zwischen zwei vorgeschlagenen Zonen geteilt hat. Nepal läuft auf UTC+05:45, auch um nicht Indien zu sein. Jede ungewöhnliche Abweichung hat eine Geschichte, und die meisten davon sind politisch."
+title: 'Warum Indien eine halbe Stunde neben UTC läuft'
+description: 'Halbstunden- und 45-Minuten-Abweichungen sind keine geografischen Zufälle, sondern Kompromisse, Unabhängigkeitserklärungen und ein Verwaltungsscherz.'
+summary: 'Indien läuft auf UTC+05:30, weil es die Differenz zwischen zwei vorgeschlagenen Zonen geteilt hat. Nepal läuft auf UTC+05:45, auch um nicht Indien zu sein. Jede ungewöhnliche Abweichung hat eine Geschichte, und die meisten davon sind politisch.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 12
-keywords: ['warum indien halbe stunde', 'nepal 45 minuten', 'halbstunden zeitzone', 'geschichte der indischen standardzeit']
+keywords:
+  [
+    'warum indien halbe stunde',
+    'nepal 45 minuten',
+    'halbstunden zeitzone',
+    'geschichte der indischen standardzeit',
+  ]
 related: ['offsets-that-are-not-whole-hours', 'how-time-zones-work', 'the-international-date-line']
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: "Datenschutzerklärung"
-description: "Diese Seite erhebt nichts, setzt keine Cookies und lädt keine fremden Skripte. Hier steht genau, was das bedeutet."
+title: 'Datenschutzerklärung'
+description: 'Diese Seite erhebt nichts, setzt keine Cookies und lädt keine fremden Skripte. Hier steht genau, was das bedeutet.'
 order: 3
 updatedAt: '2026-01-15'
 ---

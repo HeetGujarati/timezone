@@ -1,11 +1,17 @@
 ---
-title: "Les décalages UTC qui ne sont pas des heures entières"
+title: 'Les décalages UTC qui ne sont pas des heures entières'
 description: "L'Inde, le Népal, Terre-Neuve et les îles Chatham vivent à la demi-heure ou au quart d'heure. Voici la liste complète, et ce qui casse dans les logiciels."
 summary: "Environ un cinquième de l'humanité vit sur un décalage qui n'est pas un nombre entier d'heures par rapport à UTC. Un logiciel qui suppose le contraire ne se trompe pas un peu pour ces gens : il se trompe de 30 ou 45 minutes, ce qui est pire."
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 5
-keywords: ['fuseaux horaires demi-heure', 'décalage utc 45 minutes', 'décalage fuseau horaire inde', 'fuseau horaire népal']
+keywords:
+  [
+    'fuseaux horaires demi-heure',
+    'décalage utc 45 minutes',
+    'décalage fuseau horaire inde',
+    'fuseau horaire népal',
+  ]
 related: ['half-hour-offsets-explained', 'time-zones-in-code', 'how-time-zones-work']
 ---
 
@@ -15,24 +21,24 @@ Le modèle mental des vingt-quatre fuseaux d'une heure est faux d'une manière c
 
 **Décalages à :30**
 
-| Décalage  | Où                                                            |
-| --------- | ------------------------------------------------------------- |
-| UTC-09:30 | Îles Marquises                                                |
-| UTC-03:30 | Terre-Neuve-et-Labrador                                       |
-| UTC+03:30 | Iran                                                          |
-| UTC+04:30 | Afghanistan                                                   |
-| UTC+05:30 | Inde, Sri Lanka                                               |
-| UTC+06:30 | Birmanie, îles Cocos                                          |
+| Décalage  | Où                                                             |
+| --------- | -------------------------------------------------------------- |
+| UTC-09:30 | Îles Marquises                                                 |
+| UTC-03:30 | Terre-Neuve-et-Labrador                                        |
+| UTC+03:30 | Iran                                                           |
+| UTC+04:30 | Afghanistan                                                    |
+| UTC+05:30 | Inde, Sri Lanka                                                |
+| UTC+06:30 | Birmanie, îles Cocos                                           |
 | UTC+09:30 | Australie centrale — Territoire du Nord, Australie-Méridionale |
-| UTC+10:30 | Île Lord Howe (heure normale)                                 |
+| UTC+10:30 | Île Lord Howe (heure normale)                                  |
 
 **Décalages à :45**
 
-| Décalage  | Où                                                            |
-| --------- | ------------------------------------------------------------- |
-| UTC+05:45 | Népal                                                         |
-| UTC+08:45 | Sud-est de l'Australie-Occidentale (Eucla, officieusement)     |
-| UTC+12:45 | Îles Chatham (heure normale)                                  |
+| Décalage  | Où                                                         |
+| --------- | ---------------------------------------------------------- |
+| UTC+05:45 | Népal                                                      |
+| UTC+08:45 | Sud-est de l'Australie-Occidentale (Eucla, officieusement) |
+| UTC+12:45 | Îles Chatham (heure normale)                               |
 
 L'Inde à elle seule représente 1,4 milliard de personnes. Ajoutez l'Iran, l'Afghanistan, la Birmanie, le Sri Lanka et le Népal et vous dépassez le cinquième de la planète, avant même de compter l'Australie ou le Canada.
 

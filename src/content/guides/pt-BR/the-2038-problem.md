@@ -1,7 +1,7 @@
 ---
-title: "O problema de 2038, explicado direito"
-description: "Às 03:14:07 UTC de 19 de janeiro de 2038, o tempo Unix de 32 bits com sinal transborda. Eis o que realmente quebra e o que já foi corrigido."
-summary: "Sistemas que guardam o tempo como contagem de segundos em 32 bits com sinal ficam sem espaço em janeiro de 2038 e voltam para dezembro de 1901. Quase toda plataforma moderna corrigiu isso anos atrás; a exposição hoje está em embarcados, sistemas legados e dados serializados."
+title: 'O problema de 2038, explicado direito'
+description: 'Às 03:14:07 UTC de 19 de janeiro de 2038, o tempo Unix de 32 bits com sinal transborda. Eis o que realmente quebra e o que já foi corrigido.'
+summary: 'Sistemas que guardam o tempo como contagem de segundos em 32 bits com sinal ficam sem espaço em janeiro de 2038 e voltam para dezembro de 1901. Quase toda plataforma moderna corrigiu isso anos atrás; a exposição hoje está em embarcados, sistemas legados e dados serializados.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 6

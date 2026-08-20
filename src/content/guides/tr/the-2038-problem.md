@@ -1,7 +1,7 @@
 ---
-title: "2038 sorunu, gerektiği gibi açıklandı"
-description: "19 Ocak 2038, 03:14:07 UTC’de işaretli 32 bitlik Unix zamanı taşar. İşte gerçekten bozulanlar ve çoktan düzeltilmiş olanlar."
-summary: "Zamanı işaretli 32 bitlik saniye sayacı olarak saklayan sistemler Ocak 2038’de yer kalmayınca Aralık 1901’e sarar. Modern platformların çoğu bunu yıllar önce düzeltti; bugünkü açık gömülü sistemlerde, eski yazılımlarda ve serileştirilmiş veridedir."
+title: '2038 sorunu, gerektiği gibi açıklandı'
+description: '19 Ocak 2038, 03:14:07 UTC’de işaretli 32 bitlik Unix zamanı taşar. İşte gerçekten bozulanlar ve çoktan düzeltilmiş olanlar.'
+summary: 'Zamanı işaretli 32 bitlik saniye sayacı olarak saklayan sistemler Ocak 2038’de yer kalmayınca Aralık 1901’e sarar. Modern platformların çoğu bunu yıllar önce düzeltti; bugünkü açık gömülü sistemlerde, eski yazılımlarda ve serileştirilmiş veridedir.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 6

@@ -447,8 +447,7 @@ export const copy: PageCopy = {
       'Farklar ve tarihler derleme sırasında IANA veritabanından hesaplanır. Canlı saatler tarayıcınızda oluşturulur.',
     sunNote:
       'Şehrin enlem ve boylamından NOAA güneş konumu algoritmasıyla hesaplandı — API yok, ağ isteği yok.',
-    noDstNote:
-      'Bu şehir yaz saati uygulamaz. UTC’ye olan farkı yılın her günü aynıdır.',
+    noDstNote: 'Bu şehir yaz saati uygulamaz. UTC’ye olan farkı yılın her günü aynıdır.',
     ambiguousPanelHeading: 'Bu harfler birden fazla anlama geliyor',
     ambiguousPanelBody:
       'Diğerlerinden birini kastettiyseniz aşağıdaki fark sizin için yanlıştır — ve toplantılar tam olarak böyle yanlış saate ayarlanır.',

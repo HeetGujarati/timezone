@@ -1,12 +1,17 @@
 ---
-title: "Bagaimana zona waktu sebenarnya bekerja"
-description: "Zona waktu adalah bangunan politik yang dihamparkan di atas persoalan geografis. Inilah mekanismenya, dan di mana perangkat lunak keliru."
-summary: "Zona waktu bukan irisan bola bumi, melainkan seperangkat aturan bernama tentang apa yang pernah, sedang, dan dijadwalkan ditunjukkan sebuah jam di suatu tempat. Pembedaan itulah seluruh pokok persoalannya."
+title: 'Bagaimana zona waktu sebenarnya bekerja'
+description: 'Zona waktu adalah bangunan politik yang dihamparkan di atas persoalan geografis. Inilah mekanismenya, dan di mana perangkat lunak keliru.'
+summary: 'Zona waktu bukan irisan bola bumi, melainkan seperangkat aturan bernama tentang apa yang pernah, sedang, dan dijadwalkan ditunjukkan sebuah jam di suatu tempat. Pembedaan itulah seluruh pokok persoalannya.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 1
 keywords:
-  ['bagaimana zona waktu bekerja', 'apa itu zona waktu', 'penjelasan zona waktu', 'basis data zona waktu iana']
+  [
+    'bagaimana zona waktu bekerja',
+    'apa itu zona waktu',
+    'penjelasan zona waktu',
+    'basis data zona waktu iana',
+  ]
 related: ['what-utc-really-is', 'why-est-is-ambiguous', 'time-zones-in-code']
 ---
 

@@ -1,11 +1,17 @@
 ---
-title: "Die UTC-Abweichungen, die keine ganzen Stunden sind"
-description: "Indien, Nepal, Neufundland und die Chathaminseln laufen auf halben und viertel Stunden. Hier die vollständige Liste und was in Software daran zerbricht."
-summary: "Rund ein Fünftel der Welt lebt auf einer Abweichung, die keine ganze Stundenzahl von UTC entfernt ist. Software, die das Gegenteil annimmt, liegt für diese Menschen nicht ein wenig daneben, sondern 30 oder 45 Minuten — was schlimmer ist."
+title: 'Die UTC-Abweichungen, die keine ganzen Stunden sind'
+description: 'Indien, Nepal, Neufundland und die Chathaminseln laufen auf halben und viertel Stunden. Hier die vollständige Liste und was in Software daran zerbricht.'
+summary: 'Rund ein Fünftel der Welt lebt auf einer Abweichung, die keine ganze Stundenzahl von UTC entfernt ist. Software, die das Gegenteil annimmt, liegt für diese Menschen nicht ein wenig daneben, sondern 30 oder 45 Minuten — was schlimmer ist.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 5
-keywords: ['halbstunden zeitzonen', 'utc abweichung 45 minuten', 'indien zeitzone abweichung', 'nepal zeitzone']
+keywords:
+  [
+    'halbstunden zeitzonen',
+    'utc abweichung 45 minuten',
+    'indien zeitzone abweichung',
+    'nepal zeitzone',
+  ]
 related: ['half-hour-offsets-explained', 'time-zones-in-code', 'how-time-zones-work']
 ---
 
@@ -15,24 +21,24 @@ Die Vorstellung von vierundzwanzig Stundenzonen ist auf teure Weise falsch: sie 
 
 **Abweichungen auf :30**
 
-| Abweichung | Wo                                                        |
-| ---------- | --------------------------------------------------------- |
-| UTC-09:30  | Marquesas-Inseln                                          |
-| UTC-03:30  | Neufundland und Labrador                                  |
-| UTC+03:30  | Iran                                                      |
-| UTC+04:30  | Afghanistan                                               |
-| UTC+05:30  | Indien, Sri Lanka                                         |
-| UTC+06:30  | Myanmar, Kokosinseln                                      |
-| UTC+09:30  | Zentralaustralien — Northern Territory, South Australia   |
-| UTC+10:30  | Lord-Howe-Insel (Normalzeit)                              |
+| Abweichung | Wo                                                      |
+| ---------- | ------------------------------------------------------- |
+| UTC-09:30  | Marquesas-Inseln                                        |
+| UTC-03:30  | Neufundland und Labrador                                |
+| UTC+03:30  | Iran                                                    |
+| UTC+04:30  | Afghanistan                                             |
+| UTC+05:30  | Indien, Sri Lanka                                       |
+| UTC+06:30  | Myanmar, Kokosinseln                                    |
+| UTC+09:30  | Zentralaustralien — Northern Territory, South Australia |
+| UTC+10:30  | Lord-Howe-Insel (Normalzeit)                            |
 
 **Abweichungen auf :45**
 
-| Abweichung | Wo                                                       |
-| ---------- | -------------------------------------------------------- |
-| UTC+05:45  | Nepal                                                    |
-| UTC+08:45  | Südöstliches Westaustralien (Eucla, inoffiziell)         |
-| UTC+12:45  | Chathaminseln (Normalzeit)                               |
+| Abweichung | Wo                                               |
+| ---------- | ------------------------------------------------ |
+| UTC+05:45  | Nepal                                            |
+| UTC+08:45  | Südöstliches Westaustralien (Eucla, inoffiziell) |
+| UTC+12:45  | Chathaminseln (Normalzeit)                       |
 
 Allein Indien sind 1,4 Milliarden Menschen. Zählen Sie Iran, Afghanistan, Myanmar, Sri Lanka und Nepal hinzu, und Sie sind über einem Fünftel des Planeten, noch bevor Australien oder Kanada dazukommen.
 

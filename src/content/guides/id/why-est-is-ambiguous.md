@@ -1,7 +1,7 @@
 ---
-title: "Mengapa EST bermakna ganda, dan apa penggantinya"
-description: "IST berarti tiga hal berbeda. CST empat. Singkatan zona waktu bukan pengenal, dan memperlakukannya begitu menimbulkan cacat yang nyata."
-summary: "Singkatan zona waktu adalah label tidak resmi, tanpa badan yang mengaturnya dan tanpa jaminan keunikan. IST berarti India, Irlandia, dan Israel; CST berarti Amerika, Tiongkok, dan Kuba. Pakailah pengenal IANA."
+title: 'Mengapa EST bermakna ganda, dan apa penggantinya'
+description: 'IST berarti tiga hal berbeda. CST empat. Singkatan zona waktu bukan pengenal, dan memperlakukannya begitu menimbulkan cacat yang nyata.'
+summary: 'Singkatan zona waktu adalah label tidak resmi, tanpa badan yang mengaturnya dan tanpa jaminan keunikan. IST berarti India, Irlandia, dan Israel; CST berarti Amerika, Tiongkok, dan Kuba. Pakailah pengenal IANA.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 10
@@ -17,22 +17,22 @@ Singkatan zona waktu bersifat tidak resmi. Tidak ada badan standar yang menetapk
 
 **IST** — tiga makna, ketiganya masih dipakai:
 
-| Makna                | Selisih   | Zona                            |
-| -------------------- | --------- | ------------------------------- |
-| Indian Standard Time | UTC+05:30 | `Asia/Kolkata`                  |
-| Irish Standard Time  | UTC+01:00 | `Europe/Dublin` (musim panas)   |
-| Israel Standard Time | UTC+02:00 | `Asia/Jerusalem`                |
+| Makna                | Selisih   | Zona                          |
+| -------------------- | --------- | ----------------------------- |
+| Indian Standard Time | UTC+05:30 | `Asia/Kolkata`                |
+| Irish Standard Time  | UTC+01:00 | `Europe/Dublin` (musim panas) |
+| Israel Standard Time | UTC+02:00 | `Asia/Jerusalem`              |
 
 India dan Irlandia terpaut empat setengah jam. Rapat yang dipesan pada IST yang keliru bukan sekadar terlalu pagi; ia meleset hampir satu hari kerja penuh.
 
 **CST** — empat makna:
 
-| Makna                                  | Selisih   | Zona                 |
-| -------------------------------------- | --------- | -------------------- |
-| Central Standard Time (Amerika Utara)  | UTC-06:00 | `America/Chicago`    |
-| China Standard Time                    | UTC+08:00 | `Asia/Shanghai`      |
-| Cuba Standard Time                     | UTC-05:00 | `America/Havana`     |
-| Central Standard Time (Australia)      | UTC+09:30 | `Australia/Adelaide` |
+| Makna                                 | Selisih   | Zona                 |
+| ------------------------------------- | --------- | -------------------- |
+| Central Standard Time (Amerika Utara) | UTC-06:00 | `America/Chicago`    |
+| China Standard Time                   | UTC+08:00 | `Asia/Shanghai`      |
+| Cuba Standard Time                    | UTC-05:00 | `America/Havana`     |
+| Central Standard Time (Australia)     | UTC+09:30 | `Australia/Adelaide` |
 
 Chicago dan Shanghai terpaut empat belas jam.
 

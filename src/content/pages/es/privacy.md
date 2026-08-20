@@ -1,6 +1,6 @@
 ---
-title: "Política de privacidad"
-description: "Este sitio no recoge nada, no pone cookies y no carga scripts de terceros. Esto es exactamente lo que significa."
+title: 'Política de privacidad'
+description: 'Este sitio no recoge nada, no pone cookies y no carga scripts de terceros. Esto es exactamente lo que significa.'
 order: 3
 updatedAt: '2026-01-15'
 ---

@@ -1,11 +1,17 @@
 ---
-title: "Por que a Índia anda meia hora fora do UTC"
-description: "Diferenças de meia hora e de 45 minutos não são acidentes geográficos: são acordos, afirmações de independência e uma piada burocrática."
-summary: "A Índia anda em UTC+05:30 porque rachou a diferença entre dois fusos propostos. O Nepal anda em UTC+05:45 em parte para não ser a Índia. Toda diferença incomum tem uma história, e quase todas são políticas."
+title: 'Por que a Índia anda meia hora fora do UTC'
+description: 'Diferenças de meia hora e de 45 minutos não são acidentes geográficos: são acordos, afirmações de independência e uma piada burocrática.'
+summary: 'A Índia anda em UTC+05:30 porque rachou a diferença entre dois fusos propostos. O Nepal anda em UTC+05:45 em parte para não ser a Índia. Toda diferença incomum tem uma história, e quase todas são políticas.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 12
-keywords: ['por que índia meia hora', 'nepal 45 minutos', 'fuso horário de meia hora', 'história do horário padrão da índia']
+keywords:
+  [
+    'por que índia meia hora',
+    'nepal 45 minutos',
+    'fuso horário de meia hora',
+    'história do horário padrão da índia',
+  ]
 related: ['offsets-that-are-not-whole-hours', 'how-time-zones-work', 'the-international-date-line']
 ---
 

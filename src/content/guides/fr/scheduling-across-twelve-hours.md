@@ -5,7 +5,13 @@ summary: "Un écart de douze heures n'a pas de bonne heure de réunion, et aucun
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 4
-keywords: ['organiser des réunions entre fuseaux', 'équipe à distance fuseaux horaires', 'douze heures de décalage', 'travail asynchrone']
+keywords:
+  [
+    'organiser des réunions entre fuseaux',
+    'équipe à distance fuseaux horaires',
+    'douze heures de décalage',
+    'travail asynchrone',
+  ]
 related: ['how-to-run-a-global-standup', 'why-daylight-saving-exists', 'how-time-zones-work']
 ---
 

@@ -1,11 +1,17 @@
 ---
-title: "A linha internacional de data e por que ela se entorta"
-description: "A linha de data não é um meridiano. Ela ziguezagueia em volta de países que preferem não ser partidos ao meio, e já mudou de lugar."
-summary: "A linha internacional de data segue o meridiano 180° apenas de longe: contorna Kiribati, a Rússia e as Aleutas, e alguns países se deslocaram para o outro lado dela por razões comerciais."
+title: 'A linha internacional de data e por que ela se entorta'
+description: 'A linha de data não é um meridiano. Ela ziguezagueia em volta de países que preferem não ser partidos ao meio, e já mudou de lugar.'
+summary: 'A linha internacional de data segue o meridiano 180° apenas de longe: contorna Kiribati, a Rússia e as Aleutas, e alguns países se deslocaram para o outro lado dela por razões comerciais.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 11
-keywords: ['linha internacional de data', 'linha de data explicada', 'fuso horário de kiribati', 'dia antes dia depois']
+keywords:
+  [
+    'linha internacional de data',
+    'linha de data explicada',
+    'fuso horário de kiribati',
+    'dia antes dia depois',
+  ]
 related: ['how-time-zones-work', 'offsets-that-are-not-whole-hours', 'what-utc-really-is']
 ---
 

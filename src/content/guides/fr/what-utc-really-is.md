@@ -1,7 +1,7 @@
 ---
-title: "Ce qu’est vraiment UTC, et en quoi cela diffère de GMT"
-description: "UTC est un standard tenu par des horloges atomiques. GMT est un fuseau tenu par la Terre. Ils concordent le plus souvent, et la différence compte."
-summary: "UTC n’est pas un fuseau horaire. C’est le standard de référence auquel chaque fuseau se rapporte, entretenu par quelque 450 horloges atomiques, et il ne bouge jamais pour l’heure d’été — c’est précisément pour cela que les systèmes s’en servent."
+title: 'Ce qu’est vraiment UTC, et en quoi cela diffère de GMT'
+description: 'UTC est un standard tenu par des horloges atomiques. GMT est un fuseau tenu par la Terre. Ils concordent le plus souvent, et la différence compte.'
+summary: 'UTC n’est pas un fuseau horaire. C’est le standard de référence auquel chaque fuseau se rapporte, entretenu par quelque 450 horloges atomiques, et il ne bouge jamais pour l’heure d’été — c’est précisément pour cela que les systèmes s’en servent.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 2

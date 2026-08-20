@@ -1,7 +1,7 @@
 ---
-title: "Perché EST è ambiguo e che cosa usare al suo posto"
-description: "IST significa tre cose diverse. CST quattro. Le sigle dei fusi non sono identificativi, e trattarle come tali produce difetti veri."
-summary: "Le sigle dei fusi orari sono etichette informali, senza un ente che le governi e senza garanzia di unicità. IST è India, Irlanda e Israele; CST è America, Cina e Cuba. Usate invece gli identificativi IANA."
+title: 'Perché EST è ambiguo e che cosa usare al suo posto'
+description: 'IST significa tre cose diverse. CST quattro. Le sigle dei fusi non sono identificativi, e trattarle come tali produce difetti veri.'
+summary: 'Le sigle dei fusi orari sono etichette informali, senza un ente che le governi e senza garanzia di unicità. IST è India, Irlanda e Israele; CST è America, Cina e Cuba. Usate invece gli identificativi IANA.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 10
@@ -27,12 +27,12 @@ India e Irlanda distano quattro ore e mezza. Una riunione fissata nell’IST sba
 
 **CST** — quattro significati:
 
-| Significato                            | Scarto    | Fuso                 |
-| -------------------------------------- | --------- | -------------------- |
-| Central Standard Time (Nord America)   | UTC-06:00 | `America/Chicago`    |
-| China Standard Time                    | UTC+08:00 | `Asia/Shanghai`      |
-| Cuba Standard Time                     | UTC-05:00 | `America/Havana`     |
-| Central Standard Time (Australia)      | UTC+09:30 | `Australia/Adelaide` |
+| Significato                          | Scarto    | Fuso                 |
+| ------------------------------------ | --------- | -------------------- |
+| Central Standard Time (Nord America) | UTC-06:00 | `America/Chicago`    |
+| China Standard Time                  | UTC+08:00 | `Asia/Shanghai`      |
+| Cuba Standard Time                   | UTC-05:00 | `America/Havana`     |
+| Central Standard Time (Australia)    | UTC+09:30 | `Australia/Adelaide` |
 
 Chicago e Shanghai distano quattordici ore.
 

@@ -1,7 +1,7 @@
 ---
-title: "ISO 8601, ou comment écrire une date sans ambiguïté"
-description: "03/04/2026 désigne deux dates différentes selon qui le lit. ISO 8601 règle cela, et ses règles méritent d’être connues avec précision."
-summary: "ISO 8601 existe parce que 03/04/2026 est mars en Amérique et avril partout ailleurs. Écrire 2026-04-03 supprime l’ambiguïté, se trie correctement comme du texte, et c’est ce que toute interface devrait accepter."
+title: 'ISO 8601, ou comment écrire une date sans ambiguïté'
+description: '03/04/2026 désigne deux dates différentes selon qui le lit. ISO 8601 règle cela, et ses règles méritent d’être connues avec précision.'
+summary: 'ISO 8601 existe parce que 03/04/2026 est mars en Amérique et avril partout ailleurs. Écrire 2026-04-03 supprime l’ambiguïté, se trie correctement comme du texte, et c’est ce que toute interface devrait accepter.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 7
@@ -32,11 +32,11 @@ C’est l’ordre qui compte. Parce que les composantes vont du plus significati
 
 Trois formes sont valides, et elles ne veulent pas dire la même chose :
 
-| Forme                       | Signification                                                             |
-| --------------------------- | ------------------------------------------------------------------------- |
-| `2026-04-03T14:30:00Z`      | 14:30 UTC. Sans ambiguïté                                                  |
+| Forme                       | Signification                                                                 |
+| --------------------------- | ----------------------------------------------------------------------------- |
+| `2026-04-03T14:30:00Z`      | 14:30 UTC. Sans ambiguïté                                                     |
 | `2026-04-03T14:30:00+05:45` | 14:30 heure locale dans un fuseau en avance de 5 h 45 sur UTC. Sans ambiguïté |
-| `2026-04-03T14:30:00`       | 14:30 dans un fuseau non précisé. **Pas un horodatage**                    |
+| `2026-04-03T14:30:00`       | 14:30 dans un fuseau non précisé. **Pas un horodatage**                       |
 
 C’est la troisième forme qui pose problème. C’est une _date-heure locale_ : une lecture d’horloge sans aucun moyen de la placer sur une ligne du temps. La faire franchir une frontière de système en espérant que l’autre côté suppose le même fuseau que vous, c’est un bogue qui attend un déploiement dans une autre région.
 

@@ -1,11 +1,17 @@
 ---
-title: "As diferenças de UTC que não são horas inteiras"
-description: "Índia, Nepal, Terra Nova e as ilhas Chatham andam em meias horas e em quartos de hora. Eis a lista completa e o que quebra no software por causa disso."
-summary: "Cerca de um quinto do mundo vive numa diferença que não é um número inteiro de horas em relação ao UTC. Software que supõe o contrário não erra um pouquinho com essas pessoas: erra 30 ou 45 minutos, o que é pior."
+title: 'As diferenças de UTC que não são horas inteiras'
+description: 'Índia, Nepal, Terra Nova e as ilhas Chatham andam em meias horas e em quartos de hora. Eis a lista completa e o que quebra no software por causa disso.'
+summary: 'Cerca de um quinto do mundo vive numa diferença que não é um número inteiro de horas em relação ao UTC. Software que supõe o contrário não erra um pouquinho com essas pessoas: erra 30 ou 45 minutos, o que é pior.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 5
-keywords: ['fusos horários de meia hora', 'diferença utc 45 minutos', 'diferença fuso horário índia', 'fuso horário do nepal']
+keywords:
+  [
+    'fusos horários de meia hora',
+    'diferença utc 45 minutos',
+    'diferença fuso horário índia',
+    'fuso horário do nepal',
+  ]
 related: ['half-hour-offsets-explained', 'time-zones-in-code', 'how-time-zones-work']
 ---
 
@@ -15,24 +21,24 @@ O modelo mental de vinte e quatro fusos de uma hora é errado de um jeito caro: 
 
 **Diferenças em :30**
 
-| Diferença | Onde                                                             |
-| --------- | ---------------------------------------------------------------- |
-| UTC-09:30 | Ilhas Marquesas                                                   |
-| UTC-03:30 | Terra Nova e Labrador                                             |
-| UTC+03:30 | Irã                                                               |
-| UTC+04:30 | Afeganistão                                                       |
-| UTC+05:30 | Índia, Sri Lanka                                                  |
-| UTC+06:30 | Mianmar, ilhas Cocos                                              |
-| UTC+09:30 | Austrália central — Território do Norte, Austrália Meridional     |
-| UTC+10:30 | Ilha Lord Howe (horário padrão)                                   |
+| Diferença | Onde                                                          |
+| --------- | ------------------------------------------------------------- |
+| UTC-09:30 | Ilhas Marquesas                                               |
+| UTC-03:30 | Terra Nova e Labrador                                         |
+| UTC+03:30 | Irã                                                           |
+| UTC+04:30 | Afeganistão                                                   |
+| UTC+05:30 | Índia, Sri Lanka                                              |
+| UTC+06:30 | Mianmar, ilhas Cocos                                          |
+| UTC+09:30 | Austrália central — Território do Norte, Austrália Meridional |
+| UTC+10:30 | Ilha Lord Howe (horário padrão)                               |
 
 **Diferenças em :45**
 
-| Diferença | Onde                                                            |
-| --------- | --------------------------------------------------------------- |
-| UTC+05:45 | Nepal                                                           |
-| UTC+08:45 | Sudeste da Austrália Ocidental (Eucla, de modo não oficial)      |
-| UTC+12:45 | Ilhas Chatham (horário padrão)                                  |
+| Diferença | Onde                                                        |
+| --------- | ----------------------------------------------------------- |
+| UTC+05:45 | Nepal                                                       |
+| UTC+08:45 | Sudeste da Austrália Ocidental (Eucla, de modo não oficial) |
+| UTC+12:45 | Ilhas Chatham (horário padrão)                              |
 
 Só a Índia são 1,4 bilhão de pessoas. Some Irã, Afeganistão, Mianmar, Sri Lanka e Nepal e você já passou de um quinto do planeta, antes de contar Austrália ou Canadá.
 

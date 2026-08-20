@@ -1,11 +1,17 @@
 ---
-title: "Uluslararası tarih çizgisi ve neden büküldüğü"
-description: "Tarih çizgisi bir boylam değildir. İkiye bölünmek istemeyen ülkelerin çevresinde zikzak çizer ve yeri de değişmiştir."
-summary: "Uluslararası tarih çizgisi 180° boylamını yalnızca kabaca izler; Kiribati’nin, Rusya’nın ve Aleut adalarının çevresinden dolaşır ve kimi ülkeler ticaret gerekçesiyle kendilerini çizginin öte yanına taşımıştır."
+title: 'Uluslararası tarih çizgisi ve neden büküldüğü'
+description: 'Tarih çizgisi bir boylam değildir. İkiye bölünmek istemeyen ülkelerin çevresinde zikzak çizer ve yeri de değişmiştir.'
+summary: 'Uluslararası tarih çizgisi 180° boylamını yalnızca kabaca izler; Kiribati’nin, Rusya’nın ve Aleut adalarının çevresinden dolaşır ve kimi ülkeler ticaret gerekçesiyle kendilerini çizginin öte yanına taşımıştır.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 11
-keywords: ['uluslararası tarih çizgisi', 'tarih çizgisi açıklaması', 'kiribati saat dilimi', 'bir gün önce bir gün sonra']
+keywords:
+  [
+    'uluslararası tarih çizgisi',
+    'tarih çizgisi açıklaması',
+    'kiribati saat dilimi',
+    'bir gün önce bir gün sonra',
+  ]
 related: ['how-time-zones-work', 'offsets-that-are-not-whole-hours', 'what-utc-really-is']
 ---
 

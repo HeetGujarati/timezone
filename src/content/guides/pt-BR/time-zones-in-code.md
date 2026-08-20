@@ -1,11 +1,17 @@
 ---
-title: "Fusos horários no código, um guia prático"
-description: "Guarde UTC, mantenha o identificador do fuso, converta na exibição, nunca construa uma tabela de diferenças. As regras e o raciocínio de cada uma."
-summary: "Quase todo defeito de fuso horário remonta a um de quatro erros. Eis o que fazer em vez disso, em JavaScript, Python, Java, Go e SQL, com o raciocínio e não só a regra."
+title: 'Fusos horários no código, um guia prático'
+description: 'Guarde UTC, mantenha o identificador do fuso, converta na exibição, nunca construa uma tabela de diferenças. As regras e o raciocínio de cada uma.'
+summary: 'Quase todo defeito de fuso horário remonta a um de quatro erros. Eis o que fazer em vez disso, em JavaScript, Python, Java, Go e SQL, com o raciocínio e não só a regra.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 9
-keywords: ['fusos horários no código', 'boas práticas de data e hora', 'armazenar carimbos de tempo', 'utc no banco de dados']
+keywords:
+  [
+    'fusos horários no código',
+    'boas práticas de data e hora',
+    'armazenar carimbos de tempo',
+    'utc no banco de dados',
+  ]
 related: ['what-utc-really-is', 'iso-8601-explained', 'the-2038-problem']
 ---
 

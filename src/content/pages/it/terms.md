@@ -1,6 +1,6 @@
 ---
-title: "Condizioni d’uso"
-description: "Le condizioni alle quali questo sito è fornito, compresa l’avvertenza sull’esattezza che qui conta più di tutte."
+title: 'Condizioni d’uso'
+description: 'Le condizioni alle quali questo sito è fornito, compresa l’avvertenza sull’esattezza che qui conta più di tutte.'
 order: 4
 updatedAt: '2026-01-15'
 ---

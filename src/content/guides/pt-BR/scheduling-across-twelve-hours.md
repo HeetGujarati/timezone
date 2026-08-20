@@ -1,11 +1,17 @@
 ---
-title: "Marcar reuniões com doze horas de distância"
-description: "Quando duas equipes não têm nenhuma hora de trabalho em comum, a solução é estrutural, não uma agenda mais esperta. Eis o que funciona de fato."
-summary: "Uma distância de doze horas não tem boa hora de reunião, e nenhum sombreado de grade muda isso. As equipes que se saem bem param de procurar e mudam o jeito de trabalhar."
+title: 'Marcar reuniões com doze horas de distância'
+description: 'Quando duas equipes não têm nenhuma hora de trabalho em comum, a solução é estrutural, não uma agenda mais esperta. Eis o que funciona de fato.'
+summary: 'Uma distância de doze horas não tem boa hora de reunião, e nenhum sombreado de grade muda isso. As equipes que se saem bem param de procurar e mudam o jeito de trabalhar.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 4
-keywords: ['marcar reuniões entre fusos horários', 'equipe remota fusos horários', 'diferença de doze horas', 'trabalho assíncrono']
+keywords:
+  [
+    'marcar reuniões entre fusos horários',
+    'equipe remota fusos horários',
+    'diferença de doze horas',
+    'trabalho assíncrono',
+  ]
 related: ['how-to-run-a-global-standup', 'why-daylight-saving-exists', 'how-time-zones-work']
 ---
 

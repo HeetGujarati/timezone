@@ -72,7 +72,9 @@ describe('isLocaleEntry', () => {
 
 describe.each(['pages', 'guides'] as const)('%s on disk', (collection) => {
   const entries = entriesOnDisk(collection);
-  const slugs = entries.filter((entry) => isLocaleEntry(entry, 'en')).map((entry) => entrySlug(entry.id));
+  const slugs = entries
+    .filter((entry) => isLocaleEntry(entry, 'en'))
+    .map((entry) => entrySlug(entry.id));
 
   it('has English entries to key off', () => {
     expect(slugs.length).toBeGreaterThan(0);

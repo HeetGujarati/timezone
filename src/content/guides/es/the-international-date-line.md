@@ -1,11 +1,17 @@
 ---
-title: "La línea internacional de cambio de fecha y por qué se dobla"
-description: "La línea de cambio de fecha no es un meridiano. Zigzaguea alrededor de países que prefieren no quedar partidos en dos, y se ha movido."
-summary: "La línea internacional de cambio de fecha sigue el meridiano 180° solo de forma aproximada: rodea Kiribati, Rusia y las Aleutianas, y algunos países se han desplazado ellos mismos al otro lado por razones comerciales."
+title: 'La línea internacional de cambio de fecha y por qué se dobla'
+description: 'La línea de cambio de fecha no es un meridiano. Zigzaguea alrededor de países que prefieren no quedar partidos en dos, y se ha movido.'
+summary: 'La línea internacional de cambio de fecha sigue el meridiano 180° solo de forma aproximada: rodea Kiribati, Rusia y las Aleutianas, y algunos países se han desplazado ellos mismos al otro lado por razones comerciales.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 11
-keywords: ['línea internacional de cambio de fecha', 'línea de cambio de fecha explicada', 'huso horario de kiribati', 'día antes día después']
+keywords:
+  [
+    'línea internacional de cambio de fecha',
+    'línea de cambio de fecha explicada',
+    'huso horario de kiribati',
+    'día antes día después',
+  ]
 related: ['how-time-zones-work', 'offsets-that-are-not-whole-hours', 'what-utc-really-is']
 ---
 

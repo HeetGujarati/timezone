@@ -1,7 +1,7 @@
 ---
-title: "EST가 모호한 이유, 그리고 대신 쓸 것"
-description: "IST는 세 가지를 뜻하고 CST는 네 가지를 뜻합니다. 시간대 약어는 식별자가 아니며, 식별자처럼 다루면 진짜 결함이 생깁니다."
-summary: "시간대 약어는 관장하는 기구도 없고 유일성 보장도 없는 비공식 이름표입니다. IST는 인도이자 아일랜드이자 이스라엘이고, CST는 아메리카이자 중국이자 쿠바입니다. 대신 IANA 식별자를 쓰세요."
+title: 'EST가 모호한 이유, 그리고 대신 쓸 것'
+description: 'IST는 세 가지를 뜻하고 CST는 네 가지를 뜻합니다. 시간대 약어는 식별자가 아니며, 식별자처럼 다루면 진짜 결함이 생깁니다.'
+summary: '시간대 약어는 관장하는 기구도 없고 유일성 보장도 없는 비공식 이름표입니다. IST는 인도이자 아일랜드이자 이스라엘이고, CST는 아메리카이자 중국이자 쿠바입니다. 대신 IANA 식별자를 쓰세요.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 10
@@ -17,21 +17,21 @@ related: ['how-time-zones-work', 'time-zones-in-code', 'what-utc-really-is']
 
 **IST** — 세 가지 뜻이 모두 현재 쓰입니다.
 
-| 뜻                   | 시차      | 시간대                        |
-| -------------------- | --------- | ----------------------------- |
-| Indian Standard Time | UTC+05:30 | `Asia/Kolkata`                |
-| Irish Standard Time  | UTC+01:00 | `Europe/Dublin` (여름에만)    |
-| Israel Standard Time | UTC+02:00 | `Asia/Jerusalem`              |
+| 뜻                   | 시차      | 시간대                     |
+| -------------------- | --------- | -------------------------- |
+| Indian Standard Time | UTC+05:30 | `Asia/Kolkata`             |
+| Irish Standard Time  | UTC+01:00 | `Europe/Dublin` (여름에만) |
+| Israel Standard Time | UTC+02:00 | `Asia/Jerusalem`           |
 
 인도와 아일랜드는 네 시간 반 떨어져 있습니다. 잘못된 IST로 잡은 회의는 조금 이른 정도가 아니라 근무일의 대부분만큼 어긋납니다.
 
 **CST** — 네 가지 뜻입니다.
 
-| 뜻                                  | 시차      | 시간대               |
-| ----------------------------------- | --------- | -------------------- |
-| Central Standard Time (북아메리카)  | UTC-06:00 | `America/Chicago`    |
-| China Standard Time                 | UTC+08:00 | `Asia/Shanghai`      |
-| Cuba Standard Time                  | UTC-05:00 | `America/Havana`     |
+| 뜻                                     | 시차      | 시간대               |
+| -------------------------------------- | --------- | -------------------- |
+| Central Standard Time (북아메리카)     | UTC-06:00 | `America/Chicago`    |
+| China Standard Time                    | UTC+08:00 | `Asia/Shanghai`      |
+| Cuba Standard Time                     | UTC-05:00 | `America/Havana`     |
 | Central Standard Time (오스트레일리아) | UTC+09:30 | `Australia/Adelaide` |
 
 시카고와 상하이는 열네 시간 떨어져 있습니다.

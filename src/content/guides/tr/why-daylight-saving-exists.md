@@ -1,12 +1,17 @@
 ---
-title: "Yaz saati neden var ve onu kim kaldırdı"
-description: "Yaz saatinin lehinde savaş zamanının kömürü vardı, aleyhinde sağlık verileri var. İşte tarihi ve onu bırakan ülkeler."
-summary: "Yaz saati Birinci Dünya Savaşı’nda yakıt tasarrufu için getirildi, birkaç on yılda bir değişen gerekçelerle sürdürüldü ve lehindeki kanıtlar inceldikçe artık ülke ülke terk ediliyor."
+title: 'Yaz saati neden var ve onu kim kaldırdı'
+description: 'Yaz saatinin lehinde savaş zamanının kömürü vardı, aleyhinde sağlık verileri var. İşte tarihi ve onu bırakan ülkeler.'
+summary: 'Yaz saati Birinci Dünya Savaşı’nda yakıt tasarrufu için getirildi, birkaç on yılda bir değişen gerekçelerle sürdürüldü ve lehindeki kanıtlar inceldikçe artık ülke ülke terk ediliyor.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 3
 keywords:
-  ['yaz saati neden var', 'yaz saati tarihi', 'yaz saatini kaldıran ülkeler', 'saat değişimi açıklaması']
+  [
+    'yaz saati neden var',
+    'yaz saati tarihi',
+    'yaz saatini kaldıran ülkeler',
+    'saat değişimi açıklaması',
+  ]
 related: ['how-time-zones-work', 'why-est-is-ambiguous', 'the-2038-problem']
 ---
 

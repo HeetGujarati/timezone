@@ -1,12 +1,17 @@
 ---
-title: "Cómo funcionan de verdad las zonas horarias"
-description: "Las zonas horarias son un artefacto político superpuesto a un problema geográfico. Aquí está el mecanismo y por qué el software se equivoca."
-summary: "Una zona horaria no es una franja del globo: es un conjunto de reglas con nombre sobre lo que ha marcado, marca y está previsto que marque un reloj en un lugar concreto. Esa distinción es todo el asunto."
+title: 'Cómo funcionan de verdad las zonas horarias'
+description: 'Las zonas horarias son un artefacto político superpuesto a un problema geográfico. Aquí está el mecanismo y por qué el software se equivoca.'
+summary: 'Una zona horaria no es una franja del globo: es un conjunto de reglas con nombre sobre lo que ha marcado, marca y está previsto que marque un reloj en un lugar concreto. Esa distinción es todo el asunto.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 1
 keywords:
-  ['cómo funcionan las zonas horarias', 'zonas horarias explicadas', 'qué es una zona horaria', 'base de datos iana']
+  [
+    'cómo funcionan las zonas horarias',
+    'zonas horarias explicadas',
+    'qué es una zona horaria',
+    'base de datos iana',
+  ]
 related: ['what-utc-really-is', 'why-est-is-ambiguous', 'time-zones-in-code']
 ---
 

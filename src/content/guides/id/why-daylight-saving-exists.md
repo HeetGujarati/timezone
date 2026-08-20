@@ -1,12 +1,17 @@
 ---
-title: "Mengapa waktu musim panas ada dan siapa yang menghapusnya"
-description: "Pembelanya dulu batu bara masa perang; penentangnya kini data kesehatan. Inilah sejarah waktu musim panas dan negara yang meninggalkannya."
-summary: "Waktu musim panas diperkenalkan untuk menghemat bahan bakar pada Perang Dunia I, dipertahankan dengan alasan yang berganti tiap beberapa dasawarsa, dan kini ditinggalkan negara demi negara seiring menipisnya bukti yang mendukungnya."
+title: 'Mengapa waktu musim panas ada dan siapa yang menghapusnya'
+description: 'Pembelanya dulu batu bara masa perang; penentangnya kini data kesehatan. Inilah sejarah waktu musim panas dan negara yang meninggalkannya.'
+summary: 'Waktu musim panas diperkenalkan untuk menghemat bahan bakar pada Perang Dunia I, dipertahankan dengan alasan yang berganti tiap beberapa dasawarsa, dan kini ditinggalkan negara demi negara seiring menipisnya bukti yang mendukungnya.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 3
 keywords:
-  ['mengapa waktu musim panas', 'sejarah waktu musim panas', 'negara yang menghapus waktu musim panas', 'penjelasan pergantian jam']
+  [
+    'mengapa waktu musim panas',
+    'sejarah waktu musim panas',
+    'negara yang menghapus waktu musim panas',
+    'penjelasan pergantian jam',
+  ]
 related: ['how-time-zones-work', 'why-est-is-ambiguous', 'the-2038-problem']
 ---
 

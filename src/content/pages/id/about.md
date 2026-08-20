@@ -1,6 +1,6 @@
 ---
-title: "Tentang Meridiem"
-description: "Mengapa situs ini ada, bagaimana ia menghitung apa yang ditampilkannya, dan apa yang sengaja tidak dilakukannya."
+title: 'Tentang Meridiem'
+description: 'Mengapa situs ini ada, bagaimana ia menghitung apa yang ditampilkannya, dan apa yang sengaja tidak dilakukannya.'
 order: 1
 updatedAt: '2026-01-15'
 ---

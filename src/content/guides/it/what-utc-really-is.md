@@ -1,7 +1,7 @@
 ---
-title: "Che cos’è davvero UTC e in che cosa differisce da GMT"
-description: "UTC è uno standard di tempo tenuto da orologi atomici. GMT è un fuso tenuto dalla Terra. Di solito coincidono, e la differenza conta lo stesso."
-summary: "UTC non è un fuso orario. È lo standard di riferimento rispetto a cui ogni fuso viene definito, mantenuto da circa 450 orologi atomici, e non si sposta mai per l’ora legale: è esattamente per questo che i sistemi lo usano."
+title: 'Che cos’è davvero UTC e in che cosa differisce da GMT'
+description: 'UTC è uno standard di tempo tenuto da orologi atomici. GMT è un fuso tenuto dalla Terra. Di solito coincidono, e la differenza conta lo stesso.'
+summary: 'UTC non è un fuso orario. È lo standard di riferimento rispetto a cui ogni fuso viene definito, mantenuto da circa 450 orologi atomici, e non si sposta mai per l’ora legale: è esattamente per questo che i sistemi lo usano.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 2

@@ -1,11 +1,17 @@
 ---
-title: "Les fuseaux horaires dans le code, guide pratique"
+title: 'Les fuseaux horaires dans le code, guide pratique'
 description: "Stockez UTC, gardez l'identifiant de fuseau, convertissez à l'affichage, ne construisez jamais de table de décalages. Les règles et leur justification."
 summary: "Presque tout bogue de fuseau horaire remonte à l'une de quatre erreurs. Voici quoi faire à la place, en JavaScript, Python, Java, Go et SQL, avec le raisonnement et pas seulement la règle."
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 9
-keywords: ['fuseaux horaires dans le code', 'bonnes pratiques date et heure', 'stocker des horodatages', 'utc en base de données']
+keywords:
+  [
+    'fuseaux horaires dans le code',
+    'bonnes pratiques date et heure',
+    'stocker des horodatages',
+    'utc en base de données',
+  ]
 related: ['what-utc-really-is', 'iso-8601-explained', 'the-2038-problem']
 ---
 

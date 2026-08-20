@@ -1,11 +1,17 @@
 ---
-title: "Menjadwalkan rapat melintasi jurang dua belas jam"
-description: "Ketika dua tim sama sekali tak berbagi jam kerja, jalan keluarnya bersifat struktural, bukan kalender yang lebih cerdik. Inilah yang benar-benar berhasil."
-summary: "Jurang dua belas jam tak punya waktu rapat yang baik, dan tak ada arsiran kisi yang mengubahnya. Tim yang mengelolanya dengan baik berhenti mencarinya dan justru mengubah cara kerja mereka."
+title: 'Menjadwalkan rapat melintasi jurang dua belas jam'
+description: 'Ketika dua tim sama sekali tak berbagi jam kerja, jalan keluarnya bersifat struktural, bukan kalender yang lebih cerdik. Inilah yang benar-benar berhasil.'
+summary: 'Jurang dua belas jam tak punya waktu rapat yang baik, dan tak ada arsiran kisi yang mengubahnya. Tim yang mengelolanya dengan baik berhenti mencarinya dan justru mengubah cara kerja mereka.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 4
-keywords: ['menjadwalkan lintas zona waktu', 'tim jarak jauh zona waktu', 'beda waktu dua belas jam', 'kerja nirserentak']
+keywords:
+  [
+    'menjadwalkan lintas zona waktu',
+    'tim jarak jauh zona waktu',
+    'beda waktu dua belas jam',
+    'kerja nirserentak',
+  ]
 related: ['how-to-run-a-global-standup', 'why-daylight-saving-exists', 'how-time-zones-work']
 ---
 

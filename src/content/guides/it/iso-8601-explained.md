@@ -1,7 +1,7 @@
 ---
-title: "ISO 8601, ovvero come scrivere una data senza ambiguità"
-description: "03/04/2026 indica due date diverse a seconda di chi legge. ISO 8601 lo risolve, e vale la pena conoscerne le regole con precisione."
-summary: "ISO 8601 esiste perché 03/04/2026 è marzo in America e aprile ovunque altrove. Scrivere 2026-04-03 elimina l’ambiguità, si ordina correttamente come testo ed è ciò che ogni interfaccia dovrebbe accettare."
+title: 'ISO 8601, ovvero come scrivere una data senza ambiguità'
+description: '03/04/2026 indica due date diverse a seconda di chi legge. ISO 8601 lo risolve, e vale la pena conoscerne le regole con precisione.'
+summary: 'ISO 8601 esiste perché 03/04/2026 è marzo in America e aprile ovunque altrove. Scrivere 2026-04-03 elimina l’ambiguità, si ordina correttamente come testo ed è ciò che ogni interfaccia dovrebbe accettare.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 7
@@ -32,11 +32,11 @@ Il punto è l’ordine. Poiché le componenti vanno dalla più significativa all
 
 Tre forme sono valide, e significano cose diverse:
 
-| Forma                       | Significato                                                              |
-| --------------------------- | ------------------------------------------------------------------------ |
-| `2026-04-03T14:30:00Z`      | 14:30 UTC. Non ambigua                                                    |
-| `2026-04-03T14:30:00+05:45` | 14:30 ora locale in un fuso avanti di 5 h 45 min su UTC. Non ambigua      |
-| `2026-04-03T14:30:00`       | 14:30 in un fuso non indicato. **Non è una marca temporale**              |
+| Forma                       | Significato                                                          |
+| --------------------------- | -------------------------------------------------------------------- |
+| `2026-04-03T14:30:00Z`      | 14:30 UTC. Non ambigua                                               |
+| `2026-04-03T14:30:00+05:45` | 14:30 ora locale in un fuso avanti di 5 h 45 min su UTC. Non ambigua |
+| `2026-04-03T14:30:00`       | 14:30 in un fuso non indicato. **Non è una marca temporale**         |
 
 La terza forma è quella che crea guai. È una _data-ora locale_: una lettura d’orologio senza alcun modo di collocarla su una linea del tempo. Passarla attraverso un confine di sistema sperando che l’altra parte assuma il vostro stesso fuso è un difetto che aspetta un rilascio in un’altra regione.
 

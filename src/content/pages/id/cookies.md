@@ -1,6 +1,6 @@
 ---
-title: "Kebijakan kuki"
-description: "Situs ini sama sekali tidak memasang kuki. Berikut apa yang disimpannya secara lokal dan apa yang berubah bila iklan diaktifkan."
+title: 'Kebijakan kuki'
+description: 'Situs ini sama sekali tidak memasang kuki. Berikut apa yang disimpannya secara lokal dan apa yang berubah bila iklan diaktifkan.'
 order: 5
 updatedAt: '2026-01-15'
 ---

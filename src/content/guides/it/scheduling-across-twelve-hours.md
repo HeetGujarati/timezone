@@ -1,11 +1,17 @@
 ---
-title: "Fissare riunioni con dodici ore di scarto"
-description: "Quando due squadre non condividono alcuna ora lavorativa, la soluzione è strutturale e non un calendario più astuto. Ecco che cosa funziona davvero."
-summary: "Uno scarto di dodici ore non ha una buona ora di riunione, e nessuna sfumatura di griglia lo cambia. Le squadre che se la cavano smettono di cercarla e cambiano invece il modo di lavorare."
+title: 'Fissare riunioni con dodici ore di scarto'
+description: 'Quando due squadre non condividono alcuna ora lavorativa, la soluzione è strutturale e non un calendario più astuto. Ecco che cosa funziona davvero.'
+summary: 'Uno scarto di dodici ore non ha una buona ora di riunione, e nessuna sfumatura di griglia lo cambia. Le squadre che se la cavano smettono di cercarla e cambiano invece il modo di lavorare.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 4
-keywords: ['fissare riunioni fra fusi orari', 'squadra remota fusi orari', 'dodici ore di differenza', 'lavoro asincrono']
+keywords:
+  [
+    'fissare riunioni fra fusi orari',
+    'squadra remota fusi orari',
+    'dodici ore di differenza',
+    'lavoro asincrono',
+  ]
 related: ['how-to-run-a-global-standup', 'why-daylight-saving-exists', 'how-time-zones-work']
 ---
 

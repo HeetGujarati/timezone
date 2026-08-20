@@ -1,11 +1,17 @@
 ---
-title: "Kodda saat dilimleri: uygulamalı bir rehber"
-description: "UTC saklayın, dilim tanımlayıcısını koruyun, gösterimde dönüştürün, asla fark tablosu kurmayın. Kurallar ve her birinin gerekçesi."
-summary: "Neredeyse her saat dilimi hatası dört yanlıştan birine dayanır. İşte bunun yerine yapılacaklar: JavaScript, Python, Java, Go ve SQL için, yalnızca kuralla değil gerekçesiyle."
+title: 'Kodda saat dilimleri: uygulamalı bir rehber'
+description: 'UTC saklayın, dilim tanımlayıcısını koruyun, gösterimde dönüştürün, asla fark tablosu kurmayın. Kurallar ve her birinin gerekçesi.'
+summary: 'Neredeyse her saat dilimi hatası dört yanlıştan birine dayanır. İşte bunun yerine yapılacaklar: JavaScript, Python, Java, Go ve SQL için, yalnızca kuralla değil gerekçesiyle.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 9
-keywords: ['kodda saat dilimleri', 'tarih saat iyi uygulamaları', 'zaman damgası saklama', 'veritabanında utc']
+keywords:
+  [
+    'kodda saat dilimleri',
+    'tarih saat iyi uygulamaları',
+    'zaman damgası saklama',
+    'veritabanında utc',
+  ]
 related: ['what-utc-really-is', 'iso-8601-explained', 'the-2038-problem']
 ---
 

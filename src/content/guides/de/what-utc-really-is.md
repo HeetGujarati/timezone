@@ -1,7 +1,7 @@
 ---
-title: "Was UTC wirklich ist und wie es sich von GMT unterscheidet"
-description: "UTC ist ein Zeitstandard, gehalten von Atomuhren. GMT ist eine Zeitzone, gehalten von der Erde. Meist stimmen sie überein — der Unterschied zählt trotzdem."
-summary: "UTC ist keine Zeitzone. Es ist der Referenzstandard, gegen den jede Zeitzone definiert wird, gehalten von rund 450 Atomuhren, und es verschiebt sich nie für die Sommerzeit — genau deshalb arbeiten Systeme damit."
+title: 'Was UTC wirklich ist und wie es sich von GMT unterscheidet'
+description: 'UTC ist ein Zeitstandard, gehalten von Atomuhren. GMT ist eine Zeitzone, gehalten von der Erde. Meist stimmen sie überein — der Unterschied zählt trotzdem.'
+summary: 'UTC ist keine Zeitzone. Es ist der Referenzstandard, gegen den jede Zeitzone definiert wird, gehalten von rund 450 Atomuhren, und es verschiebt sich nie für die Sommerzeit — genau deshalb arbeiten Systeme damit.'
 publishedAt: '2026-01-15'
 updatedAt: '2026-01-15'
 order: 2

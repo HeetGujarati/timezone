@@ -1,6 +1,7 @@
 ---
 import JsonLd from './JsonLd.astro';
 import type { ResolvedMetadata } from '~/lib/seo/types.ts';
+import { SITE, absoluteUrl } from '~/config/site.ts';
 
 /**
  * Every `<head>` on the site is rendered here. Page templates hand over a
@@ -68,6 +69,17 @@ const ogImage = openGraph.images[0];
     </>
   )
 }
+
+<!--
+  The guides feed. Advertised on every page rather than only on the hub, because a
+  reader who wants it is as likely to be on an article as on the index.
+-->
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title={`${SITE.name} — guides`}
+  href={absoluteUrl('/guides/rss.xml')}
+/>
 
 <meta name="twitter:card" content={twitter.card} />
 <meta name="twitter:title" content={twitter.title} />

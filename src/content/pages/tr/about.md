@@ -1,6 +1,6 @@
 ---
-title: "Meridiem hakkında"
-description: "Bu site neden var, gösterdiklerini nasıl hesaplıyor ve bilerek neleri yapmıyor."
+title: 'Meridiem hakkında'
+description: 'Bu site neden var, gösterdiklerini nasıl hesaplıyor ve bilerek neleri yapmıyor.'
 order: 1
 updatedAt: '2026-01-15'
 ---
