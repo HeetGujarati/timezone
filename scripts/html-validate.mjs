@@ -31,7 +31,22 @@ const problems = {
   missingDir: [],
   skippedHeadingLevel: [],
   namelessControl: [],
+  unrenderedEscape: [],
 };
+
+/**
+ * A JavaScript escape sequence that reached the page as text.
+ *
+ * `<span>\u25c6</span>` in an .astro template is not a diamond — Astro renders
+ * the six characters literally, and it shipped that way on 1,120 world-clock
+ * cards. Nothing else catches it: the markup is valid, the control still has an
+ * accessible name, and the string is too short for the untranslated-copy audit.
+ *
+ * Script and style bodies are exempt because an escape is legitimate there, as
+ * are <code> and <pre>, where a guide may be quoting one on purpose.
+ */
+const ESCAPE_IN_TEXT = /\\u[0-9a-fA-F]{4}|\\x[0-9a-fA-F]{2}/g;
+const EXEMPT_ELEMENTS = /<(script|style|code|pre)\b[^>]*>[\s\S]*?<\/\1>/gi;
 
 /** Attribute values on one element, as a map. Good enough for generated markup. */
 function attributes(tag) {
@@ -60,6 +75,11 @@ const pages = await readPages();
 
 for (const page of pages) {
   const { html, url } = page;
+
+  // --- escape sequences that should have been characters ---------------------
+  for (const [escape] of html.replace(EXEMPT_ELEMENTS, '').matchAll(ESCAPE_IN_TEXT)) {
+    problems.unrenderedEscape.push(`${url} renders "${escape}" as text`);
+  }
 
   // --- ids -----------------------------------------------------------------
   const ids = new Set();
@@ -137,5 +157,5 @@ if (failures.length > 0) {
 }
 
 pass(
-  `HTML audit: ${pages.length} pages — ${counted.ids} ids all unique per page, ${counted.ariaReferences} aria references all resolving, ${counted.images} images all with alt, ${counted.controls} controls all named, ${counted.headings} headings with no skipped level, every page declaring its language`,
+  `HTML audit: ${pages.length} pages — ${counted.ids} ids all unique per page, ${counted.ariaReferences} aria references all resolving, ${counted.images} images all with alt, ${counted.controls} controls all named, ${counted.headings} headings with no skipped level, no unrendered escape sequences, every page declaring its language`,
 );
