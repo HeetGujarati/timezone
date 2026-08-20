@@ -40,7 +40,18 @@ async function* walk(dir: string): AsyncGenerator<string> {
   }
 }
 
-export function cspHashes(): AstroIntegration {
+type Options = {
+  /**
+   * Origins the policy must additionally permit, for scripts the build does not
+   * produce. Empty by default and empty unless the owner opts in to analytics:
+   * this is the one place the policy can widen, and it widens by configuration
+   * rather than by a component quietly adding a host the header does not know
+   * about.
+   */
+  readonly extraOrigins?: readonly string[];
+};
+
+export function cspHashes({ extraOrigins = [] }: Options = {}): AstroIntegration {
   return {
     name: 'meridiem:csp-hashes',
     hooks: {
@@ -74,13 +85,28 @@ export function cspHashes(): AstroIntegration {
           throw new Error('public/_headers not found in build output');
         }
 
-        const scriptSrc = ["'self'", ...[...hashes].sort()].join(' ');
-        const updated = headers.replace('script-src __CSP_SCRIPT_SRC__', `script-src ${scriptSrc}`);
+        const scriptSrc = ["'self'", ...[...hashes].sort(), ...extraOrigins].join(' ');
+        let updated = headers.replace('script-src __CSP_SCRIPT_SRC__', `script-src ${scriptSrc}`);
 
         if (updated === headers) {
           throw new Error(
             'public/_headers does not contain the __CSP_SCRIPT_SRC__ placeholder — the CSP would ship unhashed.',
           );
+        }
+
+        // A script that may load must also be allowed to report, or the beacon is
+        // blocked at the connect rather than at the load and the failure is subtle.
+        if (extraOrigins.length > 0) {
+          const widened = updated.replace(
+            "connect-src 'self'",
+            `connect-src 'self' ${extraOrigins.join(' ')}`,
+          );
+          if (widened === updated) {
+            throw new Error(
+              'public/_headers has no "connect-src \'self\'" to widen — the analytics beacon would be blocked.',
+            );
+          }
+          updated = widened;
         }
 
         await writeFile(headersPath, updated, 'utf8');
@@ -142,8 +168,10 @@ export function cspHashes(): AstroIntegration {
           'utf8',
         );
 
+        const widened =
+          extraOrigins.length === 0 ? '' : `, widened for ${extraOrigins.join(' and ')}`;
         logger.info(
-          `CSP: ${hashes.size} inline script hash${hashes.size === 1 ? '' : 'es'} written to ${relative(distPath, headersPath)}, netlify.toml and vercel.json (no unsafe-inline)`,
+          `CSP: ${hashes.size} inline script hash${hashes.size === 1 ? '' : 'es'} written to ${relative(distPath, headersPath)}, netlify.toml and vercel.json (no unsafe-inline${widened})`,
         );
       },
     },

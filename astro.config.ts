@@ -10,6 +10,16 @@ import { SITE } from './src/config/site.ts';
 const site = process.env['PUBLIC_SITE_URL'] ?? 'https://meridiem.app';
 
 /**
+ * The only origin the Content Security Policy will ever be widened for, and only
+ * when the owner has set a token. With PUBLIC_CF_ANALYTICS_TOKEN empty — the
+ * default — the site makes no third-party request at all and the policy says so.
+ */
+const analyticsOrigins =
+  (process.env['PUBLIC_CF_ANALYTICS_TOKEN'] ?? '') === ''
+    ? []
+    : ['https://static.cloudflareinsights.com'];
+
+/**
  * Astro's i18n block is fed the lowercase URL segments ('pt-br', 'zh-hans'), because
  * that is what appears in a path. The BCP-47 tags used for `<html lang>`, hreflang and
  * `Intl` live in src/config/locales.ts and are derived from the same records, so the
@@ -40,7 +50,7 @@ export default defineConfig({
     },
   },
   integrations: [
-    cspHashes(),
+    cspHashes({ extraOrigins: analyticsOrigins }),
     ogImages({ siteName: SITE.name, origin: site }),
     sitemap({
       // Keeps every child sitemap far below the 45,000-URL ceiling.

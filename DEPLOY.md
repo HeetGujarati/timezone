@@ -259,13 +259,22 @@ The site reserves ad slots but serves nothing. Before switching `PUBLIC_ADS_ENAB
 
 ## Part 9 — optional cookieless analytics
 
-Cloudflare Web Analytics is free, needs no cookie, and collects no personal data.
+Cloudflare Web Analytics is free, needs no cookie, sets no identifier, and collects nothing
+that identifies a person — which is why it needs no consent banner and leaves the cookie
+policy true.
 
 1. Cloudflare dashboard → **Analytics & Logs** → **Web Analytics** → **Add a site**.
 2. Copy the token.
 3. Add `PUBLIC_CF_ANALYTICS_TOKEN` as an environment variable and redeploy.
 
-The snippet loads only when that variable is non-empty, and the CSP needs
-`https://static.cloudflareinsights.com` added to `script-src` and `connect-src`. Leave it unset
-and the site remains entirely free of third-party requests, which is the default and the
-recommendation.
+That is the whole procedure. The beacon renders only when the variable is non-empty, and the
+build widens the Content Security Policy for exactly that one origin at the same time — both
+read the same variable, so the script and the policy permitting it cannot disagree. You will
+see it in the build log:
+
+```
+[meridiem:csp-hashes] CSP: 1 inline script hash written to … (no unsafe-inline, widened for https://static.cloudflareinsights.com)
+```
+
+Leave the variable unset and the site makes no third-party request of any kind and the policy
+says so. That is the default and the recommendation.

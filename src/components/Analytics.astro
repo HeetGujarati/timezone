@@ -1,0 +1,36 @@
+---
+import { CF_ANALYTICS_TOKEN } from '~/config/flags.ts';
+
+/**
+ * Cloudflare Web Analytics, and nothing else.
+ *
+ * The site's default is no third-party request of any kind, and that default holds
+ * unless PUBLIC_CF_ANALYTICS_TOKEN is set to a real token: with it empty this
+ * component renders nothing at all, not an empty tag and not a disabled script.
+ *
+ * Cloudflare's beacon was chosen over the alternatives because it sets no cookie,
+ * stores no identifier and collects nothing that identifies a person — so the
+ * cookie policy stays true and no consent banner is required for it. Anything
+ * that did need consent would have to go through the banner instead.
+ *
+ * The token travels in a JSON attribute built by JSON.stringify rather than by
+ * string concatenation, so a malformed token cannot break out of the attribute.
+ *
+ * The Content Security Policy is widened for this at build time, by the same
+ * integration that hashes the inline theme script — see src/integrations/csp-hashes.ts.
+ * Both read the same environment variable, so the script and the policy that
+ * permits it can never disagree.
+ */
+const beacon = CF_ANALYTICS_TOKEN === '' ? null : JSON.stringify({ token: CF_ANALYTICS_TOKEN });
+---
+
+{
+  beacon !== null && (
+    <script
+      is:inline
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon={beacon}
+    />
+  )
+}

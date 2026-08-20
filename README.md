@@ -45,18 +45,39 @@ npm run dev
 
 ## Scripts
 
-| Script                  | What it does                                             |
-| ----------------------- | -------------------------------------------------------- |
-| `npm run dev`           | Dev server with HMR                                      |
-| `npm run build`         | Production build into `dist/`                            |
-| `npm run preview`       | Serve the built `dist/` locally                          |
-| `npm run check`         | `astro check` — TypeScript across `.ts` and `.astro`     |
-| `npm run lint`          | ESLint, including the banned-API security rules          |
-| `npm run format:check`  | Prettier in check mode                                   |
-| `npm run test`          | Vitest unit tests                                        |
-| `npm run test:coverage` | Vitest with coverage; fails under 90% on `src/lib/time/` |
-| `npm run e2e`           | Playwright smoke suite against a preview build           |
-| `npm run gate`          | The full local gate — everything CI runs, in CI's order  |
+| Script                  | What it does                                                     |
+| ----------------------- | ---------------------------------------------------------------- |
+| `npm run dev`           | Dev server with HMR                                              |
+| `npm run build`         | Production build into `dist/`                                    |
+| `npm run serve`         | Serve the built `dist/` the way a static host would              |
+| `npm run check`         | `astro check` — TypeScript across `.ts` and `.astro`             |
+| `npm run lint`          | ESLint, including the banned-API security rules                  |
+| `npm run format:check`  | Prettier in check mode                                           |
+| `npm run test`          | Vitest unit tests                                                |
+| `npm run test:coverage` | Vitest with coverage; fails under 90% on `src/lib/time/`         |
+| `npm run e2e`           | Playwright smoke suite against the built output                  |
+| `npm run icons`         | Re-rasterise `public/favicon.svg` into the ICO and the PNG sizes |
+| `npm run gate`          | The full local gate — everything CI runs, in CI's order          |
+
+### Audits
+
+Each reads the built output and prints real counts rather than "ok", so a passing run still
+says how much was checked. All of them run in `npm run gate` and in CI.
+
+| Script                   | What it fails on                                                                       |
+| ------------------------ | -------------------------------------------------------------------------------------- |
+| `npm run audit:i18n`     | A dictionary key missing, extra, or with mismatched placeholders                       |
+| `npm run audit:i18nleak` | English prose on a translated page                                                     |
+| `npm run audit:links`    | A broken internal link                                                                 |
+| `npm run audit:seo`      | A duplicate title or description, a missing canonical, a broken hreflang               |
+| `npm run audit:html`     | A duplicate id, a dangling ARIA reference, an unnamed control, a skipped heading level |
+| `npm run audit:islands`  | A control an island looks for that the markup does not render                          |
+| `npm run audit:headers`  | A missing security header, or a CSP that drifted between the three host configs        |
+| `npm run audit:js`       | More than 30 KB of JavaScript sitewide, or 15 KB on one page                           |
+| `npm run audit:sethtml`  | Any use of `set:html` or another banned API                                            |
+
+Lighthouse runs in CI from `lighthouserc.json`, asserting 95 on all four categories across six
+URLs. It is fetched with `npx` rather than declared as a dependency — see `DECISIONS.md` D31.
 
 ## Project structure
 

@@ -60,7 +60,6 @@ export const SITE = {
     /** Replaced by the owner before launch — tracked in DEPLOY.md, Part 1. */
     url: 'https://meridiem.app',
     x: '@meridiemapp',
-    github: 'meridiem',
   },
 
   /** Replaced by the owner before launch — tracked in DEPLOY.md, Part 1. */

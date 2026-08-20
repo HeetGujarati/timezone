@@ -2,6 +2,7 @@
 import '~/styles/global.css';
 import SeoHead from '~/components/SeoHead.astro';
 import ConsentBanner from '~/components/ConsentBanner.astro';
+import Analytics from '~/components/Analytics.astro';
 import SiteHeader from '~/components/SiteHeader.astro';
 import SiteFooter from '~/components/SiteFooter.astro';
 import ThemeScript from '~/components/ThemeScript.astro';
@@ -65,5 +66,6 @@ const t = useTranslations(locale);
 
     <SiteFooter locale={locale} alternates={metadata.alternates} />
     <ConsentBanner locale={locale} />
+    <Analytics />
   </body>
 </html>

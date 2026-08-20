@@ -456,3 +456,24 @@ variable family instead of the condensed one, because the condensed cut has no
 Cyrillic and the alternative was a system font in the middle of the brand. And
 Japanese, Korean and Chinese are left to the system font entirely: a CJK face
 runs to megabytes, which no heading on a page about what time it is can justify.
+
+## D35 — The analytics switch had to become real or stop being documented
+
+`DEPLOY.md` told the owner to set `PUBLIC_CF_ANALYTICS_TOKEN` and redeploy, and said
+"the snippet loads only when that variable is non-empty". There was no snippet. The
+flag was read into `src/config/flags.ts` and consumed by nothing, so the documented
+procedure would have produced a redeploy and no analytics — the worst kind of
+missing feature, the kind that looks done.
+
+It is now real: `src/components/Analytics.astro` renders the beacon when the token
+is set and nothing at all when it is not, and the CSP integration widens
+`script-src` and `connect-src` for exactly that one origin from the same
+environment variable. Both halves read the same value, so a build cannot ship a
+script its own policy blocks. Verified in both directions — with a token, the
+policy names the origin and the page carries the beacon; without one, the policy
+reads `connect-src 'self'` and the string "cloudflareinsights" appears nowhere in
+`dist/`.
+
+Cloudflare's beacon rather than any of the alternatives, because it sets no cookie
+and stores no identifier. That keeps the cookie policy true and means analytics
+does not drag the consent banner into the default build.
