@@ -3,6 +3,7 @@ import type { LocaleCode } from '~/config/locales.ts';
 import { useTranslations, type TranslationKey } from '~/lib/i18n/index.ts';
 import { pickVariant } from '~/lib/seo/slug-hash.ts';
 import { formatDuration } from './duration.ts';
+import { formatZoneReading } from './zone-reading.ts';
 import type { PairFacts } from './pair-facts.ts';
 
 /**
@@ -235,10 +236,8 @@ export function pairFaqs(input: CopyInput): { question: string; answer: string }
         to: to.name,
         fromZone: facts.from.timeZone,
         toZone: facts.to.timeZone,
-        fromAbbr: facts.from.abbreviation,
-        toAbbr: facts.to.abbreviation,
-        fromOffset: facts.from.offsetLabel,
-        toOffset: facts.to.offsetLabel,
+        fromReading: formatZoneReading(locale, facts.from.abbreviation, facts.from.offsetLabel),
+        toReading: formatZoneReading(locale, facts.to.abbreviation, facts.to.offsetLabel),
       }),
     });
   }

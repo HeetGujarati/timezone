@@ -17,12 +17,7 @@ import { hrefFor } from '~/lib/i18n/routes.ts';
 import { type City, TOP_HUBS } from '~/data/cities.ts';
 import { pairsFromCity } from '~/data/pairs.ts';
 import { BUILD_INSTANT, CURRENT_YEAR } from '~/config/build.ts';
-import {
-  formatOffsetShort,
-  getOffsetMinutes,
-  getZoneAbbreviation,
-  toZonedDateTime,
-} from '~/lib/time/offset.ts';
+import { formatOffsetShort, getOffsetMinutes, toZonedDateTime } from '~/lib/time/offset.ts';
 import {
   findDstTransitions,
   getDaylightOffsetMinutes,
@@ -31,6 +26,7 @@ import {
 import { getSunTimes } from '~/lib/time/sun.ts';
 import { formatDuration } from '~/lib/content/duration.ts';
 import { describeDifferenceIn } from '~/lib/content/difference.ts';
+import { zoneAbbreviation, zoneReading } from '~/lib/content/zone-reading.ts';
 import { pickVariant } from '~/lib/seo/slug-hash.ts';
 
 type Props = {
@@ -61,7 +57,9 @@ const nextTransitions = [...transitions, ...findDstTransitions(city.timeZone, CU
 const standardOffset = getStandardOffsetMinutes(city.timeZone, CURRENT_YEAR);
 const daylightOffset = getDaylightOffsetMinutes(city.timeZone, CURRENT_YEAR);
 const currentOffset = getOffsetMinutes(city.timeZone, BUILD_INSTANT);
-const abbreviation = getZoneAbbreviation(city.timeZone, BUILD_INSTANT);
+/** Null where the runtime has no letter abbreviation for this zone, only an offset. */
+const letterAbbreviation = zoneAbbreviation(city.timeZone, BUILD_INSTANT);
+const reading = zoneReading(locale, city.timeZone, BUILD_INSTANT);
 
 const sun = getSunTimes(BUILD_INSTANT, city.timeZone, city.lat, city.lon);
 
@@ -96,8 +94,7 @@ const summary = t(
   {
     city: city.name,
     zone: city.timeZone,
-    abbr: abbreviation,
-    offset: formatOffsetShort(currentOffset),
+    reading,
     clause: summaryClause,
   },
 );
@@ -120,12 +117,7 @@ const metadata = buildToolMetadata({
 const faqs = [
   {
     question: t('city.faq.q.zone', { city: city.name }),
-    answer: t('city.faq.a.zone', {
-      city: city.name,
-      zone: city.timeZone,
-      abbr: abbreviation,
-      offset: formatOffsetShort(currentOffset),
-    }),
+    answer: t('city.faq.a.zone', { city: city.name, zone: city.timeZone, reading }),
   },
   {
     question: t('city.faq.q.dst', { city: city.name }),
@@ -220,7 +212,7 @@ const schemas = [
       </div>
       <div class="flex justify-between gap-3 border-b border-[var(--color-rule)] pb-2">
         <dt class="text-[var(--color-text-muted)]">{t('facts.abbreviation')}</dt>
-        <dd class="tabular">{abbreviation}</dd>
+        <dd class="tabular">{letterAbbreviation ?? '—'}</dd>
       </div>
       <div class="flex justify-between gap-3 border-b border-[var(--color-rule)] pb-2">
         <dt class="text-[var(--color-text-muted)]">{t('facts.standardOffset')}</dt>
