@@ -64,6 +64,83 @@ test.describe('the converter', () => {
   });
 });
 
+/**
+ * The ten tools, checked for signs of life.
+ *
+ * Every one of them is an island that finds its controls by `data-role` and writes
+ * into `[data-out]` elements the page renders as an em dash. When the markup and
+ * the island disagree about a role — as they did, silently, for the converter's
+ * two selects — the island returns at its first guard and the dashes stay. That
+ * failure produces no error anywhere, so it is worth one assertion per tool.
+ *
+ * `scripts/island-audit.mjs` catches the same defect from the other side, against
+ * all 4,570 pages rather than ten. This is the half that proves the wiring also
+ * computes the right kind of thing once it is connected.
+ */
+const TOOLS = [
+  { path: '/', proof: '[data-out="time"]' },
+  { path: '/time-difference/', proof: '[data-out="headline"]' },
+  { path: '/unix-timestamp-converter/', proof: '[data-out="iso"]' },
+  { path: '/duration-calculator/', proof: '[data-out="headline"]' },
+  { path: '/countdown/', proof: '[data-out="days"]' },
+] as const;
+
+test.describe('every tool', () => {
+  for (const { path, proof } of TOOLS) {
+    test(`${path} computes a result instead of leaving its placeholder`, async ({ page }) => {
+      const errors: string[] = [];
+      page.on('pageerror', (error) => errors.push(error.message));
+
+      await page.goto(path);
+      await expect(page.locator(proof).first()).not.toHaveText('—', { timeout: 15_000 });
+      expect(errors, errors.join('; ')).toEqual([]);
+    });
+  }
+
+  test('/meeting-planner/ draws a band and says whether the hours meet', async ({ page }) => {
+    await page.goto('/meeting-planner/');
+    await expect(page.locator('[data-role="grid"]')).not.toBeEmpty({ timeout: 15_000 });
+    await expect(page.locator('[data-role="summary"]')).not.toBeEmpty();
+  });
+
+  test('/working-hours-overlap/ answers for the zones it starts with', async ({ page }) => {
+    await page.goto('/working-hours-overlap/');
+    await expect(page.locator('[data-role="results"]')).not.toBeEmpty({ timeout: 15_000 });
+  });
+
+  test('/utc-time/ ticks', async ({ page }) => {
+    await page.goto('/utc-time/');
+    const clock = page.locator('live-clock').first();
+    const first = await clock.innerText();
+    await expect(clock).not.toHaveText(first, { timeout: 5_000 });
+  });
+
+  test('/world-clock/ filters its cards, folding accents', async ({ page }) => {
+    await page.goto('/world-clock/');
+    const shown = page.locator('[data-search]:not([hidden])');
+    await expect(shown).not.toHaveCount(0, { timeout: 15_000 });
+
+    // Unaccented input has to find the accented card, or the search is decorative.
+    await page.fill('[data-role="search"]', 'sao paulo');
+    await expect(shown).toHaveCount(1);
+
+    await page.fill('[data-role="search"]', 'not a city anywhere');
+    await expect(shown).toHaveCount(0);
+    await expect(page.locator('[data-role="empty"]').first()).toBeVisible();
+  });
+
+  test('/dst-changes/ filters its table', async ({ page }) => {
+    await page.goto('/dst-changes/');
+    const rows = page.locator('[data-search]:not([hidden])');
+    const before = await rows.count();
+    expect(before).toBeGreaterThan(0);
+
+    await page.fill('[data-role="filter"]', 'auckland');
+    await expect(rows).not.toHaveCount(before);
+    await expect(rows).not.toHaveCount(0);
+  });
+});
+
 test.describe('the meeting planner', () => {
   test('adds and removes a zone, and the band follows', async ({ page }) => {
     await page.goto('/meeting-planner/');
