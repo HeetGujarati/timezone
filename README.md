@@ -98,6 +98,7 @@ scripts/       build-time and CI audits: links, SEO uniqueness, i18n parity, JS 
 
 | Document       | For                                                                                  |
 | -------------- | ------------------------------------------------------------------------------------ |
+| `CLAUDE.md`    | The rules and the layout, for anyone — human or agent — changing this codebase       |
 | `DEPLOY.md`    | Click-by-click first deploy, written for someone who has never used Cloudflare Pages |
 | `BLOCKED.md`   | The short list of things only the repository owner can do                            |
 | `DECISIONS.md` | Every judgement call, with reasoning                                                 |

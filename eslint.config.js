@@ -10,6 +10,33 @@ import globals from 'globals';
  * these APIs reaching production would either break the page or open the exact
  * XSS hole the CSP exists to close. CI fails on violation. See SECURITY.md.
  */
+/**
+ * Date libraries, banned outright.
+ *
+ * The whole correctness claim of this site is that every offset and every
+ * daylight-saving rule is read from the IANA database through `Intl` at build
+ * time, so it can never drift from tzdata. A date library brings its own copy of
+ * that data, bundled at whatever version it shipped with, and the moment one is
+ * imported the claim stops being true — silently, because the wrong answer still
+ * looks like an answer. `src/lib/time/` is the only source of a time fact here.
+ */
+const BANNED_PACKAGES = [
+  'moment',
+  'moment-timezone',
+  'date-fns',
+  'date-fns-tz',
+  'dayjs',
+  'luxon',
+  'js-joda',
+  '@js-joda/core',
+  'spacetime',
+  'timezone-support',
+  'date-and-time',
+].map((name) => ({
+  name,
+  message: `Banned: no date libraries. Offsets and DST rules come from IANA through Intl — see src/lib/time/ and CLAUDE.md.`,
+}));
+
 const BANNED_GLOBALS = [
   {
     name: 'eval',
@@ -75,6 +102,7 @@ export default defineConfig([
     },
     rules: {
       'no-restricted-globals': ['error', ...BANNED_GLOBALS],
+      'no-restricted-imports': ['error', { paths: BANNED_PACKAGES }],
       'no-restricted-properties': ['error', ...BANNED_PROPERTIES],
       'no-restricted-syntax': ['error', ...BANNED_SYNTAX],
       'no-implied-eval': 'error',
