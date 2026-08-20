@@ -388,3 +388,31 @@ rule in the island, and the JavaScript budget carries no dictionary.
 
 `describeDifference` — the English-only version in `src/lib/time/convert.ts` —
 was deleted rather than left for something to fall back on.
+
+## D31 — Lighthouse CI is fetched at run time, not declared as a dependency
+
+`@lhci/cli` pulls in Puppeteer, which pulls in `extract-zip`, `tmp` and `uuid`
+versions carrying seven high-severity advisories. Adding it to `devDependencies`
+turns `npm audit --audit-level=high` from "found 0 vulnerabilities" into ten
+findings, and the only offered fix is a downgrade to `@lhci/cli@0.1.0`.
+
+Lighthouse is an instrument for measuring the site, not something the site is
+built from — the same category as the Chromium binary the tests drive, which is
+also not in `package.json`. So CI fetches it with `npx --yes @lhci/cli@0.15.1`,
+version-pinned, and it never enters the lockfile. Nothing it brings with it is
+installed on a contributor's machine by `npm ci`, and nothing reaches the
+published site, which is a directory of static files.
+
+This is stated here rather than left to be discovered, because a clean
+`npm audit` that quietly excludes a tool is worth less than one that says which
+tool it excludes and why.
+
+## D32 — "Start" was too generic a word for the German home link
+
+Lighthouse scored `/de/world-clock/` at 0.92 for SEO on one audit: `link-text`,
+against the breadcrumb reading "Start". The word is on the list of link texts
+that describe nothing — the German sibling of "click here" — and it appeared on
+every German page.
+
+It is now "Startseite", which names the destination. The other thirteen locales
+already used a word that does: Início, Accueil, Ana sayfa, 首页.

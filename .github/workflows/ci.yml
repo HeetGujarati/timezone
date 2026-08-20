@@ -55,8 +55,119 @@ jobs:
       - name: Build
         run: npm run build
 
+      # These read the built output, so they can only run after the build. Each
+      # prints real counts rather than a bare "ok", so a passing run still says
+      # how much was checked.
+      - name: Dictionary parity
+        run: npm run audit:i18n
+
+      - name: Untranslated-copy audit
+        run: npm run audit:i18nleak
+
+      - name: Internal link check
+        run: npm run audit:links
+
+      - name: SEO audit
+        run: npm run audit:seo
+
+      - name: HTML and accessibility audit
+        run: npm run audit:html
+
+      - name: Island wiring audit
+        run: npm run audit:islands
+
+      - name: Security header audit
+        run: npm run audit:headers
+
+      - name: JavaScript budget
+        run: npm run audit:js
+
       - name: Dependency audit
         run: npm audit --audit-level=high
+
+      - name: Keep the built site for the browser jobs
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
+        with:
+          name: dist
+          path: dist
+          retention-days: 1
+          if-no-files-found: error
+
+  browser:
+    name: Smoke suite
+    needs: quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install (locked)
+        run: npm ci
+
+      - name: Reuse the built site
+        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6.0.0
+        with:
+          name: dist
+          path: dist
+
+      - name: Install the browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Playwright
+        run: npm run e2e
+
+      - name: Keep the report when it fails
+        if: failure()
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
+        with:
+          name: playwright-report
+          path: playwright-report
+          retention-days: 7
+          if-no-files-found: ignore
+
+  lighthouse:
+    name: Lighthouse
+    needs: quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Reuse the built site
+        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6.0.0
+        with:
+          name: dist
+          path: dist
+
+      # Fetched rather than declared as a devDependency: Lighthouse CI is a
+      # measuring instrument, not something this site depends on, and its
+      # transitive tree carries advisories that would fail `npm audit` for the
+      # project. DECISIONS.md records that reasoning under D31.
+      - name: Lighthouse CI
+        run: npx --yes @lhci/cli@0.15.1 autorun
+
+      - name: Keep the reports
+        if: always()
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
+        with:
+          name: lighthouse-reports
+          path: .lighthouseci
+          retention-days: 7
+          if-no-files-found: ignore
 
   secrets:
     name: Secret scan
