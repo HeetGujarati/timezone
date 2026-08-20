@@ -134,21 +134,6 @@ const t = useTranslations(locale);
     </div>
   </countdown-timer>
 
-  <section class="prose mt-12">
-    <h2 class="text-[length:var(--text-2xl)]">Why the whole countdown is in the link</h2>
-    <p class="mt-3 text-[var(--color-text-muted)]">
-      Most countdown tools ask you to make an account so they can store your countdown on their
-      server and show you an advert next to it. There is no server here, so the state has to live
-      somewhere the link can carry it — which turns out to be better for everyone. Nothing to sign
-      up for, nothing to delete later, nothing that stops working when a company shuts down.
-    </p>
-    <p class="mt-4 text-[var(--color-text-muted)]">
-      The one thing worth knowing: because the title travels in the URL, treat a countdown link from
-      a stranger the way you would any link. The title is stripped of anything that is not plain
-      text and rendered as text, never as markup.
-    </p>
-  </section>
-
   <script>
     import '~/islands/countdown.ts';
   </script>

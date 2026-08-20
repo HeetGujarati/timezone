@@ -85,7 +85,7 @@ Et si l’enjeu est réel — un appel client, une échéance, une fenêtre de d
 Tous ne sont pas disputés. Quelques-uns sont uniques en pratique et raisonnablement sûrs en prose, quoique jamais dans du code :
 
 - **UTC** — un seul sens, par définition
-- **CEST** — Central European Summer Time, unique
+- **CEST** — Central European Summer Time, sans équivalent ailleurs
 - **AEDT** / **AEST** — Australian Eastern, sans ambiguïté depuis l’adoption du préfixe A
 - **NZDT** / **NZST** — Nouvelle-Zélande
 - **JST** — le Japon, par convention et non par donnée ; ICU ne le porte pour aucune locale anglaise

@@ -47,7 +47,7 @@ export {
   type ZoneWorkingHours,
 } from './overlap.ts';
 
-export { formatDaylight, getSunTimes, type SunTimes } from './sun.ts';
+export { getSunTimes, type SunTimes } from './sun.ts';
 
 export type {
   DstDirection,

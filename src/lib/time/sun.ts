@@ -154,10 +154,4 @@ export function getSunTimes(
   };
 }
 
-/** Length of the local day, formatted as "9h 42m". */
-export function formatDaylight(minutes: number): string {
-  const hours = Math.floor(minutes / 60);
-  return `${hours}h ${minutes % 60}m`;
-}
-
 export { DAY_MS };

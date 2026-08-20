@@ -1,6 +1,7 @@
 ---
 import { countryName } from '~/lib/content/country.ts';
 import { getMetaTemplates } from '~/content/meta/templates.ts';
+import { getPageCopy } from '~/content/tools/index.ts';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import LiveClock from '~/components/LiveClock.astro';
 import { useTranslations } from '~/lib/i18n/index.ts';
@@ -27,8 +28,9 @@ import {
   getDaylightOffsetMinutes,
   getStandardOffsetMinutes,
 } from '~/lib/time/dst.ts';
-import { getSunTimes, formatDaylight } from '~/lib/time/sun.ts';
-import { describeDifference } from '~/lib/time/convert.ts';
+import { getSunTimes } from '~/lib/time/sun.ts';
+import { formatDuration } from '~/lib/content/duration.ts';
+import { describeDifferenceIn } from '~/lib/content/difference.ts';
 import { pickVariant } from '~/lib/seo/slug-hash.ts';
 
 type Props = {
@@ -39,6 +41,7 @@ type Props = {
 
 const { city, locale, availableLocales } = Astro.props;
 const t = useTranslations(locale);
+const generated = getPageCopy(locale).generated;
 
 const path = `/time-in/${city.slug}/`;
 
@@ -69,40 +72,34 @@ function hhmm(instant: number): string {
 
 const hubDifferences = TOP_HUBS.filter((hub) => hub.slug !== city.slug).map((hub) => ({
   hub,
-  label: describeDifference(getOffsetMinutes(hub.timeZone, BUILD_INSTANT) - currentOffset),
+  label: describeDifferenceIn(
+    locale,
+    getOffsetMinutes(hub.timeZone, BUILD_INSTANT) - currentOffset,
+  ),
 }));
 
 const outboundPairs = pairsFromCity(city, 12);
 
 /**
- * Four opening sentences, chosen deterministically from the slug. The facts inside
+ * Two opening sentences, chosen deterministically from the slug. The facts inside
  * them differ per city regardless; the variants stop 80 pages sharing a shape.
+ * The shapes themselves live in the i18n dictionaries so that every locale gets
+ * its own grammar rather than English word order with substituted nouns.
  */
-const summary = pickVariant(
-  [
-    `${city.name} runs on ${city.timeZone}, currently ${abbreviation} at ${formatOffsetShort(currentOffset)}. ${
-      transitions.length === 0
-        ? 'Its clocks never change, so that offset holds all year.'
-        : `Its clocks change ${transitions.length} times in ${CURRENT_YEAR}.`
-    }`,
-    `The current offset in ${city.name} is ${formatOffsetShort(currentOffset)} (${abbreviation}), on the ${city.timeZone} zone. ${
-      transitions.length === 0
-        ? 'There is no daylight saving here — one offset, every day of the year.'
-        : `Daylight saving moves it between ${formatOffsetShort(standardOffset)} and ${daylightOffset === null ? '' : formatOffsetShort(daylightOffset)}.`
-    }`,
-    `${city.name}, ${city.country}, keeps ${city.timeZone} time — ${abbreviation}, ${formatOffsetShort(currentOffset)} as of the last rebuild. ${
-      transitions.length === 0
-        ? 'No seasonal changes.'
-        : `${transitions.length} clock changes this year.`
-    }`,
-    `Clocks in ${city.name} read ${formatOffsetShort(currentOffset)} from UTC right now, under the ${city.timeZone} identifier. ${
-      transitions.length === 0
-        ? 'That does not change through the year.'
-        : 'The exact change dates are below.'
-    }`,
-  ],
-  city.slug,
-  'citySummary',
+const summaryClause =
+  transitions.length === 0
+    ? t('city.summary.clause.noDst')
+    : t('city.summary.clause.dst', { count: transitions.length, year: CURRENT_YEAR });
+
+const summary = t(
+  pickVariant(['city.summary.1', 'city.summary.2'] as const, city.slug, 'citySummary'),
+  {
+    city: city.name,
+    zone: city.timeZone,
+    abbr: abbreviation,
+    offset: formatOffsetShort(currentOffset),
+    clause: summaryClause,
+  },
 );
 
 const metadata = buildToolMetadata({
@@ -122,31 +119,55 @@ const metadata = buildToolMetadata({
 
 const faqs = [
   {
-    question: `What time zone is ${city.name} in?`,
-    answer: `${city.name} uses the ${city.timeZone} time zone, currently abbreviated ${abbreviation} at ${formatOffsetShort(currentOffset)}. Use the IANA identifier rather than the abbreviation in any code — abbreviations are ambiguous, and this one may mean something different somewhere else.`,
+    question: t('city.faq.q.zone', { city: city.name }),
+    answer: t('city.faq.a.zone', {
+      city: city.name,
+      zone: city.timeZone,
+      abbr: abbreviation,
+      offset: formatOffsetShort(currentOffset),
+    }),
   },
   {
-    question: `Does ${city.name} observe daylight saving time?`,
+    question: t('city.faq.q.dst', { city: city.name }),
     answer:
       transitions.length === 0
-        ? `No. ${city.name} keeps ${formatOffsetShort(standardOffset)} all year round, so its offset from UTC never changes.`
-        : `Yes. ${city.name} moves between ${formatOffsetShort(standardOffset)} in winter and ${daylightOffset === null ? '' : formatOffsetShort(daylightOffset)} in summer, changing ${transitions.length} times in ${CURRENT_YEAR}.`,
+        ? t('city.faq.a.dst.no', { city: city.name, standard: formatOffsetShort(standardOffset) })
+        : t('city.faq.a.dst.yes', {
+            city: city.name,
+            standard: formatOffsetShort(standardOffset),
+            daylight:
+              daylightOffset === null
+                ? formatOffsetShort(standardOffset)
+                : formatOffsetShort(daylightOffset),
+            count: transitions.length,
+            year: CURRENT_YEAR,
+          }),
   },
   {
-    question: `What is the difference between ${city.name} and UTC?`,
-    answer: `${formatOffsetShort(currentOffset)} as of the last rebuild.${
+    question: t('city.faq.q.utcDiff', { city: city.name }),
+    answer:
       transitions.length === 0
-        ? ' That figure is constant, because the city does not change its clocks.'
-        : ` It swings between ${formatOffsetShort(standardOffset)} and ${daylightOffset === null ? '' : formatOffsetShort(daylightOffset)} across the year.`
-    }`,
+        ? t('city.faq.a.utcDiff.fixed', { offset: formatOffsetShort(currentOffset) })
+        : t('city.faq.a.utcDiff.varies', {
+            offset: formatOffsetShort(currentOffset),
+            standard: formatOffsetShort(standardOffset),
+            daylight:
+              daylightOffset === null
+                ? formatOffsetShort(standardOffset)
+                : formatOffsetShort(daylightOffset),
+          }),
   },
   {
-    question: `When does the sun rise and set in ${city.name}?`,
+    question: t('city.faq.q.sun', { city: city.name }),
     answer: sun.polarDay
-      ? `At this time of year the sun does not set in ${city.name} — it stays above the horizon for the full 24 hours.`
+      ? t('city.faq.a.sun.polarDay', { city: city.name })
       : sun.polarNight
-        ? `At this time of year the sun does not rise in ${city.name} — it stays below the horizon all day.`
-        : `On the day of the last rebuild, sunrise was ${sun.sunrise === null ? '' : hhmm(sun.sunrise)} and sunset ${sun.sunset === null ? '' : hhmm(sun.sunset)} local time, giving ${formatDaylight(sun.daylightMinutes)} of daylight. These are computed from the city's latitude and longitude, not fetched from anywhere.`,
+        ? t('city.faq.a.sun.polarNight', { city: city.name })
+        : t('city.faq.a.sun.normal', {
+            sunrise: sun.sunrise === null ? '—' : hhmm(sun.sunrise),
+            sunset: sun.sunset === null ? '—' : hhmm(sun.sunset),
+            daylight: formatDuration(locale, sun.daylightMinutes),
+          }),
   },
 ];
 
@@ -178,7 +199,7 @@ const schemas = [
     class="mt-6 rounded-[var(--radius-lg)] border border-[var(--color-rule)] bg-[var(--color-surface-raised)] p-6"
   >
     <p class="text-[length:var(--text-xs)] tracking-wide text-[var(--color-text-muted)] uppercase">
-      {city.name}, {city.country}
+      {city.name}, {countryName(locale, city.countryCode, city.country)}
     </p>
     <LiveClock
       locale={locale}
@@ -191,48 +212,48 @@ const schemas = [
   </div>
 
   <section class="mt-12">
-    <h2 class="text-[length:var(--text-2xl)]">Zone facts</h2>
+    <h2 class="text-[length:var(--text-2xl)]">{generated.zoneFacts}</h2>
     <dl class="mt-4 grid gap-x-8 gap-y-3 text-[length:var(--text-sm)] sm:grid-cols-2">
       <div class="flex justify-between gap-3 border-b border-[var(--color-rule)] pb-2">
-        <dt class="text-[var(--color-text-muted)]">IANA identifier</dt>
+        <dt class="text-[var(--color-text-muted)]">{t('facts.ianaZone')}</dt>
         <dd class="tabular">{city.timeZone}</dd>
       </div>
       <div class="flex justify-between gap-3 border-b border-[var(--color-rule)] pb-2">
-        <dt class="text-[var(--color-text-muted)]">Abbreviation</dt>
+        <dt class="text-[var(--color-text-muted)]">{t('facts.abbreviation')}</dt>
         <dd class="tabular">{abbreviation}</dd>
       </div>
       <div class="flex justify-between gap-3 border-b border-[var(--color-rule)] pb-2">
-        <dt class="text-[var(--color-text-muted)]">Standard offset</dt>
+        <dt class="text-[var(--color-text-muted)]">{t('facts.standardOffset')}</dt>
         <dd class="tabular">{formatOffsetShort(standardOffset)}</dd>
       </div>
       <div class="flex justify-between gap-3 border-b border-[var(--color-rule)] pb-2">
-        <dt class="text-[var(--color-text-muted)]">Daylight offset</dt>
+        <dt class="text-[var(--color-text-muted)]">{t('facts.daylightOffset')}</dt>
         <dd class="tabular">{daylightOffset === null ? '—' : formatOffsetShort(daylightOffset)}</dd>
       </div>
       <div class="flex justify-between gap-3 border-b border-[var(--color-rule)] pb-2">
-        <dt class="text-[var(--color-text-muted)]">Country</dt>
-        <dd>{city.country} ({city.countryCode})</dd>
+        <dt class="text-[var(--color-text-muted)]">{t('facts.country')}</dt>
+        <dd>{countryName(locale, city.countryCode, city.country)} ({city.countryCode})</dd>
       </div>
       <div class="flex justify-between gap-3 border-b border-[var(--color-rule)] pb-2">
-        <dt class="text-[var(--color-text-muted)]">Coordinates</dt>
+        <dt class="text-[var(--color-text-muted)]">{t('facts.coordinates')}</dt>
         <dd class="tabular">{city.lat.toFixed(2)}, {city.lon.toFixed(2)}</dd>
       </div>
     </dl>
   </section>
 
   <section class="mt-12">
-    <h2 class="text-[length:var(--text-2xl)]">Daylight saving</h2>
+    <h2 class="text-[length:var(--text-2xl)]">{generated.daylightSaving}</h2>
     {
       transitions.length === 0 ? (
-        <p class="prose mt-2 text-[var(--color-text-muted)]">
-          {city.name} does not observe daylight saving time. Its offset from UTC is the same on
-          every day of the year, which makes it one of the easier cities to schedule against.
-        </p>
+        <p class="prose mt-2 text-[var(--color-text-muted)]">{generated.noDstNote}</p>
       ) : (
         <>
           <p class="prose mt-2 text-[var(--color-text-muted)]">
-            Clocks in {city.name} change {transitions.length} times in {CURRENT_YEAR}. The next
-            changes:
+            {t('city.dstCount', {
+              city: city.name,
+              count: transitions.length,
+              year: CURRENT_YEAR,
+            })}
           </p>
           <ul class="mt-4 text-[length:var(--text-sm)]">
             {nextTransitions.map((transition) => (
@@ -260,38 +281,33 @@ const schemas = [
   </section>
 
   <section class="mt-12">
-    <h2 class="text-[length:var(--text-2xl)]">Sunrise and sunset</h2>
+    <h2 class="text-[length:var(--text-2xl)]">{generated.sunriseSunset}</h2>
     <p class="prose mt-2 text-[var(--color-text-muted)]">
-      Computed from {city.name}'s latitude and longitude with the NOAA solar position algorithm — no
-      API, no network call. For the day of the last rebuild.
+      {generated.sunNote}
     </p>
     {
       sun.polarDay ? (
-        <p class="mt-4 text-[var(--color-signal)]">
-          The sun does not set on this date: {city.name} is inside the polar day.
-        </p>
+        <p class="mt-4 text-[var(--color-signal)]">{t('sun.polarDay', { city: city.name })}</p>
       ) : sun.polarNight ? (
-        <p class="mt-4 text-[var(--color-signal)]">
-          The sun does not rise on this date: {city.name} is inside the polar night.
-        </p>
+        <p class="mt-4 text-[var(--color-signal)]">{t('sun.polarNight', { city: city.name })}</p>
       ) : (
         <dl class="mt-4 flex flex-wrap gap-8 text-[length:var(--text-sm)]">
           <div>
-            <dt class="text-[var(--color-text-muted)]">Sunrise</dt>
+            <dt class="text-[var(--color-text-muted)]">{t('sun.sunrise')}</dt>
             <dd class="tabular text-[length:var(--text-xl)] font-semibold">
               {sun.sunrise === null ? '—' : hhmm(sun.sunrise)}
             </dd>
           </div>
           <div>
-            <dt class="text-[var(--color-text-muted)]">Sunset</dt>
+            <dt class="text-[var(--color-text-muted)]">{t('sun.sunset')}</dt>
             <dd class="tabular text-[length:var(--text-xl)] font-semibold">
               {sun.sunset === null ? '—' : hhmm(sun.sunset)}
             </dd>
           </div>
           <div>
-            <dt class="text-[var(--color-text-muted)]">Daylight</dt>
+            <dt class="text-[var(--color-text-muted)]">{t('sun.daylight')}</dt>
             <dd class="tabular text-[length:var(--text-xl)] font-semibold">
-              {formatDaylight(sun.daylightMinutes)}
+              {formatDuration(locale, sun.daylightMinutes)}
             </dd>
           </div>
         </dl>
@@ -300,13 +316,15 @@ const schemas = [
   </section>
 
   <section class="mt-12">
-    <h2 class="text-[length:var(--text-2xl)]">{city.name} against the major hubs</h2>
+    <h2 class="text-[length:var(--text-2xl)]">{generated.againstHubs}</h2>
     <div class="mt-4 overflow-x-auto">
       <table class="w-full min-w-[26rem] max-w-2xl text-[length:var(--text-sm)]">
         <thead>
           <tr class="border-b border-[var(--color-rule)] text-left text-[var(--color-text-muted)]">
-            <th scope="col" class="py-2 pr-4 font-medium">City</th>
-            <th scope="col" class="py-2 font-medium">Relative to {city.name}</th>
+            <th scope="col" class="py-2 pr-4 font-medium">{t('table.city')}</th>
+            <th scope="col" class="py-2 font-medium"
+              >{t('table.relativeTo', { city: city.name })}</th
+            >
           </tr>
         </thead>
         <tbody>
@@ -345,7 +363,7 @@ const schemas = [
   </section>
 
   <nav class="mt-12" aria-label={t('related.heading')}>
-    <h2 class="text-[length:var(--text-2xl)]">Convert {city.name} to</h2>
+    <h2 class="text-[length:var(--text-2xl)]">{generated.convertTo}</h2>
     <ul class="mt-4 grid gap-2 text-[length:var(--text-sm)] sm:grid-cols-2 lg:grid-cols-3">
       {
         outboundPairs.map((pair) => (
@@ -354,7 +372,7 @@ const schemas = [
               href={hrefFor(locale, `/convert/${pair.slug}/`)}
               class="no-underline hover:underline"
             >
-              {pair.from.name} to {pair.to.name}
+              {t('link.pairLabel', { from: pair.from.name, to: pair.to.name })}
             </a>
           </li>
         ))

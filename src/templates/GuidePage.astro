@@ -1,6 +1,7 @@
 ---
 import { render, type CollectionEntry } from 'astro:content';
 import BaseLayout from '~/layouts/BaseLayout.astro';
+import AdSlot from '~/components/AdSlot.astro';
 import { useTranslations } from '~/lib/i18n/index.ts';
 import { buildArticleMetadata } from '~/lib/seo/metadata.ts';
 import {
@@ -11,6 +12,7 @@ import {
 import type { LocaleCode } from '~/config/locales.ts';
 import { hrefFor } from '~/lib/i18n/routes.ts';
 import { localesForPath } from '~/config/rollout.ts';
+import { findLocaleEntry } from '~/lib/content/entries.ts';
 
 type Props = {
   guide: CollectionEntry<'guides'>;
@@ -61,9 +63,10 @@ const schemas = [
 const related = guide.data.related
   .map((relatedSlug) => ({
     slug: relatedSlug,
-    entry:
-      all.find((entry) => entry.id === `${locale}/${relatedSlug}`) ??
-      all.find((entry) => entry.id === `en/${relatedSlug}`),
+    // findLocaleEntry lowercases the locale before matching the slugified entry
+    // id; comparing the locale code directly fell back to English for pt-BR and
+    // zh-Hans, so those two read their related links in the wrong language.
+    entry: findLocaleEntry(all, locale, relatedSlug) ?? findLocaleEntry(all, 'en', relatedSlug),
   }))
   .filter(
     (item): item is { slug: string; entry: CollectionEntry<'guides'> } => item.entry !== undefined,
@@ -77,7 +80,7 @@ const readingMinutes = Math.max(1, Math.round(wordCount / 220));
     <h1 class="text-[length:var(--text-3xl)]">{guide.data.title}</h1>
     <p class="mt-2 text-[length:var(--text-sm)] text-[var(--color-text-muted)]">
       <time datetime={guide.data.updatedAt}>{guide.data.updatedAt}</time>
-      <span> · {readingMinutes} min read</span>
+      <span> · {t('guide.readingTime', { minutes: readingMinutes })}</span>
     </p>
     <p class="prose mt-4 text-[length:var(--text-lg)] text-[var(--color-text-muted)]">
       {guide.data.summary}
@@ -87,6 +90,9 @@ const readingMinutes = Math.max(1, Math.round(wordCount / 220));
       <Content />
     </div>
   </article>
+
+  {/* Below the article, above the related links: after the reader has what they came for. */}
+  <AdSlot placement="in-article" class="mt-12" />
 
   {
     related.length > 0 && (

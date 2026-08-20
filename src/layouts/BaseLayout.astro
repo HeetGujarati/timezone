@@ -1,6 +1,7 @@
 ---
 import '~/styles/global.css';
 import SeoHead from '~/components/SeoHead.astro';
+import ConsentBanner from '~/components/ConsentBanner.astro';
 import SiteHeader from '~/components/SiteHeader.astro';
 import SiteFooter from '~/components/SiteFooter.astro';
 import ThemeScript from '~/components/ThemeScript.astro';
@@ -47,5 +48,6 @@ const t = useTranslations(locale);
     </main>
 
     <SiteFooter locale={locale} />
+    <ConsentBanner locale={locale} />
   </body>
 </html>

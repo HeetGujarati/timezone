@@ -6,7 +6,7 @@ import type { LocaleCode } from '~/config/locales.ts';
 import { CURRENT_YEAR } from '~/config/build.ts';
 import { findDstTransitions } from '~/lib/time/dst.ts';
 import { getOffsetMinutes } from '~/lib/time/offset.ts';
-import { describeDifference } from '~/lib/time/convert.ts';
+import { formatDuration } from '~/lib/content/duration.ts';
 
 type Props = { locale: LocaleCode };
 const { locale } = Astro.props;
@@ -38,7 +38,11 @@ const exampleChanges = [CURRENT_YEAR, CURRENT_YEAR + 1]
   .slice(0, 6)
   .map((entry) => ({
     date: new Date(entry.instant).toISOString().slice(0, 10),
-    description: describeDifference(entry.difference),
+    description: t(entry.difference >= 0 ? 'diff.exampleAhead' : 'diff.exampleBehind', {
+      from: 'New York',
+      to: 'London',
+      gap: formatDuration(locale, entry.difference),
+    }),
   }));
 ---
 
@@ -107,33 +111,29 @@ const exampleChanges = [CURRENT_YEAR, CURRENT_YEAR + 1]
     </div>
 
     <div class="mt-6">
-      <h2 class="text-[length:var(--text-lg)]">When this difference changes</h2>
+      <h2 class="text-[length:var(--text-lg)]">{t('diff.whenChanges')}</h2>
       <ul data-role="changes" class="mt-2 text-[length:var(--text-sm)]"></ul>
       <p
         data-role="changes-empty"
         hidden
         class="mt-2 text-[length:var(--text-sm)] text-[var(--color-text-muted)]"
       >
-        Neither place changes its clocks, so this difference is the same all year.
+        {t('diff.neverChanges')}
       </p>
     </div>
   </zone-difference>
 
   <section class="mt-12">
-    <h2 class="text-[length:var(--text-2xl)]">A worked example: New York and London</h2>
+    <h2 class="text-[length:var(--text-2xl)]">{t('diff.workedExample')}</h2>
     <p class="prose mt-2 text-[var(--color-text-muted)]">
-      The most-searched pair on the internet, and a good illustration of why "five hours" is a
-      half-truth. These dates come from the IANA database at build time — they are fixed facts, not
-      a live reading.
+      {t('diff.workedExampleNote')}
     </p>
     <ul class="mt-4 text-[length:var(--text-sm)]">
       {
         exampleChanges.map((change) => (
           <li class="flex flex-wrap justify-between gap-2 border-b border-[var(--color-rule)] py-2">
-            <span class="tabular">From {change.date}</span>
-            <span class="text-[var(--color-text-muted)]">
-              London is {change.description} of New York
-            </span>
+            <span class="tabular">{t('diff.exampleFrom', { date: change.date })}</span>
+            <span class="text-[var(--color-text-muted)]">{change.description}</span>
           </li>
         ))
       }

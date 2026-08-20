@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatDaylight, getSunTimes } from './sun.ts';
+import { getSunTimes } from './sun.ts';
 
 function localHhMm(instant: number, timeZone: string): string {
   return new Intl.DateTimeFormat('en-GB', {
@@ -104,16 +104,5 @@ describe('sunrise always precedes sunset', () => {
         expect(times.daylightMinutes).toBeLessThan(1440);
       }
     }
-  });
-});
-
-describe('formatDaylight', () => {
-  it.each([
-    [0, '0h 0m'],
-    [90, '1h 30m'],
-    [998, '16h 38m'],
-    [1440, '24h 0m'],
-  ])('formats %d minutes as %s', (minutes, expected) => {
-    expect(formatDaylight(minutes)).toBe(expected);
   });
 });

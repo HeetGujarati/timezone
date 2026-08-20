@@ -1,0 +1,75 @@
+---
+import { ADS_ENABLED } from '~/config/flags.ts';
+import { useTranslations } from '~/lib/i18n/index.ts';
+import { hrefFor } from '~/lib/i18n/routes.ts';
+import type { LocaleCode } from '~/config/locales.ts';
+
+/**
+ * The consent banner that is deliberately not shown.
+ *
+ * As shipped, this site sets no cookies and stores three values in local storage
+ * that never leave the browser, so there is nothing to consent to and a banner
+ * would be theatre. It renders only when `PUBLIC_ADS_ENABLED` is exactly "true" —
+ * that is, only once something has been added that actually requires consent.
+ *
+ * It exists now, unshown, for two reasons. A consent flow written under deadline
+ * after the advertising contract is signed is the one that ships with the refusal
+ * button greyed out. And reserving the markup and the storage key now means the
+ * reader's own preference survives that change rather than being invented
+ * alongside it.
+ *
+ * What this is not: a certified Transparency and Consent Framework
+ * implementation. It signals consent to no vendor. An advertising network
+ * operating in the EEA, the UK or Switzerland will require a registered consent
+ * management platform, and this component is the shape of the thing rather than
+ * the thing. DEPLOY.md says so under "Enabling advertising", so that nobody reads
+ * this file and concludes the work is done.
+ *
+ * Design constraints held here, because these are the ones usually lost:
+ * refusal is as prominent as acceptance and comes first in the DOM; dismissing
+ * without choosing is a refusal; there are no "legitimate interest" toggles
+ * defaulted on; and the banner is a `role="region"`, not a modal, so a reader can
+ * ignore it and use the page. (A `<section>` with an accessible name already has
+ * the region role, so the role attribute is left off rather than restated.)
+ */
+interface Props {
+  locale: LocaleCode;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+const BUTTON =
+  'rounded-[var(--radius-md)] border border-[var(--color-rule)] px-3 py-1.5 text-[length:var(--text-sm)]';
+---
+
+{
+  ADS_ENABLED && (
+    <section
+      id="consent-banner"
+      class="fixed inset-x-0 bottom-0 z-50 border-t border-[var(--color-rule)] bg-[var(--color-surface-raised)] p-4"
+      aria-labelledby="consent-heading"
+      data-consent-storage-key="meridiem-consent"
+      hidden
+    >
+      <div class="shell flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h2 id="consent-heading" class="text-[length:var(--text-base)] font-semibold">
+            {t('consent.heading')}
+          </h2>
+          <p class="text-[length:var(--text-sm)] text-[var(--color-text-muted)]">
+            {t('consent.body')} <a href={hrefFor(locale, '/cookies/')}>{t('consent.policyLink')}</a>
+          </p>
+        </div>
+        <div class="flex shrink-0 gap-2">
+          <button type="button" data-consent="reject" class={BUTTON}>
+            {t('consent.reject')}
+          </button>
+          <button type="button" data-consent="accept" class={BUTTON}>
+            {t('consent.accept')}
+          </button>
+        </div>
+      </div>
+    </section>
+  )
+}

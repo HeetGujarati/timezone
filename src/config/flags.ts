@@ -18,7 +18,3 @@ export const CF_ANALYTICS_TOKEN =
   typeof import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN === 'string'
     ? import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN
     : '';
-
-/** "full" = one OG image per URL. "essential" = shared per entity. */
-export const OG_MODE: 'full' | 'essential' =
-  import.meta.env.OG_MODE === 'essential' ? 'essential' : 'full';

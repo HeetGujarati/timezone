@@ -316,3 +316,30 @@ and a Devanagari/Arabic/CJK font in the Satori font stack, which is the part tha
 
 Cards are enumerated from the built HTML rather than from a route list, so an image is generated
 exactly when a page asks for one. `scripts/seo-audit.mjs` fails if any referenced card is missing.
+
+### D28. Generated page copy lives in the dictionaries, two variants per slot
+
+City-pair and city pages carry generated prose: an opening sentence, a table introduction, a
+daylight-saving paragraph, a call-window sentence and five or six FAQ answers, all built from the
+pair's computed facts. That copy was written in English inside `pair-copy.ts`, which meant all
+fourteen locales rendered it in English — 2,340 pages of it, behind a green type check, a green
+parity check and a green SEO audit, because none of those three can see a string a template never
+looked up.
+
+The shapes now live in the flat i18n dictionaries. Two reasons rather than one. The parity script
+already fails the build when a locale lacks a key, so a half-translated pair page cannot ship. And
+the grammar differs: English needs "ahead of" before a city name and "behind" bare, Japanese glues
+the direction to the duration with no space, Chinese puts it first, Russian marks the city's role
+with a preposition. A template per locale gets that right; an English template with a substituted
+direction word gets it wrong in thirteen languages.
+
+Each slot has **two** phrasings per locale rather than English's four. The variants exist to stop
+the *shape* repeating across pages; the facts interpolated into them differ per pair, so with a
+hundred pairs per locale no two rendered sentences are alike either way. Two shapes over a hundred
+pages is enough, and it halves a translation set that already runs to some six hundred strings.
+
+`scripts/i18n-leak.mjs` now compares every translated page's rendered text against its English
+counterpart and fails on any shared sentence. It found 3,475 distinct English strings on the first
+run. What it deliberately does not compare: city names and zone identifiers, which stay Latin by
+D25; code blocks, because code is code; the zone pickers, which list 400 IANA locations by their
+English exonym; and the owner's unfilled legal placeholders.

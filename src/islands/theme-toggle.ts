@@ -68,7 +68,10 @@ class ThemeToggle extends HTMLElement {
     if (button === null) return;
     const next = theme === 'dark' ? 'light' : 'dark';
     button.setAttribute('aria-pressed', String(theme === 'dark'));
-    button.setAttribute('aria-label', `Switch to ${next} theme`);
+    // Labels come from the server-rendered element: the island has no locale, and
+    // building the sentence here is how English reaches a Japanese page.
+    const label = next === 'dark' ? this.dataset['labelDark'] : this.dataset['labelLight'];
+    if (label !== undefined) button.setAttribute('aria-label', label);
     button.dataset['theme'] = theme;
   }
 }

@@ -23,6 +23,8 @@ import {
   tableIntro,
 } from '~/lib/content/pair-copy.ts';
 import { relatedPairs, reversePair, type CityPair } from '~/data/pairs.ts';
+import { getPageCopy } from '~/content/tools/index.ts';
+import { countryName } from '~/lib/content/country.ts';
 import { BUILD_INSTANT } from '~/config/build.ts';
 
 type Props = {
@@ -36,10 +38,11 @@ const { from, to, slug } = pair;
 const t = useTranslations(locale);
 
 const facts = buildPairFacts(from, to, BUILD_INSTANT);
-const copyInput = { from, to, slug, facts };
+const copyInput = { from, to, slug, facts, locale };
 
 const path = `/convert/${slug}/`;
 
+const generated = getPageCopy(locale).generated;
 const meta = getMetaTemplates(locale);
 const metaInput = {
   from: from.name,
@@ -110,7 +113,7 @@ function pad(value: number): string {
   </div>
 
   <section class="mt-12">
-    <h2 class="text-[length:var(--text-2xl)]">Hour by hour</h2>
+    <h2 class="text-[length:var(--text-2xl)]">{generated.hourByHour}</h2>
     <p class="prose mt-2 text-[var(--color-text-muted)]">{tableIntro(copyInput)}</p>
     <div class="mt-4 overflow-x-auto">
       <table class="w-full min-w-[22rem] max-w-lg text-[length:var(--text-sm)]">
@@ -131,7 +134,7 @@ function pad(value: number): string {
                   {pad(row.toHour)}:{pad(row.toMinute)}
                   {row.dayDelta !== 0 && (
                     <span class="ms-2 text-[length:var(--text-xs)] text-[var(--color-signal)]">
-                      {row.dayDelta > 0 ? 'next day' : 'previous day'}
+                      {row.dayDelta > 0 ? t('table.nextDay') : t('table.previousDay')}
                     </span>
                   )}
                 </td>
@@ -144,7 +147,7 @@ function pad(value: number): string {
   </section>
 
   <section class="mt-12">
-    <h2 class="text-[length:var(--text-2xl)]">Daylight saving time</h2>
+    <h2 class="text-[length:var(--text-2xl)]">{generated.daylightSaving}</h2>
     <p class="prose mt-2 text-[var(--color-text-muted)]">{dstIntro(copyInput)}</p>
 
     <div class="mt-4 grid gap-4 md:grid-cols-2">
@@ -160,12 +163,12 @@ function pad(value: number): string {
             </p>
             <dl class="mt-3 space-y-1 text-[length:var(--text-sm)]">
               <div class="flex justify-between gap-3">
-                <dt class="text-[var(--color-text-muted)]">Standard</dt>
+                <dt class="text-[var(--color-text-muted)]">{t('facts.standard')}</dt>
                 <dd class="tabular">{entry.zone.standardOffsetLabel}</dd>
               </div>
               {entry.zone.daylightOffsetLabel !== null && (
                 <div class="flex justify-between gap-3">
-                  <dt class="text-[var(--color-text-muted)]">Daylight</dt>
+                  <dt class="text-[var(--color-text-muted)]">{t('facts.daylight')}</dt>
                   <dd class="tabular">{entry.zone.daylightOffsetLabel}</dd>
                 </div>
               )}
@@ -189,7 +192,7 @@ function pad(value: number): string {
   </section>
 
   <section class="mt-12">
-    <h2 class="text-[length:var(--text-2xl)]">When you can actually talk</h2>
+    <h2 class="text-[length:var(--text-2xl)]">{generated.whenYouCanTalk}</h2>
     <p class="prose mt-2 text-[var(--color-text-muted)]">{callWindowSentence(copyInput)}</p>
 
     {
@@ -228,7 +231,7 @@ function pad(value: number): string {
   </section>
 
   <section class="mt-12">
-    <h2 class="text-[length:var(--text-2xl)]">Reference</h2>
+    <h2 class="text-[length:var(--text-2xl)]">{generated.reference}</h2>
     <p class="prose mt-2 text-[var(--color-text-muted)]">{factsIntro(copyInput)}</p>
     <div class="mt-4 overflow-x-auto">
       <table class="w-full min-w-[30rem] text-[length:var(--text-sm)]">
@@ -242,45 +245,45 @@ function pad(value: number): string {
         <tbody>
           <tr class="border-b border-[var(--color-rule)]">
             <th scope="row" class="py-2 pr-4 text-left font-normal text-[var(--color-text-muted)]"
-              >IANA zone</th
+              >{t('facts.ianaZone')}</th
             >
             <td class="tabular py-2 pr-4">{facts.from.timeZone}</td>
             <td class="tabular py-2">{facts.to.timeZone}</td>
           </tr>
           <tr class="border-b border-[var(--color-rule)]">
             <th scope="row" class="py-2 pr-4 text-left font-normal text-[var(--color-text-muted)]"
-              >Abbreviation</th
+              >{t('facts.abbreviation')}</th
             >
             <td class="tabular py-2 pr-4">{facts.from.abbreviation}</td>
             <td class="tabular py-2">{facts.to.abbreviation}</td>
           </tr>
           <tr class="border-b border-[var(--color-rule)]">
             <th scope="row" class="py-2 pr-4 text-left font-normal text-[var(--color-text-muted)]"
-              >Standard offset</th
+              >{t('facts.standardOffset')}</th
             >
             <td class="tabular py-2 pr-4">{facts.from.standardOffsetLabel}</td>
             <td class="tabular py-2">{facts.to.standardOffsetLabel}</td>
           </tr>
           <tr class="border-b border-[var(--color-rule)]">
             <th scope="row" class="py-2 pr-4 text-left font-normal text-[var(--color-text-muted)]"
-              >Daylight offset</th
+              >{t('facts.daylightOffset')}</th
             >
             <td class="tabular py-2 pr-4">{facts.from.daylightOffsetLabel ?? '—'}</td>
             <td class="tabular py-2">{facts.to.daylightOffsetLabel ?? '—'}</td>
           </tr>
           <tr class="border-b border-[var(--color-rule)]">
             <th scope="row" class="py-2 pr-4 text-left font-normal text-[var(--color-text-muted)]"
-              >Clock changes this year</th
+              >{t('facts.clockChangesThisYear')}</th
             >
             <td class="tabular py-2 pr-4">{facts.from.changesThisYear}</td>
             <td class="tabular py-2">{facts.to.changesThisYear}</td>
           </tr>
           <tr class="border-b border-[var(--color-rule)]">
             <th scope="row" class="py-2 pr-4 text-left font-normal text-[var(--color-text-muted)]"
-              >Country</th
+              >{t('facts.country')}</th
             >
-            <td class="py-2 pr-4">{from.country}</td>
-            <td class="py-2">{to.country}</td>
+            <td class="py-2 pr-4">{countryName(locale, from.countryCode, from.country)}</td>
+            <td class="py-2">{countryName(locale, to.countryCode, to.country)}</td>
           </tr>
         </tbody>
       </table>
@@ -314,7 +317,7 @@ function pad(value: number): string {
               href={hrefFor(locale, `/convert/${reverse.slug}/`)}
               class="no-underline hover:underline"
             >
-              {to.name} to {from.name}
+              {t('link.pairLabel', { from: to.name, to: from.name })}
             </a>
           </li>
         )
@@ -326,19 +329,19 @@ function pad(value: number): string {
               href={hrefFor(locale, `/convert/${candidate.slug}/`)}
               class="no-underline hover:underline"
             >
-              {candidate.from.name} to {candidate.to.name}
+              {t('link.pairLabel', { from: candidate.from.name, to: candidate.to.name })}
             </a>
           </li>
         ))
       }
       <li>
         <a href={hrefFor(locale, `/time-in/${from.slug}/`)} class="no-underline hover:underline">
-          Current time in {from.name}
+          {t('link.currentTimeIn', { city: from.name })}
         </a>
       </li>
       <li>
         <a href={hrefFor(locale, `/time-in/${to.slug}/`)} class="no-underline hover:underline">
-          Current time in {to.name}
+          {t('link.currentTimeIn', { city: to.name })}
         </a>
       </li>
       <li>

@@ -129,39 +129,24 @@ const t = useTranslations(locale);
       </p>
       <dl class="mt-4 grid grid-cols-2 gap-3 text-[length:var(--text-sm)] sm:grid-cols-4">
         <div>
-          <dt class="text-[var(--color-text-muted)]">Days</dt>
+          <dt class="text-[var(--color-text-muted)]">{t('duration.days')}</dt>
           <dd data-out="days" class="tabular font-semibold">—</dd>
         </div>
         <div>
-          <dt class="text-[var(--color-text-muted)]">Hours</dt>
+          <dt class="text-[var(--color-text-muted)]">{t('duration.hours')}</dt>
           <dd data-out="hours" class="tabular font-semibold">—</dd>
         </div>
         <div>
-          <dt class="text-[var(--color-text-muted)]">Minutes</dt>
+          <dt class="text-[var(--color-text-muted)]">{t('duration.minutes')}</dt>
           <dd data-out="minutes" class="tabular font-semibold">—</dd>
         </div>
         <div>
-          <dt class="text-[var(--color-text-muted)]">Seconds</dt>
+          <dt class="text-[var(--color-text-muted)]">{t('duration.seconds')}</dt>
           <dd data-out="seconds" class="tabular font-semibold">—</dd>
         </div>
       </dl>
     </div>
   </duration-calculator>
-
-  <section class="prose mt-12">
-    <h2 class="text-[length:var(--text-2xl)]">Why calendar arithmetic is not clock arithmetic</h2>
-    <p class="mt-3 text-[var(--color-text-muted)]">
-      "One day later" and "24 hours later" are different instructions, and twice a year they give
-      different answers. If a nightly job is scheduled for 02:30 local time, it runs twice on one
-      autumn morning and not at all on one spring morning. If it is scheduled every 86,400 seconds,
-      it drifts an hour away from 02:30 instead.
-    </p>
-    <p class="mt-4 text-[var(--color-text-muted)]">
-      Neither behaviour is a bug; they answer different questions. The trouble starts when the code
-      does one and the person expected the other. This calculator always answers the clock question
-      — how much time actually passed — and shows the calendar days alongside it.
-    </p>
-  </section>
 
   <script>
     import '~/islands/duration.ts';

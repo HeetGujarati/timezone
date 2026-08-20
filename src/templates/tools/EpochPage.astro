@@ -1,7 +1,7 @@
 ---
 import ToolTemplate from '~/templates/ToolTemplate.astro';
 import ZoneSelect from '~/components/ZoneSelect.astro';
-import { useTranslations } from '~/lib/i18n/index.ts';
+import { useTranslations, type TranslationKey } from '~/lib/i18n/index.ts';
 import type { LocaleCode } from '~/config/locales.ts';
 import { BUILD_DATE_UTC } from '~/config/build.ts';
 
@@ -11,37 +11,16 @@ const { locale } = Astro.props;
 const t = useTranslations(locale);
 
 const landmarks = [
-  {
-    epoch: 0,
-    label: 'The Unix epoch',
-    iso: '1970-01-01T00:00:00Z',
-    note: 'Where the count starts.',
-  },
-  {
-    epoch: 1_000_000_000,
-    label: 'One billion seconds',
-    iso: '2001-09-09T01:46:40Z',
-    note: 'Celebrated by a generation of engineers at their desks.',
-  },
-  {
-    epoch: 1_234_567_890,
-    label: 'The counting-up timestamp',
-    iso: '2009-02-13T23:31:30Z',
-    note: 'Nine consecutive digits, once.',
-  },
-  {
-    epoch: 2_147_483_647,
-    label: 'The 2038 problem',
-    iso: '2038-01-19T03:14:07Z',
-    note: 'The last second a signed 32-bit integer can hold. One tick later it goes negative.',
-  },
-  {
-    epoch: 4_102_444_800,
-    label: 'The year 2100',
-    iso: '2100-01-01T00:00:00Z',
-    note: 'Still comfortably inside a 64-bit count.',
-  },
-];
+  { epoch: 0, key: 'zero', iso: '1970-01-01T00:00:00Z' },
+  { epoch: 1_000_000_000, key: 'billion', iso: '2001-09-09T01:46:40Z' },
+  { epoch: 1_234_567_890, key: 'counting', iso: '2009-02-13T23:31:30Z' },
+  { epoch: 2_147_483_647, key: 'y2038', iso: '2038-01-19T03:14:07Z' },
+  { epoch: 4_102_444_800, key: 'y2100', iso: '2100-01-01T00:00:00Z' },
+].map((landmark) => ({
+  ...landmark,
+  label: t(`epoch.landmark.${landmark.key}.label` as TranslationKey),
+  note: t(`epoch.landmark.${landmark.key}.note` as TranslationKey),
+}));
 ---
 
 <ToolTemplate
@@ -154,7 +133,8 @@ const landmarks = [
         —
       </p>
       <p class="mt-2 text-[length:var(--text-xs)] text-[var(--color-text-muted)]">
-        Read as <span data-out="unit" class="font-semibold">seconds</span>
+        {t('epoch.readAs')}
+        <span data-out="unit" class="font-semibold">{t('epoch.seconds')}</span>
       </p>
     </div>
 
@@ -175,18 +155,17 @@ const landmarks = [
   </epoch-converter>
 
   <section class="mt-12">
-    <h2 class="text-[length:var(--text-2xl)]">Timestamps worth knowing</h2>
+    <h2 class="text-[length:var(--text-2xl)]">{t('epoch.knownTimestamps')}</h2>
     <p class="prose mt-2 text-[var(--color-text-muted)]">
-      Fixed points in the count. These do not change, so they are part of the page rather than
-      something your browser has to compute.
+      {t('epoch.knownNote')}
     </p>
     <div class="mt-4 overflow-x-auto">
       <table class="w-full min-w-[38rem] text-[length:var(--text-sm)]">
         <thead>
           <tr class="border-b border-[var(--color-rule)] text-left text-[var(--color-text-muted)]">
-            <th scope="col" class="py-2 pr-4 font-medium">Timestamp</th>
+            <th scope="col" class="py-2 pr-4 font-medium">{t('table.timestamp')}</th>
             <th scope="col" class="py-2 pr-4 font-medium">UTC</th>
-            <th scope="col" class="py-2 font-medium">What it is</th>
+            <th scope="col" class="py-2 font-medium">{t('table.whatItIs')}</th>
           </tr>
         </thead>
         <tbody>

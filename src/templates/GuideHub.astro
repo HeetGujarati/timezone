@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { entrySlug, findLocaleEntry, isLocaleEntry } from '~/lib/content/entries.ts';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { useTranslations } from '~/lib/i18n/index.ts';
 import { getPageCopy } from '~/content/tools/index.ts';
@@ -17,13 +18,13 @@ const copy = getPageCopy(locale).hubs.guides;
 // A locale's own guide where it exists, the English one where it does not.
 const all = await getCollection('guides');
 const guides = all
-  .filter((entry) => entry.id.startsWith('en/'))
+  .filter((entry) => isLocaleEntry(entry, 'en'))
   .map((fallback) => {
-    const slug = fallback.id.replace(/^en\//, '');
-    return {
-      slug,
-      entry: all.find((candidate) => candidate.id === `${locale}/${slug}`) ?? fallback,
-    };
+    const slug = entrySlug(fallback.id);
+    // findLocaleEntry lowercases the locale before matching: the glob loader
+    // slugifies entry ids, so 'pt-BR/x' is on disk as 'pt-br/x'. Comparing the
+    // locale code directly silently fell back to English for pt-BR and zh-Hans.
+    return { slug, entry: findLocaleEntry(all, locale, slug) ?? fallback };
   })
   .sort((a, b) => a.entry.data.order - b.entry.data.order);
 
@@ -65,6 +66,6 @@ const schemas = [organizationSchema(), breadcrumbListSchema(breadcrumbs, locale)
   </ul>
 
   <p class="mt-10 text-[length:var(--text-sm)] text-[var(--color-text-muted)]">
-    <a href="/guides/rss.xml">RSS feed</a>
+    <a href="/guides/rss.xml">{t('link.rssFeed')}</a>
   </p>
 </BaseLayout>

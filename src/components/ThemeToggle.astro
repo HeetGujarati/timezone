@@ -1,16 +1,29 @@
 ---
+import { useTranslations } from '~/lib/i18n/index.ts';
+import type { LocaleCode } from '~/config/locales.ts';
+
 /**
  * Rendered hidden and revealed by the island once it upgrades, so a reader with
  * JavaScript off is never offered a control that cannot work.
+ *
+ * Both aria-labels are handed to the island as data attributes rather than built
+ * in the island, because the island has no locale and string concatenation in
+ * JavaScript is how "Switch to dark theme" ends up on a Japanese page.
  */
+interface Props {
+  locale: LocaleCode;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
 ---
 
-<theme-toggle>
+<theme-toggle data-label-dark={t('theme.switchToDark')} data-label-light={t('theme.switchToLight')}>
   <button
     type="button"
     hidden
     class="grid h-9 w-9 place-items-center rounded-[var(--radius-md)] border border-[var(--color-rule)] bg-[var(--color-surface-raised)] text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
-    aria-label="Switch theme"
+    aria-label={t('theme.switchToDark')}
     aria-pressed="false"
   >
     <svg

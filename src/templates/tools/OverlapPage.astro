@@ -2,7 +2,7 @@
 import ToolTemplate from '~/templates/ToolTemplate.astro';
 import ZoneSelect from '~/components/ZoneSelect.astro';
 import { useTranslations } from '~/lib/i18n/index.ts';
-import type { LocaleCode } from '~/config/locales.ts';
+import { getLocale, type LocaleCode } from '~/config/locales.ts';
 import { BUILD_INSTANT } from '~/config/build.ts';
 import { getWorkingHoursOverlap } from '~/lib/time/overlap.ts';
 import { toZonedDateTime } from '~/lib/time/offset.ts';
@@ -29,13 +29,24 @@ const dayStart = Date.UTC(
   new Date(BUILD_INSTANT).getUTCDate(),
 );
 
+/**
+ * City names stay in Latin script in every locale (decision D25), but the word
+ * joining them does not: `Intl.ListFormat` knows that English wants "A, B and C",
+ * German "A, B und C", Japanese "A、B、C" and Arabic "A وB وC". Building the label
+ * with a hardcoded " and " put an English conjunction on thirteen locales.
+ */
+const listFormat = new Intl.ListFormat(getLocale(locale).bcp47, {
+  type: 'conjunction',
+  style: 'long',
+});
+
 const EXAMPLES = [
-  { label: 'London and New York', zones: ['Europe/London', 'America/New_York'] },
-  { label: 'Berlin and Bengaluru', zones: ['Europe/Berlin', 'Asia/Kolkata'] },
-  { label: 'New York and Sydney', zones: ['America/New_York', 'Australia/Sydney'] },
-  { label: 'Los Angeles and Mumbai', zones: ['America/Los_Angeles', 'Asia/Kolkata'] },
+  { cities: ['London', 'New York'], zones: ['Europe/London', 'America/New_York'] },
+  { cities: ['Berlin', 'Bengaluru'], zones: ['Europe/Berlin', 'Asia/Kolkata'] },
+  { cities: ['New York', 'Sydney'], zones: ['America/New_York', 'Australia/Sydney'] },
+  { cities: ['Los Angeles', 'Mumbai'], zones: ['America/Los_Angeles', 'Asia/Kolkata'] },
   {
-    label: 'San Francisco, London and Bengaluru',
+    cities: ['San Francisco', 'London', 'Bengaluru'],
     zones: ['America/Los_Angeles', 'Europe/London', 'Asia/Kolkata'],
   },
 ].map((example) => {
@@ -45,7 +56,7 @@ const EXAMPLES = [
   );
   const window = result.windows[0];
   return {
-    label: example.label,
+    label: listFormat.format(example.cities),
     minutes: result.totalMinutes,
     none: result.none,
     local:
@@ -162,18 +173,17 @@ const EXAMPLES = [
   </overlap-finder>
 
   <section class="mt-12">
-    <h2 class="text-[length:var(--text-2xl)]">Common team shapes</h2>
+    <h2 class="text-[length:var(--text-2xl)]">{t('overlap.commonShapes')}</h2>
     <p class="prose mt-2 text-[var(--color-text-muted)]">
-      Computed for a 09:00–18:00 day at the last rebuild. These are structural — they change only
-      when a country changes its rules.
+      {t('overlap.commonShapesNote')}
     </p>
     <div class="mt-4 overflow-x-auto">
       <table class="w-full min-w-[36rem] text-[length:var(--text-sm)]">
         <thead>
           <tr class="border-b border-[var(--color-rule)] text-left text-[var(--color-text-muted)]">
-            <th scope="col" class="py-2 pr-4 font-medium">Team</th>
-            <th scope="col" class="py-2 pr-4 font-medium">Shared</th>
-            <th scope="col" class="py-2 font-medium">On each clock</th>
+            <th scope="col" class="py-2 pr-4 font-medium">{t('table.team')}</th>
+            <th scope="col" class="py-2 pr-4 font-medium">{t('table.shared')}</th>
+            <th scope="col" class="py-2 font-medium">{t('table.onEachClock')}</th>
           </tr>
         </thead>
         <tbody>

@@ -1,5 +1,6 @@
 ---
 import ToolTemplate from '~/templates/ToolTemplate.astro';
+import { countryName } from '~/lib/content/country.ts';
 import LiveClock from '~/components/LiveClock.astro';
 import { CITIES } from '~/data/cities.ts';
 import { BUILD_INSTANT } from '~/config/build.ts';
@@ -85,7 +86,7 @@ const cities = [...CITIES].sort((a, b) => {
             </div>
             <LiveClock locale={locale} timeZone={city.timeZone} showDate size="lg" class="mt-2" />
             <span class="mt-1 text-[length:var(--text-2xs)] text-[var(--color-text-muted)]">
-              {city.country} \u00b7{' '}
+              {countryName(locale, city.countryCode, city.country)} ·{' '}
               {formatOffsetShort(getOffsetMinutes(city.timeZone, BUILD_INSTANT))}
             </span>
           </li>

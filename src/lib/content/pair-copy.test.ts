@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { LOCALE_CODES, type LocaleCode } from '~/config/locales.ts';
 import { PAIRS, pairBySlug } from '~/data/pairs.ts';
 import { buildPairFacts } from './pair-facts.ts';
 import {
@@ -11,10 +12,16 @@ import {
 
 const INSTANT = Date.UTC(2026, 0, 15, 12, 0, 0);
 
-function inputFor(slug: string) {
+function inputFor(slug: string, locale: LocaleCode = 'en') {
   const pair = pairBySlug(slug);
   if (pair === undefined) throw new Error(`No such pair: ${slug}`);
-  return { from: pair.from, to: pair.to, slug, facts: buildPairFacts(pair.from, pair.to, INSTANT) };
+  return {
+    from: pair.from,
+    to: pair.to,
+    slug,
+    locale,
+    facts: buildPairFacts(pair.from, pair.to, INSTANT),
+  };
 }
 
 describe('generated pair copy', () => {
@@ -32,6 +39,7 @@ describe('generated pair copy', () => {
         from: pair.from,
         to: pair.to,
         slug: pair.slug,
+        locale: 'en',
         facts: buildPairFacts(pair.from, pair.to, INSTANT),
       });
       expect(sentence, pair.slug).not.toMatch(/\bahead of[.,]/);
@@ -90,15 +98,10 @@ describe('generated pair copy', () => {
     expect(first).toBe(second);
   });
 
-  it('uses all four phrasings across the pair set, not just one', () => {
+  it('uses both phrasings across the pair set, not just one', () => {
     // Outputs differ per pair because city names are interpolated, so this checks
-    // the four distinct *templates* are all in use rather than counting strings.
-    const markers = [
-      'Every hour of a',
-      'The full day mapped across',
-      'Each row is one instant',
-      'Hour by hour,',
-    ];
+    // the distinct *templates* are all in use rather than counting strings.
+    const markers = ['Every hour of a', 'The whole day mapped across'];
     const seen = new Set<string>();
 
     for (const pair of PAIRS.slice(0, 200)) {
@@ -106,6 +109,7 @@ describe('generated pair copy', () => {
         from: pair.from,
         to: pair.to,
         slug: pair.slug,
+        locale: 'en',
         facts: buildPairFacts(pair.from, pair.to, INSTANT),
       });
       const marker = markers.find((candidate) => sentence.startsWith(candidate));
@@ -114,5 +118,29 @@ describe('generated pair copy', () => {
     }
 
     expect(seen.size).toBe(markers.length);
+  });
+
+  /**
+   * The reason this module exists. Before it, every one of these sentences
+   * rendered in English on all fourteen locales.
+   */
+  it("renders in the reader's language, in every locale", () => {
+    for (const locale of LOCALE_CODES) {
+      const input = inputFor('tokyo-to-berlin', locale);
+      const sentence = summarySentence(input);
+      expect(sentence, locale).not.toContain('{');
+      expect(sentence, locale).toContain('Tokyo');
+
+      for (const faq of pairFaqs(input)) {
+        expect(faq.question, `${locale} question`).not.toContain('{');
+        expect(faq.answer, `${locale} answer`).not.toContain('{');
+        expect(faq.answer, `${locale} answer`).not.toContain('undefined');
+      }
+
+      // Only English should read as English.
+      if (locale !== 'en') {
+        expect(sentence, locale).not.toBe(summarySentence(inputFor('tokyo-to-berlin')));
+      }
+    }
   });
 });

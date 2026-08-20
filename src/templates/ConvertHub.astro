@@ -42,7 +42,7 @@ const featured = pairs.slice(0, PAIRS_PER_PAGE);
   </p>
 
   <section class="mt-10">
-    <h2 class="text-[length:var(--text-2xl)]">Most-searched city pairs</h2>
+    <h2 class="text-[length:var(--text-2xl)]">{t('hub.mostSearchedPairs')}</h2>
     <ul class="mt-4 grid gap-2 text-[length:var(--text-sm)] sm:grid-cols-2 lg:grid-cols-3">
       {
         featured.map((pair) => (
@@ -51,13 +51,13 @@ const featured = pairs.slice(0, PAIRS_PER_PAGE);
               href={hrefFor(locale, `/convert/${pair.slug}/`)}
               class="no-underline hover:underline"
             >
-              {pair.from.name} to {pair.to.name}
+              {t('link.pairLabel', { from: pair.from.name, to: pair.to.name })}
             </a>
           </li>
         ))
       }
     </ul>
-    <nav class="mt-6" aria-label="Pagination">
+    <nav class="mt-6" aria-label={t('hub.pagination')}>
       <ul class="flex flex-wrap gap-2 text-[length:var(--text-sm)]">
         {
           Array.from({ length: pageCount }, (_, index) => index + 1).map((page) => (
@@ -81,10 +81,9 @@ const featured = pairs.slice(0, PAIRS_PER_PAGE);
   </section>
 
   <section class="mt-12">
-    <h2 class="text-[length:var(--text-2xl)]">Abbreviations</h2>
+    <h2 class="text-[length:var(--text-2xl)]">{t('hub.abbreviations')}</h2>
     <p class="prose mt-2 text-[var(--color-text-muted)]">
-      Sixteen abbreviations, every direction between them. Each page names the IANA zone it computes
-      with, and flags the letters that mean more than one thing.
+      {t('hub.abbreviationsNote')}
     </p>
     <ul class="mt-4 flex flex-wrap gap-2 text-[length:var(--text-sm)]">
       {

@@ -1,0 +1,64 @@
+---
+import { ADS_ENABLED } from '~/config/flags.ts';
+
+/**
+ * A reserved advertising slot that currently serves no advertising.
+ *
+ * With `PUBLIC_ADS_ENABLED` unset — which is how the site ships — this renders
+ * nothing at all: no box, no script, no iframe, no network request, no cookie,
+ * and no blank rectangle in the middle of the page. A reader today should not
+ * pay in dead whitespace for a decision that has not been made.
+ *
+ * With the flag on, it renders a box of a **fixed height** and puts the creative
+ * inside it. The fixed height is the point of the component. An advertising
+ * script that injects a 250-pixel creative into an unsized container shoves
+ * every paragraph below it down the page half a second after the reader started
+ * reading, which is both rude and the single largest contributor to a bad
+ * Cumulative Layout Shift score. Sizing the container up front costs nothing and
+ * removes the shift entirely.
+ *
+ * There is no layout-shift cost to the flag itself, because this is a static
+ * site: turning advertising on means a rebuild, so the reserved space appears in
+ * the same HTML as the advertisement it reserves.
+ *
+ * `aria-hidden` and `role="presentation"` keep the slot out of the accessibility
+ * tree. An advertisement is not part of the document a screen-reader user asked
+ * for, and an empty placeholder announced as a region is worse still.
+ *
+ * Whoever enables this: nothing changes here. What does have to change is
+ * `public/ads.txt`, the cookie policy and the consent flow — all three are listed
+ * in DEPLOY.md under "Enabling advertising", and in the EEA, the UK and
+ * Switzerland none of them is optional.
+ */
+interface Props {
+  /** Where on the page this slot sits. Decides the reserved height. */
+  placement: 'leaderboard' | 'rectangle' | 'in-article';
+  /** Extra classes for the wrapper, for page-specific spacing. */
+  class?: string;
+}
+
+const { placement, class: className = '' } = Astro.props;
+
+/** IAB standard sizes as CSS heights. Mobile first: the taller shapes come at md. */
+const HEIGHTS: Record<Props['placement'], string> = {
+  // 320x50 mobile banner, 728x90 leaderboard above md.
+  leaderboard: 'h-[50px] md:h-[90px]',
+  // 300x250 medium rectangle at every width.
+  rectangle: 'h-[250px]',
+  // 336x280 large rectangle above md.
+  'in-article': 'h-[250px] md:h-[280px]',
+};
+---
+
+{
+  ADS_ENABLED && (
+    <div
+      class:list={['ad-slot w-full', HEIGHTS[placement], className]}
+      data-ad-placement={placement}
+      aria-hidden="true"
+      role="presentation"
+    >
+      <slot />
+    </div>
+  )
+}
