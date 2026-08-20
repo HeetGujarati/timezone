@@ -29,6 +29,22 @@ const t = useTranslations(locale);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {
+      /*
+      A browser asks for /favicon.ico whether or not a page declares an icon, so
+      the file exists as well as the link: without it every visit logs a 404 in
+      the reader's console, which is both noise and a Lighthouse finding. The SVG
+      is listed first and wins wherever it is understood.
+    */
+    }
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#111721" media="(prefers-color-scheme: dark)" />
+
     <ThemeScript />
     <SeoHead metadata={metadata} schemas={schemas} />
   </head>

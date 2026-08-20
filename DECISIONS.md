@@ -416,3 +416,21 @@ every German page.
 
 It is now "Startseite", which names the destination. The other thirteen locales
 already used a word that does: Início, Accueil, Ana sayfa, 首页.
+
+## D33 — The site has a mark, because the browser was going to ask for one anyway
+
+Meridiem shipped without a favicon of any kind. Every visit, in every browser,
+requested `/favicon.ico`, got a 404, and logged it — which is how the site scored
+96 rather than 100 on Lighthouse's best-practices category, and why the tab
+showed a blank page icon next to a page about telling the time accurately.
+
+The mark is a meridian: a circle divided down the middle, one half filled and one
+half hollow, for the *ante* and the *post* of *ante meridiem*. It is two shapes
+and one colour, drawn to survive being rendered sixteen pixels wide.
+
+`public/favicon.svg` is the source; `scripts/make-icons.mjs` rasterises it into
+the formats browsers still ask for — an ICO holding 16, 32 and 48 pixel images, a
+180-pixel Apple touch icon, and the 192 and 512 the manifest names. Nothing is
+hand-drawn twice, so changing the mark means changing one file and re-running the
+script. The manifest carries a name and icons and nothing else: there is no
+description in it to leave sitting in English on a Japanese page.

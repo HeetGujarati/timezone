@@ -15,6 +15,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "gate": "npm run check && npm run lint && npm run format:check && npm run audit:sethtml && npm run test:coverage && npm run build && npm run audit:i18n && npm run audit:i18nleak && npm run audit:links && npm run audit:seo && npm run audit:html && npm run audit:islands && npm run audit:headers && npm run audit:js",
+    "icons": "node scripts/make-icons.mjs",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "preview": "astro preview",
