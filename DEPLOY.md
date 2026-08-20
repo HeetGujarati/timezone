@@ -229,7 +229,7 @@ uses; a rebuild picks up whatever version that runtime ships. That is the whole 
 
 ---
 
-## Part 8 — before enabling advertising
+## Part 8 — enabling advertising
 
 The site reserves ad slots but serves nothing. Before switching `PUBLIC_ADS_ENABLED` to `true`:
 

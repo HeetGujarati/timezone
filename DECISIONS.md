@@ -425,7 +425,7 @@ requested `/favicon.ico`, got a 404, and logged it — which is how the site sco
 showed a blank page icon next to a page about telling the time accurately.
 
 The mark is a meridian: a circle divided down the middle, one half filled and one
-half hollow, for the *ante* and the *post* of *ante meridiem*. It is two shapes
+half hollow, for the _ante_ and the _post_ of _ante meridiem_. It is two shapes
 and one colour, drawn to survive being rendered sixteen pixels wide.
 
 `public/favicon.svg` is the source; `scripts/make-icons.mjs` rasterises it into
@@ -434,3 +434,25 @@ the formats browsers still ask for — an ICO holding 16, 32 and 48 pixel images
 hand-drawn twice, so changing the mark means changing one file and re-running the
 script. The manifest carries a name and icons and nothing else: there is no
 description in it to leave sitting in English on a Japanese page.
+
+## D34 — Script fonts are named per language, not stacked globally
+
+Arabic and Devanagari were listed in `dependencies` and imported nowhere, so `/ar/`
+and `/hi/` — a seventh of the site — were set in whatever the reader's system
+offered. Importing them and appending the two families to the default stacks
+fixed those pages and quietly broke the others: a browser fetches a face the
+moment its family is reached in the search for a glyph, even when it finds
+nothing usable there. IBM Plex Sans Condensed ships no Cyrillic block, so every
+Russian heading walked through Arabic and Devanagari on its way to the system
+font, downloading 124KB it could not draw a single character with.
+
+The stacks are now scoped with `:lang()`. Each script is named only on pages
+written in it, so a German page loads five faces and a Hindi page loads seven,
+and none of them loads a face it has no glyph for. Measured after the change:
+122KB on `/de/`, 111KB on `/ru/`, 209KB on `/ar/`, 275KB on `/hi/`.
+
+Two absences are deliberate rather than pending. Russian headings are set in the
+variable family instead of the condensed one, because the condensed cut has no
+Cyrillic and the alternative was a system font in the middle of the brand. And
+Japanese, Korean and Chinese are left to the system font entirely: a CJK face
+runs to megabytes, which no heading on a page about what time it is can justify.

@@ -38,6 +38,10 @@
   --color-band-asleep: #eef0f4;
 
   /* --- type ------------------------------------------------------------ */
+  /* The default stacks name only the faces that can draw Latin. A font listed in
+     a stack is downloaded the moment the browser reaches it looking for a glyph,
+     even if it then fails to find one — so a stack that carries every script is
+     a stack that fetches every script. See the per-language blocks below. */
   --font-display:
     'IBM Plex Sans Condensed', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-body:
@@ -80,6 +84,49 @@
   --measure: 68ch;
 
   color-scheme: light;
+}
+
+/*
+ * Per-language type stacks.
+ *
+ * A browser downloads a face as soon as its family is reached while looking for
+ * a glyph — even when it then finds nothing usable there and moves on. Putting
+ * Arabic and Devanagari in the default stack therefore cost every Russian page
+ * 124KB of fonts it could not draw a single character with, because IBM Plex
+ * Sans Condensed ships no Cyrillic block and the search walked straight through
+ * both of them on its way to the system font.
+ *
+ * So each script is named only on the pages written in it. `:lang()` matches on
+ * the `lang` attribute of <html>, which every page sets, and the custom
+ * properties cascade to everything inside.
+ *
+ * Two absences are deliberate. Condensed has no Cyrillic, so Russian headings
+ * are set in the variable family instead — the same typeface, uncondensed,
+ * rather than whatever the system offers. And Japanese, Korean and Chinese are
+ * left to the system font entirely: a CJK face is measured in megabytes, and no
+ * heading is worth that on a page whose value is a number.
+ */
+:root:lang(ar) {
+  --font-display:
+    'IBM Plex Sans Condensed', 'IBM Plex Sans Arabic', ui-sans-serif, system-ui, -apple-system,
+    'Segoe UI', sans-serif;
+  --font-body:
+    'IBM Plex Sans Variable', 'IBM Plex Sans Arabic', ui-sans-serif, system-ui, -apple-system,
+    'Segoe UI', sans-serif;
+}
+
+:root:lang(hi) {
+  --font-display:
+    'IBM Plex Sans Condensed', 'IBM Plex Sans Devanagari', ui-sans-serif, system-ui, -apple-system,
+    'Segoe UI', sans-serif;
+  --font-body:
+    'IBM Plex Sans Variable', 'IBM Plex Sans Devanagari', ui-sans-serif, system-ui, -apple-system,
+    'Segoe UI', sans-serif;
+}
+
+:root:lang(ru) {
+  --font-display:
+    'IBM Plex Sans Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 /*

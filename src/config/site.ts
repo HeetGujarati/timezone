@@ -57,13 +57,13 @@ export const SITE = {
 
   creator: {
     name: 'Meridiem',
-    /** Replaced by the owner before launch — tracked in DEPLOY.md "Placeholders". */
+    /** Replaced by the owner before launch — tracked in DEPLOY.md, Part 1. */
     url: 'https://meridiem.app',
     x: '@meridiemapp',
     github: 'meridiem',
   },
 
-  /** Replaced by the owner before launch — tracked in DEPLOY.md "Placeholders". */
+  /** Replaced by the owner before launch — tracked in DEPLOY.md, Part 1. */
   contactEmail: 'hello@example.com',
   securityEmail: 'security@example.com',
   legalEntity: '[LEGAL ENTITY NAME]',

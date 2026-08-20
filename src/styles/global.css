@@ -1,12 +1,26 @@
 @import 'tailwindcss';
 @import './tokens.css';
 
-/* Self-hosted, no network call to a font CDN. The unicode-range in each face
-   means a Latin page never downloads the Cyrillic or Devanagari cuts. */
+/* Self-hosted, no network call to a font CDN.
+ *
+ * The Latin faces carry a `unicode-range` per subset, so a page of English text
+ * never fetches the Cyrillic, Greek or Vietnamese cuts of the same family.
+ *
+ * Arabic and Devanagari are separate families rather than subsets, and IBM Plex
+ * Sans has no glyphs for either. They sit further down the stacks in tokens.css,
+ * which scopes them just as effectively: a browser downloads a face only when it
+ * needs it to draw a character, so /ar/ and /hi/ get a designed page and the
+ * other twelve locales pay nothing for it. Only 400 and 600 are loaded — the two
+ * weights the design uses — because each Devanagari weight is 77KB.
+ */
 @import '@fontsource-variable/ibm-plex-sans/index.css';
 @import '@fontsource/ibm-plex-sans-condensed/600.css';
 @import '@fontsource/ibm-plex-mono/400.css';
 @import '@fontsource/ibm-plex-mono/600.css';
+@import '@fontsource/ibm-plex-sans-arabic/arabic-400.css';
+@import '@fontsource/ibm-plex-sans-arabic/arabic-600.css';
+@import '@fontsource/ibm-plex-sans-devanagari/devanagari-400.css';
+@import '@fontsource/ibm-plex-sans-devanagari/devanagari-600.css';
 
 @theme inline {
   --color-surface: var(--color-surface);
