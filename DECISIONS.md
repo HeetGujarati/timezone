@@ -279,3 +279,23 @@ EST does not exist in July. A page converting EST to CEST computed "today" would
 that is wrong for half the year, every year. Each abbreviation page picks a representative instant —
 January or July, depending on hemisphere and whether the abbreviation is a daylight or standard
 form — and says so on the page.
+
+### D25. City and abbreviation names stay in Latin script in every locale
+
+Transliterating eighty city names into thirteen writing systems means inventing 1,040 proper nouns
+with nothing to check them against, and the brief forbids inventing data. `Intl.DisplayNames` covers
+countries — those are real CLDR data and are localised — but it has no city vocabulary. So a Japanese
+pair page reads "東京とベルリンの時差" only where CLDR supplies the name and keeps the Latin form
+otherwise; the surrounding sentence, the country, the offsets and the durations are all localised.
+A reader searching for a city types its Latin name at least as often as its transliteration, so the
+cost is small and the alternative is fabricated data on 1,120 pages.
+
+### D26. The brand suffix yields to the title when sixty characters will not hold both
+
+`formatTitle` appends " | Meridiem" — eleven characters — leaving forty-nine for the title itself.
+English guide titles fit; German, Russian and Turkish ones frequently do not, because the same
+thought takes longer to say. Truncating the title to keep the brand would cut the words the reader
+searched for and keep the word the search result already shows under the URL. So the suffix is
+dropped whenever appending it would exceed sixty characters, and `src/content/title-length.test.ts`
+fails if any raw title exceeds sixty on its own. One Turkish guide title was shortened to comply;
+no other content changed.

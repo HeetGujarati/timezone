@@ -9,7 +9,7 @@
  * locale. Transliterating eighty city names into fourteen languages would mean
  * inventing 1,120 proper nouns with no source to check them against, which the
  * brief forbids; country names come from `Intl.DisplayNames`, which is CLDR
- * data and therefore real. See DECISIONS.md D24.
+ * data and therefore real. See DECISIONS.md D25.
  */
 
 export type PairMetaInput = {

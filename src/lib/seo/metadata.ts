@@ -41,11 +41,23 @@ export function truncateDescription(
 /**
  * `[Page Title] | [Site Name]`, unless the page title already carries the brand —
  * "Meridiem — time zone converter" must not become "Meridiem — … | Meridiem".
+ *
+ * The brand is dropped when appending it would push the title past
+ * `MAX_TITLE_LENGTH`. Decision D26: a translated guide title is the part a
+ * reader searched for, and several languages need most of the sixty characters
+ * to say the same thing English says in forty. Losing the brand costs nothing a
+ * search result does not already show under the URL; losing the last four words
+ * of the title costs the click.
  */
-export function formatTitle(title: string, siteName: string = SITE.name): string {
+export function formatTitle(
+  title: string,
+  siteName: string = SITE.name,
+  maxLength: number = MAX_TITLE_LENGTH,
+): string {
   const clean = title.trim().replace(/\s+/g, ' ');
   if (clean.toLowerCase().includes(siteName.toLowerCase())) return clean;
-  return `${clean} | ${siteName}`;
+  const branded = `${clean} | ${siteName}`;
+  return branded.length <= maxLength ? branded : clean;
 }
 
 /** Merge global and page keywords, case-insensitively de-duplicated, order preserved. */

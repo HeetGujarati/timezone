@@ -182,6 +182,11 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
+// `titles` and `descriptions` are keyed by locale, so their sizes are locale counts.
+// The figure worth reporting is how many distinct strings those locale buckets hold.
+const countStrings = (byLocale) =>
+  [...byLocale.values()].reduce((total, seen) => total + seen.size, 0);
+
 pass(
-  `SEO audit: ${pages.length} pages — ${titles.size} unique titles, ${descriptions.size} unique descriptions, 0 duplicates, 0 broken hreflang, every page has one h1 and an absolute canonical`,
+  `SEO audit: ${pages.length} pages across ${titles.size} locales — ${countStrings(titles)} unique titles, ${countStrings(descriptions)} unique descriptions, 0 duplicates within a locale, 0 untranslated pages, 0 broken hreflang, every page has one h1 and an absolute canonical`,
 );

@@ -1,5 +1,5 @@
 ---
-title: "Çok sayıda saat dilimine yayılmış günlük toplantı nasıl yürütülür"
+title: "Saat dilimlerine yayılmış günlük toplantı nasıl yürütülür"
 description: "Günlük eşzamanlı ayaküstü toplantı dört saat dilimini kaldırmaz. Yerine ne geçer ve o yerine geçen nasıl gerçekten işler."
 summary: "Günlük toplantı, herkes aynı anda uyanık olduğu için işler. Yaklaşık altı saatlik bir açıklığın ötesinde bu doğru olmaktan çıkar ve dürüst çözüm saati oynatmak değil biçimi değiştirmektir."
 publishedAt: '2026-01-15'
