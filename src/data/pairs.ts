@@ -124,8 +124,4 @@ export function pairsFromCity(city: City, limit: number): CityPair[] {
     .slice(0, limit);
 }
 
-export function totalPairCount(): number {
-  return PAIRS.length;
-}
-
 export { CITIES };

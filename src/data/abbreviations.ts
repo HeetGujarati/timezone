@@ -271,7 +271,11 @@ function validate(): readonly Abbreviation[] {
   return ABBREVIATIONS;
 }
 
-export const VALIDATED_ABBREVIATIONS = validate();
+// Runs at module load, so a bad record fails the build rather than rendering 240
+// pages about a zone that does not exist. The unit tests assert the same things;
+// this is the half that cannot be skipped by not running them. Its result is not
+// exported because nothing needs the value — only the check.
+validate();
 
 const BY_SLUG = new Map(ABBREVIATIONS.map((entry) => [entry.slug, entry]));
 
