@@ -64,7 +64,27 @@ hreflang and sitemap URL points at the `https://meridiem.app` fallback.
 
 ---
 
-## 4. `gitleaks` licence (only if this repo moves to an organisation)
+## 4. Create the `v1.0.0` tag
+
+**Why it is blocked:** the sandbox's git credential is scoped to the working branch. A branch
+push succeeds; `git push origin v1.0.0` is refused with `HTTP 403`, and `git ls-remote --tags`
+comes back empty. The GitHub tools available here are read-only for tags and releases.
+
+The tag was written locally with its message and then lost with the sandbox, so it has to be
+made again from a machine with push rights. The commit it belongs on is the branch head.
+
+```bash
+git fetch origin claude/lets-cook-7ann03
+git tag -a v1.0.0 origin/claude/lets-cook-7ann03 -m "Meridiem 1.0.0"
+git push origin v1.0.0
+```
+
+`CHANGELOG.md` already links `v1.0.0` to the release page that tag creates, so the link is
+dead until this is done.
+
+---
+
+## 5. `gitleaks` licence (only if this repo moves to an organisation)
 
 `gitleaks-action` is free for personal accounts and public repositories. If `HITMAN5050/Timezone`
 is ever transferred to a GitHub organisation, the action requires a `GITLEAKS_LICENSE` repository
