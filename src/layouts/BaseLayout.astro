@@ -47,7 +47,7 @@ const t = useTranslations(locale);
       <slot />
     </main>
 
-    <SiteFooter locale={locale} />
+    <SiteFooter locale={locale} alternates={metadata.alternates} />
     <ConsentBanner locale={locale} />
   </body>
 </html>

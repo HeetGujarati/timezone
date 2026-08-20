@@ -41,6 +41,7 @@
   "common.to": "В",
   "common.date": "Дата",
   "common.time": "Время",
+  "common.zone": "Часовой пояс",
   "common.now": "Сейчас",
   "common.today": "Сегодня",
   "common.convert": "Конвертировать",

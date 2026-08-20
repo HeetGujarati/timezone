@@ -1,0 +1,72 @@
+---
+import { LOCALES, type LocaleCode } from '~/config/locales.ts';
+import { useTranslations } from '~/lib/i18n/index.ts';
+import type { AlternateLinks } from '~/lib/seo/types.ts';
+
+/**
+ * The language switcher.
+ *
+ * A fourteen-language site whose only route between languages is `hreflang` is a
+ * site nobody can navigate: `hreflang` is read by search engines and by nothing
+ * else. This gives a reader the same page in their own language, as ordinary
+ * links, so it works with JavaScript off and can be opened in a new tab.
+ *
+ * It is built from the page's own `hreflang` cluster rather than from the locale
+ * list, so it can only ever offer a page that was actually built — the same
+ * guarantee the cluster itself carries, from the same source. A page that ships
+ * in one language shows no switcher at all rather than a list of dead ends.
+ *
+ * Each language is named in its own language, because a reader looking for
+ * Japanese is looking for 日本語, not for the word "Japanese" written in a script
+ * they may not read. The `lang` attribute on each link tells a screen reader to
+ * switch voice for that one word.
+ */
+interface Props {
+  locale: LocaleCode;
+  alternates: AlternateLinks;
+}
+
+const { locale, alternates } = Astro.props;
+const t = useTranslations(locale);
+
+/**
+ * hreflang → href, minus `x-default`, which duplicates the default locale.
+ *
+ * The cluster holds absolute URLs because that is what `hreflang` requires. A
+ * link in the page body wants the path instead: a site-relative href keeps a
+ * reader on whatever origin they arrived at — a preview deployment, a local
+ * build, a mirror — rather than throwing them at the canonical domain.
+ */
+const available = LOCALES.map((definition) => {
+  const href = alternates.languages[definition.hreflang];
+  return { definition, href: href === undefined ? undefined : new URL(href).pathname };
+}).filter(
+  (entry): entry is { definition: (typeof LOCALES)[number]; href: string } =>
+    entry.href !== undefined,
+);
+---
+
+{
+  available.length > 1 && (
+    <nav aria-label={t('locale.switch')} class="mt-8">
+      <h2 class="font-[family-name:var(--font-body)] text-[length:var(--text-xs)] font-semibold tracking-wide text-[var(--color-text-muted)] uppercase">
+        {t('locale.label')}
+      </h2>
+      <ul class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[length:var(--text-sm)]">
+        {available.map(({ definition, href }) => (
+          <li>
+            <a
+              href={href}
+              hreflang={definition.hreflang}
+              lang={definition.bcp47}
+              aria-current={definition.code === locale ? 'true' : undefined}
+              class="no-underline hover:underline aria-[current]:font-semibold aria-[current]:text-[var(--color-text)]"
+            >
+              {definition.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}

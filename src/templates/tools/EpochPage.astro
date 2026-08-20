@@ -61,7 +61,13 @@ const landmarks = [
           class="w-full rounded-[var(--radius-md)] border border-[var(--color-rule)] bg-[var(--color-surface)] px-3 py-2 font-[family-name:var(--font-mono)]"
         />
       </div>
-      <ZoneSelect id="epoch-zone" name="zone" label={t('common.to')} value="UTC" />
+      <ZoneSelect
+        id="epoch-zone"
+        name="zone"
+        islandRole="zone"
+        label={t('common.zone')}
+        value="UTC"
+      />
     </div>
 
     <div class="mt-4 grid gap-4 sm:grid-cols-2">

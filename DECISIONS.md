@@ -334,7 +334,7 @@ with a preposition. A template per locale gets that right; an English template w
 direction word gets it wrong in thirteen languages.
 
 Each slot has **two** phrasings per locale rather than English's four. The variants exist to stop
-the *shape* repeating across pages; the facts interpolated into them differ per pair, so with a
+the _shape_ repeating across pages; the facts interpolated into them differ per pair, so with a
 hundred pairs per locale no two rendered sentences are alike either way. Two shapes over a hundred
 pages is enough, and it halves a translation set that already runs to some six hundred strings.
 
@@ -343,3 +343,48 @@ counterpart and fails on any shared sentence. It found 3,475 distinct English st
 run. What it deliberately does not compare: city names and zone identifiers, which stay Latin by
 D25; code blocks, because code is code; the zone pickers, which list 400 IANA locations by their
 English exonym; and the owner's unfilled legal placeholders.
+
+## D29 — Islands find their controls by `data-role`, and a build audit proves it
+
+The converter shipped for several days with its two `<select>` elements missing
+`data-role="from"` and `data-role="to"`. The island's `connectedCallback` returned
+at its first guard, so the site's headline tool sat inert on 3,002 pages. Nothing
+in the toolchain noticed: TypeScript was satisfied, the bundle loaded, no console
+error was raised, the HTML validated, and every audit passed. The page simply did
+nothing when you used it.
+
+Two things follow from that.
+
+The contract stays `data-role` rather than `id`: an island can appear more than
+once on a page, and roles scope to the element while ids do not. `ZoneSelect` now
+takes an `islandRole` prop and is required to be given one. The prop is not called
+`role` because a linter reasonably reads that as the ARIA attribute.
+
+And `scripts/island-audit.mjs` reads both halves of the contract on every build.
+It extracts the roles each island actually queries — the literal
+`data-role="…"` selectors plus the arguments of the two helpers that take a role
+as a string — and checks them against every page that carries the island's tag.
+The roles are read out of the sources rather than listed in the script, so the
+audit cannot fall out of step with the code it guards: an island that starts
+looking for a new role fails the build until the markup grows one. `dst-filter`
+mounts itself on a marker element it creates, so its tag never appears in the
+built HTML; the audit recognises that pattern and checks its roles against the
+pages that carry them instead.
+
+## D30 — Browser-side wording travels as data, never as strings in the bundle
+
+The converter and the difference tool both wrote "5 hours 45 minutes ahead" into
+the page from JavaScript, in English, in all fourteen locales. It never showed up
+in the i18n leak audit because that audit reads built HTML, and this text does not
+exist until the reader types something.
+
+The fix keeps the rule the rest of the islands already follow: no translated
+string ships inside a bundle. The three sentence shapes are server-rendered onto
+the host element as `data-diff-same`, `data-diff-ahead` and `data-diff-behind`,
+the last two carrying a `{duration}` placeholder, and the island fills in a
+duration formatted from CLDR through `Intl`. Russian's three plural forms and
+Japanese's missing space between numeral and counter come out right without a
+rule in the island, and the JavaScript budget carries no dictionary.
+
+`describeDifference` — the English-only version in `src/lib/time/convert.ts` —
+was deleted rather than left for something to fall back on.

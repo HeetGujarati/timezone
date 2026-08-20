@@ -1,11 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import {
-  buildHourTable,
-  convert,
-  convertWallTime,
-  describeDifference,
-  getZoneDifferenceMinutes,
-} from './convert.ts';
+import { buildHourTable, convert, convertWallTime, getZoneDifferenceMinutes } from './convert.ts';
 import { getOffsetMinutes } from './offset.ts';
 import { isValidTimeZone } from './offset.ts';
 
@@ -89,19 +83,6 @@ describe('getZoneDifferenceMinutes', () => {
     );
     expect(winter).toBe(60);
     expect(summer).toBe(60);
-  });
-});
-
-describe('describeDifference', () => {
-  it.each([
-    [0, 'the same time'],
-    [60, '1 hour ahead'],
-    [-300, '5 hours behind'],
-    [330, '5 hours 30 minutes ahead'],
-    [-825, '13 hours 45 minutes behind'],
-    [30, '30 minutes ahead'],
-  ])('describes %d as "%s"', (minutes, expected) => {
-    expect(describeDifference(minutes)).toBe(expected);
   });
 });
 

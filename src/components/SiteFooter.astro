@@ -3,10 +3,12 @@ import type { LocaleCode } from '~/config/locales.ts';
 import { hrefFor } from '~/lib/i18n/routes.ts';
 import { useTranslations } from '~/lib/i18n/index.ts';
 import { SITE } from '~/config/site.ts';
+import LocaleSwitcher from './LocaleSwitcher.astro';
+import type { AlternateLinks } from '~/lib/seo/types.ts';
 
-type Props = { locale: LocaleCode };
+type Props = { locale: LocaleCode; alternates: AlternateLinks };
 
-const { locale } = Astro.props;
+const { locale, alternates } = Astro.props;
 const t = useTranslations(locale);
 
 const columns = [
@@ -77,6 +79,8 @@ const columns = [
         ))
       }
     </div>
+
+    <LocaleSwitcher locale={locale} alternates={alternates} />
 
     <p
       class="prose mt-10 border-t border-[var(--color-rule)] pt-6 text-[length:var(--text-sm)] text-[var(--color-text-muted)]"

@@ -33,7 +33,6 @@ export {
   buildHourTable,
   convert,
   convertWallTime,
-  describeDifference,
   getZoneDifferenceMinutes,
   type ConversionResult,
   type HourTableRow,

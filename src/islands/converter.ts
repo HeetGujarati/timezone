@@ -1,5 +1,5 @@
 import { toZonedDateTime } from '~/lib/time/offset.ts';
-import { convertWallTime, describeDifference } from '~/lib/time/convert.ts';
+import { convertWallTime } from '~/lib/time/convert.ts';
 import { getZoneAbbreviation, formatOffsetShort } from '~/lib/time/offset.ts';
 import { InvalidLocalTimeError } from '~/lib/time/parse.ts';
 import { isKnownZone, toDisplayZone } from '~/data/zones.ts';
@@ -11,6 +11,7 @@ import {
   toTimeInputValue,
 } from './lib/format.ts';
 import { parseDateParam, parseTimeParam, readParam, syncUrl } from './lib/params.ts';
+import { describeDifferenceFrom } from './lib/difference.ts';
 
 /**
  * The time zone converter.
@@ -143,7 +144,7 @@ class TimeConverter extends HTMLElement {
         time: timeText,
         date: dateText,
         zone: `${abbreviation} · ${offset}`,
-        difference: describeDifference(result.differenceMinutes),
+        difference: describeDifferenceFrom(this, result.differenceMinutes, context.locale),
       });
 
       const noteKey =

@@ -1,9 +1,9 @@
 import { getOffsetMinutes, getZoneAbbreviation, formatOffsetShort } from '~/lib/time/offset.ts';
-import { describeDifference } from '~/lib/time/convert.ts';
 import { findDstTransitions } from '~/lib/time/dst.ts';
 import { isKnownZone, toDisplayZone } from '~/data/zones.ts';
 import { formatDate, formatTime, readFormatContext } from './lib/format.ts';
 import { readParam, syncUrl } from './lib/params.ts';
+import { describeDifferenceFrom } from './lib/difference.ts';
 
 /**
  * Difference between two zones, and the dates that difference changes.
@@ -80,7 +80,7 @@ class ZoneDifference extends HTMLElement {
 
     const difference = getOffsetMinutes(toZone, now) - getOffsetMinutes(fromZone, now);
 
-    this.#set('headline', describeDifference(difference));
+    this.#set('headline', describeDifferenceFrom(this, difference, context.locale));
     this.#set('from-time', formatTime(now, fromZone, context));
     this.#set('from-date', formatDate(now, fromZone, context));
     this.#set(
@@ -134,7 +134,7 @@ class ZoneDifference extends HTMLElement {
 
       const what = document.createElement('span');
       what.className = 'text-[var(--color-text-muted)]';
-      what.textContent = describeDifference(difference);
+      what.textContent = describeDifferenceFrom(this, difference, context.locale);
 
       item.append(when, what);
       rows.push(item);

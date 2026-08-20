@@ -41,6 +41,7 @@
   "common.to": "変換先",
   "common.date": "日付",
   "common.time": "時刻",
+  "common.zone": "タイムゾーン",
   "common.now": "現在",
   "common.today": "今日",
   "common.convert": "変換",

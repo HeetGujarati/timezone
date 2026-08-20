@@ -74,22 +74,6 @@ export function getZoneDifferenceMinutes(
   return getOffsetMinutes(toZone, instant) - getOffsetMinutes(fromZone, instant);
 }
 
-/** "5 hours ahead", "3 hours 30 minutes behind", "the same time". */
-export function describeDifference(differenceMinutes: number): string {
-  if (differenceMinutes === 0) return 'the same time';
-
-  const ahead = differenceMinutes > 0;
-  const total = Math.abs(differenceMinutes);
-  const hours = Math.floor(total / 60);
-  const minutes = total % 60;
-
-  const parts: string[] = [];
-  if (hours > 0) parts.push(`${hours} hour${hours === 1 ? '' : 's'}`);
-  if (minutes > 0) parts.push(`${minutes} minute${minutes === 1 ? '' : 's'}`);
-
-  return `${parts.join(' ')} ${ahead ? 'ahead' : 'behind'}`;
-}
-
 export type HourTableRow = {
   /** Wall-clock hour in the source zone, 0–23. */
   fromHour: number;

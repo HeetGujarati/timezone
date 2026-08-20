@@ -41,6 +41,7 @@
   "common.to": "A",
   "common.date": "Fecha",
   "common.time": "Hora",
+  "common.zone": "Zona horaria",
   "common.now": "Ahora",
   "common.today": "Hoy",
   "common.convert": "Convertir",

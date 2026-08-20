@@ -41,6 +41,7 @@
   "common.to": "도착",
   "common.date": "날짜",
   "common.time": "시각",
+  "common.zone": "시간대",
   "common.now": "지금",
   "common.today": "오늘",
   "common.convert": "변환",

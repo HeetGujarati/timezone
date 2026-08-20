@@ -44,6 +44,14 @@ const exampleChanges = [CURRENT_YEAR, CURRENT_YEAR + 1]
       gap: formatDuration(locale, entry.difference),
     }),
   }));
+
+// The difference sentence is assembled in the browser, so its wording travels as
+// data rather than as strings inside the bundle.
+const differenceTemplates = {
+  same: t('diff.same'),
+  ahead: t('diff.ahead', { duration: '{duration}' }),
+  behind: t('diff.behind', { duration: '{duration}' }),
+};
 ---
 
 <ToolTemplate
@@ -66,10 +74,25 @@ const exampleChanges = [CURRENT_YEAR, CURRENT_YEAR + 1]
     slot="tool"
     class="block rounded-[var(--radius-lg)] border border-[var(--color-rule)] bg-[var(--color-surface-raised)] p-4 md:p-6"
     data-locale={locale}
+    data-diff-same={differenceTemplates.same}
+    data-diff-ahead={differenceTemplates.ahead}
+    data-diff-behind={differenceTemplates.behind}
   >
     <div class="grid gap-4 md:grid-cols-2">
-      <ZoneSelect id="difference-from" name="from" label={t('common.from')} value={EXAMPLE_FROM} />
-      <ZoneSelect id="difference-to" name="to" label={t('common.to')} value={EXAMPLE_TO} />
+      <ZoneSelect
+        id="difference-from"
+        name="from"
+        islandRole="from"
+        label={t('common.from')}
+        value={EXAMPLE_FROM}
+      />
+      <ZoneSelect
+        id="difference-to"
+        name="to"
+        islandRole="to"
+        label={t('common.to')}
+        value={EXAMPLE_TO}
+      />
     </div>
 
     <button

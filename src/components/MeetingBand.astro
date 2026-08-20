@@ -138,7 +138,13 @@ const [overlapMiddle = '', overlapTail = ''] = overlapRest.split('{range}');
       }
     </ul>
     <div class="mt-3 max-w-sm">
-      <ZoneSelect id="planner-add" name="add-zone" label={t('planner.addZone')} value="UTC" />
+      <ZoneSelect
+        id="planner-add"
+        name="add-zone"
+        islandRole="add-zone"
+        label={t('planner.addZone')}
+        value="UTC"
+      />
     </div>
   </div>
 

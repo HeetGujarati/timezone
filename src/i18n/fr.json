@@ -41,6 +41,7 @@
   "common.to": "Vers",
   "common.date": "Date",
   "common.time": "Heure",
+  "common.zone": "Fuseau horaire",
   "common.now": "Maintenant",
   "common.today": "Aujourd’hui",
   "common.convert": "Convertir",

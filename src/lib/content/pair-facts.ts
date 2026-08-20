@@ -1,6 +1,6 @@
 import type { City } from '~/data/cities.ts';
 import { getOffsetMinutes, getZoneAbbreviation, formatOffsetShort } from '~/lib/time/offset.ts';
-import { describeDifference, buildHourTable, type HourTableRow } from '~/lib/time/convert.ts';
+import { buildHourTable, type HourTableRow } from '~/lib/time/convert.ts';
 import {
   findDstTransitions,
   findNextTransition,
@@ -44,7 +44,6 @@ export type CallWindow = {
 
 export type PairFacts = {
   differenceMinutes: number;
-  differenceLabel: string;
   /** True when the target city is ahead of the source. */
   targetAhead: boolean;
   sameTime: boolean;
@@ -137,7 +136,6 @@ export function buildPairFacts(from: City, to: City, instant: number): PairFacts
 
   return {
     differenceMinutes,
-    differenceLabel: describeDifference(differenceMinutes),
     targetAhead: differenceMinutes > 0,
     sameTime: differenceMinutes === 0,
     from: zoneFactsFor(from.timeZone, instant, year),

@@ -32,18 +32,36 @@ const Heading = headingLevel;
 // Split around the placeholder so the number can be filled in by the island while
 // the sentence around it stays in the reader's language and word order.
 const [gapBefore, gapAfter] = t('note.gapShifted').split('{minutes}');
+
+// The difference sentence is assembled in the browser, so its wording travels as
+// data rather than as strings inside the bundle: the island formats the duration
+// with `Intl` and drops it into whichever of these templates applies.
+const differenceTemplates = {
+  same: t('diff.same'),
+  ahead: t('diff.ahead', { duration: '{duration}' }),
+  behind: t('diff.behind', { duration: '{duration}' }),
+};
 ---
 
 <time-converter
   class="block rounded-[var(--radius-lg)] border border-[var(--color-rule)] bg-[var(--color-surface-raised)] p-4 md:p-6"
   data-locale={locale}
   data-hour-cycle={hourCycle}
+  data-diff-same={differenceTemplates.same}
+  data-diff-ahead={differenceTemplates.ahead}
+  data-diff-behind={differenceTemplates.behind}
 >
   <Heading class="text-[length:var(--text-xl)]">{t('converter.heading')}</Heading>
 
   <div class="mt-4 grid gap-4 md:grid-cols-2">
-    <ZoneSelect id="convert-from" name="from" label={t('common.from')} value={fromZone} />
-    <ZoneSelect id="convert-to" name="to" label={t('common.to')} value={toZone} />
+    <ZoneSelect
+      id="convert-from"
+      name="from"
+      islandRole="from"
+      label={t('common.from')}
+      value={fromZone}
+    />
+    <ZoneSelect id="convert-to" name="to" islandRole="to" label={t('common.to')} value={toZone} />
   </div>
 
   <div class="mt-4 grid gap-4 sm:grid-cols-2">

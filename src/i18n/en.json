@@ -41,6 +41,7 @@
   "common.to": "To",
   "common.date": "Date",
   "common.time": "Time",
+  "common.zone": "Time zone",
   "common.now": "Now",
   "common.today": "Today",
   "common.convert": "Convert",

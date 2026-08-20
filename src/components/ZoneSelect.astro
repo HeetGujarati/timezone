@@ -14,10 +14,18 @@ type Props = {
   name: string;
   label: string;
   value: string;
+  /**
+   * The `data-role` the island on the page looks the select up by. Islands find
+   * their controls by role rather than by id so the same island can appear twice
+   * on a page; a select without one is invisible to its island, which is why this
+   * is required rather than optional. Not named `role`, which a linter reasonably
+   * mistakes for the ARIA attribute of that name.
+   */
+  islandRole: string;
   describedBy?: string;
 };
 
-const { id, name, label, value, describedBy } = Astro.props;
+const { id, name, label, value, islandRole, describedBy } = Astro.props;
 const groups = zoneGroups();
 ---
 
@@ -28,6 +36,7 @@ const groups = zoneGroups();
   <select
     id={id}
     name={name}
+    data-role={islandRole}
     aria-describedby={describedBy}
     class="w-full rounded-[var(--radius-md)] border border-[var(--color-rule)] bg-[var(--color-surface-raised)] px-3 py-2 text-[length:var(--text-base)]"
   >

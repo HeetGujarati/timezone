@@ -47,7 +47,13 @@ const t = useTranslations(locale);
           class="w-full rounded-[var(--radius-md)] border border-[var(--color-rule)] bg-[var(--color-surface)] px-3 py-2"
         />
       </div>
-      <ZoneSelect id="countdown-zone" name="zone" label="Zone" value="UTC" />
+      <ZoneSelect
+        id="countdown-zone"
+        name="zone"
+        islandRole="zone"
+        label={t('common.zone')}
+        value="UTC"
+      />
     </div>
 
     <div class="mt-4 grid gap-4 sm:grid-cols-2">

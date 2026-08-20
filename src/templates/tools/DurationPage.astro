@@ -66,7 +66,13 @@ const t = useTranslations(locale);
             class="rounded-[var(--radius-md)] border border-[var(--color-rule)] bg-[var(--color-surface)] px-3 py-2 font-[family-name:var(--font-mono)]"
           />
         </div>
-        <ZoneSelect id="duration-start-zone" name="start-zone" label="Zone" value="UTC" />
+        <ZoneSelect
+          id="duration-start-zone"
+          name="start-zone"
+          islandRole="start-zone"
+          label={t('common.zone')}
+          value="UTC"
+        />
       </div>
     </fieldset>
 
@@ -103,7 +109,13 @@ const t = useTranslations(locale);
             class="rounded-[var(--radius-md)] border border-[var(--color-rule)] bg-[var(--color-surface)] px-3 py-2 font-[family-name:var(--font-mono)]"
           />
         </div>
-        <ZoneSelect id="duration-end-zone" name="end-zone" label="Zone" value="UTC" />
+        <ZoneSelect
+          id="duration-end-zone"
+          name="end-zone"
+          islandRole="end-zone"
+          label={t('common.zone')}
+          value="UTC"
+        />
       </div>
     </fieldset>
 
