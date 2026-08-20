@@ -73,6 +73,7 @@ const ALLOWED_LATIN = new Set(
     'AOLserver', 'PostgreSQL', 'MySQL', 'SQL', 'Server', 'Java', 'Python', 'Go',
     'NTP', 'NTPv', 'pandas', 'schema', 'org', 'BIGINT', 'TIMESTAMP', 'TIMESTAMPTZ',
     'DATETIME', 'time_t', 'Instant', 'int', 'long', 'Postgres', 'DynamoDB', 'schema',
+    'ECMAScript', 'Temporal', 'zoneinfo', 'ZoneInfo', 'LoadLocation', 'tzdata',
   ].map((term) => term.toLowerCase()),
 );
 
