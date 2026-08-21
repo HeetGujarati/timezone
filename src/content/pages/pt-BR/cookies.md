@@ -37,4 +37,4 @@ Limpar os dados deste domínio no seu navegador remove os três valores do armaz
 
 ## Contato
 
-[LEGAL ENTITY NAME], [JURISDICTION]. [hello@example.com](mailto:hello@example.com)
+[LEGAL ENTITY NAME], [JURISDICTION]. [support@yourworldtime.com](mailto:support@yourworldtime.com)

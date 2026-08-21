@@ -9,7 +9,7 @@ Não há formulário de contato aqui, porque um formulário precisa de servidor 
 
 ## Geral
 
-[hello@example.com](mailto:hello@example.com)
+[support@yourworldtime.com](mailto:support@yourworldtime.com)
 
 ## Correções
 
@@ -17,4 +17,4 @@ Se um horário, uma diferença ou uma data de mudança neste site estiver errada
 
 ## Segurança
 
-Relate vulnerabilidades para [security@example.com](mailto:security@example.com). As informações legíveis por máquina estão em [/.well-known/security.txt](/.well-known/security.txt).
+Relate vulnerabilidades para [support@yourworldtime.com](mailto:support@yourworldtime.com). As informações legíveis por máquina estão em [/.well-known/security.txt](/.well-known/security.txt).

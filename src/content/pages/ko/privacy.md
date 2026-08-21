@@ -33,7 +33,7 @@ updatedAt: '2026-01-15'
 
 ## 여러분의 권리
 
-EU 일반 개인정보 보호법과 영국 GDPR, 그리고 다른 지역의 동등한 법률에 따라 여러분에게는 개인정보에 대한 열람, 정정, 삭제, 처리 제한, 이동의 권리와 처리에 반대할 권리가 있습니다. 저희는 개인정보를 보유하지 않으므로 제공하거나 정정하거나 삭제할 것이 없습니다. 그렇지 않다고 보신다면 [hello@example.com](mailto:hello@example.com)으로 알려 주세요. 30일 안에 답변드리겠습니다.
+EU 일반 개인정보 보호법과 영국 GDPR, 그리고 다른 지역의 동등한 법률에 따라 여러분에게는 개인정보에 대한 열람, 정정, 삭제, 처리 제한, 이동의 권리와 처리에 반대할 권리가 있습니다. 저희는 개인정보를 보유하지 않으므로 제공하거나 정정하거나 삭제할 것이 없습니다. 그렇지 않다고 보신다면 [support@yourworldtime.com](mailto:support@yourworldtime.com)으로 알려 주세요. 30일 안에 답변드리겠습니다.
 
 캘리포니아 소비자 개인정보 보호법에 따라 여러분에게는 어떤 개인정보가 수집되는지 알 권리와 그 판매를 거부할 권리가 있습니다. 저희는 수집하지도 판매하지도 않습니다. 개인정보를 판매하거나 공유한 적이 한 번도 없으며, 그렇게 할 수 있는 장치도 여기에는 없습니다.
 
@@ -58,4 +58,4 @@ EU 일반 개인정보 보호법과 영국 GDPR, 그리고 다른 지역의 동�
 
 ## 연락처
 
-[LEGAL ENTITY NAME], [JURISDICTION]. [hello@example.com](mailto:hello@example.com)
+[LEGAL ENTITY NAME], [JURISDICTION]. [support@yourworldtime.com](mailto:support@yourworldtime.com)

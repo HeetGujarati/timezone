@@ -33,7 +33,7 @@ El sitio se sirve como ficheros estáticos desde un proveedor de alojamiento, qu
 
 ## Tus derechos
 
-Con arreglo al RGPD de la UE, al RGPD del Reino Unido y a leyes equivalentes de otros lugares, tienes derecho a acceder, rectificar, suprimir, limitar y portar tus datos personales, y a oponerte a su tratamiento. Como no conservamos ningún dato personal, no hay nada que entregar, rectificar ni borrar; si crees lo contrario, escribe a [hello@example.com](mailto:hello@example.com) y responderemos en un plazo de 30 días.
+Con arreglo al RGPD de la UE, al RGPD del Reino Unido y a leyes equivalentes de otros lugares, tienes derecho a acceder, rectificar, suprimir, limitar y portar tus datos personales, y a oponerte a su tratamiento. Como no conservamos ningún dato personal, no hay nada que entregar, rectificar ni borrar; si crees lo contrario, escribe a [support@yourworldtime.com](mailto:support@yourworldtime.com) y responderemos en un plazo de 30 días.
 
 Con arreglo a la Ley de Privacidad del Consumidor de California, tienes derecho a saber qué información personal se recoge y a oponerte a su venta. No recogemos ninguna ni vendemos ninguna. Nunca hemos vendido ni compartido información personal, y aquí no existe ningún mecanismo que pudiera hacerlo.
 
@@ -58,4 +58,4 @@ Los cambios sustanciales se reflejarán en la fecha del encabezado. Como el siti
 
 ## Contacto
 
-[LEGAL ENTITY NAME], [JURISDICTION]. [hello@example.com](mailto:hello@example.com)
+[LEGAL ENTITY NAME], [JURISDICTION]. [support@yourworldtime.com](mailto:support@yourworldtime.com)

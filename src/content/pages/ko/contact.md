@@ -9,7 +9,7 @@ updatedAt: '2026-01-15'
 
 ## 일반
 
-[hello@example.com](mailto:hello@example.com)
+[support@yourworldtime.com](mailto:support@yourworldtime.com)
 
 ## 정정
 
@@ -17,4 +17,4 @@ updatedAt: '2026-01-15'
 
 ## 보안
 
-취약점은 [security@example.com](mailto:security@example.com)으로 제보해 주세요. 기계가 읽을 수 있는 정보는 [/.well-known/security.txt](/.well-known/security.txt)에 있습니다.
+취약점은 [support@yourworldtime.com](mailto:support@yourworldtime.com)으로 제보해 주세요. 기계가 읽을 수 있는 정보는 [/.well-known/security.txt](/.well-known/security.txt)에 있습니다.

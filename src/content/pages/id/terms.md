@@ -57,4 +57,4 @@ Ketentuan ini dapat diperbarui. Tanggal di bagian atas mencerminkan versi yang b
 
 ## Kontak
 
-[LEGAL ENTITY NAME], [JURISDICTION]. [hello@example.com](mailto:hello@example.com)
+[LEGAL ENTITY NAME], [JURISDICTION]. [support@yourworldtime.com](mailto:support@yourworldtime.com)

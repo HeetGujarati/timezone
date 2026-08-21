@@ -33,7 +33,7 @@ The site is served as static files by a hosting provider, which will record stan
 
 ## Your rights
 
-Under the UK GDPR, the EU GDPR and equivalent laws elsewhere, you have rights to access, correct, erase, restrict and port your personal data, and to object to its processing. Because we hold no personal data, there is nothing for us to produce, correct or delete — but if you believe otherwise, write to [hello@example.com](mailto:hello@example.com) and we will respond within 30 days.
+Under the UK GDPR, the EU GDPR and equivalent laws elsewhere, you have rights to access, correct, erase, restrict and port your personal data, and to object to its processing. Because we hold no personal data, there is nothing for us to produce, correct or delete — but if you believe otherwise, write to [support@yourworldtime.com](mailto:support@yourworldtime.com) and we will respond within 30 days.
 
 Under the California Consumer Privacy Act, you have the right to know what personal information is collected and to opt out of its sale. We collect none and sell none. We have never sold or shared personal information, and there is no mechanism here that could.
 
@@ -58,4 +58,4 @@ Material changes will be reflected in the date at the top of this page. Because 
 
 ## Contact
 
-[LEGAL ENTITY NAME], [JURISDICTION]. [hello@example.com](mailto:hello@example.com)
+[LEGAL ENTITY NAME], [JURISDICTION]. [support@yourworldtime.com](mailto:support@yourworldtime.com)

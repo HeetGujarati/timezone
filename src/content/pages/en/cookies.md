@@ -37,4 +37,4 @@ Clearing site data for this domain in your browser removes the three local stora
 
 ## Contact
 
-[LEGAL ENTITY NAME], [JURISDICTION]. [hello@example.com](mailto:hello@example.com)
+[LEGAL ENTITY NAME], [JURISDICTION]. [support@yourworldtime.com](mailto:support@yourworldtime.com)

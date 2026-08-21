@@ -18,9 +18,9 @@ site goes live claiming to be operated by `[LEGAL ENTITY NAME]`.
 | 1   | Your domain              | `.env` → `PUBLIC_SITE_URL`                                  | `https://YourWorldTime.app`         |
 | 2   | Legal entity name        | `src/content/pages/en/privacy.md`, `terms.md`, `cookies.md` | `[LEGAL ENTITY NAME]`          |
 | 3   | Jurisdiction             | same three files                                            | `[JURISDICTION]`               |
-| 4   | Contact email            | `src/config/site.ts` → `contactEmail`                       | `hello@example.com`            |
-| 5   | Security email           | `src/config/site.ts` → `securityEmail`                      | `security@example.com`         |
-| 6   | Security email again     | `public/.well-known/security.txt`                           | `security@example.com`         |
+| 4   | Contact email            | `src/config/site.ts` → `contactEmail`                       | `support@yourworldtime.com`            |
+| 5   | Security email           | `src/config/site.ts` → `securityEmail`                      | `support@yourworldtime.com`         |
+| 6   | Security email again     | `public/.well-known/security.txt`                           | `support@yourworldtime.com`         |
 | 7   | security.txt expiry      | `public/.well-known/security.txt` → `Expires`               | `2027-01-15`                   |
 | 8   | security.txt canonical   | `public/.well-known/security.txt` → `Canonical`             | `https://YourWorldTime.app/…`       |
 | 9   | X / Twitter handle       | `src/config/site.ts` → `creator.x`                          | `@YourWorldTimeapp`                 |

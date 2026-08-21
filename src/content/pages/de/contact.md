@@ -9,7 +9,7 @@ Hier gibt es kein Kontaktformular, denn ein Formular braucht einen Server, und d
 
 ## Allgemein
 
-[hello@example.com](mailto:hello@example.com)
+[support@yourworldtime.com](mailto:support@yourworldtime.com)
 
 ## Korrekturen
 
@@ -17,4 +17,4 @@ Wenn eine Zeit, ein Versatz oder ein Umstellungsdatum auf dieser Seite falsch is
 
 ## Sicherheit
 
-Melden Sie Schwachstellen an [security@example.com](mailto:security@example.com). Maschinenlesbare Angaben stehen unter [/.well-known/security.txt](/.well-known/security.txt).
+Melden Sie Schwachstellen an [support@yourworldtime.com](mailto:support@yourworldtime.com). Maschinenlesbare Angaben stehen unter [/.well-known/security.txt](/.well-known/security.txt).

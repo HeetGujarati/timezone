@@ -57,4 +57,4 @@ Estes termos podem ser atualizados. A data no alto indica a versão vigente, e o
 
 ## Contato
 
-[LEGAL ENTITY NAME], [JURISDICTION]. [hello@example.com](mailto:hello@example.com)
+[LEGAL ENTITY NAME], [JURISDICTION]. [support@yourworldtime.com](mailto:support@yourworldtime.com)

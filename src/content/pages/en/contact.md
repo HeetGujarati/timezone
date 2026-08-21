@@ -9,7 +9,7 @@ There is no contact form here, because a form needs a server and this site does 
 
 ## General
 
-[hello@example.com](mailto:hello@example.com)
+[support@yourworldtime.com](mailto:support@yourworldtime.com)
 
 ## Corrections
 
@@ -17,4 +17,4 @@ If a time, offset or transition date on this site is wrong, that is the most use
 
 ## Security
 
-Report vulnerabilities to [security@example.com](mailto:security@example.com). Machine-readable details are at [/.well-known/security.txt](/.well-known/security.txt).
+Report vulnerabilities to [support@yourworldtime.com](mailto:support@yourworldtime.com). Machine-readable details are at [/.well-known/security.txt](/.well-known/security.txt).

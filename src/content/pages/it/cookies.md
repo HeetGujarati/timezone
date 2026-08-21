@@ -37,4 +37,4 @@ Cancellare i dati di questo dominio nel browser rimuove i tre valori dalla memor
 
 ## Contatti
 
-[LEGAL ENTITY NAME], [JURISDICTION]. [hello@example.com](mailto:hello@example.com)
+[LEGAL ENTITY NAME], [JURISDICTION]. [support@yourworldtime.com](mailto:support@yourworldtime.com)

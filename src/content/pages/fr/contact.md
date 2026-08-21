@@ -9,7 +9,7 @@ Il n’y a pas de formulaire de contact ici, car un formulaire suppose un serveu
 
 ## Général
 
-[hello@example.com](mailto:hello@example.com)
+[support@yourworldtime.com](mailto:support@yourworldtime.com)
 
 ## Corrections
 
@@ -17,4 +17,4 @@ Si une heure, un décalage ou une date de changement de ce site est faux, c’es
 
 ## Sécurité
 
-Signalez les vulnérabilités à [security@example.com](mailto:security@example.com). Les informations lisibles par une machine se trouvent dans [/.well-known/security.txt](/.well-known/security.txt).
+Signalez les vulnérabilités à [support@yourworldtime.com](mailto:support@yourworldtime.com). Les informations lisibles par une machine se trouvent dans [/.well-known/security.txt](/.well-known/security.txt).

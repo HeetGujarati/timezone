@@ -33,7 +33,7 @@ updatedAt: '2026-01-15'
 
 ## 你的权利
 
-根据欧盟《通用数据保护条例》、英国 GDPR 以及其他地区的同等法律，你有权访问、更正、删除、限制处理和携带你的个人数据，并有权反对对其进行处理。由于我们不持有任何个人数据，也就没有什么可提供、更正或删除的——但如果你认为并非如此，请写信至 [hello@example.com](mailto:hello@example.com)，我们会在 30 天内答复。
+根据欧盟《通用数据保护条例》、英国 GDPR 以及其他地区的同等法律，你有权访问、更正、删除、限制处理和携带你的个人数据，并有权反对对其进行处理。由于我们不持有任何个人数据，也就没有什么可提供、更正或删除的——但如果你认为并非如此，请写信至 [support@yourworldtime.com](mailto:support@yourworldtime.com)，我们会在 30 天内答复。
 
 根据《加利福尼亚州消费者隐私法》，你有权知悉哪些个人信息被收集，并有权拒绝其被出售。我们一项都不收集，一项都不出售。我们从未出售或共享过个人信息，这里也不存在能做到这件事的机制。
 
@@ -58,4 +58,4 @@ updatedAt: '2026-01-15'
 
 ## 联系方式
 
-[LEGAL ENTITY NAME], [JURISDICTION]. [hello@example.com](mailto:hello@example.com)
+[LEGAL ENTITY NAME], [JURISDICTION]. [support@yourworldtime.com](mailto:support@yourworldtime.com)

@@ -33,7 +33,7 @@ Site, bir barındırma sağlayıcısı tarafından statik dosyalar olarak sunulu
 
 ## Haklarınız
 
-AB Genel Veri Koruma Tüzüğü, Birleşik Krallık GDPR’si ve başka yerlerdeki eşdeğer yasalar uyarınca kişisel verilerinize erişme, onları düzelttirme, sildirme, işlenmesini kısıtlatma ve taşıma haklarınız ile işlenmesine itiraz hakkınız vardır. Elimizde hiç kişisel veri bulunmadığı için sunacak, düzeltecek ya da silecek bir şey yoktur; aksini düşünüyorsanız [hello@example.com](mailto:hello@example.com) adresine yazın, 30 gün içinde yanıtlarız.
+AB Genel Veri Koruma Tüzüğü, Birleşik Krallık GDPR’si ve başka yerlerdeki eşdeğer yasalar uyarınca kişisel verilerinize erişme, onları düzelttirme, sildirme, işlenmesini kısıtlatma ve taşıma haklarınız ile işlenmesine itiraz hakkınız vardır. Elimizde hiç kişisel veri bulunmadığı için sunacak, düzeltecek ya da silecek bir şey yoktur; aksini düşünüyorsanız [support@yourworldtime.com](mailto:support@yourworldtime.com) adresine yazın, 30 gün içinde yanıtlarız.
 
 Kaliforniya Tüketici Gizliliği Yasası uyarınca, hangi kişisel bilgilerin toplandığını bilme ve bunların satışını reddetme hakkınız vardır. Hiç toplamıyor ve hiç satmıyoruz. Hiçbir zaman kişisel bilgi satmadık ya da paylaşmadık; burada bunu yapabilecek bir düzenek de yok.
 
@@ -58,4 +58,4 @@ Esaslı değişiklikler bu sayfanın başındaki tarihe yansır. Site statik ve 
 
 ## İletişim
 
-[LEGAL ENTITY NAME], [JURISDICTION]. [hello@example.com](mailto:hello@example.com)
+[LEGAL ENTITY NAME], [JURISDICTION]. [support@yourworldtime.com](mailto:support@yourworldtime.com)

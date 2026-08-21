@@ -37,4 +37,4 @@ Löschen Sie in Ihrem Browser die Websitedaten dieser Domain, verschwinden die d
 
 ## Kontakt
 
-[LEGAL ENTITY NAME], [JURISDICTION]. [hello@example.com](mailto:hello@example.com)
+[LEGAL ENTITY NAME], [JURISDICTION]. [support@yourworldtime.com](mailto:support@yourworldtime.com)

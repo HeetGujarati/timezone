@@ -9,7 +9,7 @@ Burada iletişim formu yok, çünkü form bir sunucu ister ve bu sitenin sunucus
 
 ## Genel
 
-[hello@example.com](mailto:hello@example.com)
+[support@yourworldtime.com](mailto:support@yourworldtime.com)
 
 ## Düzeltmeler
 
@@ -17,4 +17,4 @@ Bu sitedeki bir saat, fark ya da geçiş tarihi yanlışsa, bize söyleyebilece�
 
 ## Güvenlik
 
-Güvenlik açıklarını [security@example.com](mailto:security@example.com) adresine bildirin. Makine tarafından okunabilir bilgiler [/.well-known/security.txt](/.well-known/security.txt) adresindedir.
+Güvenlik açıklarını [support@yourworldtime.com](mailto:support@yourworldtime.com) adresine bildirin. Makine tarafından okunabilir bilgiler [/.well-known/security.txt](/.well-known/security.txt) adresindedir.

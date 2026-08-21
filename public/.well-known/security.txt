@@ -1,7 +1,7 @@
 # Security contact for Meridiem
 # https://securitytxt.org/
 
-Contact: mailto:security@example.com
+Contact: mailto:support@yourworldtime.com
 Expires: 2027-01-15T00:00:00.000Z
 Preferred-Languages: en
 Canonical: https://meridiem.app/.well-known/security.txt

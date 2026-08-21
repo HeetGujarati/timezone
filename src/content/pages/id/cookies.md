@@ -37,4 +37,4 @@ Menghapus data situs untuk domain ini di peramban Anda akan menghapus ketiga nil
 
 ## Kontak
 
-[LEGAL ENTITY NAME], [JURISDICTION]. [hello@example.com](mailto:hello@example.com)
+[LEGAL ENTITY NAME], [JURISDICTION]. [support@yourworldtime.com](mailto:support@yourworldtime.com)

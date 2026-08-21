@@ -33,7 +33,7 @@ Le site est servi sous forme de fichiers statiques par un hébergeur, qui consig
 
 ## Vos droits
 
-Au titre du RGPD, du RGPD britannique et de lois équivalentes ailleurs, vous disposez de droits d’accès, de rectification, d’effacement, de limitation et de portabilité de vos données personnelles, ainsi que d’un droit d’opposition au traitement. Comme nous ne détenons aucune donnée personnelle, il n’y a rien à produire, rectifier ou effacer — si vous pensez le contraire, écrivez à [hello@example.com](mailto:hello@example.com) et nous répondrons sous 30 jours.
+Au titre du RGPD, du RGPD britannique et de lois équivalentes ailleurs, vous disposez de droits d’accès, de rectification, d’effacement, de limitation et de portabilité de vos données personnelles, ainsi que d’un droit d’opposition au traitement. Comme nous ne détenons aucune donnée personnelle, il n’y a rien à produire, rectifier ou effacer — si vous pensez le contraire, écrivez à [support@yourworldtime.com](mailto:support@yourworldtime.com) et nous répondrons sous 30 jours.
 
 Au titre du California Consumer Privacy Act, vous avez le droit de savoir quelles informations personnelles sont collectées et de vous opposer à leur vente. Nous n’en collectons aucune et n’en vendons aucune. Nous n’avons jamais vendu ni partagé d’informations personnelles, et aucun mécanisme ici ne le permettrait.
 
@@ -58,4 +58,4 @@ Les changements substantiels seront reflétés par la date en tête de page. Le 
 
 ## Contact
 
-[LEGAL ENTITY NAME], [JURISDICTION]. [hello@example.com](mailto:hello@example.com)
+[LEGAL ENTITY NAME], [JURISDICTION]. [support@yourworldtime.com](mailto:support@yourworldtime.com)

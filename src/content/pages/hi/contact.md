@@ -9,7 +9,7 @@ updatedAt: '2026-01-15'
 
 ## सामान्य
 
-[hello@example.com](mailto:hello@example.com)
+[support@yourworldtime.com](mailto:support@yourworldtime.com)
 
 ## सुधार
 
@@ -17,4 +17,4 @@ updatedAt: '2026-01-15'
 
 ## सुरक्षा
 
-कमज़ोरियों की सूचना [security@example.com](mailto:security@example.com) पर दें। मशीन के पढ़ने योग्य ब्योरा [/.well-known/security.txt](/.well-known/security.txt) पर है।
+कमज़ोरियों की सूचना [support@yourworldtime.com](mailto:support@yourworldtime.com) पर दें। मशीन के पढ़ने योग्य ब्योरा [/.well-known/security.txt](/.well-known/security.txt) पर है।

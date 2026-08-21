@@ -33,7 +33,7 @@ Die Seite wird als statische Dateien von einem Hosting-Anbieter ausgeliefert, de
 
 ## Ihre Rechte
 
-Nach der DSGVO, dem UK GDPR und vergleichbaren Gesetzen anderswo haben Sie das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung und Übertragbarkeit Ihrer personenbezogenen Daten sowie das Recht, der Verarbeitung zu widersprechen. Da wir keine personenbezogenen Daten vorhalten, gibt es nichts herauszugeben, zu berichtigen oder zu löschen — wenn Sie das anders sehen, schreiben Sie an [hello@example.com](mailto:hello@example.com), und wir antworten binnen 30 Tagen.
+Nach der DSGVO, dem UK GDPR und vergleichbaren Gesetzen anderswo haben Sie das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung und Übertragbarkeit Ihrer personenbezogenen Daten sowie das Recht, der Verarbeitung zu widersprechen. Da wir keine personenbezogenen Daten vorhalten, gibt es nichts herauszugeben, zu berichtigen oder zu löschen — wenn Sie das anders sehen, schreiben Sie an [support@yourworldtime.com](mailto:support@yourworldtime.com), und wir antworten binnen 30 Tagen.
 
 Nach dem California Consumer Privacy Act haben Sie das Recht zu erfahren, welche personenbezogenen Informationen erhoben werden, und deren Verkauf zu widersprechen. Wir erheben keine und verkaufen keine. Wir haben nie personenbezogene Informationen verkauft oder weitergegeben, und hier gibt es keinen Mechanismus, der das könnte.
 
@@ -58,4 +58,4 @@ Wesentliche Änderungen spiegeln sich im Datum oben auf dieser Seite. Da die Sei
 
 ## Kontakt
 
-[LEGAL ENTITY NAME], [JURISDICTION]. [hello@example.com](mailto:hello@example.com)
+[LEGAL ENTITY NAME], [JURISDICTION]. [support@yourworldtime.com](mailto:support@yourworldtime.com)

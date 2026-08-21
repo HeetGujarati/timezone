@@ -9,7 +9,7 @@ updatedAt: '2026-01-15'
 
 ## Общие вопросы
 
-[hello@example.com](mailto:hello@example.com)
+[support@yourworldtime.com](mailto:support@yourworldtime.com)
 
 ## Исправления
 
@@ -17,4 +17,4 @@ updatedAt: '2026-01-15'
 
 ## Безопасность
 
-Об уязвимостях сообщайте на [security@example.com](mailto:security@example.com). Машиночитаемые сведения — в [/.well-known/security.txt](/.well-known/security.txt).
+Об уязвимостях сообщайте на [support@yourworldtime.com](mailto:support@yourworldtime.com). Машиночитаемые сведения — в [/.well-known/security.txt](/.well-known/security.txt).

@@ -9,7 +9,7 @@ updatedAt: '2026-01-15'
 
 ## 一般事项
 
-[hello@example.com](mailto:hello@example.com)
+[support@yourworldtime.com](mailto:support@yourworldtime.com)
 
 ## 更正
 
@@ -17,4 +17,4 @@ updatedAt: '2026-01-15'
 
 ## 安全
 
-漏洞请报告至 [security@example.com](mailto:security@example.com)。机器可读的信息在 [/.well-known/security.txt](/.well-known/security.txt)。
+漏洞请报告至 [support@yourworldtime.com](mailto:support@yourworldtime.com)。机器可读的信息在 [/.well-known/security.txt](/.well-known/security.txt)。

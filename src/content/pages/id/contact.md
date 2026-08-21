@@ -9,7 +9,7 @@ Tidak ada formulir kontak di sini, karena formulir memerlukan server dan situs i
 
 ## Umum
 
-[hello@example.com](mailto:hello@example.com)
+[support@yourworldtime.com](mailto:support@yourworldtime.com)
 
 ## Koreksi
 
@@ -17,4 +17,4 @@ Kalau sebuah waktu, selisih, atau tanggal pergantian di situs ini salah, itulah 
 
 ## Keamanan
 
-Laporkan kerentanan ke [security@example.com](mailto:security@example.com). Rincian yang terbaca mesin ada di [/.well-known/security.txt](/.well-known/security.txt).
+Laporkan kerentanan ke [support@yourworldtime.com](mailto:support@yourworldtime.com). Rincian yang terbaca mesin ada di [/.well-known/security.txt](/.well-known/security.txt).

@@ -33,7 +33,7 @@ Il sito è servito come file statici da un fornitore di hosting, che registra le
 
 ## I tuoi diritti
 
-Ai sensi del GDPR dell’Unione europea, del GDPR britannico e di leggi equivalenti altrove, hai diritto di accedere, rettificare, cancellare, limitare e portare i tuoi dati personali, e di opporti al loro trattamento. Poiché non deteniamo alcun dato personale, non c’è nulla da fornire, correggere o cancellare; se ritieni il contrario, scrivi a [hello@example.com](mailto:hello@example.com) e risponderemo entro 30 giorni.
+Ai sensi del GDPR dell’Unione europea, del GDPR britannico e di leggi equivalenti altrove, hai diritto di accedere, rettificare, cancellare, limitare e portare i tuoi dati personali, e di opporti al loro trattamento. Poiché non deteniamo alcun dato personale, non c’è nulla da fornire, correggere o cancellare; se ritieni il contrario, scrivi a [support@yourworldtime.com](mailto:support@yourworldtime.com) e risponderemo entro 30 giorni.
 
 Ai sensi del California Consumer Privacy Act, hai il diritto di sapere quali informazioni personali vengono raccolte e di opporti alla loro vendita. Noi non ne raccogliamo alcuna e non ne vendiamo alcuna. Non abbiamo mai venduto né condiviso informazioni personali, e qui non esiste alcun meccanismo che potrebbe farlo.
 
@@ -58,4 +58,4 @@ Le modifiche sostanziali si rifletteranno nella data in cima a questa pagina. Po
 
 ## Contatti
 
-[LEGAL ENTITY NAME], [JURISDICTION]. [hello@example.com](mailto:hello@example.com)
+[LEGAL ENTITY NAME], [JURISDICTION]. [support@yourworldtime.com](mailto:support@yourworldtime.com)

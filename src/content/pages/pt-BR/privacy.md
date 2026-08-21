@@ -33,7 +33,7 @@ O site é servido como arquivos estáticos por um provedor de hospedagem, que re
 
 ## Seus direitos
 
-Sob o GDPR da União Europeia, o GDPR do Reino Unido, a LGPD e leis equivalentes em outros lugares, você tem direito de acessar, corrigir, eliminar, restringir e portar seus dados pessoais, e de se opor ao tratamento deles. Como não guardamos nenhum dado pessoal, não há nada a fornecer, corrigir ou apagar — se você achar o contrário, escreva para [hello@example.com](mailto:hello@example.com) e responderemos em até 30 dias.
+Sob o GDPR da União Europeia, o GDPR do Reino Unido, a LGPD e leis equivalentes em outros lugares, você tem direito de acessar, corrigir, eliminar, restringir e portar seus dados pessoais, e de se opor ao tratamento deles. Como não guardamos nenhum dado pessoal, não há nada a fornecer, corrigir ou apagar — se você achar o contrário, escreva para [support@yourworldtime.com](mailto:support@yourworldtime.com) e responderemos em até 30 dias.
 
 Sob a Lei de Privacidade do Consumidor da Califórnia, você tem o direito de saber quais informações pessoais são coletadas e de recusar a venda delas. Não coletamos nenhuma e não vendemos nenhuma. Nunca vendemos nem compartilhamos informações pessoais, e aqui não existe mecanismo que pudesse fazê-lo.
 
@@ -58,4 +58,4 @@ Mudanças materiais serão refletidas na data no alto desta página. Como o site
 
 ## Contato
 
-[LEGAL ENTITY NAME], [JURISDICTION]. [hello@example.com](mailto:hello@example.com)
+[LEGAL ENTITY NAME], [JURISDICTION]. [support@yourworldtime.com](mailto:support@yourworldtime.com)

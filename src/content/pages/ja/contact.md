@@ -9,7 +9,7 @@ updatedAt: '2026-01-15'
 
 ## 一般
 
-[hello@example.com](mailto:hello@example.com)
+[support@yourworldtime.com](mailto:support@yourworldtime.com)
 
 ## 訂正
 
@@ -17,4 +17,4 @@ updatedAt: '2026-01-15'
 
 ## セキュリティ
 
-脆弱性は [security@example.com](mailto:security@example.com) までご報告ください。機械可読な情報は [/.well-known/security.txt](/.well-known/security.txt) にあります。
+脆弱性は [support@yourworldtime.com](mailto:support@yourworldtime.com) までご報告ください。機械可読な情報は [/.well-known/security.txt](/.well-known/security.txt) にあります。

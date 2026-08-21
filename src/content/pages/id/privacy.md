@@ -33,7 +33,7 @@ Situs disajikan sebagai berkas statis oleh penyedia hosting, yang mencatat infor
 
 ## Hak Anda
 
-Berdasarkan GDPR Uni Eropa, GDPR Britania Raya, dan hukum setara di tempat lain, Anda berhak mengakses, mengoreksi, menghapus, membatasi, dan memindahkan data pribadi Anda, serta menolak pemrosesannya. Karena kami tidak menyimpan data pribadi apa pun, tidak ada yang perlu kami serahkan, koreksi, atau hapus — tetapi bila Anda berpendapat lain, tulislah ke [hello@example.com](mailto:hello@example.com) dan kami akan menjawab dalam 30 hari.
+Berdasarkan GDPR Uni Eropa, GDPR Britania Raya, dan hukum setara di tempat lain, Anda berhak mengakses, mengoreksi, menghapus, membatasi, dan memindahkan data pribadi Anda, serta menolak pemrosesannya. Karena kami tidak menyimpan data pribadi apa pun, tidak ada yang perlu kami serahkan, koreksi, atau hapus — tetapi bila Anda berpendapat lain, tulislah ke [support@yourworldtime.com](mailto:support@yourworldtime.com) dan kami akan menjawab dalam 30 hari.
 
 Berdasarkan California Consumer Privacy Act, Anda berhak mengetahui informasi pribadi apa yang dikumpulkan dan menolak penjualannya. Kami tidak mengumpulkan satu pun dan tidak menjual satu pun. Kami tidak pernah menjual atau membagikan informasi pribadi, dan tidak ada mekanisme di sini yang memungkinkannya.
 
@@ -58,4 +58,4 @@ Perubahan penting akan tercermin pada tanggal di bagian atas halaman ini. Karena
 
 ## Kontak
 
-[LEGAL ENTITY NAME], [JURISDICTION]. [hello@example.com](mailto:hello@example.com)
+[LEGAL ENTITY NAME], [JURISDICTION]. [support@yourworldtime.com](mailto:support@yourworldtime.com)

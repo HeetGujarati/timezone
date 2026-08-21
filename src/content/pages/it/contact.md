@@ -9,7 +9,7 @@ Qui non c’è un modulo di contatto, perché un modulo richiede un server e que
 
 ## Generale
 
-[hello@example.com](mailto:hello@example.com)
+[support@yourworldtime.com](mailto:support@yourworldtime.com)
 
 ## Correzioni
 
@@ -17,4 +17,4 @@ Se un orario, uno scarto o una data di cambio su questo sito è sbagliato, è la
 
 ## Sicurezza
 
-Segnala le vulnerabilità a [security@example.com](mailto:security@example.com). Le informazioni leggibili da una macchina si trovano in [/.well-known/security.txt](/.well-known/security.txt).
+Segnala le vulnerabilità a [support@yourworldtime.com](mailto:support@yourworldtime.com). Le informazioni leggibili da una macchina si trovano in [/.well-known/security.txt](/.well-known/security.txt).

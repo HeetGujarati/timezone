@@ -9,7 +9,7 @@ updatedAt: '2026-01-15'
 
 ## عام
 
-[hello@example.com](mailto:hello@example.com)
+[support@yourworldtime.com](mailto:support@yourworldtime.com)
 
 ## التصحيحات
 
@@ -17,4 +17,4 @@ updatedAt: '2026-01-15'
 
 ## الأمن
 
-بلّغ عن الثغرات إلى [security@example.com](mailto:security@example.com). والتفاصيل القابلة للقراءة آليًّا في [/.well-known/security.txt](/.well-known/security.txt).
+بلّغ عن الثغرات إلى [support@yourworldtime.com](mailto:support@yourworldtime.com). والتفاصيل القابلة للقراءة آليًّا في [/.well-known/security.txt](/.well-known/security.txt).

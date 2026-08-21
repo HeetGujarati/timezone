@@ -33,7 +33,7 @@ updatedAt: '2026-01-15'
 
 ## あなたの権利
 
-EU 一般データ保護規則、英国 GDPR、および各地の同等の法律のもと、あなたには個人データへのアクセス、訂正、消去、処理の制限、可搬性の各権利と、処理への異議申立ての権利があります。当方は個人データを一切保持していないため、提供・訂正・削除すべきものがありません。そうではないとお考えの場合は [hello@example.com](mailto:hello@example.com) までご連絡ください。30日以内に回答します。
+EU 一般データ保護規則、英国 GDPR、および各地の同等の法律のもと、あなたには個人データへのアクセス、訂正、消去、処理の制限、可搬性の各権利と、処理への異議申立ての権利があります。当方は個人データを一切保持していないため、提供・訂正・削除すべきものがありません。そうではないとお考えの場合は [support@yourworldtime.com](mailto:support@yourworldtime.com) までご連絡ください。30日以内に回答します。
 
 カリフォルニア州消費者プライバシー法のもと、あなたにはどの個人情報が収集されるかを知る権利と、その販売を拒否する権利があります。当方は何も収集せず、何も販売しません。個人情報を販売または共有したことは一度もなく、それを行える仕組みもここにはありません。
 
@@ -58,4 +58,4 @@ EU 一般データ保護規則、英国 GDPR、および各地の同等の法律
 
 ## 連絡先
 
-[LEGAL ENTITY NAME], [JURISDICTION]. [hello@example.com](mailto:hello@example.com)
+[LEGAL ENTITY NAME], [JURISDICTION]. [support@yourworldtime.com](mailto:support@yourworldtime.com)
