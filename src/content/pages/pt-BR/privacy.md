@@ -5,7 +5,7 @@ order: 3
 updatedAt: '2026-01-15'
 ---
 
-A **[LEGAL ENTITY NAME]** (“nós”) opera o Meridiem. Esta política explica quais dados o site manipula. A versão curta: do jeito que está hoje, nenhum deles sai do seu dispositivo.
+A **[LEGAL ENTITY NAME]** (“nós”) opera o YourWorldTime. Esta política explica quais dados o site manipula. A versão curta: do jeito que está hoje, nenhum deles sai do seu dispositivo.
 
 ## O que coletamos
 

@@ -5,7 +5,7 @@ order: 4
 updatedAt: '2026-01-15'
 ---
 
-Estas condiciones rigen tu uso de Meridiem, explotado por **[LEGAL ENTITY NAME]** («nosotros»). Usar el sitio implica aceptarlas.
+Estas condiciones rigen tu uso de YourWorldTime, explotado por **[LEGAL ENTITY NAME]** («nosotros»). Usar el sitio implica aceptarlas.
 
 ## Qué es el sitio
 

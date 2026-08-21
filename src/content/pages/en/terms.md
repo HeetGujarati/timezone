@@ -5,7 +5,7 @@ order: 4
 updatedAt: '2026-01-15'
 ---
 
-These terms govern your use of Meridiem, operated by **[LEGAL ENTITY NAME]** ("we"). Using the site means accepting them.
+These terms govern your use of YourWorldTime, operated by **[LEGAL ENTITY NAME]** ("we"). Using the site means accepting them.
 
 ## What the site is
 

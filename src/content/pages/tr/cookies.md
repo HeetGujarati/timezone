@@ -5,17 +5,17 @@ order: 5
 updatedAt: '2026-01-15'
 ---
 
-**Meridiem çerez koymaz.** Ne analitik çerezi, ne tercih çerezi, ne de „kesinlikle gerekli“ çerez. Onay şeridi yoktur, çünkü onaylanacak bir şey yoktur.
+**YourWorldTime çerez koymaz.** Ne analitik çerezi, ne tercih çerezi, ne de „kesinlikle gerekli“ çerez. Onay şeridi yoktur, çünkü onaylanacak bir şey yoktur.
 
 ## Cihazınızda ne saklanıyor
 
 **Yerel depolamada** üç değer — ki bu bir çerez değildir: hiçbir istekle birlikte gönderilmez, dolayısıyla hiçbir sunucu, bizimki dâhil, onu okuyamaz.
 
-**meridiem-theme** : Tema düğmesini kullandıysanız „light“ ya da „dark“. Site verilerini silene kadar kalır.
+**YourWorldTime-theme** : Tema düğmesini kullandıysanız „light“ ya da „dark“. Site verilerini silene kadar kalır.
 
-**meridiem-planner-zones** : Toplantı planlayıcısında en son bulundurduğunuz saat dilimi listesi.
+**YourWorldTime-planner-zones** : Toplantı planlayıcısında en son bulundurduğunuz saat dilimi listesi.
 
-**meridiem-pinned-cities** : Dünya saatinde sabitlediğiniz şehirler.
+**YourWorldTime-pinned-cities** : Dünya saatinde sabitlediğiniz şehirler.
 
 Geri kalan her şey — bir dönüşümün dilimleri, bir geri sayımın hedefi — adres çubuğunda yaşar; bir bağlantıyı paylaşmanın durumu da paylaşmasının sebebi budur.
 

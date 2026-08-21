@@ -1,11 +1,11 @@
 ---
-title: 'Sobre o Meridiem'
+title: 'Sobre o YourWorldTime'
 description: 'Por que este site existe, como ele calcula o que mostra e o que decide deliberadamente não fazer.'
 order: 1
 updatedAt: '2026-01-15'
 ---
 
-O Meridiem é um conjunto de ferramentas de fuso horário construído sobre um princípio: nunca afirmar um dado de horário que não tenha sido calculado a partir do banco de dados IANA no momento em que foi necessário.
+O YourWorldTime é um conjunto de ferramentas de fuso horário construído sobre um princípio: nunca afirmar um dado de horário que não tenha sido calculado a partir do banco de dados IANA no momento em que foi necessário.
 
 ## Por que existe
 

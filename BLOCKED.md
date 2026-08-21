@@ -55,12 +55,12 @@ Candidates in preference order — check availability at any registrar and regis
 
 | Preference | Domain                          | Note                                     |
 | ---------- | ------------------------------- | ---------------------------------------- |
-| 1          | `meridiem.app` / `meridiem.com` | Chosen brand. From _ante/post meridiem_. |
+| 1          | `YourWorldTime.app` / `YourWorldTime.com` | Chosen brand. From _ante/post YourWorldTime_. |
 | 2          | `zonely.com`                    | Backup.                                  |
 | 3          | `horaly.com`                    | Backup.                                  |
 
 Then set `PUBLIC_SITE_URL` to the real origin — see `DEPLOY.md`. Until that happens, every canonical,
-hreflang and sitemap URL points at the `https://meridiem.app` fallback.
+hreflang and sitemap URL points at the `https://YourWorldTime.app` fallback.
 
 ---
 
@@ -75,7 +75,7 @@ made again from a machine with push rights. The commit it belongs on is the bran
 
 ```bash
 git fetch origin claude/lets-cook-7ann03
-git tag -a v1.0.0 origin/claude/lets-cook-7ann03 -m "Meridiem 1.0.0"
+git tag -a v1.0.0 origin/claude/lets-cook-7ann03 -m "YourWorldTime 1.0.0"
 git push origin v1.0.0
 ```
 

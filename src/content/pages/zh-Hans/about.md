@@ -1,11 +1,11 @@
 ---
-title: '关于 Meridiem'
+title: '关于 YourWorldTime'
 description: '这个网站为什么存在，它如何计算所展示的内容，以及它刻意不做的事。'
 order: 1
 updatedAt: '2026-01-15'
 ---
 
-Meridiem 是一套时区工具，建立在一条原则之上：绝不陈述任何不是在需要的那一刻从 IANA 数据库算出来的时间事实。
+YourWorldTime 是一套时区工具，建立在一条原则之上：绝不陈述任何不是在需要的那一刻从 IANA 数据库算出来的时间事实。
 
 ## 为什么存在
 

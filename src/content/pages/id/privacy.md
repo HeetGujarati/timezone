@@ -5,7 +5,7 @@ order: 3
 updatedAt: '2026-01-15'
 ---
 
-**[LEGAL ENTITY NAME]** (“kami”) mengoperasikan Meridiem. Kebijakan ini menjelaskan data apa yang ditangani situs. Versi ringkasnya: sebagaimana keadaannya hari ini, tidak satu pun keluar dari perangkat Anda.
+**[LEGAL ENTITY NAME]** (“kami”) mengoperasikan YourWorldTime. Kebijakan ini menjelaskan data apa yang ditangani situs. Versi ringkasnya: sebagaimana keadaannya hari ini, tidak satu pun keluar dari perangkat Anda.
 
 ## Apa yang kami kumpulkan
 

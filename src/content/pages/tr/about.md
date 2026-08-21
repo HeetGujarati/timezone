@@ -1,11 +1,11 @@
 ---
-title: 'Meridiem hakkında'
+title: 'YourWorldTime hakkında'
 description: 'Bu site neden var, gösterdiklerini nasıl hesaplıyor ve bilerek neleri yapmıyor.'
 order: 1
 updatedAt: '2026-01-15'
 ---
 
-Meridiem, tek bir ilke üzerine kurulmuş bir saat dilimi araçları takımıdır: gerektiği anda IANA veritabanından hesaplanmamış hiçbir zaman bilgisini asla ileri sürmemek.
+YourWorldTime, tek bir ilke üzerine kurulmuş bir saat dilimi araçları takımıdır: gerektiği anda IANA veritabanından hesaplanmamış hiçbir zaman bilgisini asla ileri sürmemek.
 
 ## Neden var
 

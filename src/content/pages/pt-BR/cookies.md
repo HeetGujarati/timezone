@@ -5,17 +5,17 @@ order: 5
 updatedAt: '2026-01-15'
 ---
 
-**O Meridiem não define cookies.** Nem de análise, nem de preferência, nem “estritamente necessários”. Não existe aviso de consentimento porque não há nada com que consentir.
+**O YourWorldTime não define cookies.** Nem de análise, nem de preferência, nem “estritamente necessários”. Não existe aviso de consentimento porque não há nada com que consentir.
 
 ## O que fica guardado no seu dispositivo
 
 Três valores no **armazenamento local**, que não é um cookie: ele nunca é enviado junto com uma requisição, então nenhum servidor — inclusive o nosso — consegue lê-lo.
 
-**meridiem-theme** : “light” ou “dark”, se você usou o alternador de tema. Permanece até você limpar os dados do site.
+**YourWorldTime-theme** : “light” ou “dark”, se você usou o alternador de tema. Permanece até você limpar os dados do site.
 
-**meridiem-planner-zones** : A lista de fusos que você tinha por último no planejador de reuniões.
+**YourWorldTime-planner-zones** : A lista de fusos que você tinha por último no planejador de reuniões.
 
-**meridiem-pinned-cities** : As cidades que você fixou no relógio mundial.
+**YourWorldTime-pinned-cities** : As cidades que você fixou no relógio mundial.
 
 Todo o resto — os fusos de uma conversão, o alvo de uma contagem regressiva — vive no endereço, e é por isso que compartilhar um link compartilha o estado.
 

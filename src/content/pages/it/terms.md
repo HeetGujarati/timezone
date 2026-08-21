@@ -5,7 +5,7 @@ order: 4
 updatedAt: '2026-01-15'
 ---
 
-Queste condizioni regolano il tuo uso di Meridiem, gestito da **[LEGAL ENTITY NAME]** («noi»). Usare il sito significa accettarle.
+Queste condizioni regolano il tuo uso di YourWorldTime, gestito da **[LEGAL ENTITY NAME]** («noi»). Usare il sito significa accettarle.
 
 ## Che cos’è il sito
 

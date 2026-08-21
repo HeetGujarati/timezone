@@ -88,7 +88,7 @@ These are not conventions. `scripts/seo-audit.mjs` fails the build when any of t
 | No English text on a translated page            | `scripts/i18n-leak.mjs` — 97,982 prose segments compared                                                                  |
 | No broken internal link                         | `scripts/link-check.mjs` — 267,366 links                                                                                  |
 
-The brand suffix rule is worth stating plainly: a title becomes `Something | Meridiem` only
+The brand suffix rule is worth stating plainly: a title becomes `Something | YourWorldTime` only
 when that fits in 60 characters. Thirty-seven titles across the locales do not fit, and they
 ship without the brand rather than truncated. A reader searching for the page is looking for
 the page.

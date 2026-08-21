@@ -1,11 +1,11 @@
 ---
-title: 'Tentang Meridiem'
+title: 'Tentang YourWorldTime'
 description: 'Mengapa situs ini ada, bagaimana ia menghitung apa yang ditampilkannya, dan apa yang sengaja tidak dilakukannya.'
 order: 1
 updatedAt: '2026-01-15'
 ---
 
-Meridiem adalah sekumpulan perkakas zona waktu yang dibangun di atas satu prinsip: jangan pernah menyatakan fakta waktu yang tidak dihitung dari basis data IANA pada saat fakta itu diperlukan.
+YourWorldTime adalah sekumpulan perkakas zona waktu yang dibangun di atas satu prinsip: jangan pernah menyatakan fakta waktu yang tidak dihitung dari basis data IANA pada saat fakta itu diperlukan.
 
 ## Mengapa ia ada
 

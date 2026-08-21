@@ -1,11 +1,11 @@
 ---
-title: 'Su Meridiem'
+title: 'Su YourWorldTime'
 description: 'Perché questo sito esiste, come calcola ciò che mostra e cosa sceglie deliberatamente di non fare.'
 order: 1
 updatedAt: '2026-01-15'
 ---
 
-Meridiem è un insieme di strumenti per i fusi orari costruito su un principio: non affermare mai un dato orario che non sia stato calcolato dal database IANA nel momento in cui serviva.
+YourWorldTime è un insieme di strumenti per i fusi orari costruito su un principio: non affermare mai un dato orario che non sia stato calcolato dal database IANA nel momento in cui serviva.
 
 ## Perché esiste
 

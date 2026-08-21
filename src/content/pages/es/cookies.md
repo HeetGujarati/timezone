@@ -5,17 +5,17 @@ order: 5
 updatedAt: '2026-01-15'
 ---
 
-**Meridiem no pone cookies.** Ni de analítica, ni de preferencias, ni «estrictamente necesarias». No hay banner de consentimiento porque no hay nada que consentir.
+**YourWorldTime no pone cookies.** Ni de analítica, ni de preferencias, ni «estrictamente necesarias». No hay banner de consentimiento porque no hay nada que consentir.
 
 ## Qué se guarda en tu dispositivo
 
 Tres valores en el **almacenamiento local**, que no es una cookie: nunca se envía con una petición, así que ningún servidor —tampoco el nuestro— puede leerlo.
 
-**meridiem-theme** : «light» o «dark», si usaste el conmutador de tema. Se mantiene hasta que borres los datos del sitio.
+**YourWorldTime-theme** : «light» o «dark», si usaste el conmutador de tema. Se mantiene hasta que borres los datos del sitio.
 
-**meridiem-planner-zones** : La lista de zonas horarias que tenías en el planificador de reuniones.
+**YourWorldTime-planner-zones** : La lista de zonas horarias que tenías en el planificador de reuniones.
 
-**meridiem-pinned-cities** : Las ciudades que fijaste en el reloj mundial.
+**YourWorldTime-pinned-cities** : Las ciudades que fijaste en el reloj mundial.
 
 Todo lo demás —las zonas de una conversión, el destino de una cuenta atrás— vive en la URL, y por eso compartir un enlace comparte el estado.
 

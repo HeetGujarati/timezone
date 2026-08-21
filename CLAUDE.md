@@ -1,4 +1,4 @@
-# Working on Meridiem
+# Working on YourWorldTime
 
 Read this before changing anything. It is the short version of the rules the build
 already enforces — breaking one of them fails `npm run gate` rather than shipping.

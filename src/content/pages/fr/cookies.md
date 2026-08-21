@@ -5,17 +5,17 @@ order: 5
 updatedAt: '2026-01-15'
 ---
 
-**Meridiem ne dépose aucun cookie.** Ni cookie de mesure, ni cookie de préférence, ni cookie « strictement nécessaire ». Il n’y a pas de bandeau de consentement parce qu’il n’y a rien à consentir.
+**YourWorldTime ne dépose aucun cookie.** Ni cookie de mesure, ni cookie de préférence, ni cookie « strictement nécessaire ». Il n’y a pas de bandeau de consentement parce qu’il n’y a rien à consentir.
 
 ## Ce qui est conservé sur votre appareil
 
 Trois valeurs dans le **stockage local**, qui n’est pas un cookie : il n’est jamais envoyé avec une requête, donc aucun serveur — le nôtre compris — ne peut le lire.
 
-**meridiem-theme** : « light » ou « dark », si vous avez utilisé le sélecteur de thème. Persiste jusqu’à effacement des données du site.
+**YourWorldTime-theme** : « light » ou « dark », si vous avez utilisé le sélecteur de thème. Persiste jusqu’à effacement des données du site.
 
-**meridiem-planner-zones** : La liste des fuseaux que vous aviez en dernier dans le planificateur de réunions.
+**YourWorldTime-planner-zones** : La liste des fuseaux que vous aviez en dernier dans le planificateur de réunions.
 
-**meridiem-pinned-cities** : Les villes que vous avez épinglées sur l’horloge mondiale.
+**YourWorldTime-pinned-cities** : Les villes que vous avez épinglées sur l’horloge mondiale.
 
 Tout le reste — les fuseaux d’une conversion, la cible d’un compte à rebours — vit dans l’URL, et c’est pourquoi partager un lien partage l’état.
 

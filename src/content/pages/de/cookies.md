@@ -5,17 +5,17 @@ order: 5
 updatedAt: '2026-01-15'
 ---
 
-**Meridiem setzt keine Cookies.** Keine Analyse-Cookies, keine Einstellungs-Cookies, keine „unbedingt erforderlichen“ Cookies. Es gibt kein Einwilligungsbanner, weil es nichts gibt, worin man einwilligen könnte.
+**YourWorldTime setzt keine Cookies.** Keine Analyse-Cookies, keine Einstellungs-Cookies, keine „unbedingt erforderlichen“ Cookies. Es gibt kein Einwilligungsbanner, weil es nichts gibt, worin man einwilligen könnte.
 
 ## Was auf Ihrem Gerät gespeichert wird
 
 Drei Werte im **lokalen Speicher**, was kein Cookie ist: Er wird nie mit einer Anfrage mitgeschickt, kein Server kann ihn also lesen — auch unserer nicht.
 
-**meridiem-theme** : „light“ oder „dark“, falls Sie den Umschalter benutzt haben. Bleibt, bis Sie die Websitedaten löschen.
+**YourWorldTime-theme** : „light“ oder „dark“, falls Sie den Umschalter benutzt haben. Bleibt, bis Sie die Websitedaten löschen.
 
-**meridiem-planner-zones** : Die Liste der Zeitzonen, die Sie zuletzt im Besprechungsplaner hatten.
+**YourWorldTime-planner-zones** : Die Liste der Zeitzonen, die Sie zuletzt im Besprechungsplaner hatten.
 
-**meridiem-pinned-cities** : Die Städte, die Sie auf der Weltuhr angeheftet haben.
+**YourWorldTime-pinned-cities** : Die Städte, die Sie auf der Weltuhr angeheftet haben.
 
 Alles andere — die Zonen einer Umrechnung, das Ziel eines Countdowns — steht in der URL, und genau deshalb teilt ein geteilter Link auch den Zustand.
 

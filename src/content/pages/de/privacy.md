@@ -5,7 +5,7 @@ order: 3
 updatedAt: '2026-01-15'
 ---
 
-**[LEGAL ENTITY NAME]** („wir“) betreibt Meridiem. Diese Erklärung beschreibt, mit welchen Daten die Seite umgeht. Die kurze Fassung: nach heutigem Stand verlässt keines davon Ihr Gerät.
+**[LEGAL ENTITY NAME]** („wir“) betreibt YourWorldTime. Diese Erklärung beschreibt, mit welchen Daten die Seite umgeht. Die kurze Fassung: nach heutigem Stand verlässt keines davon Ihr Gerät.
 
 ## Was wir erheben
 

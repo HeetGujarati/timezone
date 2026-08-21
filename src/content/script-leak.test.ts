@@ -75,7 +75,7 @@ const ALLOWED_LATIN = new Set(
     'CSS',
     'JSON',
     'URL',
-    'Meridiem',
+    'YourWorldTime',
     'SECURITY',
     'md',
     'LEGAL',

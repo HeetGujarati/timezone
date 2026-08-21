@@ -15,18 +15,18 @@ site goes live claiming to be operated by `[LEGAL ENTITY NAME]`.
 
 | #   | What                     | Where                                                       | Currently                      |
 | --- | ------------------------ | ----------------------------------------------------------- | ------------------------------ |
-| 1   | Your domain              | `.env` → `PUBLIC_SITE_URL`                                  | `https://meridiem.app`         |
+| 1   | Your domain              | `.env` → `PUBLIC_SITE_URL`                                  | `https://YourWorldTime.app`         |
 | 2   | Legal entity name        | `src/content/pages/en/privacy.md`, `terms.md`, `cookies.md` | `[LEGAL ENTITY NAME]`          |
 | 3   | Jurisdiction             | same three files                                            | `[JURISDICTION]`               |
 | 4   | Contact email            | `src/config/site.ts` → `contactEmail`                       | `hello@example.com`            |
 | 5   | Security email           | `src/config/site.ts` → `securityEmail`                      | `security@example.com`         |
 | 6   | Security email again     | `public/.well-known/security.txt`                           | `security@example.com`         |
 | 7   | security.txt expiry      | `public/.well-known/security.txt` → `Expires`               | `2027-01-15`                   |
-| 8   | security.txt canonical   | `public/.well-known/security.txt` → `Canonical`             | `https://meridiem.app/…`       |
-| 9   | X / Twitter handle       | `src/config/site.ts` → `creator.x`                          | `@meridiemapp`                 |
-| 10  | Creator URL              | `src/config/site.ts` → `creator.url`                        | `https://meridiem.app`         |
+| 8   | security.txt canonical   | `public/.well-known/security.txt` → `Canonical`             | `https://YourWorldTime.app/…`       |
+| 9   | X / Twitter handle       | `src/config/site.ts` → `creator.x`                          | `@YourWorldTimeapp`                 |
+| 10  | Creator URL              | `src/config/site.ts` → `creator.url`                        | `https://YourWorldTime.app`         |
 | 11  | AdSense publisher ID     | `public/ads.txt`                                            | comment only, no ID            |
-| 12  | Site name, if you rename | `src/config/site.ts` → `name`                               | `Meridiem`                     |
+| 12  | Site name, if you rename | `src/config/site.ts` → `name`                               | `YourWorldTime`                     |
 | 13  | Legal page dates         | `src/content/pages/en/*.md` → `updatedAt`                   | `2026-01-15`                   |
 | 14  | Guide dates              | `src/content/guides/en/*.md`                                | `2026-01-15`                   |
 | 15  | Repository visibility    | GitHub settings                                             | **public — change this first** |
@@ -34,7 +34,7 @@ site goes live claiming to be operated by `[LEGAL ENTITY NAME]`.
 Find every remaining placeholder at any time:
 
 ```bash
-grep -rn "LEGAL ENTITY NAME\|JURISDICTION\|example.com\|meridiem.app" src public --include="*.ts" --include="*.md" --include="*.txt"
+grep -rn "LEGAL ENTITY NAME\|JURISDICTION\|example.com\|YourWorldTime.app" src public --include="*.ts" --include="*.md" --include="*.txt"
 ```
 
 ---
@@ -46,12 +46,12 @@ RDAP and WHOIS. Check these at any registrar and buy one:
 
 | Preference | Domain                           | Why                                                           |
 | ---------- | -------------------------------- | ------------------------------------------------------------- |
-| 1          | `meridiem.app` or `meridiem.com` | The brand the site is built around. From _ante/post meridiem_ |
+| 1          | `YourWorldTime.app` or `YourWorldTime.com` | The brand the site is built around. From _ante/post YourWorldTime_ |
 | 2          | `zonely.com`                     | Backup                                                        |
 | 3          | `horaly.com`                     | Backup                                                        |
 
 If you pick a different name, change `SITE.name` in `src/config/site.ts` and search the codebase
-for `Meridiem`. The name appears in titles, JSON-LD and the footer; it is one constant, but it
+for `YourWorldTime`. The name appears in titles, JSON-LD and the footer; it is one constant, but it
 does propagate.
 
 `.app` is on the HSTS preload list, which means browsers require HTTPS for it before ever
@@ -76,7 +76,7 @@ contacting the server. That is a small security win and costs nothing.
 
 ### 3.3 Configure the build
 
-8. **Project name** — this becomes `your-project.pages.dev`. Use `meridiem`.
+8. **Project name** — this becomes `your-project.pages.dev`. Use `YourWorldTime`.
 9. **Production branch** — `main`. (The work is currently on `claude/lets-cook-7ann03`; merge it
    to `main` first, or set this to that branch.)
 10. **Framework preset** — select **Astro**. If it is not listed, leave it as _None_.
@@ -89,7 +89,7 @@ contacting the server. That is a small security win and costs nothing.
 14. Expand **Environment variables (advanced)**.
 15. Click **Add variable**:
     - **Variable name**: `PUBLIC_SITE_URL`
-    - **Value**: your real origin, with `https://` and **no trailing slash** — e.g. `https://meridiem.app`
+    - **Value**: your real origin, with `https://` and **no trailing slash** — e.g. `https://YourWorldTime.app`
 16. Make sure it is set for **Production**. Add it for **Preview** too, pointing at the
     `.pages.dev` URL, so preview builds do not emit production canonicals.
 
@@ -138,7 +138,7 @@ You should see a `Content-Security-Policy` containing `script-src 'self' 'sha256
 curl -s https://your-domain.com/ | grep -o '<link rel="canonical" href="[^"]*"'
 ```
 
-If this shows `meridiem.app` and that is not your domain, `PUBLIC_SITE_URL` was not set at build
+If this shows `YourWorldTime.app` and that is not your domain, `PUBLIC_SITE_URL` was not set at build
 time. Fix it in the Cloudflare settings and **redeploy** — changing the variable alone does not
 rebuild.
 
@@ -273,7 +273,7 @@ read the same variable, so the script and the policy permitting it cannot disagr
 see it in the build log:
 
 ```
-[meridiem:csp-hashes] CSP: 1 inline script hash written to … (no unsafe-inline, widened for https://static.cloudflareinsights.com)
+[YourWorldTime:csp-hashes] CSP: 1 inline script hash written to … (no unsafe-inline, widened for https://static.cloudflareinsights.com)
 ```
 
 Leave the variable unset and the site makes no third-party request of any kind and the policy

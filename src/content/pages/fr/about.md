@@ -1,11 +1,11 @@
 ---
-title: 'À propos de Meridiem'
+title: 'À propos de YourWorldTime'
 description: 'Pourquoi ce site existe, comment il calcule ce qu’il affiche, et ce qu’il s’interdit délibérément de faire.'
 order: 1
 updatedAt: '2026-01-15'
 ---
 
-Meridiem est un ensemble d’outils de fuseaux horaires bâti sur un principe : ne jamais affirmer une donnée horaire qui n’ait été calculée depuis la base IANA au moment même où elle était nécessaire.
+YourWorldTime est un ensemble d’outils de fuseaux horaires bâti sur un principe : ne jamais affirmer une donnée horaire qui n’ait été calculée depuis la base IANA au moment même où elle était nécessaire.
 
 ## Pourquoi il existe
 

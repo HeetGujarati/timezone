@@ -7,7 +7,7 @@ import { DEFAULT_LOCALE, LOCALE_CODES, type LocaleCode } from './locales.ts';
  * DEPLOY.md states plainly: set PUBLIC_SITE_URL to your real domain before the
  * first production build, or canonicals and sitemaps will point at the wrong host.
  */
-const FALLBACK_ORIGIN = 'https://meridiem.app';
+const FALLBACK_ORIGIN = 'https://yourworldtime.com';
 
 function readOrigin(): string {
   const raw = import.meta.env.PUBLIC_SITE_URL ?? process.env['PUBLIC_SITE_URL'];
@@ -19,8 +19,8 @@ function readOrigin(): string {
 
 export const SITE = {
   /** Product name. Chosen for brandability, not exact-match keywords — see DECISIONS.md. */
-  name: 'Meridiem',
-  shortName: 'Meridiem',
+  name: 'YourWorldTime',
+  shortName: 'YourWorldTime',
   tagline: 'Time zone tools that tell you the truth',
 
   /**
@@ -52,14 +52,14 @@ export const SITE = {
     path: '/og/default.png',
     width: 1200,
     height: 630,
-    alt: 'Meridiem — time zone converter, meeting planner and world clock',
+    alt: 'YourWorldTime — time zone converter, meeting planner and world clock',
   },
 
   creator: {
-    name: 'Meridiem',
+    name: 'YourWorldTime',
     /** Replaced by the owner before launch — tracked in DEPLOY.md, Part 1. */
-    url: 'https://meridiem.app',
-    x: '@meridiemapp',
+    url: 'https://yourworldtime.com',
+    x: '@yourworldtime',
   },
 
   /** Replaced by the owner before launch — tracked in DEPLOY.md, Part 1. */

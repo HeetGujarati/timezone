@@ -5,17 +5,17 @@ order: 5
 updatedAt: '2026-01-15'
 ---
 
-**Meridiem 不设置 Cookie。** 统计用的没有，偏好设置的没有，所谓“绝对必要”的也没有。这里没有同意横幅，因为压根没有需要你同意的东西。
+**YourWorldTime 不设置 Cookie。** 统计用的没有，偏好设置的没有，所谓“绝对必要”的也没有。这里没有同意横幅，因为压根没有需要你同意的东西。
 
 ## 你的设备上保存了什么
 
 **本地存储**里的三个值——这不是 Cookie：它从不随请求一同发送，所以没有任何服务器能读到它，包括我们的。
 
-**meridiem-theme** ：若你用过主题切换，则为“light”或“dark”。在你清除站点数据之前一直保留。
+**YourWorldTime-theme** ：若你用过主题切换，则为“light”或“dark”。在你清除站点数据之前一直保留。
 
-**meridiem-planner-zones** ：你上次在会议规划器里放的那组时区。
+**YourWorldTime-planner-zones** ：你上次在会议规划器里放的那组时区。
 
-**meridiem-pinned-cities** ：你在世界时钟上置顶的城市。
+**YourWorldTime-pinned-cities** ：你在世界时钟上置顶的城市。
 
 其余的一切——某次换算用的时区、某个倒计时的目标——都活在网址里，这也正是分享一条链接会连状态一起分享的原因。
 

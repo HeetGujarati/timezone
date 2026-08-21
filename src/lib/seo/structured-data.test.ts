@@ -19,18 +19,18 @@ describe('webSiteSchema', () => {
 
   it('points at the localised home page and declares the language', () => {
     const schema = webSiteSchema('ja');
-    expect(schema.url).toBe('https://meridiem.app/ja/');
+    expect(schema.url).toBe('https://yourworldtime.com/ja/');
     expect(schema.inLanguage).toBe('ja');
   });
 
   it('references the Organization by @id rather than repeating it', () => {
-    expect(webSiteSchema('en').publisher).toEqual({ '@id': 'https://meridiem.app/#organization' });
+    expect(webSiteSchema('en').publisher).toEqual({ '@id': 'https://yourworldtime.com/#organization' });
   });
 });
 
 describe('softwareApplicationSchema', () => {
   const base = {
-    name: 'Meridiem meeting planner',
+    name: 'YourWorldTime meeting planner',
     description: 'Find a meeting time that works across every zone on your team.',
     path: '/meeting-planner/',
     locale: 'en' as const,
@@ -94,7 +94,7 @@ describe('howToSchema', () => {
     });
     expect(schema.step).toHaveLength(2);
     expect(schema.step[0]?.position).toBe(1);
-    expect(schema.step[1]?.url).toBe('https://meridiem.app/meeting-planner/#read-band');
+    expect(schema.step[1]?.url).toBe('https://yourworldtime.com/meeting-planner/#read-band');
     expect(schema.totalTime).toBe('PT2M');
   });
 });
@@ -121,7 +121,7 @@ describe('breadcrumbListSchema', () => {
       'de',
     );
     expect(schema.itemListElement).toHaveLength(3);
-    expect(schema.itemListElement[1]?.item).toBe('https://meridiem.app/de/convert/');
+    expect(schema.itemListElement[1]?.item).toBe('https://yourworldtime.com/de/convert/');
     expect(schema.itemListElement[2]?.item).toBeUndefined();
   });
 });
@@ -139,7 +139,7 @@ describe('articleSchema', () => {
       wordCount: 1100,
     });
     expect(schema.mainEntityOfPage['@id']).toBe(
-      'https://meridiem.app/guides/why-est-is-ambiguous/',
+      'https://yourworldtime.com/guides/why-est-is-ambiguous/',
     );
     expect(schema.image[0]).toMatch(/^https:\/\/meridiem\.app\/og\//);
     expect(schema.wordCount).toBe(1100);
@@ -148,7 +148,7 @@ describe('articleSchema', () => {
 
 describe('organizationSchema', () => {
   it('is stable and carries a resolvable @id', () => {
-    expect(organizationSchema()['@id']).toBe('https://meridiem.app/#organization');
+    expect(organizationSchema()['@id']).toBe('https://yourworldtime.com/#organization');
     expect(organizationSchema()).toEqual(organizationSchema());
   });
 });

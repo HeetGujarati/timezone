@@ -1,4 +1,4 @@
-# Meridiem
+# YourWorldTime
 
 Time zone tools that tell you the truth: convert any zone to any zone, plan meetings across
 continents, read a live world clock, and see exactly when the next DST transition will move your

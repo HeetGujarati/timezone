@@ -5,7 +5,7 @@ order: 3
 updatedAt: '2026-01-15'
 ---
 
-**[LEGAL ENTITY NAME]** («noi») gestisce Meridiem. Questa informativa spiega quali dati il sito tratta. In breve: allo stato attuale, nessuno di essi lascia il tuo dispositivo.
+**[LEGAL ENTITY NAME]** («noi») gestisce YourWorldTime. Questa informativa spiega quali dati il sito tratta. In breve: allo stato attuale, nessuno di essi lascia il tuo dispositivo.
 
 ## Che cosa raccogliamo
 

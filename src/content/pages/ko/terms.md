@@ -5,7 +5,7 @@ order: 4
 updatedAt: '2026-01-15'
 ---
 
-이 약관은 **[LEGAL ENTITY NAME]**(“저희”)이 운영하는 Meridiem의 이용에 적용됩니다. 사이트를 이용하시면 약관에 동의하신 것이 됩니다.
+이 약관은 **[LEGAL ENTITY NAME]**(“저희”)이 운영하는 YourWorldTime의 이용에 적용됩니다. 사이트를 이용하시면 약관에 동의하신 것이 됩니다.
 
 ## 이 사이트는 무엇인가
 

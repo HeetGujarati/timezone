@@ -5,7 +5,7 @@ order: 3
 updatedAt: '2026-01-15'
 ---
 
-Meridiem’i **[LEGAL ENTITY NAME]** („biz“) işletir. Bu politika, sitenin hangi verileri işlediğini açıklar. Kısa hâli: bugünkü hâliyle bunların hiçbiri cihazınızdan çıkmaz.
+YourWorldTime’i **[LEGAL ENTITY NAME]** („biz“) işletir. Bu politika, sitenin hangi verileri işlediğini açıklar. Kısa hâli: bugünkü hâliyle bunların hiçbiri cihazınızdan çıkmaz.
 
 ## Ne topluyoruz
 

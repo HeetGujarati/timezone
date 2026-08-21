@@ -5,7 +5,7 @@ order: 3
 updatedAt: '2026-01-15'
 ---
 
-**[LEGAL ENTITY NAME]** («nosotros») explota Meridiem. Esta política explica qué datos maneja el sitio. La versión corta: tal como está hoy, ninguno sale de tu dispositivo.
+**[LEGAL ENTITY NAME]** («nosotros») explota YourWorldTime. Esta política explica qué datos maneja el sitio. La versión corta: tal como está hoy, ninguno sale de tu dispositivo.
 
 ## Qué recogemos
 

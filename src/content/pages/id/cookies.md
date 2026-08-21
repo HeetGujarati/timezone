@@ -5,17 +5,17 @@ order: 5
 updatedAt: '2026-01-15'
 ---
 
-**Meridiem tidak memasang kuki.** Bukan kuki analitik, bukan kuki preferensi, bukan pula kuki “yang benar-benar diperlukan”. Tidak ada spanduk persetujuan karena tidak ada yang perlu disetujui.
+**YourWorldTime tidak memasang kuki.** Bukan kuki analitik, bukan kuki preferensi, bukan pula kuki “yang benar-benar diperlukan”. Tidak ada spanduk persetujuan karena tidak ada yang perlu disetujui.
 
 ## Apa yang disimpan di perangkat Anda
 
 Tiga nilai di **penyimpanan lokal**, yang bukan kuki: ia tidak pernah dikirim bersama permintaan, jadi tidak ada server — termasuk milik kami — yang bisa membacanya.
 
-**meridiem-theme** : “light” atau “dark”, bila Anda memakai pengalih tema. Bertahan sampai Anda menghapus data situs.
+**YourWorldTime-theme** : “light” atau “dark”, bila Anda memakai pengalih tema. Bertahan sampai Anda menghapus data situs.
 
-**meridiem-planner-zones** : Daftar zona waktu yang terakhir Anda pakai di perencana rapat.
+**YourWorldTime-planner-zones** : Daftar zona waktu yang terakhir Anda pakai di perencana rapat.
 
-**meridiem-pinned-cities** : Kota-kota yang Anda sematkan di jam dunia.
+**YourWorldTime-pinned-cities** : Kota-kota yang Anda sematkan di jam dunia.
 
 Selebihnya — zona sebuah konversi, sasaran sebuah hitung mundur — hidup di alamat halaman, dan itulah sebabnya membagikan tautan berarti membagikan keadaannya.
 

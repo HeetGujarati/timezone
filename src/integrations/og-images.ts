@@ -87,7 +87,7 @@ function isPrefixed(pagePath: string, localeSegments: readonly string[]): boolea
 /** The section label printed above the title. Derived from the image path. */
 function eyebrowFor(imagePath: string): string {
   const segments = imagePath.replace(/^\/og\//, '').split('/');
-  if (segments.length < 2) return 'Meridiem';
+  if (segments.length < 2) return 'YourWorldTime';
   switch (segments[0]) {
     case 'guides':
       return 'Guide';
@@ -96,7 +96,7 @@ function eyebrowFor(imagePath: string): string {
     case 'time-in':
       return 'Local time';
     default:
-      return 'Meridiem';
+      return 'YourWorldTime';
   }
 }
 
@@ -235,7 +235,7 @@ export function ogImages(options: { siteName: string; origin: string }): AstroIn
           cards.set('/og/default.png', {
             title: options.siteName,
             description: 'Time zone tools that tell you the truth.',
-            eyebrow: 'Meridiem',
+            eyebrow: 'YourWorldTime',
             fromDefaultLocale: true,
           });
         }

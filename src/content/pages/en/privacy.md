@@ -5,7 +5,7 @@ order: 3
 updatedAt: '2026-01-15'
 ---
 
-**[LEGAL ENTITY NAME]** ("we") operates Meridiem. This policy explains what data the site handles. The short version: as it stands today, none of it leaves your device.
+**[LEGAL ENTITY NAME]** ("we") operates YourWorldTime. This policy explains what data the site handles. The short version: as it stands today, none of it leaves your device.
 
 ## What we collect
 

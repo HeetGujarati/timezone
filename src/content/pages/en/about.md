@@ -1,11 +1,11 @@
 ---
-title: About Meridiem
+title: About YourWorldTime
 description: Why this site exists, how it computes what it shows, and what it deliberately does not do.
 order: 1
 updatedAt: '2026-01-15'
 ---
 
-Meridiem is a set of time zone tools built on one principle: never state a time fact that was not computed from the IANA time zone database at the moment it was needed.
+YourWorldTime is a set of time zone tools built on one principle: never state a time fact that was not computed from the IANA time zone database at the moment it was needed.
 
 ## Why it exists
 

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Meridiem — time zone conversion, meeting planning and world clock tools. Static, zero backend.",
+  "description": "YourWorldTime — time zone conversion, meeting planning and world clock tools. Static, zero backend.",
   "engines": {
     "node": ">=22.0.0"
   },

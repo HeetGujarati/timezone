@@ -1,6 +1,6 @@
 # Changelog
 
-Notable changes to Meridiem. Follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
+Notable changes to YourWorldTime. Follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 Dates are the date the work landed on the branch, not a deploy date — this site has not been

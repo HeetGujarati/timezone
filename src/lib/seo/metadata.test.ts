@@ -44,15 +44,15 @@ describe('truncateDescription', () => {
 
 describe('formatTitle', () => {
   it('appends the site name', () => {
-    expect(formatTitle('World clock')).toBe('World clock | Meridiem');
+    expect(formatTitle('World clock')).toBe('World clock | YourWorldTime');
   });
 
   it('does not duplicate a site name already present', () => {
-    expect(formatTitle('Meridiem world clock')).toBe('Meridiem world clock');
+    expect(formatTitle('YourWorldTime world clock')).toBe('YourWorldTime world clock');
   });
 
   it('matches the site name case-insensitively', () => {
-    expect(formatTitle('MERIDIEM world clock')).toBe('MERIDIEM world clock');
+    expect(formatTitle('YOURWORLDTIME world clock')).toBe('YOURWORLDTIME world clock');
   });
 });
 
@@ -95,10 +95,10 @@ describe('buildAlternates', () => {
   it('emits one absolute self-referencing entry per available locale plus x-default', () => {
     const { languages } = buildAlternates('/world-clock/', ['en', 'de', 'ar']);
     expect(languages).toEqual({
-      en: 'https://meridiem.app/world-clock/',
-      de: 'https://meridiem.app/de/world-clock/',
-      ar: 'https://meridiem.app/ar/world-clock/',
-      'x-default': 'https://meridiem.app/world-clock/',
+      en: 'https://yourworldtime.com/world-clock/',
+      de: 'https://yourworldtime.com/de/world-clock/',
+      ar: 'https://yourworldtime.com/ar/world-clock/',
+      'x-default': 'https://yourworldtime.com/world-clock/',
     });
   });
 
@@ -109,13 +109,13 @@ describe('buildAlternates', () => {
 
   it('points x-default at the first available locale when English is absent', () => {
     const { languages } = buildAlternates('/only-japanese/', ['ja']);
-    expect(languages['x-default']).toBe('https://meridiem.app/ja/only-japanese/');
+    expect(languages['x-default']).toBe('https://yourworldtime.com/ja/only-japanese/');
   });
 
   it('uses the BCP-47 tag for hreflang, not the URL segment', () => {
     const { languages } = buildAlternates('/', ['pt-BR', 'zh-Hans']);
-    expect(languages['pt-BR']).toBe('https://meridiem.app/pt-br/');
-    expect(languages['zh-Hans']).toBe('https://meridiem.app/zh-hans/');
+    expect(languages['pt-BR']).toBe('https://yourworldtime.com/pt-br/');
+    expect(languages['zh-Hans']).toBe('https://yourworldtime.com/zh-hans/');
   });
 });
 
@@ -130,13 +130,13 @@ describe('buildMetadata', () => {
 
   it('builds an absolute, locale-correct canonical', () => {
     expect(buildMetadata(base).canonical).toBe(
-      'https://meridiem.app/de/convert/new-york-to-london/',
+      'https://yourworldtime.com/de/convert/new-york-to-london/',
     );
   });
 
   it('strips query strings and fragments from the canonical', () => {
     const metadata = buildMetadata({ ...base, path: '/countdown/' });
-    expect(metadata.canonical).toBe('https://meridiem.app/de/countdown/');
+    expect(metadata.canonical).toBe('https://yourworldtime.com/de/countdown/');
     expect(metadata.canonical).not.toContain('?');
   });
 
@@ -159,7 +159,7 @@ describe('buildMetadata', () => {
   it('supports noIndex without touching anything else', () => {
     const metadata = buildMetadata({ ...base, noIndex: true });
     expect(metadata.robots.index).toBe(false);
-    expect(metadata.canonical).toBe('https://meridiem.app/de/convert/new-york-to-london/');
+    expect(metadata.canonical).toBe('https://yourworldtime.com/de/convert/new-york-to-london/');
   });
 
   it('keeps the resolved title inside the SERP limit for a realistic page', () => {

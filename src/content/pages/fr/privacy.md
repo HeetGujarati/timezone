@@ -5,7 +5,7 @@ order: 3
 updatedAt: '2026-01-15'
 ---
 
-**[LEGAL ENTITY NAME]** (« nous ») exploite Meridiem. Cette politique explique quelles données le site manipule. En bref : en l’état actuel, aucune ne quitte votre appareil.
+**[LEGAL ENTITY NAME]** (« nous ») exploite YourWorldTime. Cette politique explique quelles données le site manipule. En bref : en l’état actuel, aucune ne quitte votre appareil.
 
 ## Ce que nous collectons
 

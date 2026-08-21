@@ -5,7 +5,7 @@ order: 4
 updatedAt: '2026-01-15'
 ---
 
-Bu koşullar, **[LEGAL ENTITY NAME]** („biz“) tarafından işletilen Meridiem’i kullanımınızı düzenler. Siteyi kullanmak, bunları kabul etmek anlamına gelir.
+Bu koşullar, **[LEGAL ENTITY NAME]** („biz“) tarafından işletilen YourWorldTime’i kullanımınızı düzenler. Siteyi kullanmak, bunları kabul etmek anlamına gelir.
 
 ## Site nedir
 

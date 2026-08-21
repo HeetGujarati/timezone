@@ -65,10 +65,10 @@ force the gate to be weakened to `--omit=dev`.
 **Decision:** the Lighthouse job runs `npx @lhci/cli@0.15.1 autorun`. The production audit gate stays
 `npm audit --audit-level=high` over the _whole_ tree with no exclusions, and it passes honestly.
 
-### D6. Brand name: **Meridiem**
+### D6. Brand name: **YourWorldTime**
 
 Chosen against the brief's constraint that the name must not be a generic exact-match domain string.
-_Meridiem_ comes from _ante/post meridiem_ — it means time to a reader in almost any language without
+_YourWorldTime_ comes from _ante/post YourWorldTime_ — it means time to a reader in almost any language without
 being a keyword. Two syllables to say, one to remember, and it does not describe the tool, so the
 brand can outgrow "time zone converter" later. Backups: **Zonely**, **Horaly**.
 
@@ -292,7 +292,7 @@ cost is small and the alternative is fabricated data on 1,120 pages.
 
 ### D26. The brand suffix yields to the title when sixty characters will not hold both
 
-`formatTitle` appends " | Meridiem" — eleven characters — leaving forty-nine for the title itself.
+`formatTitle` appends " | YourWorldTime" — eleven characters — leaving forty-nine for the title itself.
 English guide titles fit; German, Russian and Turkish ones frequently do not, because the same
 thought takes longer to say. Truncating the title to keep the brand would cut the words the reader
 searched for and keep the word the search result already shows under the URL. So the suffix is
@@ -419,13 +419,13 @@ already used a word that does: Início, Accueil, Ana sayfa, 首页.
 
 ## D33 — The site has a mark, because the browser was going to ask for one anyway
 
-Meridiem shipped without a favicon of any kind. Every visit, in every browser,
+YourWorldTime shipped without a favicon of any kind. Every visit, in every browser,
 requested `/favicon.ico`, got a 404, and logged it — which is how the site scored
 96 rather than 100 on Lighthouse's best-practices category, and why the tab
 showed a blank page icon next to a page about telling the time accurately.
 
 The mark is a meridian: a circle divided down the middle, one half filled and one
-half hollow, for the _ante_ and the _post_ of _ante meridiem_. It is two shapes
+half hollow, for the _ante_ and the _post_ of _ante YourWorldTime_. It is two shapes
 and one colour, drawn to survive being rendered sixteen pixels wide.
 
 `public/favicon.svg` is the source; `scripts/make-icons.mjs` rasterises it into

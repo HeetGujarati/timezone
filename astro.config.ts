@@ -7,7 +7,7 @@ import { cspHashes } from './src/integrations/csp-hashes.ts';
 import { ogImages } from './src/integrations/og-images.ts';
 import { SITE } from './src/config/site.ts';
 
-const site = process.env['PUBLIC_SITE_URL'] ?? 'https://meridiem.app';
+const site = process.env['PUBLIC_SITE_URL'] ?? 'https://yourworldtime.com';
 
 /**
  * The only origin the Content Security Policy will ever be widened for, and only

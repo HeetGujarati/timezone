@@ -5,7 +5,7 @@ order: 4
 updatedAt: '2026-01-15'
 ---
 
-Ketentuan ini mengatur penggunaan Meridiem oleh Anda, yang dioperasikan oleh **[LEGAL ENTITY NAME]** (“kami”). Menggunakan situs berarti menerimanya.
+Ketentuan ini mengatur penggunaan YourWorldTime oleh Anda, yang dioperasikan oleh **[LEGAL ENTITY NAME]** (“kami”). Menggunakan situs berarti menerimanya.
 
 ## Apa situs ini
 

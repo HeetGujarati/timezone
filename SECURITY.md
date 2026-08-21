@@ -1,6 +1,6 @@
 # Security
 
-Meridiem is a static site: prerendered HTML, CSS, a little JavaScript, and no server of its
+YourWorldTime is a static site: prerendered HTML, CSS, a little JavaScript, and no server of its
 own. That shape removes most of the usual attack surface — there is no database to inject
 into, no session to steal, no API to abuse, no user accounts to compromise — and concentrates
 what remains into three places.

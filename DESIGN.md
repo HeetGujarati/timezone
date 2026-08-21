@@ -1,6 +1,6 @@
 # Design
 
-Meridiem is used by someone who is already slightly stressed: they have a call to
+YourWorldTime is used by someone who is already slightly stressed: they have a call to
 schedule, three colleagues in three continents, and a nagging worry that they are about
 to get it wrong by an hour. The interface has one job — be _believable_. It should read
 like a precise instrument, not a landing page.
@@ -105,7 +105,7 @@ dense UI, 1.6 for prose. Measure capped at 68 characters.
 ## The mark
 
 A meridian: a circle divided down the middle, one half filled and one half hollow, for the
-_ante_ and the _post_ of _ante meridiem_. Two shapes and one colour, because it has to
+_ante_ and the _post_ of _ante YourWorldTime_. Two shapes and one colour, because it has to
 survive being drawn sixteen pixels wide in a browser tab, and because a site whose subject
 is precision should not have a logo that needs explaining.
 

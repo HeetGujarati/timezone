@@ -40,7 +40,7 @@ export function truncateDescription(
 
 /**
  * `[Page Title] | [Site Name]`, unless the page title already carries the brand —
- * "Meridiem — time zone converter" must not become "Meridiem — … | Meridiem".
+ * "YourWorldTime — time zone converter" must not become "YourWorldTime — … | YourWorldTime".
  *
  * The brand is dropped when appending it would push the title past
  * `MAX_TITLE_LENGTH`. Decision D26: a translated guide title is the part a

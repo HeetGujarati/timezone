@@ -5,7 +5,7 @@ order: 4
 updatedAt: '2026-01-15'
 ---
 
-本条款约束你对 Meridiem 的使用，本站由 **[LEGAL ENTITY NAME]**（“我们”）运营。使用本站即表示接受本条款。
+本条款约束你对 YourWorldTime 的使用，本站由 **[LEGAL ENTITY NAME]**（“我们”）运营。使用本站即表示接受本条款。
 
 ## 本站是什么
 

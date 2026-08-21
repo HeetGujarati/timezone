@@ -5,7 +5,7 @@ order: 4
 updatedAt: '2026-01-15'
 ---
 
-Estes termos regem seu uso do Meridiem, operado pela **[LEGAL ENTITY NAME]** (“nós”). Usar o site significa aceitá-los.
+Estes termos regem seu uso do YourWorldTime, operado pela **[LEGAL ENTITY NAME]** (“nós”). Usar o site significa aceitá-los.
 
 ## O que o site é
 
