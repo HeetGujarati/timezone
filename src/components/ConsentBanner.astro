@@ -73,3 +73,42 @@ const BUTTON =
     </section>
   )
 }
+
+<script>
+  const banner = document.getElementById('consent-banner');
+  if (banner) {
+    const storageKey = banner.getAttribute('data-consent-storage-key') || 'meridiem-consent';
+    const stored = localStorage.getItem(storageKey);
+    
+    // If previously accepted, update GA consent immediately
+    if (stored === 'accept' && typeof (window as any).gtag === 'function') {
+      (window as any).gtag('consent', 'update', {
+        'analytics_storage': 'granted'
+      });
+    }
+    
+    // If no choice made yet, show the banner
+    if (!stored) {
+      banner.removeAttribute('hidden');
+    }
+    
+    // Handle accept/reject clicks
+    banner.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      const button = target.closest('[data-consent]');
+      if (!button) return;
+      
+      const choice = button.getAttribute('data-consent');
+      if (choice) {
+        localStorage.setItem(storageKey, choice);
+        banner.setAttribute('hidden', '');
+        
+        if (choice === 'accept' && typeof (window as any).gtag === 'function') {
+          (window as any).gtag('consent', 'update', {
+            'analytics_storage': 'granted'
+          });
+        }
+      }
+    });
+  }
+</script>

@@ -10,14 +10,18 @@ import { SITE } from './src/config/site.ts';
 const site = process.env['PUBLIC_SITE_URL'] ?? 'https://yourworldtime.com';
 
 /**
- * The only origin the Content Security Policy will ever be widened for, and only
- * when the owner has set a token. With PUBLIC_CF_ANALYTICS_TOKEN empty — the
- * default — the site makes no third-party request at all and the policy says so.
+ * The origins the Content Security Policy will be widened for.
+ * Defaults to empty if no analytics tokens are provided.
  */
-const analyticsOrigins =
-  (process.env['PUBLIC_CF_ANALYTICS_TOKEN'] ?? '') === ''
-    ? []
-    : ['https://static.cloudflareinsights.com'];
+const analyticsOrigins: string[] = [];
+
+if ((process.env['PUBLIC_CF_ANALYTICS_TOKEN'] ?? '') !== '') {
+  analyticsOrigins.push('https://static.cloudflareinsights.com');
+}
+
+if ((process.env['PUBLIC_GA_ID'] ?? '') !== '') {
+  analyticsOrigins.push('https://www.googletagmanager.com', 'https://www.google-analytics.com');
+}
 
 /**
  * Astro's i18n block is fed the lowercase URL segments ('pt-br', 'zh-hans'), because

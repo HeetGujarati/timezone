@@ -85,8 +85,8 @@ export const SITE = {
   },
 
   /** Replaced by the owner before launch — tracked in DEPLOY.md, Part 1. */
-  contactEmail: 'hello@example.com',
-  securityEmail: 'security@example.com',
+  contactEmail: 'support@yourworldtime.com',
+  securityEmail: 'support@yourworldtime.com',
   legalEntity: '[LEGAL ENTITY NAME]',
   legalJurisdiction: '[JURISDICTION]',
 } as const;

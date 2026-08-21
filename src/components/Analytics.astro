@@ -1,25 +1,14 @@
 ---
-import { CF_ANALYTICS_TOKEN } from '~/config/flags.ts';
+import { CF_ANALYTICS_TOKEN, GA_ID } from '~/config/flags.ts';
 
 /**
- * Cloudflare Web Analytics, and nothing else.
+ * Analytics tags injection.
  *
- * The site's default is no third-party request of any kind, and that default holds
- * unless PUBLIC_CF_ANALYTICS_TOKEN is set to a real token: with it empty this
- * component renders nothing at all, not an empty tag and not a disabled script.
+ * Both Cloudflare Web Analytics and Google Analytics can be enabled via environment variables.
  *
- * Cloudflare's beacon was chosen over the alternatives because it sets no cookie,
- * stores no identifier and collects nothing that identifies a person — so the
- * cookie policy stays true and no consent banner is required for it. Anything
- * that did need consent would have to go through the banner instead.
- *
- * The token travels in a JSON attribute built by JSON.stringify rather than by
- * string concatenation, so a malformed token cannot break out of the attribute.
- *
- * The Content Security Policy is widened for this at build time, by the same
- * integration that hashes the inline theme script — see src/integrations/csp-hashes.ts.
- * Both read the same environment variable, so the script and the policy that
- * permits it can never disagree.
+ * - Cloudflare's beacon: Sets no cookie, stores no identifier.
+ * - Google Analytics: Sets cookies and requires a consent banner (`PUBLIC_ADS_ENABLED=true`).
+ *   The GA script defaults `analytics_storage` to 'denied' until the user accepts the banner.
  */
 const beacon = CF_ANALYTICS_TOKEN === '' ? null : JSON.stringify({ token: CF_ANALYTICS_TOKEN });
 ---
@@ -32,5 +21,22 @@ const beacon = CF_ANALYTICS_TOKEN === '' ? null : JSON.stringify({ token: CF_ANA
       src="https://static.cloudflareinsights.com/beacon.min.js"
       data-cf-beacon={beacon}
     />
+  )
+}
+
+{
+  GA_ID !== '' && (
+    <>
+      <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+      <script is:inline set:html={`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+          'analytics_storage': 'denied'
+        });
+        gtag('js', new Date());
+        gtag('config', '${GA_ID}');
+      `} />
+    </>
   )
 }

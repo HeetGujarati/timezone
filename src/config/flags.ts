@@ -18,3 +18,10 @@ export const CF_ANALYTICS_TOKEN =
   typeof import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN === 'string'
     ? import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN
     : '';
+
+/** Google Analytics ID. Empty string means: do not use Google Analytics. */
+export const GA_ID =
+  typeof import.meta.env.PUBLIC_GA_ID === 'string'
+    ? import.meta.env.PUBLIC_GA_ID
+    : '';
+
