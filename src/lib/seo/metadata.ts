@@ -1,5 +1,5 @@
 import { LOCALES, getLocale, localePath, type LocaleCode } from '~/config/locales.ts';
-import { SITE, absoluteUrl, toOpenGraphLocale } from '~/config/site.ts';
+import { SITE, absoluteUrl, toOpenGraphLocale, getLocaleKeywords } from '~/config/site.ts';
 import type {
   AlternateLinks,
   MetadataInput,
@@ -60,14 +60,19 @@ export function formatTitle(
   return branded.length <= maxLength ? branded : clean;
 }
 
-/** Merge global and page keywords, case-insensitively de-duplicated, order preserved. */
+/**
+ * Merge page, locale-specific, and global keywords. Case-insensitively de-duplicated,
+ * order preserved: page keywords first, then locale keywords, then global.
+ */
 export function mergeKeywords(
   pageKeywords: readonly string[] = [],
   globalKeywords: readonly string[] = SITE.globalKeywords,
+  locale?: LocaleCode,
 ): string[] {
+  const localeKeywords = locale ? getLocaleKeywords(locale) : [];
   const seen = new Set<string>();
   const merged: string[] = [];
-  for (const keyword of [...pageKeywords, ...globalKeywords]) {
+  for (const keyword of [...pageKeywords, ...localeKeywords, ...globalKeywords]) {
     const clean = keyword.trim();
     const key = clean.toLowerCase();
     if (clean.length === 0 || seen.has(key)) continue;
@@ -168,7 +173,7 @@ export function buildMetadata(input: MetadataInput): ResolvedMetadata {
   return {
     title: resolvedTitle,
     description: resolvedDescription,
-    keywords: mergeKeywords(keywords),
+    keywords: mergeKeywords(keywords, SITE.globalKeywords, locale),
     canonical,
     robots: buildRobots(noIndex),
     openGraph: {

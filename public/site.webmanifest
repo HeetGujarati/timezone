@@ -1,6 +1,6 @@
 {
-  "name": "Meridiem",
-  "short_name": "Meridiem",
+  "name": "YourWorldTime",
+  "short_name": "YourWorldTime",
   "start_url": "/",
   "scope": "/",
   "display": "browser",
