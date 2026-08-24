@@ -44,7 +44,7 @@
     "@resvg/resvg-js": "2.6.2",
     "@tailwindcss/vite": "4.3.3",
     "astro": "7.2.4",
-    "satori": "0.29.1",
+    "satori": "0.33.0",
     "tailwindcss": "4.3.3",
     "zod": "4.4.3"
   },
