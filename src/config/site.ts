@@ -35,14 +35,20 @@ export const SITE = {
    * Deliberately short: keyword stuffing is a liability, not an asset.
    */
   globalKeywords: [
-    // Existing keywords
+    // Core head terms
     'time zone converter',
     'world clock',
     'meeting planner',
     'time difference',
     'UTC',
     'daylight saving time',
-    // Medium competition — Time Zone conversions
+    // Easy–Medium — Utility queries (high volume, lower competition)
+    'current time',
+    'time zone calculator',
+    'what time is it in',
+    'convert time zones',
+    'time zone difference',
+    // Easy–Medium — Time Zone conversions (India IT traffic)
     'EST to IST',
     'PST to IST',
     'GMT to IST',
@@ -53,7 +59,8 @@ export const SITE = {
     'UTC to IST',
     'CST to IST',
     'AEST to IST',
-    // Medium competition — City-based queries
+    'IST to CST',
+    // Easy–Medium — City-based queries
     'time in New York',
     'time in London',
     'time in Tokyo',
@@ -63,6 +70,21 @@ export const SITE = {
     'current time in India',
     'time in California',
     'time in Germany',
+    // Easy — Developer / Tech tools
+    'unix timestamp to date',
+    'epoch converter',
+    'epoch time to human readable',
+    'milliseconds to date converter',
+    // Easy–Medium — Remote work & scheduling
+    'remote team meeting planner',
+    'working hours overlap',
+    'best time to call',
+    'schedule meeting across time zones',
+    // Medium — Seasonal / DST (spike in Mar & Nov)
+    'DST changes 2026',
+    'clocks change 2026',
+    'when do clocks spring forward',
+    'does Arizona observe daylight saving',
   ],
 
   origin: readOrigin(),
@@ -212,6 +234,14 @@ export const LOCALE_KEYWORDS: Record<LocaleCode, readonly string[]> = {
     'PST to IST', 'GMT to IST', 'अभी कितने बजे हैं',
     'अमेरिका और भारत में समय का अंतर',
     'मीटिंग प्लानर', 'डेलाइट सेविंग टाइम',
+    // Easy — India-specific high-volume long-tail
+    'IST to PST समय', 'अमेरिका में अभी कितने बजे हैं',
+    'भारत और अमेरिका का समय का अंतर',
+    'भारत का समय क्षेत्र +5:30 क्यों है',
+    'इंडिया टाइम vs यूएस टाइम',
+    'भारत से अमेरिका कॉल करने का सही समय',
+    'यूनिक्स टाइमस्टैम्प कनवर्टर',
+    'बैंगलोर में समय', 'मुंबई में समय',
   ],
   id: [
     'konverter zona waktu', 'waktu saat ini', 'jam dunia',
