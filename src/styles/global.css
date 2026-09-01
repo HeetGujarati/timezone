@@ -210,3 +210,41 @@
     margin-block: var(--space-8) var(--space-2);
   }
 }
+
+/* ─── Site Logo ─────────────────────────────────────────────── */
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.site-logo__icon {
+  flex-shrink: 0;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.site-logo:hover .site-logo__icon {
+  transform: rotate(20deg) scale(1.08);
+}
+
+.site-logo__text {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.site-logo__your {
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.site-logo__world {
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+.site-logo__time {
+  font-weight: 700;
+}

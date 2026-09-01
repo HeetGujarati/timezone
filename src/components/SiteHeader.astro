@@ -25,9 +25,23 @@ const currentPath = Astro.url.pathname;
   <div class="shell flex h-14 items-center justify-between gap-4">
     <a
       href={hrefFor(locale, '/')}
-      class="font-[family-name:var(--font-display)] text-[length:var(--text-lg)] font-semibold tracking-tight text-[var(--color-text)] no-underline"
+      class="site-logo font-[family-name:var(--font-display)] text-[length:var(--text-lg)] tracking-tight text-[var(--color-text)] no-underline"
     >
-      {SITE.name}
+      <svg class="site-logo__icon" width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/>
+        <ellipse cx="12" cy="12" rx="4.5" ry="10" stroke="currentColor" stroke-width="1.4"/>
+        <path d="M2.5 9h19M2.5 15h19" stroke="currentColor" stroke-width="1.2" opacity="0.5"/>
+        <circle cx="12" cy="12" r="1.8" fill="url(#logo-grad)"/>
+        <defs>
+          <linearGradient id="logo-grad" x1="10" y1="10" x2="14" y2="14">
+            <stop offset="0%" stop-color="#3b82f6"/>
+            <stop offset="100%" stop-color="#06b6d4"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <span class="site-logo__text">
+        <span class="site-logo__your">Your</span><span class="site-logo__world">World</span><span class="site-logo__time">Time</span>
+      </span>
     </a>
 
     <nav aria-label={t('nav.label')} class="hidden md:block">
