@@ -1,16 +1,15 @@
 ---
 /**
- * Premium contact form that posts to FormSubmit.co.
- * Rendered as a dedicated Astro component so it gets proper styling
- * instead of being inlined as raw HTML inside a markdown file.
+ * Premium contact form that posts to FormSubmit.co via AJAX.
+ * Shows a spinning circle → green checkmark animation on success,
+ * all without leaving the page.
  */
 import { SITE } from '~/config/site.ts';
 
-const formAction = `https://formsubmit.co/${SITE.contactEmail}`;
-const redirectUrl = `${SITE.origin}/`;
+const formAction = `https://formsubmit.co/ajax/${SITE.contactEmail}`;
 ---
 
-<div class="contact-card">
+<div class="contact-card" id="contact-card">
   <div class="contact-card__header">
     <div class="contact-card__icon">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -22,10 +21,9 @@ const redirectUrl = `${SITE.origin}/`;
     <p class="contact-card__subtitle">Have a question, found a bug, or just want to say hello? Drop us a message.</p>
   </div>
 
-  <form action={formAction} method="POST" class="contact-form">
+  <!-- The Form -->
+  <form id="contact-form" class="contact-form" data-action={formAction}>
     <input type="text" name="_honey" style="display:none" />
-    <input type="hidden" name="_captcha" value="false" />
-    <input type="hidden" name="_next" value={redirectUrl} />
 
     <div class="contact-form__row">
       <div class="contact-form__field">
@@ -78,15 +76,101 @@ const redirectUrl = `${SITE.origin}/`;
       ></textarea>
     </div>
 
-    <button type="submit" class="contact-form__submit">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <button type="submit" class="contact-form__submit" id="cf-submit-btn">
+      <svg class="contact-form__send-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <line x1="22" y1="2" x2="11" y2="13"/>
         <polygon points="22 2 15 22 11 13 2 9 22 2"/>
       </svg>
-      Send Message
+      <span id="cf-btn-text">Send Message</span>
     </button>
   </form>
+
+  <!-- Success overlay (hidden by default) -->
+  <div class="contact-success" id="contact-success">
+    <div class="contact-success__animation">
+      <svg class="contact-success__svg" viewBox="0 0 80 80">
+        <!-- Circle that draws itself -->
+        <circle
+          class="contact-success__circle"
+          cx="40" cy="40" r="36"
+          fill="none"
+          stroke="#22c55e"
+          stroke-width="3"
+          stroke-linecap="round"
+        />
+        <!-- Checkmark that draws after circle -->
+        <path
+          class="contact-success__check"
+          d="M24 42 L35 53 L56 30"
+          fill="none"
+          stroke="#22c55e"
+          stroke-width="3.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </div>
+    <h3 class="contact-success__title">Message Sent!</h3>
+    <p class="contact-success__text">Thank you for reaching out. We'll get back to you soon.</p>
+    <button type="button" class="contact-success__reset" id="cf-reset-btn">Send another message</button>
+  </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contact-form') as HTMLFormElement | null;
+    const successEl = document.getElementById('contact-success');
+    const submitBtn = document.getElementById('cf-submit-btn') as HTMLButtonElement | null;
+    const btnText = document.getElementById('cf-btn-text');
+    const resetBtn = document.getElementById('cf-reset-btn');
+
+    if (!form || !successEl || !submitBtn || !btnText || !resetBtn) return;
+
+    const actionUrl = form.dataset.action || '';
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Disable button and show loading
+      submitBtn.disabled = true;
+      submitBtn.classList.add('contact-form__submit--loading');
+      btnText.textContent = 'Sending…';
+
+      const formData = new FormData(form);
+
+      try {
+        const res = await fetch(actionUrl, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' },
+        });
+
+        if (res.ok) {
+          // Hide form, show success animation
+          form.classList.add('contact-form--hidden');
+          successEl.classList.add('contact-success--visible');
+        } else {
+          throw new Error('Server error');
+        }
+      } catch {
+        // On error, restore button
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('contact-form__submit--loading');
+        btnText.textContent = 'Try again';
+      }
+    });
+
+    // Reset: show form again
+    resetBtn.addEventListener('click', () => {
+      form.reset();
+      form.classList.remove('contact-form--hidden');
+      successEl.classList.remove('contact-success--visible');
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('contact-form__submit--loading');
+      btnText.textContent = 'Send Message';
+    });
+  });
+</script>
 
 <style>
   .contact-card {
@@ -96,6 +180,7 @@ const redirectUrl = `${SITE.origin}/`;
     border-radius: var(--radius-lg);
     background: var(--color-surface-raised);
     overflow: hidden;
+    position: relative;
   }
 
   .contact-card__header {
@@ -129,11 +214,21 @@ const redirectUrl = `${SITE.origin}/`;
     margin: 0;
   }
 
+  /* ─── Form ─────────────────────────────────────────────── */
   .contact-form {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
     padding: 2rem;
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  .contact-form--hidden {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
   }
 
   .contact-form__row {
@@ -205,17 +300,137 @@ const redirectUrl = `${SITE.origin}/`;
     font-weight: 600;
     font-family: inherit;
     cursor: pointer;
-    transition: transform 0.15s, box-shadow 0.2s, background 0.2s;
+    transition: transform 0.15s, box-shadow 0.2s, background 0.2s, opacity 0.2s;
   }
 
-  .contact-form__submit:hover {
+  .contact-form__submit:hover:not(:disabled) {
     background: linear-gradient(135deg, #2563eb, #1d4ed8);
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
     transform: translateY(-1px);
   }
 
-  .contact-form__submit:active {
+  .contact-form__submit:active:not(:disabled) {
     transform: translateY(0);
     box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2);
+  }
+
+  .contact-form__submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .contact-form__submit--loading .contact-form__send-icon {
+    animation: cf-spin 0.8s linear infinite;
+  }
+
+  @keyframes cf-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* ─── Success Animation ────────────────────────────────── */
+  .contact-success {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .contact-success--visible {
+    display: flex;
+    animation: cf-fade-in 0.4s ease-out;
+  }
+
+  @keyframes cf-fade-in {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .contact-success__animation {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-success__svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Circle draws itself first */
+  .contact-success__circle {
+    stroke-dasharray: 226;
+    stroke-dashoffset: 226;
+    transform-origin: center;
+  }
+
+  .contact-success--visible .contact-success__circle {
+    animation: cf-draw-circle 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+  }
+
+  @keyframes cf-draw-circle {
+    0% {
+      stroke-dashoffset: 226;
+      transform: rotate(-90deg);
+    }
+    100% {
+      stroke-dashoffset: 0;
+      transform: rotate(270deg);
+    }
+  }
+
+  /* Checkmark draws after circle completes */
+  .contact-success__check {
+    stroke-dasharray: 60;
+    stroke-dashoffset: 60;
+  }
+
+  .contact-success--visible .contact-success__check {
+    animation: cf-draw-check 0.4s cubic-bezier(0.65, 0, 0.45, 1) 0.5s forwards;
+  }
+
+  @keyframes cf-draw-check {
+    0% { stroke-dashoffset: 60; }
+    100% { stroke-dashoffset: 0; }
+  }
+
+  .contact-success__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #22c55e;
+    margin: 0 0 0.5rem;
+    animation: cf-slide-up 0.4s ease-out 0.7s both;
+  }
+
+  .contact-success__text {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    margin: 0 0 1.5rem;
+    animation: cf-slide-up 0.4s ease-out 0.85s both;
+  }
+
+  @keyframes cf-slide-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .contact-success__reset {
+    padding: 0.625rem 1.25rem;
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--color-text);
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    animation: cf-slide-up 0.4s ease-out 1s both;
+  }
+
+  .contact-success__reset:hover {
+    background: var(--color-surface-sunken);
+    border-color: var(--color-text-muted);
   }
 </style>
