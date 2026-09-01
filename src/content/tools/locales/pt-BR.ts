@@ -9,9 +9,9 @@ export const copy: PageCopy = {
       title: 'Conversor de fuso horário',
       metaTitle: 'Conversor de fuso horário para qualquer data',
       description:
-        'Converta qualquer fuso horário em outro, para qualquer data. Considera o horário de verão e as diferenças de meia hora e de 45 minutos.',
+        'Calcular fuso horário entre cidades como São Paulo, Lisboa ou Nova York. Considera horário de verão, meias horas e fusos de 45 minutos.',
       summary:
-        'Escolha dois fusos e uma data: a conversão sai exata, inclusive nos dois dias do ano em que a mudança de horário torna um horário local impossível ou ambíguo.',
+        'Escolha dois fusos e uma data: a conversão sai exata. Use para calcular fuso horário entre cidades como São Paulo, Nova York ou Lisboa — inclusive nos dois dias do ano em que a mudança de horário torna um horário local impossível ou ambíguo.',
       faqs: [
         {
           question: 'Este conversor considera o horário de verão?',
@@ -48,6 +48,13 @@ export const copy: PageCopy = {
             'Nem toda diferença é de horas inteiras. A Índia está 5 horas e 30 minutos à frente do UTC. O Nepal, 5 horas e 45 minutos. As ilhas Chatham, 12 horas e 45 minutos, e a ilha Lord Howe se desloca apenas 30 minutos quando entra no horário de verão. Cerca de um quinto do mundo vive com uma diferença que não é um número inteiro de horas.',
             'Alguns horários locais não existem. Quando os relógios adiantam, uma hora desaparece. Em Nova York, no dia da mudança, depois de 01:59:59 vem imediatamente 03:00:00 — 02:30 nunca acontece. Peça a quase qualquer ferramenta que converta 02:30 e ela responderá assim mesmo, com toda a confiança. Esta aqui conta o que fez.',
             'Alguns horários locais acontecem duas vezes. Quando os relógios atrasam, uma hora se repete. 01:30 ocorre uma vez no horário de verão e de novo, uma hora depois, no horário padrão. Este conversor pega a primeira ocorrência, diz isso, e mostra a segunda.',
+          ],
+        },
+        {
+          heading: 'Calcular fuso horário entre cidades populares',
+          paragraphs: [
+            'O fuso horário São Paulo (America/Sao_Paulo) fica em UTC\u201103:00 o ano todo desde que o Brasil aboliu o horário de verão em 2019. Se você quer saber que horas são quando marca uma reunião com alguém em Nova York ou Lisboa, esta é a ferramenta certa: ela desconta a mudança automática de cada lado.',
+            'O fuso horário Portugal (Europe/Lisbon) segue WET no inverno (UTC+00:00) e WEST no verão (UTC+01:00). Para quem está no Brasil, a diferença para Portugal oscila entre 3 e 4 horas dependendo da época do ano — e esse conversor mostra exatamente qual diferença vale na data que você escolher.',
           ],
         },
       ],
@@ -112,11 +119,11 @@ export const copy: PageCopy = {
 
     worldClock: {
       title: 'Relógio mundial',
-      metaTitle: 'Relógio mundial: hora em 80 cidades',
+      metaTitle: 'Relógio mundial online: hora em 80 cidades',
       description:
-        'Hora local ao vivo em 80 grandes cidades, do leste para o oeste. Busque qualquer cidade, fixe as que importam e veja a data virar.',
+        'Relógio mundial online com hora ao vivo em 80 cidades. Veja o horário de Brasília agora, horário em Nova York agora, que horas são em Londres e outras.',
       summary:
-        'Hora local ao vivo em 80 cidades, do relógio mais adiantado do planeta ao mais atrasado — busque para filtrar e fixe as cidades que você consulta sempre: elas ficam no topo.',
+        'Relógio mundial online com a hora local ao vivo em 80 cidades, do relógio mais adiantado do planeta ao mais atrasado. Veja o horário de Brasília agora, confira o horário de Tóquio agora — busque para filtrar e fixe as cidades que você consulta sempre.',
       faqs: [
         {
           question: 'Qual é a precisão desses relógios?',
@@ -127,6 +134,16 @@ export const copy: PageCopy = {
           question: 'Posso manter minhas cidades no topo?',
           answer:
             'Pode. Fixe uma cidade e ela vai para o começo da grade, e continua lá na próxima visita. As cidades fixadas ficam só no seu navegador; nada é enviado a lugar nenhum e nenhum cookie é criado.',
+        },
+        {
+          question: 'Que horas são em Londres, Nova York e Tóquio agora?',
+          answer:
+            'Este relógio mundial mostra a hora ao vivo em todas essas cidades. Para saber que horas são em Londres agora, basta procurá-la na grade — o mesmo vale para o horário em Nova York agora ou o horário de Tóquio agora. Cada relógio mostra a data e a hora local corretas neste instante.',
+        },
+        {
+          question: 'Como vejo o horário de Brasília agora?',
+          answer:
+            'São Paulo e Brasília ficam no mesmo fuso (America/Sao_Paulo, UTC-03:00), então basta buscar "São Paulo" na grade para ver o horário de Brasília agora. O relógio é ao vivo e atualiza a cada segundo.',
         },
         {
           question: 'Por que algumas cidades mostram uma data diferente?',
@@ -146,10 +163,15 @@ export const copy: PageCopy = {
       title: 'Diferença de horário',
       metaTitle: 'Diferença de horário entre dois fusos',
       description:
-        'A diferença atual entre dois lugares e todas as datas do próximo ano em que ela muda porque um dos dois mexe nos relógios.',
+        'A diferença de horário atual entre dois lugares — inclusive Brasil e EUA — e as datas do próximo ano em que ela muda devido a ajustes nos relógios.',
       summary:
-        'Escolha dois lugares e veja a que distância eles estão agora — mais as datas exatas do próximo ano em que essa distância muda, que é a parte que a maioria das ferramentas deixa de fora.',
+        'Escolha dois lugares e veja a que distância eles estão agora — calcule a diferença de horário Brasil EUA, Brasil Portugal ou qualquer outro par, mais as datas exatas do próximo ano em que essa distância muda.',
       faqs: [
+        {
+          question: 'Qual é a diferença de horário entre Brasil e EUA?',
+          answer:
+            'Depende de quais cidades. São Paulo (UTC\u201103:00) está 2 horas à frente de Nova York (UTC\u201105:00) na maior parte do ano, mas 1 hora durante as semanas em que os EUA já adiantaram os relógios e o Brasil não, porque o Brasil aboliu o horário de verão em 2019. Para Los Angeles a diferença é de 5 ou 4 horas. Use esta ferramenta para ver a diferença de horário Brasil EUA exata na data que importa.',
+        },
         {
           question: 'Por que a diferença não é a mesma o ano todo?',
           answer:
@@ -327,14 +349,19 @@ export const copy: PageCopy = {
       title: 'Hora UTC',
       metaTitle: 'Hora UTC agora — tempo universal coordenado',
       description:
-        'A hora UTC atual, correndo ao vivo, além do que UTC realmente é, em que difere do GMT e contra o que se mede a diferença de cada fuso.',
+        'A hora UTC atual, correndo ao vivo. Veja o horário UTC Brasil (UTC−03:00 em Brasília), a diferença entre UTC e GMT e contra o que se mede cada fuso.',
       summary:
-        'UTC é o relógio de referência contra o qual todos os outros fusos são definidos — ele nunca se desloca pelo horário de verão, e a leitura abaixo é o relógio do seu aparelho expresso em UTC.',
+        'UTC é o relógio de referência contra o qual todos os outros fusos são definidos — ele nunca se desloca pelo horário de verão. O horário UTC Brasil, por exemplo, é UTC−03:00 em Brasília, e a leitura abaixo é o relógio do seu aparelho expresso em UTC.',
       faqs: [
         {
           question: 'O que é UTC?',
           answer:
             'O tempo universal coordenado é a referência contra a qual todos os outros fusos horários são definidos. Não é um fuso em que alguém viva — é a linha de base. Toda diferença que você vê, de UTC-12 a UTC+14, é uma distância a partir deste relógio.',
+        },
+        {
+          question: 'Qual é o horário UTC Brasil?',
+          answer:
+            'O Brasil abrange quatro fusos: UTC−02:00 (Fernando de Noronha), UTC−03:00 (Brasília, São Paulo, Rio de Janeiro — o horário oficial), UTC−04:00 (Manaus, Cuiabá) e UTC−05:00 (Rio Branco). O horário de Brasília agora é UTC−03:00 o ano todo, porque o Brasil aboliu o horário de verão em 2019.',
         },
         {
           question: 'UTC é a mesma coisa que GMT?',
@@ -373,10 +400,20 @@ export const copy: PageCopy = {
       title: 'Mudanças de horário de verão',
       metaTitle: 'Horário de verão: mudanças deste ano e do próximo',
       description:
-        'Toda mudança de relógio prevista para este ano e o próximo, com datas exatas, hora local da mudança e a diferença antes e depois. Filtrável por país.',
+        'Mudanças de relógio para este ano e o próximo, incluindo fuso horário Brasil e fuso horário Portugal. Datas exatas, hora local e diferença.',
       summary:
-        'Cada data abaixo vem do banco de dados IANA, com o momento local exato em que a mudança entra em vigor — e as cidades que nunca mexem nos relógios aparecem em lista separada.',
+        'Cada data abaixo vem do banco de dados IANA, com o momento local exato em que a mudança entra em vigor. O fuso horário Brasil não muda mais desde 2019; o fuso horário Portugal continua mudando duas vezes por ano — e as cidades que nunca mexem nos relógios aparecem em lista separada.',
       faqs: [
+        {
+          question: 'O fuso horário Brasil ainda muda os relógios?',
+          answer:
+            'Não. O Brasil aboliu o horário de verão em 2019, depois de décadas usando. Desde então o fuso horário Brasil permanece fixo: UTC-03:00 para Brasília e São Paulo, UTC-04:00 para Manaus, UTC-05:00 para Rio Branco. A diferença para o UTC não muda mais em nenhum mês.',
+        },
+        {
+          question: 'E o fuso horário Portugal — muda os relógios?',
+          answer:
+            'Sim. O fuso horário Portugal continental (Europe/Lisbon) segue WET (UTC+00:00) no inverno e WEST (UTC+01:00) no verão, alinhado com a União Europeia. Os Açores ficam uma hora atrás (UTC-01:00/UTC+00:00). Enquanto a UE não abolir a mudança, Portugal continua mexendo nos relógios duas vezes por ano.',
+        },
         {
           question: 'Quais países aboliram o horário de verão?',
           answer:

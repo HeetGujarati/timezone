@@ -177,6 +177,12 @@ export const LOCALE_KEYWORDS: Record<LocaleCode, readonly string[]> = {
     'fuso horário Brasil', 'horário de Brasília',
     'horário de verão', 'hora GMT', 'hora UTC',
     'planejador de reuniões', 'que horas são',
+    // Easy–Medium KD — targeted PT-BR queries
+    'horário de brasília agora', 'diferença de horário brasil eua',
+    'relógio mundial online', 'horário em nova york agora',
+    'que horas são em londres', 'fuso horário são paulo',
+    'horário de tóquio agora', 'calcular fuso horário',
+    'horário UTC brasil', 'fuso horário portugal',
   ],
   fr: [
     'convertisseur de fuseau horaire', 'heure actuelle', 'horloge mondiale',
