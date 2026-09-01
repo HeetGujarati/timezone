@@ -1,6 +1,7 @@
 ---
 import { render, type CollectionEntry } from 'astro:content';
 import BaseLayout from '~/layouts/BaseLayout.astro';
+import ContactForm from '~/components/ContactForm.astro';
 import { useTranslations } from '~/lib/i18n/index.ts';
 import { buildInfoMetadata } from '~/lib/seo/metadata.ts';
 import { breadcrumbListSchema, organizationSchema } from '~/lib/seo/structured-data.ts';
@@ -23,6 +24,7 @@ const t = useTranslations(locale);
 const { Content } = await render(entry);
 
 const path = `/${slug}/`;
+const isContactPage = slug === 'contact';
 
 const metadata = buildInfoMetadata({
   title: entry.data.title,
@@ -43,8 +45,10 @@ const schemas = [organizationSchema(), breadcrumbListSchema(breadcrumbs, locale)
     <p class="mt-2 text-[length:var(--text-sm)] text-[var(--color-text-muted)]">
       <time datetime={entry.data.updatedAt}>{entry.data.updatedAt}</time>
     </p>
+    {isContactPage && <ContactForm />}
     <div class="guide-body mt-6">
       <Content />
     </div>
   </article>
 </BaseLayout>
+
