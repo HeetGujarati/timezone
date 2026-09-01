@@ -112,9 +112,9 @@ export const copy: PageCopy = {
 
     worldClock: {
       title: 'Orologio mondiale',
-      metaTitle: 'Orologio mondiale: l’ora in 80 città',
+      metaTitle: 'Orologio mondiale: fuso orario New York, Tokyo, Australia e altre città',
       description:
-        'Ora locale dal vivo in 80 grandi città, ordinate da est a ovest. Cerca una città, fissa quelle che ti interessano e guarda cambiare la data.',
+        'Scopri che ore sono a Tokyo o l’ora esatta a Miami. Ora locale dal vivo in 80 grandi città, con fuso orario Italia e altri continenti.',
       summary:
         'Ora locale dal vivo in 80 città, dall’orologio più avanti del pianeta al più indietro: cerca per filtrare e fissa le città che consulti spesso, restano in cima.',
       faqs: [
@@ -144,9 +144,9 @@ export const copy: PageCopy = {
 
     timeDifference: {
       title: 'Differenza oraria',
-      metaTitle: 'Differenza oraria fra due fusi orari',
+      metaTitle: 'Differenza oraria tra Italia e Australia, Giappone e altri fusi',
       description:
-        'La differenza attuale fra due luoghi e ogni data del prossimo anno in cui cambia, perché uno dei due sposta le lancette.',
+        'Calcola la differenza oraria Italia Giappone o tra qualsiasi altro luogo. La differenza attuale fra due fusi orari e ogni data in cui cambia l’ora.',
       summary:
         'Scegli due luoghi e vedrai quanto distano adesso, più le date esatte del prossimo anno in cui quel divario cambia: è la parte che quasi tutti gli strumenti tralasciano.',
       faqs: [
@@ -371,9 +371,9 @@ export const copy: PageCopy = {
 
     dstChanges: {
       title: 'Cambi dell’ora legale',
-      metaTitle: 'Cambi dell’ora legale quest’anno e il prossimo',
+      metaTitle: 'Cambi dell’ora legale: quando cambia l’ora negli USA e nel mondo',
       description:
-        'Ogni cambio d’ora previsto per quest’anno e il prossimo, con date esatte, ora locale del cambio e lo scarto prima e dopo. Filtrabile per paese.',
+        'Scopri quando cambia l’ora negli USA o l’ora legale Giappone. Ogni cambio d’ora previsto quest’anno e il prossimo, con date esatte e scarti.',
       summary:
         'Ogni data qui sotto arriva dal database IANA, con il momento locale esatto in cui il cambio entra in vigore — e le città che non spostano mai le lancette sono elencate a parte.',
       faqs: [
@@ -418,9 +418,9 @@ export const copy: PageCopy = {
     },
     cities: {
       title: 'Ora attuale per città',
-      metaTitle: 'Ora attuale per città in ogni continente',
+      metaTitle: 'Ora attuale per città: fuso orario Italia, Australia, New York',
       description:
-        'Ora locale, scarto da UTC e date dell’ora legale per 80 città in tutti i continenti abitati.',
+        'Ora locale, fuso orario Tokyo, scarto da UTC e date dell’ora legale per 80 città. Cerca l’ora esatta a Tokyo o a Sydney.',
       summary:
         'Ogni pagina porta un orologio dal vivo, le date esatte dell’ora legale di quel fuso, alba e tramonto calcolati dalle coordinate della città e le conversioni verso i grandi snodi.',
     },
