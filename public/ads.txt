@@ -19,7 +19,7 @@
 # f08c47fec0942fa0. Get it from the network rather than copying it from another
 # site — a wrong id invalidates the record silently.
 #
-# google.com, pub-[PUBLISHER ID], DIRECT, f08c47fec0942fa0
+google.com, pub-3451224240753943, DIRECT, f08c47fec0942fa0
 #
 # Three things have to happen in the same change, and DEPLOY.md lists them under
 # "Enabling advertising": this file gains a record, PUBLIC_ADS_ENABLED is set to
